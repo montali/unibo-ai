@@ -9,5 +9,5 @@
 
 So, **what is the difference between image processing and computer vision?** In the second one, we try to **extrapolate informations from the image**, the knowledge we need to get out of that image. For example, in industrial applications, computer vision could help in recognizing broken bottles.
 
-Image processing is instead concerned with getting images in input, and images in output. Pixels to pixels. ![Screenshot 2020-09-24 at 11.57.31](/Users/simone/UniBO/unibo-ai/Computer Vision/res/imageprocessing-vs-cv.png)
+Image processing is instead concerned with getting images in input, and images in output. Pixels to pixels. ![Screenshot 2020-09-24 at 11.57.31](./res/imageprocessing-vs-cv.png)
 
