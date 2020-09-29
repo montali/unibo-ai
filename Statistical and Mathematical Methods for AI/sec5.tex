@@ -65,4 +65,47 @@ Considering an overdetermined system, finding the solution is impossible ($b$ do
 \subsubsection{Orthogonality and projections}
 Since, when working in machine learning, visualizing data in a useful way can be pretty difficult, projections come in help. These compress the data while minimizing the loss of useful informations, therefore making data more \textit{densely informative}. 
 % I started wandering in my thoughts here and lost part of the lesson, sorry about this lol
+\subsection{Descent methods}
+This is an iterative method for the solution of the minimization problem. These are the most widely used methods, that given the starting vector $x_0$, we compute the sequence of vectors with this formula:
+\begin{displaymath}
+    x_{k+1}=x_k+\alpha_kp_k
+\end{displaymath}
+where $p_k$ is a descent direction, and $\alpha$ is a step size. What happens is we add a step towards the direction.
+\subsection{Gradient descent} 
+The gradient descent is a first order optimization method where the descent direction is set as
+\begin{displaymath}
+    p_k = -\nabla f(x_k) 
+\end{displaymath}
+The convergence speed is linear, therefore this method is kind of slow. 
+\subsubsection{Newton method}
+It uses second order information of $f$, i.e. the Hessian.
+The direction is set as $\mathbf{p}_{k}=-\mathrm{H}_{f}^{-1}\left(\mathbf{x}_{k}\right) \nabla f\left(\mathbf{x}_{k}\right)$
+The convergence properties are related to the Hessian, and it is faster. At every iteration the speed increases. The computational cost is greater since we have to solve a linear system.
+So, the cost per iteration is composed of the computing of the gradient PLUS the computing of the linear system solution. So, even though iterations are more complex, less of them are required. So there's a tradeoff between the complexity and the number of iterations.
+There's not a best method, it depends on the cases.
+There are some modifications in the Newton methods we could apply. The very difficult condition to hold is that $H$ has to be positive definite in every point we compute, so there are some relaxations to this condition. In some cases, $H$ is approximated:
+\begin{displaymath}
+    \mathrm{H}_{f}\left(\mathbf{x}_{k}\right) \simeq \mathrm{B}\left(\mathbf{x}_{k}\right)
+\end{displaymath}
+or we could only use the first derivatives.
+A way of reducing the computational cost we can approximately solve the system: we compute the direction $p_k$ with iterative methods.
+\subsection{Stochastic optimization}
+When we're working with milions of data, the objective function (the function to minimize) is related to probabilistic events, having the form:
+\begin{displaymath}
+    G(\mathbf{x})=\sum_{i=1}^{n} G_{i}(\mathbf{x})
+\end{displaymath}
+Each $G_i$ is the so-called \textit{loss function}. For example, in a supervised classification problem we minimize the empirical risk function. In a standard gradient descent,
+\begin{displaymath}
+    
+\begin{aligned}
+    \mathbf{x}_{k+1} &=\mathbf{x}_{k}-\alpha_{k} \nabla G\left(\mathbf{x}_{k}\right) \\
+    &=\mathbf{x}_{k}-\alpha_{k} \sum_{i=1}^{n} \nabla G_{i}\left(\mathbf{x}_{k}\right)
+    \end{aligned}\end{displaymath}
+
+When working with lots of data, the gradient computation is really expensive. In stochastic gradient descent, the true gradient is approximated at each iteration by the gradient of a single observation, randomly picked. The iteration step becomes:
+\begin{displaymath}
+    \mathbf{x}_{k+1}=\mathbf{x}_{k}-\alpha_{k} \nabla G_{i}\left(\mathbf{x}_{k}\right)
+\end{displaymath}
+We can compromise by computing the gradient on a small number of observations (\textit{mini-batch}).
+
 \end{document}
