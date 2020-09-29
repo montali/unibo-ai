@@ -65,6 +65,7 @@ Considering an overdetermined system, finding the solution is impossible ($b$ do
 \subsubsection{Orthogonality and projections}
 Since, when working in machine learning, visualizing data in a useful way can be pretty difficult, projections come in help. These compress the data while minimizing the loss of useful informations, therefore making data more \textit{densely informative}. 
 % I started wandering in my thoughts here and lost part of the lesson, sorry about this lol
+\section{Optimization}
 \subsection{Descent methods}
 This is an iterative method for the solution of the minimization problem. These are the most widely used methods, that given the starting vector $x_0$, we compute the sequence of vectors with this formula:
 \begin{displaymath}
@@ -96,16 +97,58 @@ When we're working with milions of data, the objective function (the function to
 \end{displaymath}
 Each $G_i$ is the so-called \textit{loss function}. For example, in a supervised classification problem we minimize the empirical risk function. In a standard gradient descent,
 \begin{displaymath}
-    
 \begin{aligned}
     \mathbf{x}_{k+1} &=\mathbf{x}_{k}-\alpha_{k} \nabla G\left(\mathbf{x}_{k}\right) \\
     &=\mathbf{x}_{k}-\alpha_{k} \sum_{i=1}^{n} \nabla G_{i}\left(\mathbf{x}_{k}\right)
-    \end{aligned}\end{displaymath}
+    \end{aligned}
+\end{displaymath}
 
 When working with lots of data, the gradient computation is really expensive. In stochastic gradient descent, the true gradient is approximated at each iteration by the gradient of a single observation, randomly picked. The iteration step becomes:
 \begin{displaymath}
     \mathbf{x}_{k+1}=\mathbf{x}_{k}-\alpha_{k} \nabla G_{i}\left(\mathbf{x}_{k}\right)
 \end{displaymath}
 We can compromise by computing the gradient on a small number of observations (\textit{mini-batch}).
-
-\end{document}
+\subsection{Least square problem}
+Now, we have a non-linearly square problem. We have previously analyzed linear problems only. In this case, we can suppose that our function is a general function $\mathbf{r}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$, where $n$ is the dimension of the space of the data and $m$ is the dimension of the space of the unknowns. So, we have to minimize the sum of the squares of the $r_i(x)$.
+\begin{displaymath}
+    \min || \mathbf{r}(\mathbf{x})||^{2}=\min \sum_{i=1}^{m} r_{i}^{2}(\mathbf{x})
+\end{displaymath}
+The Jacobian ($J_r$) is a matrix that contains the partial derivatives of $r$, with respect to the components. 
+% JACOBIAN: dr_n/dx_1 ... dr_1/dx_n \\ ... \\ dr_m/dx_1 ... dr_n/dx_n
+The formulas to compute the hessian or the gradient are very expensive to compute. The methods used to compute these are:
+\begin{itemize}
+    \item Gradient methods
+    \item Newton-like methods
+    \item Gauss-Newton method, where $p_k$ is computed as $\left(\mathrm{J}_{r}^{T} \cdot \mathrm{J}_{r}\right)\left(\mathbf{x}_{k}\right) \cdot \mathbf{p}_{k}=-\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathbf{r}\left(\mathbf{x}_{k}\right)$
+    \item Levenberg, Marquardt method, adds regularization because $(J^T_r \cdot J_r$) can be ill-conditioned. $p_k$ is computed as \begin{displaymath}
+        \left(\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathrm{J}_{r}\left(\mathbf{x}_{k}\right)+\lambda \mathrm{I}\right) \cdot \mathbf{p}_{k}=-\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathbf{r}\left(\mathbf{x}_{k}\right)
+    \end{displaymath}
+    as you can see, a term is added: $\lambda I$. The matrix $J$ could be ill-conditioned, and this identity matrix multiplied by a constant $\lambda$, often used with tentative values, only changes the diagonal of $J_r^T \cdot J_r$ and has the effect of moving the spectrum of the matrix. If $A \cdot A^T$ is symmetric and positive definite, the norm of A is the square root of its largest eigenvalue. Why? If A is symmetric, $A\cdot A^T$ is $A^2$. If $u_1,...,u_n$ are eigenvalues of $A$, $u_1^2, ...,u_n^2$ are the eigenvalues of $A^2$. Hence, the norm-2 of $||A||_2$ is $\sqrt{\mu_1^2}=\mu_1$. So: the 2-norm is the highest eigenvalue. The 2-norm of $A^{-1}$ is the highest eigenvalue of $A^{-1T}\cdot A^{-1}$ is therefore the smallest eigenvalue of $A$, $\sqrt{\frac{1}{\mu_n^2}}$. So, the condition number of A $K(A)=||A||_2 ||A^{-1}||_2 = \frac{\mu_1}{\mu_n}$. The minimum eigenvalue is small, adding a constant lammba reduces the spectrum. Regularization is often used in ML algorithms to prevent \textbf{overfitting}.  
+\end{itemize}
+\subsection{Constrained optimization}
+We now consider the problem 
+\begin{displaymath}
+    \begin{array}{c}
+        \min _{x} G(\mathbf{x}) \\
+        \text {s.t. } h_{i}(\mathbf{x}) \leq 0 i=1, \ldots m
+        \end{array}
+\end{displaymath}
+To solve the second one, we can introduce the Lagrange multipliers $\lambda_i$, where the Lagrangian function associated to the problem is \begin{displaymath}
+    L(\mathbf{x}, \lambda)=G(\mathbf{x})+\sum_{i=1}^{m} \lambda_{i} h_{i}(\mathbf{x})
+\end{displaymath}
+Many numerical methods also use the concept of duality. The minimization is moved in another set of variables; given a minimization problem, there is not a unique way of getting duality. We now consider the so called \textit{Lagrangian duality}.
+\section{Vector calculus}
+When we're working with multi-value functions, we have the optimization algorithms at the basis for many ML algorithms. 
+% MML book, chapter 5
+\subsection{Chain rule}
+Let's consider a function $f: \mathbb{R}^{2} \rightarrow \mathbb{R}$ of two variables $x_1, x_2$. Furthermore, $x_1(t)$ and $x_2(t)$ are themselves functions of $t$. To compute the gradient of $f$ with respect to $t$, we need to apply the chain rule for multivariate functions as:
+\begin{displaymath}
+    \frac{\mathrm{d} f}{\mathrm{d} t}=\left[\begin{array}{ll}
+        \frac{\partial f}{\partial x_{1}} & \frac{\partial f}{\partial x_{2}}
+        \end{array}\right]\left[\begin{array}{l}
+        \frac{\partial x_{1}(t)}{\partial t} \\
+        \frac{\partial x(t)}{\partial t}
+        \end{array}\right]=\frac{\partial f}{\partial x_{1}} \frac{\partial x_{1}}{\partial t}+\frac{\partial f}{\partial x_{2}} \frac{\partial x_{2}}{\partial t}
+\end{displaymath}
+where $d$ denoted the gradient.
+\end{document} 
