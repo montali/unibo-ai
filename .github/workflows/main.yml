@@ -36,9 +36,10 @@ jobs:
           pip3 install readme2tex
       - name: Build readmes
         run: |
-            find . -type f -name '*.tex.md' -print0 | while IFS= read -r -d '' i; do
-            python3 -m readme2tex --readme $i --nocdn --output "$(sed "s/.tex//" <<< $i)"
-            done
+            find . -type f -name '*.tex.md' -execdir python3 -m readme2tex --readme {} --nocdn --output "{}" \;
+      - name: Rename built .md files
+        run: |
+            find . -type f -exec rename 's/.tex.md/.md/' '{}' \;
       - name: Commit the built files
         run: |
           git config --global user.name 'Simone Montali'
