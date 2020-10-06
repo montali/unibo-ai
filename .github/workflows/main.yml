@@ -21,11 +21,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: jitterbit/get-changed-files@v1
-        id: files-finder
-        with:
-          format: space-delimited
-          token: ${{ secrets.GITHUB_TOKEN }}
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -41,4 +36,6 @@ jobs:
           pip install readme2tex
       - name: Build readmes
         run: |
-          echo "${{ steps.abc.outputs.all }}"
+            find . -type f -name '*.tex.md' -print0 | while IFS= read -r -d '' i; do
+            python3 -m readme2tex --readme $i --nocdn --output "$(sed "s/.tex//" <<< $i)"
+            done
