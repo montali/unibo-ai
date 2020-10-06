@@ -24,8 +24,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-      - name: Install pdflatex
-        run: sudo apt-get install texlive-latex-base
+      - name: Install pdflatex and rename
+        run: sudo apt install texlive-latex-base rename
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -44,5 +44,6 @@ jobs:
         run: |
           git config --global user.name 'Simone Montali'
           git config --global user.email ' montali@users.noreply.github.com'
+          git add .
           git commit -am "Built the .tex.md files"
           git push
