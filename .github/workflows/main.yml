@@ -33,9 +33,15 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install readme2tex
+          pip3 install readme2tex
       - name: Build readmes
         run: |
             find . -type f -name '*.tex.md' -print0 | while IFS= read -r -d '' i; do
             python3 -m readme2tex --readme $i --nocdn --output "$(sed "s/.tex//" <<< $i)"
             done
+      - name: Commit the built files
+        run: |
+          git config --global user.name 'Simone Montali'
+          git config --global user.email ' montali@users.noreply.github.com'
+          git commit -am "Built the .tex.md files"
+          git push
