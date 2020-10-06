@@ -89,3 +89,39 @@ So in the end, the algorithm looks like this:
 We'll execute the generated decision tree on the training set itself, count the number of discordances, thus obtain the **training set error**. Obviously, when trying to use the tree with the test set, the error rises. 
 
 Is there any general lesson we can learn from this fact? With a smaller tree we increase the training error, but we decrease the test error. Bigger trees are more prone to overfitting.
+
+## Overfitting
+
+In real life, there's noise in data. The ability to predict classes is indeed not perfect, and we'll sometimes make wrong predictions. **Overfitting** happens when the learning is affected by noise. 
+
+Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If $h$ is the hypotesis, we can define the error of the hypothesis on the training set $error_{train}(h)$, and the error of the hypothesis on the entire dataset $error_{\epsilon} (h)$. $h$ overfits the training set if there is an alternative hypothesis $h'$ such that
+
+$error_{train}(h)<error_{train} (h')$ 
+
+$error_{\epsilon} (h) > error_{\epsilon}(h')$
+
+Overfitting is caused by two phenomenons, the **presence of noise** and the **lack of representative instances**.
+
+**Everything should be made as simple as possible, but not simpler.**
+
+**Pruning** a decision tree is a way to simplify it.
+
+Pre-pruning means early stopping the tree while it is growing, post-pruning is a pruning done after the tree is finished.
+
+The **validation set** is a third dataset, which we can use after the pruning. In this way, my set will be more reliable: I'm using fresh data. 
+
+There are many ways to prune data, one of these is the **statistical pruning**: it uses statistics to infer if a new node I'm generating is prone to being affected by noise. 
+
+The **minimum description length principle** states that when the complication is bigger than the reduction of errors we are basically wasting our time.
+
+![Pruning effects on classification](/Users/simone/UniBO/unibo-ai/Machine Learning/res/pruning.png)
+
+The supervised data are then split in 3 parts:
+
+- **Training set**, to build the model;
+- **Validation set**, to tune the model and minimize the error;
+- **Test set**, to assess the final error.
+
+### Minimum Description Length
+
+This is another *way of thinking*. We know that the learning process produces a theory on a set of data, which can be then used to predict the class on a set of data. So, how can we describe this theory? We could encode the theory, and the errors underneath. So, the length of the theory is the sum of the length of the tree + the length of the errors. So, the **Minimum Description Length Principle** states that we should choose the theory with the **shorter description**: a bigger theory includes bigger errors. In the extreme cases, we may have a very simple theory with lots of exceptions, and a very complex theory with a few exceptions. 
