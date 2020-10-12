@@ -54,7 +54,7 @@ If we now consider the cost, where each node is labelled with a cost, we shall e
 
 ### Depth-first search
 
-This always expands the deepest nodes. In this case, you don't have to keep a huge fringe open, so the memory cost is super low. You just have to store the nodes of a path. The temporal complexity is exponential, though. In the worst case, if the maximum depth is $d$ and the branching factor $b$, the maximum number of nodes is $b^d$. 
+This always expands the deepest nodes. In this case, you don't have to keep a huge fringe open, so the memory cost is super low. You just have to store the nodes of a path. The temporal complexity is exponential, though. In the worst case, if the maximum depth is <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> and the branching factor <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054855500000005pt height=22.831379999999992pt/>, the maximum number of nodes is <img src="svgs/6aa43869cb559d386ace2adef5c1fcd8.svg?invert_in_darkmode" align=middle width=13.897950000000002pt height=27.91271999999999pt/>. 
 
 The algorithm is **efficient**, but **not complete.** The fringe here is a LIFO stack. 
 
@@ -89,7 +89,7 @@ Actually, uninformed search strategies are not really used.
 
 Nobody recognizes intelligence in speed: it is embedded in the exploitation of knowledge. If we have the control on how these solutions are generated, we can find an order in which they appear faster.
 
-Uninformed search methods in a search space of depth d and branching factor b have space complexity proportional $b^d$ to find a goal in one of the leaves. This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state). The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it 🤷🏻‍♂️. This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
+Uninformed search methods in a search space of depth d and branching factor b have space complexity proportional <img src="svgs/6aa43869cb559d386ace2adef5c1fcd8.svg?invert_in_darkmode" align=middle width=13.897950000000002pt height=27.91271999999999pt/> to find a goal in one of the leaves. This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state). The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it 🤷🏻‍♂️. This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
 
 Heuristics are not always right! In the following case, the *always move towards the goal* might slow us down a lot.
 
