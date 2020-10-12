@@ -4,7 +4,7 @@ The simplest example we can find is traveling from a point A to a point B, havin
 
 When we have to solve this problem automatically, we have to find out what the space is, and the operators that take us to a different space. The process of trying to find the actions that take you from the initial state to the goal is called **search**. We can then build a decision tree, where the root is the **initial state**. Now, there are lots of algorithms that explore the decision tree in different way. The main distintion between these is between the **non-informed** and the **informed**. Informed strategies use the problem knowledge, e.g. if I have to choose between city A,B,C or D, an informed one may choose the nearest one. Informed state strategies are trying to evaluate an action and choose one that is promising.
 
-### Searching for solutions
+# Uninformed search strategies
 
 So, we want to **generate a sequence of actions** that bring you from the initial state to the goal. 
 
@@ -58,7 +58,7 @@ This always expands the deepest nodes. In this case, you don't have to keep a hu
 
 The algorithm is **efficient**, but **not complete.** The fringe here is a LIFO stack. 
 
-It is **not complete** (it could be, but if fails, for instance, in infinite depth spaces), has **exponential time**, **linear space** (pretty good), and **not optimal**: the solution you find is just a random one. 
+It is **not complete** (it could be, but if fails, for instance, in infinite depth spaces), has **exponential time**, **linear space** (pretty good), and **not optimal**: the solution you find is just a random one. If we have a loop, it loops forever: therefore, it is not complete.
 
 ### Limited depth search
 
@@ -72,3 +72,29 @@ When the search space is very large we can use variants of iterative deepening.
 
 It is **complete**, has **exponential time**, has **linear space**, and it is **optimal**: you always find the shortest path if every step has cost equal to 1.
 
+## Production systems
+
+So, where do we apply these? In **production systems**, systems with rules (set of operators) that tell you how you can move in the search space (i.e. if a given pattern is true, then ...), and databases (working memories, containing the *fringe* ). You just have to state the rules, and then you do not explicitly state the control strategy: it is based on the search strategy. The control strategy selects rules to apply to states of the working memory.  
+
+You can search a space in two ways: 
+
+- Starting from the **initial state** and work towards the goal (**forward reasoning**, or **data driven**). You find the rules that you can apply to the state, then choose.
+- Starting from the **goal**, and work towards the **initial state** (**backward reasoning**, or **goal-driven**). Each time a rule is selected and executed, new subgoals to prove are inserted into the working memory. 
+
+You can even mix these two strategies, dividing the working memory into two parts, one containing the facts, the other one containing the goals/subgoals. Termination is achieved when the two portions merge.
+
+# Informed search strategies
+
+Actually, uninformed search strategies are not really used. 
+
+Nobody recognizes intelligence in speed: it is embedded in the exploitation of knowledge. If we have the control on how these solutions are generated, we can find an order in which they appear faster.
+
+Uninformed search methods in a search space of depth d and branching factor b have space complexity proportional $b^d$ to find a goal in one of the leaves. This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state). The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it 🤷🏻‍♂️. This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
+
+Heuristics are not always right! In the following case, the *always move towards the goal* might slow us down a lot.
+
+![Heuristics are not always right!](./res/heuristics-wrong.png)
+
+For example, in the *Game of 8*, we could use the quantity of right numbers as an estimate of distance from the solution. It is approximated: the distance might actually be more.
+
+So, **how can we use these?** We have a strategy, called **best-first search**, that is a breadth-first search, but then every node gets tagged by the evaluation function, then the fringe gets ordered with respect to this heuristic! In ***QueueingFn*** we insert successors in descending order of desirability. There are two special cases: *greedy search* (depth-first, goes down in the search tree), and *A\* search*. 
