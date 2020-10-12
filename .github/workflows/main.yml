@@ -44,6 +44,5 @@ jobs:
         run: |
           git config --global user.name 'Simone Montali'
           git config --global user.email ' montali@users.noreply.github.com'
-          git add .
-          git diff --quiet || (git add README.md && git commit -m "Built the .tex.md files")
+          git diff --quiet || (git add . && git commit -m "Built the .tex.md files")
           git push
