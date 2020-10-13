@@ -97,4 +97,31 @@ Heuristics are not always right! In the following case, the *always move towards
 
 For example, in the *Game of 8*, we could use the quantity of right numbers as an estimate of distance from the solution. It is approximated: the distance might actually be more.
 
+### Best-first search
+
 So, **how can we use these?** We have a strategy, called **best-first search**, that is a breadth-first search, but then every node gets tagged by the evaluation function, then the fringe gets ordered with respect to this heuristic! In ***QueueingFn*** we insert successors in descending order of desirability. There are two special cases: *greedy search* (depth-first, goes down in the search tree), and *A\* search*. 
+
+So, now we have a problem: this is not optimal, i.e. it doesn't always find the best solution!
+
+### A* algorithm
+
+This is one of the most used search algorithms. The idea is that we consider **both costs**: the cost we have already traversed AND the cost that we are supposed to traverse in the future. The first is known, the second one is estimated. We expand nodes for increasing values of $f(n)=g(n)+h'(n)$, where $g(n)$ is the **depth** of the node, and $h'(n)$ is the **estimated distance** from the goal.
+
+If we have a tie, you can have two possibility: choose a **random** one or have a second **heuristic** built to break ties.
+
+The heuristic function $h'(n)$ is said to be **optimistic** if it always underestimates the real distance $h(n)$. This heuristic is said **feasible**, i.e. it always underestimates. It is feasible even if $h'=0$ is always true: it will just be a breadth-first search. 
+
+There's a theorem that says that if $h'(n)$ always underestimates, then the A* algorithm always finds the optimal path!
+
+### Eligible functions heuristics
+
+We can define different heuristics. For example, in a tiles game, we could define $h_1$ as the number of tiles that are out of place, or $h_2$ as the sum of the Manhattan distances from the initial and final position for each tile.
+
+### Graphs
+
+We can adapt this algorithm to graphs: we keep two lists, one for the open nodes and one for the closed ones. The graph can therefore become a tree with repeated nodes.
+
+If $n$ is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labelling them with the cost from the starting node. 
+
+If a child node is already in the open nodes, we update $g(n)$, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update it.
+
