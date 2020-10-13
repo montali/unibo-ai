@@ -130,4 +130,4 @@ A decision tree is not **extremely powerful**: it's a compromise, it works and i
 
 ### Characteristics of a decision tree
 
-It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree..
+It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree.
