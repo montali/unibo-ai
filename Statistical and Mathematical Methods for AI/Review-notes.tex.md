@@ -98,3 +98,220 @@ Now, given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?in
 We call a **basis** for a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> any system of linearly independent generators of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/>.
 
 If a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> admits a basis of <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.867000000000003pt height=14.155350000000013pt/> vectors, any other basis of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> will have exactly <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.867000000000003pt height=14.155350000000013pt/> elements. <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.867000000000003pt height=14.155350000000013pt/> is the **dimension** of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/>, noted by <img src="svgs/843ab97eb2030becd5c05de5f2440a1f.svg?invert_in_darkmode" align=middle width=86.46428999999999pt height=24.65759999999998pt/>.
+
+## Matrices
+
+Let $m$ and $n$ be two positive integers. We call **matrix** the rectangular array having $m$ rows and $n$ columns of elements in a field F:
+
+$\mathrm{A}=\left[\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1 n} \\
+a_{21} & a_{22} & \cdots & a_{2 n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m 1} & a_{m 2} & \cdots & a_{m n}
+\end{array}\right]$
+
+If $F=\mathbb{R}$ we write, for example, $A \in \mathbb{R}^{m\times n}$. If $m=n$ we can say the matrix is **square**. The set of entries where $i=j$ is the **main diagonal**. The maximum number of linearly independent columns (or rows!) is called **rank**. $A$ is said to be **complete** or **full rank** if $rank(A)=min(m,n)$.
+
+A **lower triangular** matrix is a matrix that has elements in the diagonal and under it. An upper triangular matrix has elements in the diagonal and over it.
+
+We can do operations with matrices too! These are the most used: *matrix addition*, *matrix multiplication by a scalar*, *matrix multiplication* (notice that it is defined only when $A \in \mathbb{R}^{m\times p}, B \in \mathbb{R}^{p \times n}, p=p$, *transposition*. 
+
+A **diagonal matrix** is a matrix having elements on the diagonal only, and 0 elsewhere.
+
+The **identity matrix** is a diagonal matrix having 1s on the diagonal. Note that this is the identity element for the multiplication. 
+
+A matrix $A$ is called **invertible** (or **nonsingular**) if there exists a matrix $B$ such that $AB=BA=I$. $B$ is called the **inverse** of $A$ and it is denoted by $A^{-1}$. A non-invertible matrix is said **singular**. The inverse of a matrix is also invertible, and it results in the original matrix. The inverse of a product is the product of the inverses: $(AB)^{-1} = B^{-1}A^{-1}$. If a square matrix is invertible, then $(A^T)^{-1}=(A^{-1})^T = A^{-T}$ .
+
+A **square** matrix is invertible iff its column vectors are linearly independent.
+
+A square matrix is called **symmetric** if the transpose is equal to the original matrix, i.e. $A^T=A$, **antisymmetric** if $A=-A^T$, **orthogonal** if $A^{-1}=A^T$. Note that if it is orthogonal, we have that $AA^T=A^TA=I$.
+
+### Determinant of a matrix
+
+Let $A \in \mathbb{C}^{n \times n}$ be a **square matrix**. We call the **determinant** of $A$ the scalar defined by 
+
+$\operatorname{det}(\mathrm{A})=\left\{\begin{array}{cl}
+a_{11} & \text { if } n=1 \\
+\sum_{j=1}^{n}(-1)^{i+j} \operatorname{det}\left(\mathrm{A}_{i j}\right) a_{i j}=\sum_{i=1}^{n}(-1)^{i+j} \operatorname{det}\left(\mathrm{A}_{i j}\right) a_{i j} & \text { if } n>1
+\end{array}\right.$
+
+which is a fancy way to express that we have to:
+
+- Fix one of the two indices;
+- Put a negative sign before the quantities that belong to *indices summing to an odd number*;
+- Calculate the determinant of the submatrix obtained by removal of the column and row we are analyzing;
+- Multiply this quantity for the actual number at the index;
+- Sum all of these.
+
+This procedure is known as **Laplace rule**.
+
+If $A$ is diagonal or triangular, we just have to **multiply the elements on the diagonal**.
+
+The determinant has some interesting properties:
+
+- **Transposing** the matrix **doesn't change** the determinant: $det(A)=det(A^T)$ 
+- The **multiplication of determinants** is the **determinant of multiplications **in square matrices having the same size: $det(AB)=det(A)det(B)$
+- The determinant of the **inverse** is $\frac{1}{det(A)}$ : $det(A^{-1})=det(A)^{-1}$
+- The determinant of a scalar multiplication is the scalar multiplication to the power $n$, with $n$ being the matrix size: $det(\alpha A) = \alpha^n det(A), \forall\alpha \in F$
+- Every **orthogonal matrix** is invertible and its determinant is $\pm1$
+- The determinant of a $2\times2$ square matrix is computable by subtracting the multiplication of the main diagonal elements to the one of the inverse diagonal: $\operatorname{det}(\mathrm{A})=a_{11} a_{22}-a_{21} a_{12}$
+- The determinant of a $3\times3$ matrix is computable with the **Sarrus rule**, which basically is the same principle.
+
+### Calculating the inverse using the determinant
+
+If $A$ is invertible, then its inverse is computable by calculating the **cofactor matrix**, which contains elements defined by $c_{i j}=(-1)^{i+j} \operatorname{det}\left(\mathrm{A}_{i j}\right)$, called **cofactors**.
+
+$A^{-1}=\frac{C^T}{det(A)}$
+
+### Eigenvalues and eigenvectors
+
+Let's consider a **square** matrix $A \in \mathbb{C}^{n\times n}$. The number $\lambda$ is called an **eigenvalue** of $A$ if we have a vector $x\neq 0$, named **eigenvector**, such that $Ax=\lambda x$. The set of eigenvalues is called **spectrum** of $A$ and it is denoted by $\sigma(A)$. 
+
+**How can we find these eigenvalues?** They are the solutions of the characteristic equation: $p_A(\lambda) = det(A-\lambda I)=0$, where $p_A(\lambda)$ is called the **characteristic polynomial**. Thanks to the fundamental theorem of algebra we can say that a matrix with **real or complex** entrieshas $n$ eigenvalues, counted with their multiplicity. The algebraic multiplicity of an eigenvalue $\lambda_i$ is the number of times the root appears in the characteristic polynomial. Let's make an example: we have a matrix $A=\left(\begin{array}{lll}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{array}\right)$, and we'll now calculate $p_A=det(A-\lambda I)$:
+
+$\begin{array}{l}
+p_{A}(\lambda)=\operatorname{det}\left(A-\lambda \mathrm{Id}_{3}\right)= \\
+=\operatorname{det}\left[\left(\begin{array}{ccc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{array}\right)-\lambda\left(\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right)\right]= \\
+=\operatorname{det}\left[\left(\begin{array}{ccc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{array}\right)-\left(\begin{array}{ccc}
+\lambda & 0 & 0 \\
+0 & \lambda & 0 \\
+0 & 0 & \lambda
+\end{array}\right)\right]= \\
+=\operatorname{det}\left(\begin{array}{ccc}
+-\lambda & 1 & 0 \\
+1 & -\lambda & 0 \\
+0 & 0 & 1-\lambda
+\end{array}\right)= \\
+=(1-\lambda)\left(\lambda^{2}-1\right)
+\end{array}$
+
+As you can see, we have two roots $1, -1$, but $1$ cancels $p_A$ two times, so it will have multiplicity $2$, while $-1$ will have multiplicity $1$.
+
+Note that the sum of the multiplicities **can never** be higher than the matrix dimension.
+
+The maximum eigenvalue **in module** of a matrix $A \in \mathbb{C}^{n\times n}$ is called the **spectral radius** of $A$ and is denoted by $\rho(A)$: $\rho(\mathrm{A})=\max _{\lambda \in \sigma(\mathrm{A})}|\lambda|$. The set of all the eigenvalues is called the **spectrum** of $A$.
+
+Please note that the **eigenvectors are not unique**: for example, multiplying all of the eigenvectors by a constant $c$ would still make them valid eigenvectors for the same values.
+
+We can **link the eigenvalues to the determinant**! In fact, the determinant of a square matrix is the product of all its eigenvalues: $\operatorname{det}(\mathrm{A})=\prod_{i=1}^{n} \lambda_{i}$.
+
+A matrix is **singular** iff it has at least **one null eigenvalue**.
+
+**Eigenvalues in triangular and diagonal matrices are ultra easy!** In fact, they are the elements of the diagonal. 
+
+A symmetric ($A^T=A$) positive (semi)definite matrix has eigenvalues greater(equal) than(to) zero.
+
+Two matrices **with the same size** are said **similar** if the nonsingular matrix $P$ exists: $B=PAP^{-1}$. This implies that they have the **same eigenvalues** too.
+
+### Scalar product and norms in vector spaces
+
+Let's consider a vector space $V$ over the field $F$. We define a function $||\cdot||:V\rightarrow F$ as a **norm** if it satisfies the following properties:
+
+- It is always **greater or equal to $0$**, and it is $0$ **only when the vector itself is**: 
+  $||\mathbf{v}\| \geq 0, \forall \mathbf{v} \in V \text { and }\|\mathbf{v}\|=0 \Longleftrightarrow \mathbf{v}=\mathbf{0}$
+- If **multiplied by a constant**, the result is the norm **multiplied by the absolute value** of the constant: $\|\alpha \mathbf{v}\|=|\alpha| \|\mathbf{v}\|, \forall \alpha \in F, \forall \mathbf{v} \in V$
+- The **norm of a sum** is **less or equal** than the **sum of the norms**: $\|\mathbf{v}+\mathbf{w}\| \leq\|\mathbf{v}\|+\|\mathbf{w}\|, \forall \mathbf{v}, \mathbf{w} \in V$
+
+If $\alpha \in \mathbb{C}$, its module is called a *normed space*. 
+
+Now, considering a generic vector $v$, its **euclidean norm** is $\|\mathbf{v}\|_{2}=\sqrt{v_{1}^{2}+v_{2}^{2}+v_{3}^{2}}$. Its **one norm** is $\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right|$. Its **infinity norm** is $\|\mathbf{v}\|_{\infty}=\max _{i=1, \ldots, n}\left|v_{i}\right|$. Some of you may have noted a pattern: we can generalize the concept with the **p-norm** of $v$, which is $\|\mathbf{v}\|_{p}=\left(\sum_{i=1}^{n}\left|v_{i}\right|^{p}\right)^{1 / p}, 1 \leq p<\infty$.
+
+Two norms are said **equivalent** if we can find two positive constants $c_{pq}$ and $C_{pq}$ that we can multiply the norm for to obtain the following inequality: $c_{p q}\|\mathbf{x}\|_{q} \leq\|\mathbf{x}\|_{p} \leq C_{p q}\|\mathbf{x}\|_{q} \forall \mathbf{x} \in V$. This is a fancy concept but it reveals a great thing: **in a vector space all the $p$ norms are equivalent!**
+
+### Matrix norms
+
+A matrix norm is a function satisfying the above-mentioned properties. We can say that a matrix norm $\|A\|$ is **compatible** with a vector norm $\|x\|$ if the norm of the multiplication is lesser or equal than the multiplication of the norms: $|\mathrm{Ax}||\leq\|\mathrm{A}\| \| \mathbf{x}|$.
+
+The **spectral norm** of a matrix is equal to $\|\mathrm{A}\|_{\mathbb{2}} =\sqrt{\rho\left(\mathrm{A}^{T} A\right)}$. Note that the **spectral norm of the identity matrix** is equal to $1$.
+
+We can say that the ***1-norm*** of a matrix is the maximum between the sums of the **columns** absolute values: $\|\mathrm{A}\|_{1}=\max _{j=1, \ldots, n} \sum_{i=1}^{n}\left|a_{i j}\right|$. Obviously, when dealing with identity matrices this will be equal to $1$.
+
+The ***infinity norm*** is the same concept, but on **rows**: $\|\mathrm{A}\|_{\infty}=\max _{i=1, \ldots, n} \sum_{j=1}^{n}\left|a_{i j}\right|$. Notice that on **symmetric matrices** these two values coincide. Obviously, when dealing with identity matrices this will be equal to $1$.
+
+Lastly, we define the **Frobenius norm** of a matrix $A$ as the square root of the sum of all the squares:
+
+$\|\mathrm{A}\|_{F}=\sqrt{\sum_{i, j=1}^{n}\left|a_{i j}\right|^{2}}$. For identity matrices, this will be equal to $\sqrt{n}$.
+
+# Matrix decompositions
+
+**Matrix factorisations** (aka decompositions) are incredibly useful tools for linear algebra problems. They write a generic matrix $A$ as a product of matrices, that are usually easier to compute (for example, triangulars or diagonals).
+
+Let's start by considering factorizations by **triangular matrices**.
+
+## Gaussian elimination method
+
+Let's consider a square matrix $A \in \mathbb{R}^{n\times n}$. If $A$ is non-singular (therefore, it is invertible) and all its **principal minors** are non-singular, then we can find two matrices $L$ and $U$ that, multiplied, result in $A$. The cool thing is that $L$ stands for **Lower triangular**, while $U$ stands for **Upper triangular**. Pretty useful, huh?
+
+We call this the **LU factorization** (*no shit, Sherlock*).
+
+The matrices can be computed in $n-1$ steps with the so-called **Gaussian Elimination Method**, which has a computational cost of $\mathcal{O}(n^3/3)$. We can start by computing the matrix $U$ as follows: we define a matrix $M^{(K)}$ of multipliers, with the diagonal elements equal to $1$, the elements under the diagonal **on the column k** $m_{i k}=-\frac{a_{i k}^{(k)}}{a_{k k}^{(k)}}, i=k+1, \ldots, n$, and $0$ otherwise. We then compute $A^{(k+1)} = M^{(k)}A^{(k)}$, then iterate until we obtain $A^{(n)}=U$.
+
+There's just one problem: this algorithm is **unstable**! This means that the **algorithmic error is not limited**, and it happens because the elements $a_{kk}^{(k)}$ can be ultra small (or even zero!), thus leading to errors. We can solve this problem by computing the **pivoting algorithm**, i.e. we swap two rows so that $a_{kk}^{(k)}$ is the element with the maximum absolute value. We then get a **permutation matrix** $P$, i.e. an **identity matrix with the needed rows swapped**.
+
+When we're dealing with **symmetric positive definite** matrices there's a great simplification: it is always possible to compute the LU factorization **without pivoting** and it simply is $A=LL^T$. This factorization obviously is less costly: using the Cholesky algorithm, it has a complexity of $\mathcal{O}(n^3/6)$.
+
+We can therefore use the **Cholesky decomposition**, which is greatly used in ML because we often deal with symmetric positive definite matrices, like the covariance matrix of a multivariate Gaussian. This decomposition can be used to efficiently compute the determinant too: since the obtained matrices are triangular, the determinant will just be the **product of the diagonal**. 
+
+## Decompositions involving diagonal matrices
+
+These ones are about a diagonal matrix, not a triangular one.
+
+There are two main decompositions involving diagonal matrices: the **eigendecomposition** and the **Singular Value Decomposition**. 
+
+### Eigendecomposition
+
+Let's consider a **square matrix** $A$ of size $n\times n$, which can be decomposed as $A=PDP^{-1}$. $P$ is a non-singular (obviously: we have to invert it!) matrix of size $n\times n$ and $D$ is a diagonal matrix with the eigenvalues on the diagonal. Beware: the eigenvectors **have to be linearly independent** and **form a basis** of $\mathbb{R}^n$. This decomposition can **only be applied to square matrices with particular properties on their spectrum**.
+
+### Singular Value Decomposition (SVD)
+
+This one can be applied to **all the matrices**. Pretty cool, huh? First, tho, we need to clarify a few concepts:
+
+- Two vectors $u,v \in \mathbb{R}^n$ are **orthogonal** if their product is equal to 0. This is the vector product, i.e. the product you'd obtain by multiplicating $u\times v^T$;
+- A **unit vector** is a vector $u \in \mathbb{R}^n$ which has norm equal to 1: $\|u\|=1$;
+- The **normalization** of a vector is the division between the vector and its norm, which always returns a **unit vector**: $\hat{u}=\frac{u}{\|u\|}$;
+- A set of vectors $\{u_1,u_2,...,u_p\}, u_i \in \mathbb{R}^n$ is an **orthogonal set** if all of the possible products are equal to $0$, i.e. $\left\langle\mathbf{u}_{i}, \mathbf{u}_{j}\right\rangle=\mathbf{u}_{\mathbf{i}}^{T} \mathbf{u}_{j}=0, \forall i \neq j$;
+- If some vectors are **orthogonal**, they are **linearly independent**. Therefore, the set they compose forms an orthogonal basis for $U=span\{u_1,u_2,...,u_p\}$;
+- The set $\{u_1,u_2,...,u_p\}, u_i \in \mathbb{R}^n$ is an **orthonormal set** if it is an **orthogonal** set of **unit vectors**. A basis of orthonormal vector is called an **orthonormal basis**;
+- Applying these concepts to matrices, we get that $U$ is an **orthogonal matrix** iff $U^TU=I$. If the matrix is **square**, then $U^T=U^{-1}$;
+- If a matrix is orthogonal, then:
+  - The 2-norm of the **matrix multiplied by a vector** is equal to the **2-norm of the vector only**: $\|\mathrm{Ux}\|_{2}=\|\mathrm{x}\|_{2}, \forall \mathbf{x} \in \mathbb{R}^{n}$
+  - The **product between the matrix multiplied by two vectors** is the **product of the two vectors**: $\langle\mathrm{Ux}, \mathrm{Uy}\rangle=\langle\mathbf{x}, \mathbf{y}\rangle, \forall \mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}$
+  - Therefore, the above mentioned product is equal to $0$ **only when the product between $x$ and $y$ is**: $\langle\mathrm{Ux}, \mathrm{Uy}\rangle=0 \Longleftrightarrow\langle\mathbf{x}, \mathbf{y}\rangle=0, \forall \mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}$
+  - We can then conclude that **transformations by orthogonal matrices preserve both length and angles!**
+
+Now we're ready for the real thing!
+
+Any matrix $A \in \mathbb{R}^{m\times n}$ with $rank(A)=k$, where $k \le n$ can be written as:
+
+$A = U \Sigma V^T$
+
+where $U \in \mathbb{R}^{m\times m}$ is an **orthogonal matrix** with orthogonal vectors $u_i$, $V \in \mathbb{R}^{n\times n}$ is an orthogonal matrix with orthogonal vectors $v_i$, and $\Sigma \in \mathbb{R}^{m\times n}$ is a matrix whose diagonal entries are the **singular values** $\sigma_i$ of $A$ and with extra-diagonal entries equal to $0$. <img src="https://cdn.mathpix.com/snip/images/N3oanb3v-5R-_eXPha80gAU0FPOP4Y7gUgHKkjIDZrM.original.fullsize.png" />
+
+The singular values are in **ascending order** in the diagonal, and the first $k$ are non-null while the other $n-k$ are equal to $0$. The singular matrix $\Sigma$ **is unique**, the other two **aren't**.
+
+
+
+ 
+
+
+
+
+
+
+
