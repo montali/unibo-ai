@@ -130,11 +130,17 @@ A decision tree is not **extremely powerful**: it's a compromise, it works and i
 
 ### Characteristics of a decision tree
 
-It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree.
+It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree. When building a tree, each level requires the consideration of all the dataset, so the overall cost is $\mathcal{O}(DNlogN)$.
 
 ### Choosing the attribute to split the dataset
 
 We're looking for the split generating the maximum **purity**. We can use some functions, like **Information Gain**, **Gini Index**, **Misclassification Error**, the latter being the worse one. 
 
 Of course there are several variants for building these trees, we can use different strategies for the construction, the pruning...
+
+# Evaluation of a classifier
+
+**Model selection** is essential to the good design of a classifier: when I have hyperparameters to tune, I need to select several alternatives. But in practice, when we say model selection we go to a *higher level*, because we can select between different learning algorithms too. We could also go further: before feeding the data, we can transform them!
+
+We need **measures** to compare different algorithms, strategies, etc... and choose the best one!
 
