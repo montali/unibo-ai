@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: readme2tex-action
-        uses: montali/readme2tex-action@latest
+        uses: montali/readme2tex-action@1.1.1
