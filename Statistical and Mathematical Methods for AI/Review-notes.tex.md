@@ -254,7 +254,9 @@ $\|\mathrm{A}\|_{F}=\sqrt{\sum_{i, j=1}^{n}\left|a_{i j}\right|^{2}}$. For ident
 
 Let's start by considering factorizations by **triangular matrices**.
 
-## Gaussian elimination method
+<a name="lufact"></a>
+
+## Gaussian elimination method 
 
 Let's consider a square matrix $A \in \mathbb{R}^{n\times n}$. If $A$ is non-singular (therefore, it is invertible) and all its **principal minors** are non-singular, then we can find two matrices $L$ and $U$ that, multiplied, result in $A$. The cool thing is that $L$ stands for **Lower triangular**, while $U$ stands for **Upper triangular**. Pretty useful, huh?
 
@@ -369,9 +371,73 @@ We can therefore conclude that we can decompose a matrix in lots of ways:
 
 
 
- 
+# Linear systems
 
+A **linear system** can be written as $Ax=b$, where $A$ is a matrix of size $m\times n$ (let's suppose $m\ge n$ for now),  $x$ is a column vector of length $n$ and $b$ is a column vector of length $m$. $x$ represents the unknown solution, while $b$ is given. This form can therefore be expanded as 
 
+$\begin{array}
+a_{11} x_{1}+a_{12} x_{2}+\ldots+a_{1 n} x_{n}=b_{1} \\
+a_{21} x_{1}+a_{22} x_{2}+\ldots+a_{2 n} x_{n}=b_{2} \\
+\vdots \\
+a_{m 1} x_{1}+a_{m 2} x_{2}+\ldots+a_{m n} x_{n}=b_{m}
+\end{array}$
+
+We are interested in some informations about the system:
+
+- Does a solution **exist**? Is it **unique**?
+- What are the **numerical methods** we can exploit to actually find this solution?
+- What are the **conditions** of the problem?
+
+Let's separately consider the case of **square** linear systems and **least square** ones.
+
+## Square linear systems
+
+The solution of the system $Ax=b$ where A has size $n\times n$ and $b$ has size $n$ **exists and is unique** if and only if one of the following conditions is true:
+
+- A is **non-singular**;
+- The rank of $A$ is $n$: $rank(A)=n$;
+- The system only admits the solution $x=0$.
+
+The solution can be algebrically computed by calculation of the inverse of $A$: $Ax=b \rightarrow x=A^{-1}b$. The problem is that computing the inverse can be pretty difficult. We can exploit the **Cramer's rule**, which simply allows us to calculate the $x_i$s by substituting the $i$-th column of $A$ with $b$, obtaining $A_i$, then dividing the determinant of $A_i$ for the determinant of $A$: $x_{i}=\frac{\operatorname{det} A_{i}}{\operatorname{det} A}, i=1, \ldots, n$.
+
+The computation can still be pretty complicated, so we can distinguish between two methodologies:
+
+- **Direct methods** yield the solution in a finite number of steps, which are usually computationally costly;
+- **Iterative methods** theoretically require an infinite number of steps: they converge to the solution for $i\rightarrow \infty$. They are less precise but less expensive.
+
+It is also very important to check the errors we obtained, that are usually generated in two ways: the **rounding errors** (aka arithmetic errors), which depend on the algorithm steps, and **inherent errors**, which depend on the data representation and not on the algorithm. When the first ones are limited to a constant, we can define the algorithm **stable**. When the latter are large, we define the problem as **ill-posed**.
+
+### Direct methods
+
+To solve the problem, we can [LU factorize the matrix](#lufact), then solve two triangular systems: $Ly=b, Ux=y$. This can be obtained by: $Ax=b \rightarrow LUx=b \rightarrow Ux = L^{{-1}}b \rightarrow x = U^{-1}(L^{-1}b)$.
+
+If we're using the pivoting algorithm, we have to remind that $PAx=Pb$, therefore $Ly=Pb, Ux=y$.
+
+### Iterative methods
+
+**Iterative methods** allow us to approximate the solution, which ideally would be obtained with an infinite amount of steps. 
+
+The basic idea is to construct a sequence of vectors $x_k$ that converge to the solution: $x^* = lim_{k\rightarrow\infty} x_k$, where $x^*$ is the exact solution and the starting guess $x_0$ is given. 
+
+In general, the sequence $x_k$ is obtained through a function (or a particular set of operations) $g$, that acts on the last $x$: $x_k = g(x_{k-1})$. Different classes of iterative methods are available, with the most common being **stationary iterative methods** and **gradient-like methods**. The first ones take the form $x_{k+1} = Bx_k+f$, where $B$ is called an *iteration matrix* and $f$ is a vector obtained from $b$. The latter take the form of $x_{k+1}=x_k+\alpha_kp_k$, where $\alpha_k \in \mathbb{{R}}$ is a constant called **stepsize** and $p_k$ is a vector called **direction.**
+
+If $A$ is symmetric and positive definite, and the vectors $p_k$ have the conjugacy property (which basically means that $p_i^TAp_k=0, if i\neq k$) the method is called **conjugate gradients**.
+
+All of these methods require a matrix multiplication for every step: therefore, the computational complexity is $\mathcal{O}(n^2)$. Since the steps should be infinite, we have to define stopping criteria, which are usually based on the residual $r_k = b-Ax_k$, in the absolute way ($\|r_k\|\le \epsilon$) or relative ($\frac{\|r_k\|}{\|b\|} \le \epsilon$). We can even just check how much the $x$ changes from one iteration to the other: $\|x_{k+1}-x_k\|\le\tau$.
+
+### Inherent errors in linear systems
+
+Remember that **inherent errors** only depend on the data representation, not on the algorithm.
+
+We should therefore try to consider **what happens to the solution** $x$ when the input data **slightly change**. Let's suppose that $A$ doesn't change, and $b$ changes by a quantity $\Delta b$: $A(x+\Delta x)=b+\Delta b$. We now want to **compare the relative changes** $\left\|\frac{\Delta x}{x}\right\|$ and $\left\|\frac{\Delta b}{b}\right\|$ to see how much the solution changes. Let's subtract $Ax=b$ to the equation we obtained: $A\Delta x = \Delta b$, then extract $\Delta x$: $\Delta x = A^{-1}\Delta b$. We know as a property of norms that the norm of the multiplication is always lesser or equal than the multiplication of the norms: $\|A^{-1}\Delta b\| \le \|A^{-1}\| \|\Delta b\|$.
+
+Getting back to our usual equation, we know that $\|Ax\|=\|b\|$, mirror it, $\|b\|=\|Ax\|$, then observe that, as before, the norm of the multiplication is lesser or equal than the multiplication of the norms: $\|Ax\| \le \|A\| \|x\|$. We can therefore conclude that $\|x\| \ge \left\|\frac{b}{A}\right\|$.
+
+Let's put together all of these things and we get that 
+
+$\left\|\frac{\Delta x}{x}\right\| \le \|A^{-1}\| \cdot \|A\| \cdot \frac{\left\|\Delta b\right\|}{\left\|b\right\|}$. We can give a name to $\|A^{-1}\| \cdot \|A\|$, and we'll call it **condition number** $K(A)$.
+
+In general, $K(A)$ depends on the choice of the norm, indicated by a subscript. Notice that $K(A) \ge 1$ since $AA^{-1}=1$, but basing on the norm properties we know that the norm of $AA^{-1}$ will always be greater or equal than the single norms multiplied. If $K(A)$ is large, we know that the matrix $A$ is almost a singular matrix and its column are almost linearly dependent. Regularization techniques can reduce $K(A)$. 
 
 
 
