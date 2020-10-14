@@ -5,7 +5,7 @@
 Usually, to solve a problem, we can enumerate some simple steps:
 
 - Developing a **mathematical model**;
-- Developing algorithm to compute the **numerical solution**;
+- Developing algorithms to compute the **numerical solution**;
 - **Implement** these algorithms;
 - Run the software to **simulate** the physical process numerically;
 - **Graphically visualize** the results;
@@ -35,7 +35,7 @@ We can talk about **absolute error** and **relative error**, the latter being th
 
 In a computational problem, we can define the **total error** as <img src="svgs/bf78575119f4c27fd0de3d6ddc142359.svg?invert_in_darkmode" align=middle width=84.08697000000001pt height=31.50708000000001pt/>, where <img src="svgs/c41f490710f05d3d7b527a61b284ef00.svg?invert_in_darkmode" align=middle width=11.758230000000003pt height=31.50708000000001pt/> is the approximated function, while <img src="svgs/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=22.831379999999992pt/> is the approximated input: it is pretty obvious that the error depends on both the function approximation and the data one. The error inherent to the function one is called **computational error** <img src="svgs/efa4295436c149c1dbde725d48655605.svg?invert_in_darkmode" align=middle width=84.086805pt height=31.50708000000001pt/>, the one inherent to the data is called **propagated data error** <img src="svgs/4b2045f21d7317e34c0a4e46dea9b60a.svg?invert_in_darkmode" align=middle width=84.08697000000001pt height=24.65759999999998pt/>.
 
-We can further divide the computational error into the **truncation error** and the **rounding error**. The first one states the difference between the true result and the one produced by given algorithm using **exact arithmetic **(due to approximations such as truncating infinite series), the latter states the difference between the result produced by given algorithm using exact arithmetic and result produced by the same algorithm using **limited precision** arithmetic (due to inexact representation of real numbers). 
+We can further divide the computational error into the **truncation error** and the **rounding error**. The first one states the difference between the true result and the one produced by given algorithm using **exact arithmetic** (due to approximations such as truncating infinite series), the latter states the difference between the result produced by given algorithm using exact arithmetic and result produced by the same algorithm using **limited precision** arithmetic (due to inexact representation of real numbers). 
 
 ## Sensivity and conditioning
 
@@ -87,11 +87,11 @@ A **vector space** over a field <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.
 
 For example some vector spaces might be <img src="svgs/8a86f4a11e2fbfc03de61d587ba826de.svg?invert_in_darkmode" align=middle width=19.998330000000006pt height=22.64855999999997pt/> , <img src="svgs/4397b563e5324f31e1f31a0dcb1c00dd.svg?invert_in_darkmode" align=middle width=19.998330000000006pt height=22.64855999999997pt/>, <img src="svgs/6ee7f3ea71fe37cfe8a9d444203cb1a7.svg?invert_in_darkmode" align=middle width=18.171780000000005pt height=22.64855999999997pt/> (polynomials with degree <img src="svgs/4f733d7c20d8dfac63d05769f79e5ebd.svg?invert_in_darkmode" align=middle width=27.218400000000003pt height=20.908799999999992pt/>).
 
-Given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> over the field <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>, the set <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> is a **subspace** of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> if and only if <img src="svgs/42615d7f0ce1a1b1449cdeef5973ef8b.svg?invert_in_darkmode" align=middle width=52.96797pt height=22.46574pt/> (subset) and <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> is a vector space over <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>.
+Given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> over the field <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>, the set <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> is a **subspace** of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> if and only if <img src="svgs/42615d7f0ce1a1b1449cdeef5973ef8b.svg?invert_in_darkmode" align=middle width=52.96797pt height=22.46574pt/> (**subset**) and <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> is a **vector space** over <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>.
 
 ## Linear independence
 
-Given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> over <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>, the set <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> of all finite linear combinations of vectors <img src="svgs/ac00f6cfcf3e00b4d18b2815a9a8fbac.svg?invert_in_darkmode" align=middle width=80.546235pt height=24.65759999999998pt/>, with <img src="svgs/1c5d5e44e91b0e80d8cd0db25441b56f.svg?invert_in_darkmode" align=middle width=46.774035000000005pt height=22.46574pt/> is called the **subspace spanned by **<img src="svgs/e283713453ff07ba6652a2f92f7a1e8b.svg?invert_in_darkmode" align=middle width=100.47114pt height=24.65759999999998pt/> and it is written as <img src="svgs/f0c43409f758db3530677aeeea3c7513.svg?invert_in_darkmode" align=middle width=368.073255pt height=26.438939999999977pt/>. The system <img src="svgs/ac00f6cfcf3e00b4d18b2815a9a8fbac.svg?invert_in_darkmode" align=middle width=80.546235pt height=24.65759999999998pt/> is called a **system of generators** for <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/>. 
+Given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> over <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>, the set <img src="svgs/84c95f91a742c9ceb460a83f9b5090bf.svg?invert_in_darkmode" align=middle width=17.808285000000005pt height=22.46574pt/> of all finite linear combinations of vectors <img src="svgs/ac00f6cfcf3e00b4d18b2815a9a8fbac.svg?invert_in_darkmode" align=middle width=80.546235pt height=24.65759999999998pt/>, with <img src="svgs/1c5d5e44e91b0e80d8cd0db25441b56f.svg?invert_in_darkmode" align=middle width=46.774035000000005pt height=22.46574pt/> is called the **subspace spanned by** <img src="svgs/e283713453ff07ba6652a2f92f7a1e8b.svg?invert_in_darkmode" align=middle width=100.47114pt height=24.65759999999998pt/> and it is written as <img src="svgs/f0c43409f758db3530677aeeea3c7513.svg?invert_in_darkmode" align=middle width=368.073255pt height=26.438939999999977pt/>. The system <img src="svgs/ac00f6cfcf3e00b4d18b2815a9a8fbac.svg?invert_in_darkmode" align=middle width=80.546235pt height=24.65759999999998pt/> is called a **system of generators** for <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/>. 
 
 Now, given a vector space <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> over <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.853995000000003pt height=22.46574pt/>, a system of vectors <img src="svgs/ac00f6cfcf3e00b4d18b2815a9a8fbac.svg?invert_in_darkmode" align=middle width=80.546235pt height=24.65759999999998pt/> is said **linearly independent** if <img src="svgs/831f80c2ceefed9586702f135745f431.svg?invert_in_darkmode" align=middle width=380.90530499999994pt height=21.18732pt/> with <img src="svgs/5a379de6b56db6751e2b9716f4178d51.svg?invert_in_darkmode" align=middle width=102.14803500000001pt height=22.46574pt/>. Otherwise, the system is called **linearly dependent**. From a geometrical point of view, vectors are linearly dependent if they lie on the same hyperplane.
 
@@ -114,7 +114,7 @@ If $F=\mathbb{R}$ we write, for example, $A \in \mathbb{R}^{m\times n}$. If $m=n
 
 A **lower triangular** matrix is a matrix that has elements in the diagonal and under it. An upper triangular matrix has elements in the diagonal and over it.
 
-We can do operations with matrices too! These are the most used: *matrix addition*, *matrix multiplication by a scalar*, *matrix multiplication* (notice that it is defined only when $A \in \mathbb{R}^{m\times p}, B \in \mathbb{R}^{p \times n}, p=p$, *transposition*. 
+We can do operations with matrices too! These are the most used: *matrix addition*, *matrix multiplication by a scalar*, *matrix multiplication* (notice that it is defined only when $A \in \mathbb{R}^{m\times p}, B \in \mathbb{R}^{p \times n}, p=p$), *transposition*. 
 
 A **diagonal matrix** is a matrix having elements on the diagonal only, and 0 elsewhere.
 
@@ -150,7 +150,7 @@ If $A$ is diagonal or triangular, we just have to **multiply the elements on the
 The determinant has some interesting properties:
 
 - **Transposing** the matrix **doesn't change** the determinant: $det(A)=det(A^T)$ 
-- The **multiplication of determinants** is the **determinant of multiplications **in square matrices having the same size: $det(AB)=det(A)det(B)$
+- The **multiplication of determinants** is the **determinant of multiplications** in square matrices having the same size: $det(AB)=det(A)det(B)$
 - The determinant of the **inverse** is $\frac{1}{det(A)}$ : $det(A^{-1})=det(A)^{-1}$
 - The determinant of a scalar multiplication is the scalar multiplication to the power $n$, with $n$ being the matrix size: $det(\alpha A) = \alpha^n det(A), \forall\alpha \in F$
 - Every **orthogonal matrix** is invertible and its determinant is $\pm1$
@@ -167,7 +167,7 @@ $A^{-1}=\frac{C^T}{det(A)}$
 
 Let's consider a **square** matrix $A \in \mathbb{C}^{n\times n}$. The number $\lambda$ is called an **eigenvalue** of $A$ if we have a vector $x\neq 0$, named **eigenvector**, such that $Ax=\lambda x$. The set of eigenvalues is called **spectrum** of $A$ and it is denoted by $\sigma(A)$. 
 
-**How can we find these eigenvalues?** They are the solutions of the characteristic equation: $p_A(\lambda) = det(A-\lambda I)=0$, where $p_A(\lambda)$ is called the **characteristic polynomial**. Thanks to the fundamental theorem of algebra we can say that a matrix with **real or complex** entrieshas $n$ eigenvalues, counted with their multiplicity. The algebraic multiplicity of an eigenvalue $\lambda_i$ is the number of times the root appears in the characteristic polynomial. Let's make an example: we have a matrix $A=\left(\begin{array}{lll}
+**How can we find these eigenvalues?** They are the solutions of the characteristic equation: $p_A(\lambda) = det(A-\lambda I)=0$, where $p_A(\lambda)$ is called the **characteristic polynomial**. Thanks to the fundamental theorem of algebra we can say that a matrix with **real or complex** entries has $n$ eigenvalues, counted with their multiplicity. The algebraic multiplicity of an eigenvalue $\lambda_i$ is the number of times the root appears in the characteristic polynomial. Let's make an example: we have a matrix $A=\left(\begin{array}{lll}
 0 & 1 & 0 \\
 1 & 0 & 0 \\
 0 & 0 & 1
@@ -238,7 +238,7 @@ Two norms are said **equivalent** if we can find two positive constants $c_{pq}$
 
 A matrix norm is a function satisfying the above-mentioned properties. We can say that a matrix norm $\|A\|$ is **compatible** with a vector norm $\|x\|$ if the norm of the multiplication is lesser or equal than the multiplication of the norms: $|\mathrm{Ax}||\leq\|\mathrm{A}\| \| \mathbf{x}|$.
 
-The **spectral norm** of a matrix is equal to $\|\mathrm{A}\|_{\mathbb{2}} =\sqrt{\rho\left(\mathrm{A}^{T} A\right)}$. Note that the **spectral norm of the identity matrix** is equal to $1$.
+The **spectral norm** of a matrix is equal to $\|\mathrm{A}\|_2 =\sqrt{\rho\left(\mathrm{A}^{T} A\right)}$. Note that the **spectral norm of the identity matrix** is equal to $1$.
 
 We can say that the ***1-norm*** of a matrix is the maximum between the sums of the **columns** absolute values: $\|\mathrm{A}\|_{1}=\max _{j=1, \ldots, n} \sum_{i=1}^{n}\left|a_{i j}\right|$. Obviously, when dealing with identity matrices this will be equal to $1$.
 
@@ -264,7 +264,7 @@ The matrices can be computed in $n-1$ steps with the so-called **Gaussian Elimin
 
 There's just one problem: this algorithm is **unstable**! This means that the **algorithmic error is not limited**, and it happens because the elements $a_{kk}^{(k)}$ can be ultra small (or even zero!), thus leading to errors. We can solve this problem by computing the **pivoting algorithm**, i.e. we swap two rows so that $a_{kk}^{(k)}$ is the element with the maximum absolute value. We then get a **permutation matrix** $P$, i.e. an **identity matrix with the needed rows swapped**.
 
-When we're dealing with **symmetric positive definite** matrices there's a great simplification: it is always possible to compute the LU factorization **without pivoting** and it simply is $A=LL^T$. This factorization obviously is less costly: using the Cholesky algorithm, it has a complexity of $\mathcal{O}(n^3/6)$.
+When we're dealing with **symmetric positive definite** matrices there's a great simplification: it is always possible to compute the LU factorization **without pivoting** and it simply is $A=LL^T$. This factorization is obviously less costly: using the Cholesky algorithm, it has a complexity of $\mathcal{O}(n^3/6)$.
 
 We can therefore use the **Cholesky decomposition**, which is greatly used in ML because we often deal with symmetric positive definite matrices, like the covariance matrix of a multivariate Gaussian. This decomposition can be used to efficiently compute the determinant too: since the obtained matrices are triangular, the determinant will just be the **product of the diagonal**. 
 
@@ -304,6 +304,68 @@ $A = U \Sigma V^T$
 where $U \in \mathbb{R}^{m\times m}$ is an **orthogonal matrix** with orthogonal vectors $u_i$, $V \in \mathbb{R}^{n\times n}$ is an orthogonal matrix with orthogonal vectors $v_i$, and $\Sigma \in \mathbb{R}^{m\times n}$ is a matrix whose diagonal entries are the **singular values** $\sigma_i$ of $A$ and with extra-diagonal entries equal to $0$. <img src="https://cdn.mathpix.com/snip/images/N3oanb3v-5R-_eXPha80gAU0FPOP4Y7gUgHKkjIDZrM.original.fullsize.png" />
 
 The singular values are in **ascending order** in the diagonal, and the first $k$ are non-null while the other $n-k$ are equal to $0$. The singular matrix $\Sigma$ **is unique**, the other two **aren't**.
+
+Observe that the matrix $\Sigma$ is rectangular, this means that it has a diagonal submatrix that contains the singular values and needs additional zero padding. 
+
+From the geometric point of view, the SVD is nothing more than sequential linear transformations performed on the bases. The SVD intuition is similar to the eigendecomposition one: broadly speaking, it performs a basis change via $V^T$, followed by a scaling and augmentation/reduction in dimensionality via the singular value matrix $\Sigma$. Finally, it performs a second basis change via $U$.
+
+Basically: 
+
+- $V$ performs a basis chenage in the domain $\mathbb{R}^n$ from $\tilde{B}$ to the standard basis $B$. The inverse of $V$ (which, as $V$ is orthogonal, is $V^T=V^{-1}$) performs the inverse change from $B$ to $\tilde{B}$;
+- Having changed the coordinate system to $\tilde{{B}}$, we can scale to the new coordinates by the matrix $\Sigma$, i.e. by the singular values $\sigma_i$;
+- Finally, $U$ performs a basis change in the codomain $\mathbb{R}^m$ from $\tilde{{C}}$ to the canonical basis of $\mathbb{R}^m$.
+
+Summing things up, SVD performs **two changes of basis**, via the orthogonal matrices $U$ and $V$ and a scaling operation via the matrix $\Sigma$. The columns of $U$ and $V$ are orthonormal basis of $\mathbb{R}^m$ and $\mathbb{R}^n$, respectively. The change of basis is in both the domain and the codomain: this is in contrast with the eigendecomposition, which operates within the same vector space (the basis change is applied but then undone). What makes SVD special is that these two different bases are simultaneously linked by the singular value matrix $\Sigma$.
+
+We can link the singular values of $A$ to the eigenvalues of $A^TA$: 
+
+- Let's first substitute A by its SVD: $A^TA = (U\Sigma V^T)^T (U\Sigma V^T) = V\Sigma^TU^TU\Sigma V^T$, which, since $U$ is orthogonal, simplifies to $V\Sigma^TI\Sigma V^T$;
+- We know that $\Sigma^T\Sigma$ simplifies to a diagonal matrix with the singular values (squared) in it: $\boldsymbol{A}^{\top} \boldsymbol{A}=\boldsymbol{V} \boldsymbol{\Sigma}^{\top} \boldsymbol{\Sigma} \boldsymbol{V}^{\top}=\boldsymbol{V}\left[\begin{array}{ccc}
+  \sigma_{1}^{2} & 0 & 0 \\
+  0 & \ddots & 0 \\
+  0 & 0 & \sigma_{n}^{2}
+  \end{array}\right] \boldsymbol{V}^{\top}$ 
+
+Hence, we know that $\sigma_i = \sqrt{\lambda_i (A^TA)}, i=\dots,n$. In particular, the **first** one will be $\sigma_1= \sqrt{\lambda_{max}(A^TA)}=\|A\|_2$, and the **last** one will be $\sigma_1= \sqrt{\lambda_{min}(A^TA)}\rightarrow\|A^{-1}\|_2 = \frac{1}{\sigma_n}$, so the 2-norm of the inverse will be the inverse of $\sigma_n$.
+
+Therefore, the left singular vectors of $A$ are the eigenvectors of $A^TA$. The right singular vectors of $A$ are the eigenvectors of $AA^T$. **For symmetric matrices, the eigendecomposition and the SVD are the same thing.**
+
+### Moore-Penrose inverse
+
+The SVD can be used to compute a pseudo-inverse, named **Moore-Penrose inverse** of a matrix $A$:
+
+$A^+=V\Sigma^+U^T$, where $\Sigma^+$ is the pseudoinverse of $\Sigma$, which is computable by taking the reciprocal of every non-zero diagonal element and transposing the matrix:
+
+$\Sigma=\left[\begin{array}{cccc}
+\sigma_{1} & 0 & \ldots & 0 \\
+0 & \sigma_{2} & \ldots & 0 \\
+0 & 0 & \ddots & 0 \\
+0 & 0 & 0 & \sigma_{n} \\
+0 & 0 & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & 0
+\end{array}\right], \quad \Sigma^{+}=\left[\begin{array}{ccccc}
+\frac{1}{\sigma_{1}} & 0 & \ldots & 0 & \ldots & 0 \\
+0 & \frac{1}{\sigma_{2}} & \ldots & 0 & \ldots & 0 \\
+0 & 0 & \ddots & 0 & \ldots & 0 \\
+0 & 0 & 0 & \frac{1}{\sigma_{n}} & \ldots & 0
+\end{array}\right]$
+
+### Matrix approximation using SVD
+
+Given the SVD of a matrix $U\Sigma V^T$, we can use it to represent the matrix $A$ as a **sum of low-rank matrices** $A_i \in \mathbb{R}^{m\times n}$ with $rank(A_i)=1$ such that $A_i=u_i v_i^T$. The matrix $A$ can then be written as the **sum** (to $k$, which is the original rank of $A$) of **these matrices multiplied by the singular values**: $A=\sum_{i=1}^k \sigma_i A_i = \sum_{i=1}^k \sigma_i u_i v_i^T$. To obtain a rank-$p$ approximation of the matrix, we can **truncate the sum** at the index $p$. The error introduced with this approximation can be computed as the **2-norm of the difference**, $\|A-A_p\|_2$, which is equal to the **sum of the matrices from $p$ to $k$:** this quantity, though, is simply the **next singular value** $\sigma_{p+1}$. Great! This means that if $\sigma_{p+1}$ is small we have a good approximation and we can stop.
+
+Now, if we have a rank-$p$ approximation $A_p = \sum_{i=1}^p \sigma_i u_i v_i^T$, for every matrix of the same rank $p$, we get that the 2-norm of the difference will always be greater or equal than the difference from $A$ to $A_p$. This is just a fancy way of saying that $A_p$ is the best way of approximating $A$ with a rank $p$. No other $p$-rank matrix does that better: $\forall \mathrm{B} \in \mathbb{R}^{m \times n}, \operatorname{rank}(\mathrm{B})=p,\left\|\mathrm{A}-\mathrm{A}_{p}\right\|_{2} \leq\|\mathrm{A}-\mathrm{B}\|_{2}$.
+
+Note that this is a lossy compression. 
+
+### Let's sum up things!
+
+We can therefore conclude that we can decompose a matrix in lots of ways:
+
+![Matrix decompositions](./res/matrix-decompositions.png)
+
+
 
 
 
