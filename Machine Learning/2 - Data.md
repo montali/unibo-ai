@@ -98,3 +98,11 @@ Sometimes, data were not collected or the information is not applicable (e.g. in
 ### Duplicated data
 
 This situation is *quite common* when we are merging data from **different sources.** We can therefore clean the data, but it's pretty difficult.
+
+# Testing strategies
+
+In every step, the data should be representative of the data that will be classified at run time. We can do an **holdout**, which means that we split the data into a *training set* and a *test set*, or even add a *validation set*. To have a **cross validation**, we can repeat the tests with different splits. 
+
+## Cross validation (k-fold)
+
+Here, the training set is randomly partitioned into k​ subsets, and if necessary we use stratified partitioning: the concept of stratification means that if we have, let's say 2 classes, with frequency f and 1-f we want that this frequency is kept in the sets. K iterations using one of the subsets for test, and the others for training. We then combine the result of tests, and generate the final model using the entire training set. This is **k** times slower, but provides an optimal use of the supervised data: each record is used $k-1$ times for training and once for testing.
