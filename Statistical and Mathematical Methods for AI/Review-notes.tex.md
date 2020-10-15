@@ -29,7 +29,7 @@ We can talk about **absolute error** and **relative error**, the latter being th
 
 ## Accuracy and precision
 
-**Precision** does not measure error: it simply expresses the number of digits we're using. **Accuracy** does: it is the number of **correct** significant digits. One might ask: **what the f\*\*k is a significant digit?** The number <img src="svgs/d0e77e0ae0c927639bbf59b3dd1c524b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=21.95721pt/> is said to approximate <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=14.155350000000013pt/> to <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> significant digits if <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> is the **largest non-negative** integer for which <img src="svgs/a8597e9b7f58c1a38e482d33571b2098.svg?invert_in_darkmode" align=middle width=98.48173499999999pt height=34.281719999999986pt/>.
+**Precision** does not measure error: it simply expresses the number of digits we're using. **Accuracy** does: it is the number of **correct** significant digits. One might ask: **what is a significant digit?** The number <img src="svgs/d0e77e0ae0c927639bbf59b3dd1c524b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=21.95721pt/> is said to approximate <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=14.155350000000013pt/> to <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> significant digits if <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> is the **largest non-negative** integer for which <img src="svgs/a8597e9b7f58c1a38e482d33571b2098.svg?invert_in_darkmode" align=middle width=98.48173499999999pt height=34.281719999999986pt/>.
 
 ## Data error and computational error
 
@@ -222,7 +222,7 @@ Let's start by considering factorizations by **triangular matrices**.
 
 Let's consider a square matrix <img src="svgs/40cc18b0e7d1320f7eb9bd9d3fd71470.svg?invert_in_darkmode" align=middle width=70.81816500000001pt height=26.177579999999978pt/>. If <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.328800000000005pt height=22.46574pt/> is non-singular (therefore, it is invertible) and all its **principal minors** are non-singular, then we can find two matrices <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.187330000000003pt height=22.46574pt/> and <img src="svgs/6bac6ec50c01592407695ef84f457232.svg?invert_in_darkmode" align=middle width=13.016025000000003pt height=22.46574pt/> that, multiplied, result in <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.328800000000005pt height=22.46574pt/>. The cool thing is that <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.187330000000003pt height=22.46574pt/> stands for **Lower triangular**, while <img src="svgs/6bac6ec50c01592407695ef84f457232.svg?invert_in_darkmode" align=middle width=13.016025000000003pt height=22.46574pt/> stands for **Upper triangular**. Pretty useful, huh?
 
-We call this the **LU factorization** (*no shit, Sherlock*).
+We call this the **LU factorization**.
 
 The matrices can be computed in <img src="svgs/efcf8d472ecdd2ea56d727b5746100e3.svg?invert_in_darkmode" align=middle width=38.17737pt height=21.18732pt/> steps with the so-called **Gaussian Elimination Method**, which has a computational cost of <img src="svgs/ef9d2b7e8ee7d6389b95c3ee58562a02.svg?invert_in_darkmode" align=middle width=60.008685pt height=26.76201000000001pt/>. We can start by computing the matrix <img src="svgs/6bac6ec50c01592407695ef84f457232.svg?invert_in_darkmode" align=middle width=13.016025000000003pt height=22.46574pt/> as follows: we define a matrix <img src="svgs/f4125d0f27977a227268af329c65cc60.svg?invert_in_darkmode" align=middle width=39.865485pt height=29.19113999999999pt/> of multipliers, with the diagonal elements equal to <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>, the elements under the diagonal **on the column k** <img src="svgs/51b305325a6d990c19d75c17818c3f52.svg?invert_in_darkmode" align=middle width=207.709755pt height=42.51654pt/>, and <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> otherwise. We then compute <img src="svgs/db29c54bcab39a393b805f0f4d7fd681.svg?invert_in_darkmode" align=middle width=135.222945pt height=29.19113999999999pt/>, then iterate until we obtain <img src="svgs/0141c6862df0df028b327d2313bec2ec.svg?invert_in_darkmode" align=middle width=66.48444pt height=29.19113999999999pt/>.
 
@@ -275,7 +275,7 @@ From the geometric point of view, the SVD is nothing more than sequential linear
 
 Basically: 
 
-- <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> performs a basis chenage in the domain <img src="svgs/8a86f4a11e2fbfc03de61d587ba826de.svg?invert_in_darkmode" align=middle width=19.998330000000006pt height=22.64855999999997pt/> from <img src="svgs/3a4b11477082188db06b7b3af9da3666.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=30.267599999999987pt/> to the standard basis <img src="svgs/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=22.46574pt/>. The inverse of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> (which, as <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> is orthogonal, is <img src="svgs/2229d330ef74da68bf0b50eba6d39de2.svg?invert_in_darkmode" align=middle width=75.58386pt height=27.656969999999987pt/>) performs the inverse change from <img src="svgs/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=22.46574pt/> to <img src="svgs/3a4b11477082188db06b7b3af9da3666.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=30.267599999999987pt/>;
+- <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> performs a basis change in the domain <img src="svgs/8a86f4a11e2fbfc03de61d587ba826de.svg?invert_in_darkmode" align=middle width=19.998330000000006pt height=22.64855999999997pt/> from <img src="svgs/3a4b11477082188db06b7b3af9da3666.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=30.267599999999987pt/> to the standard basis <img src="svgs/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=22.46574pt/>. The inverse of <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> (which, as <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> is orthogonal, is <img src="svgs/2229d330ef74da68bf0b50eba6d39de2.svg?invert_in_darkmode" align=middle width=75.58386pt height=27.656969999999987pt/>) performs the inverse change from <img src="svgs/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=22.46574pt/> to <img src="svgs/3a4b11477082188db06b7b3af9da3666.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=30.267599999999987pt/>;
 - Having changed the coordinate system to <img src="svgs/e1c304a11300e11f1b5826600eb8bc95.svg?invert_in_darkmode" align=middle width=13.293555000000003pt height=30.267599999999987pt/>, we can scale to the new coordinates by the matrix <img src="svgs/813cd865c037c89fcdc609b25c465a05.svg?invert_in_darkmode" align=middle width=11.872245000000005pt height=22.46574pt/>, i.e. by the singular values <img src="svgs/e61ae7f2cb94c8418c30517775fde77d.svg?invert_in_darkmode" align=middle width=14.044140000000004pt height=14.155350000000013pt/>;
 - Finally, <img src="svgs/6bac6ec50c01592407695ef84f457232.svg?invert_in_darkmode" align=middle width=13.016025000000003pt height=22.46574pt/> performs a basis change in the codomain <img src="svgs/1281caf41453d6d5cb92c8276ef582dd.svg?invert_in_darkmode" align=middle width=23.537085000000005pt height=22.64855999999997pt/> from <img src="svgs/565c7b3b11e4bd7f28c691e0249b88e7.svg?invert_in_darkmode" align=middle width=12.924780000000005pt height=30.267599999999987pt/> to the canonical basis of <img src="svgs/1281caf41453d6d5cb92c8276ef582dd.svg?invert_in_darkmode" align=middle width=23.537085000000005pt height=22.64855999999997pt/>.
 
@@ -377,7 +377,9 @@ Let's put together all of these things and we get that
 
 <img src="svgs/b3c1b2b1ded522859853a704bded2424.svg?invert_in_darkmode" align=middle width=193.331655pt height=33.20559pt/>. We can give a name to <img src="svgs/46dd5742a919e73b90b59f595dd5d5c4.svg?invert_in_darkmode" align=middle width=87.05499pt height=26.76201000000001pt/>, and we'll call it **condition number** <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/>.
 
-In general, <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/> depends on the choice of the norm, indicated by a subscript. Notice that <img src="svgs/efe1423de3a871920d3e2bce8e416949.svg?invert_in_darkmode" align=middle width=70.388175pt height=24.65759999999998pt/> since <img src="svgs/71999927b5474c7232a56116b5a0e180.svg?invert_in_darkmode" align=middle width=72.44292pt height=26.76201000000001pt/>, but basing on the norm properties we know that the norm of <img src="svgs/12006f890b98ff5e1b3c0e226ff98bde.svg?invert_in_darkmode" align=middle width=41.484300000000005pt height=26.76201000000001pt/> will always be greater or equal than the single norms multiplied. If <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/> is large, we know that the matrix <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.328800000000005pt height=22.46574pt/> is almost a singular matrix and its column are almost linearly dependent. Regularization techniques can reduce <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/>. 
+In general, <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/> depends on the choice of the norm, indicated by a subscript. Notice that <img src="svgs/efe1423de3a871920d3e2bce8e416949.svg?invert_in_darkmode" align=middle width=70.388175pt height=24.65759999999998pt/> since $AA^{-1}=I$, therefore has norm equal to 1,
+
+ but basing on the norm properties we know that the norm of <img src="svgs/12006f890b98ff5e1b3c0e226ff98bde.svg?invert_in_darkmode" align=middle width=41.484300000000005pt height=26.76201000000001pt/> will always be greater or equal than the single norms multiplied. If <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/> is large, we know that the matrix <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.328800000000005pt height=22.46574pt/> is almost a singular matrix and its column are almost linearly dependent. Regularization techniques can reduce <img src="svgs/0044dd7421e9e5ad6989f7ed5a24b3e1.svg?invert_in_darkmode" align=middle width=40.25125500000001pt height=24.65759999999998pt/>. 
 
 ## Linear least squares
 
@@ -419,11 +421,205 @@ To analyze the existence and uniqueness of the solution, we can consider two dif
 
   It is possible to modify the linear least squares problem by introducing a weight matrix with the aim of giving different weights to the components of $x$: $\hat{\mathbf{x}}=\operatorname{argmin}_{x}\|\mathbf{W} \AA \mathbf{x}-\mathbf{b}\|_{2}^{2}$ where $W$ is an invertible matrix, which gets us to the *weighted normal equations*: $(\mathrm{WA})^{T} \mathrm{WAx}=(\mathrm{WA})^{T} \mathbf{b}$
 
-  
+# Numerical optimization
+
+We've now come at the core of it all: Machine Learning is actually all about **minimization**. In fact, in order to train ML models we need to compute the **best parameters** for the training data set. The thing is: *how do we find what's best?* We can consider *best parameters* as those that minimize (or maximize) the objective function, which is usually called **loss function**. The algorithms that do this are called **optimization algorithms**. Basing on the problem, we can have unconstrained or constrained optimisation: oftentimes the problem imposes some constraints.
+
+Before we talk about **how to find** solutions, we've gotta find out whether **they exist** and are **unique**.
+
+The minimization of a function in several variables can be formulated, with $f:\mathbb{R}^n \rightarrow \mathbb{R}$ called **objective function** as minimize $f(x)$ in $\mathbb{R}^n$: this is called an **unconstrained optimization problem**. 
+
+Typically, we want to determine the optimal values of several variables that have constraints, like equality or inequality ones or maybe being lying on a subset of $\mathbb{R}^n$. This kind of optimization is said **constrained** (still pretty obvious) and can be formulated as minimize $f(x)$ in $\Omega \subset \mathbb{R}^n$. 
+
+Before we actually dive into the topic, let's consider a bit of *context*.
+
+## Preliminaries on multivariate functions
+
+### Partial derivatives and gradients
+
+Let's consider a function $f:\mathbb{R}^n\rightarrow\mathbb{R}$. We say that $f$ is **differentiable with respect to $x_i$** if the limit $lim_{h\rightarrow0} \frac{f(x_1,\dots,x_i+h,\dots,x_n) - f(x_1,\dots,x_n)}{h} = \frac{\partial f}{\partial x_{i}}(\mathbf{x})$ exists. A function is said **differentiable at a point $x_0$** if and only if **all the partial derivatives** exist in $x_0$.
+
+Given a function $f:\mathbb{R}^n\rightarrow \mathbb{R}$, the vector containing all of the partial derivatives is called **gradient of $f$**: $\nabla f(x)=\left(\frac{\partial f}{\partial x_{1}}(\mathbf{x}), \dots, \frac{\partial f}{\partial x_{n}}(\mathbf{x})\right)$.
+
+Given a function $f:\mathbb{R}^n\rightarrow \mathbb{R}$, **differentiable to the second order**, its **Hessian** matrix $\nabla^2 f(x)$ is defined as follows:
+
+$\mathrm{H}_{f}(\mathbf{x})=\nabla^{2} f(\mathbf{x})=\left[\begin{array}{cccc}
+\frac{\partial^{2} f}{\partial x_{1}^{2}} & \frac{\partial^{2} f}{\partial x_{1} \partial x_{2}} & \cdots & \frac{\partial^{2} f}{\partial x_{1} \partial x_{n}} \\
+\frac{\partial^{2} f}{\partial x_{2} \partial x_{1}} & \frac{\partial^{2} f}{\partial x_{2}^{2}} & \cdots & \frac{\partial^{2} f}{\partial x_{2} \partial x_{n}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^{2} f}{\partial x_{n} \partial x_{1}} & \frac{\partial^{2} f}{\partial x_{n} \partial x_{2}} & \cdots & \frac{\partial^{2} f}{\partial x_{n}^{2}}
+\end{array}\right]$
+
+Given a function $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ (note that this time **the output of the function is a vector and not a scalar**), and knowing that all its partial derivatives exist, we call **Jacobian** the following matrix:
+
+$\mathrm{J}_{f}(\mathbf{x})=\frac{\partial \mathbf{f}}{\partial \mathbf{x}}(\mathbf{x})=\left[\begin{array}{c}
+\nabla f_{1}(\mathbf{x}) \\
+\nabla f_{2}(\mathbf{x}) \\
+\vdots \\
+\nabla f_{m}(\mathbf{x})
+\end{array}\right]=\left[\begin{array}{cccc}
+\frac{\partial f_{1}}{\partial x_{1}} & \frac{\partial f_{1}}{\partial x_{2}} & \cdots & \frac{\partial f_{1}}{\partial x_{n}} \\
+\frac{\partial f_{2}}{\partial x_{1}} & \frac{\partial f_{2}}{\partial x_{2}} & \cdots & \frac{\partial f_{2}}{\partial x_{n}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial f_{m}}{\partial x_{1}} & \frac{\partial f_{m}}{\partial x_{2}} & \cdots & \frac{\partial f_{m}}{\partial x_{n}}
+\end{array}\right]$
+
+If we have two functions $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ and $g:\mathbb{R}^m \rightarrow \mathbb{R}^p$ and we **compose** them $\mathbf{g} \circ \mathbf{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{r}$, the Jacobian is given by $J_{g\circ f}(x)=J_g(f(x)) \cdot J_f(x)$.
+
+### Minimum points
+
+A point $x^* \in \mathbb{R}^n$ is called a (strict) **local minimum point** if the function is at its lowest value in a range $\epsilon$: $f\left(\mathbf{x}^{*}\right) \leq f(\mathbf{x})\left(\text { resp. } f\left(\mathbf{x}^{*}\right)<f(\mathbf{x})\right), \quad \forall \mathbf{x} \in \mathbb{R}^{n}, \mathbf{x} \neq \mathbf{x}^{*}$.
+
+The same point is called **global minimum** if the *range* is $\mathbb{R}^n$: $f\left(\mathrm{x}^{*}\right) \leq f(\mathrm{x})\left(\text { resp. } f\left(\mathrm{x}^{*}\right)<f(\mathrm{x})\right), \quad \forall \mathrm{x} \in \mathbb{R}^{n}, \mathrm{x} \neq \mathrm{x}^{*}$.
+
+The **first order optimality condition**, also known as **Fermat's theorem for stationary points**, states that if $x^*$ is a local **optimum** point and $f$ is differentiable in $x^*$, then the gradient is equal to zero: $\nabla f(x^*) = 0$.
+
+The **second order optimality condition** states that if $x^*$ is a local **minimum** point for $f$, and $f$ is twice differentiable around $x^*$, the $\nabla f(x^*)$ will be 0 and the $\nabla^2 f(x^*)$ is **positive semidefinite**.
+
+Therefore, we can state the final condition for the local minimum points: if $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is twice differentiable with **continuity** around $x^* \in \mathbb{R}^n$ and $\nabla f(x^*)=0$, with $\nabla^2 f(x^*)$ **positive definite**, then $x^*$ **is a strict local minimum point**.
+
+### Convexity
+
+Let's consider a set $\mathbb{C} \subset \mathbb{R}^n$: we can say it is a **convex set** if, for every $x,y$ in the set and a scalar $\theta \in[0,1]$ we have that $\theta x + (1-\theta)y \in \mathbb{C}$.
+
+Now, having a function $f: \mathbb{D} \rightarrow \mathbb{R}$, where $\mathbb{D} \subset \mathbb{R}^n$ is a **convex set**, $f$ is a **convex function** if, for all the $x,y \in \mathbb{D}$ and $\theta \in[0,1]$, we have that $f(\theta x + (1-\theta)y) \le \theta f(x) + (1-\theta)f(y)$.
+
+Finally, we state some properties:
+
+- If $f$ is **twice differentiable** in $x$ and (strictly) **convex**, then $\nabla^2 f(x)$ is **positive semidefinite** (definite);
+- If $f$ is a **convex** function, then **each point of local minimum is a global minimum**;
+- If $f$ is **strictly convex**, then **a unique point of global minimum exists**.
+
+## Iterative methods
+
+So, what are iterative methods? An iterative method, given an initial vector $x_0 \in \mathbb{R}^n$, computes $x_{k+1}=g(x_k)$ for $k\ge0$ , **until convergence**. $g(x)$ is an arbitrary function. What do we mean by convergence? Basically, we have that $x_k \rightarrow x^*$ for $k\rightarrow \infty$, where $x^*$ is a stationary point, i.e. a local minimum. 
+
+As we're working in the real world, it's pretty obvious that we can't compute an infinite amount of steps 😔. What we can do, though, is computing $x_k$ until we reach a **stopping criterion**, which might be, for example,  an **absolute** one like the norm of the gradient $\|\nabla f(x_k)\| < \tau_a$ or a **relative** one like the same quantity divided by the norm of the function $\frac{\|\nabla f(x_k)\|}{\|f\| (x_0)}<\tau_R$. We might even check the succeding values, in absolute $\|x_{k+1}-x_k\|<\tau_{AP}$ and relative $\frac{\|x_{k+1}-x_k}{x_k}<\tau_{RP}$ ways.
+
+In order to evaluate how fast the algorithm will approximate the solution, we define the **convergence speed** as, considering $Px_k$ as a sequence converging to $x^*$:
+
+- **Q-linear** if the distance from the solution reduces by a constant factor $r \in (0,1)$ at $k\rightarrow \infty$: $lim_{k\rightarrow\infty} \frac{\|x_{k+1}-x^*\|}{\|x_k-x^*\|}\le r, \forall k > k^*$
+- **Q-superlinear** if the same limit converges to $0$: $lim_{k\rightarrow\infty} \frac{\|x_{k+1}-x^*\|}{\|x_k-x^*\|}=0$
+- **Q-quadratic** if it is even faster, in fact $\frac{\|x_{k+1}-x^*\|}{\|x_k-x^*\|^2} \le M, \forall k > k^*$
+
+The Q stands for **Q**uotient because, well, they're quotients 🤷🏻‍♂️
+
+Remember that these methods converge to a **stationary point**, but that **doesn't always mean** it is a global minimum too.
+
+## Descent methods
+
+The most useful subset of iterative methods is the one containing **descent methods**. These, given an initial vector $x_0 \in \mathbb{R}^n$, compute $x_{k+1}=x_k +\alpha_k p_k$ for $k\ge0$ until convergence. Here, $\alpha_k$ is called **stepsize** and $p_k$ is the **descent direction**. It is effectively called *descent direction* if, for a given $a_k>0$, we have $f(x_k+\alpha_kp_k)<f(x_k)$
+
+Provided that $f$ is continuously differentiable around $x_k$, we have that $p_k^T \nabla f(x_k) < 0$ when $\nabla f(x_k)\neq 0$ and $p_k=0$ when $\nabla f(x_k)= 0$. This basically means that the direction *goes towards* the stationary points.
+
+Note that **the choice of the stepsize is crucial**: a small stepsize could make the descent too slow, while a large stepsize can make the convergence impossible. 
+
+The stepsize is therefore chosen by a *line search* algorithm, implemented with a backtracking algorithm, where an iterative procedure decreases the value of the step size $\alpha$ until suitable conditions for the convergence of the method are satisfied. Why *line search*? Because the new iterate $x_{k+1}$ is searched along the line $p_k$.
+
+We can distinguish between **exact line search**, where $\alpha_k$ is chosen as the minimum of the function $\Phi(\alpha)=f\left(\mathbf{x}_{k}+\alpha \mathbf{p}\right), \quad \alpha \geq 0$ (which is pretty slow) and **inexact line search**, where $\alpha_k$ is chosen to belong to intervals where the convergence is guaranteed. The most common conditions that guarantee this are the **Wolfe** conditions. 
+
+The first one, named **Armijo condition** is the following: $f(x_k + \alpha_kp_k) \le f(x_k)+c_1\alpha \nabla f(x_k)^T p_k$. This ensures that $\alpha_k$ is not too large, but it allows it to be really small. Another way of describing this condition is to say that the decrease in the objective function should be proportional to both the step length and the directional derivative of the function and step direction. In general, $c_1$ is a very small value, $~10^{-4}$.
+
+Since this first condition allows $a_k$ to be very small, we should limit this. The second condition, also known as the **curvature condition**, does exactly so: $\nabla f(x_k + \alpha_k p_k)^T p_k \ge c_2 \nabla f(x_k)^T p_k$. Since this condition is computationally expensive, we can just apply a backtracking algorithm that progressively reduces a starting value of $\alpha$ until the Armijo condition is satisfied. The algorithm should check if $\alpha$ becomes to small: in that case, it just stops.
+
+### Gradient descent method
+
+The **gradient descent method** is basically what we're here for. It is a first order optimization where the descent direction is set as $p_k=-\nabla f(x_k)$. This means that we get $x_{k+1}$ as $x_k-\alpha\nabla f(x_k)$.
+
+The convergence speed is **linear**. To speed things up a bit, we introduce what we call **momentum**. This means that a *memory* part is added to the equation, so that the formula to update $x_k$ becomes: $x_{k+1} = x_k - \gamma_i ((\nabla f)(x_i))^T + \alpha \Delta x_i$, where $\Delta x_i$ is just the distance between the last $x_i$ and the preceding one: $x_i-x_{i-1}=\alpha\Delta x_{i-1} - \gamma_{i-1}((\nabla f)(x_{i-1}))^T$.
+
+### Newton method
+
+The **Newton method** uses second order information of $f$, the **Hessian**.
+
+The direction is set as $p_k=-H_f^{-1} (x_k)\nabla f(x_k)$, provided that $H_f$ is positive definite, within a sufficiently large range of $x^*$. At each iteration we compute $p_k$ as a solution of the linear system $H_f 
+(x_k)p_k = \nabla f(x_k)$. 
+
+We know that $p_k$ is a descent direction only if the Hessian $H_f$ is positive definite, and the **convergence properties** are strictly related to it. In fact, if $f \in C^2(\Omega)$, $H_f$ is a Liptschiz function around $x^*$ (which means that $|f(x)-f(y)| \le K\|x-y\|$) and $H_f$ is positive definite we can say that if $x_0$ is near a stationary point $x^*$, the sequence **converges quadratically**. Which is fast.
+
+To speed things up furthermore, we could approximate $H_f$ with a positive definite matrix $B_f(x_k)$, and solve the linear system to compute the direction $p_k$ with **iterative methods** instead of the direct ones.
+
+### Just one more thing
+
+Remember that the starting guess $x_0$ has a crucial role: the algorithm converges to a local minimum, so $x_0$ determines the local minimum it will descend to. Obviously, we don't know where the global is, but if we have an estimation of where it might be we can choose $x_0$ as near as possible. In any case, there's no guarantee that we'll fall into the right minimum 😔
+
+## Convex optimization
+
+Convex quadratic functions take the following form: $q(x)=\frac{1}{2} x^T Qx + c^Tx(+w)$, where $x,c \in \mathbb{R}^n$ and $Q \in \mathbb{R}^{n\times n}$ is symmetric positive definite. A typical quadratic optimization problem is the **least square problem**: *min*$\|Ax-b\|^2$. The objective is to **minimize** $\frac{1}{2} \|Ax-b\|^2=\frac{1}{2}(Ax-b)^T (Ax-b)=\frac{1}{2}x^TA^TAx-b^TAx+\frac{1}{2}b^Tb$, which can be **rewritten in quadratic form** by setting $Q=A^TA$ and $c^T=-b^TQ$. 
+
+We know that the **gradient** $\nabla f(x)$ is $Q^TQx-A^Tb$, therefore when we set $\nabla f(x)=0$ we obtain the normal equation $(Q^TQ)x=Q^Tb$.
+
+A strictly convex function that is frequently encountered in applications is the **quadratic function** $f(x)=\frac{1}{2} x^TQx + b^Tx$, where $Q$ is a **square matrix** of size $n\times n$, symmetric and positive definite, and $b \in \mathbb{R}^n$. In this particular case we have that the gradient $\nabla f(x)$ is $Qx-b$, and the second order gradient $\nabla^2 f(x)$ is simply $A$.
+
+This leads us to the fact that the unique minimizer of $f$ is the solution of the linear system representing $\nabla f(x)=0$, which is $Qx=b$.
+
+### Steepest descent method
+
+The **steepest descent method** is the gradient method applied to a quadratic convex function with **exact line search**. The step length $\alpha_k$ is computed as the global minimum of the variable $\alpha$ (in this case the function is convex) $0=\left.\frac{d}{d\alpha} \phi(\alpha)\right|_{{\alpha=\alpha_k}}$, which leads us to $\alpha_{k}=\frac{\left(\nabla f\left(x_{k}\right)\right)^{T} \nabla f\left(x_{k}\right)}{\left(\nabla f\left(x_{k}\right)\right)^{T} Q \nabla f\left(x_{k}\right)}>0$.
+
+Finally, the algorithm will be something like:
+
+1. $g_k = Q_{x_k} -b$
+2. $\alpha_k = \frac{g_k^T g_k}{g_k^T Qg_k}$ 
+3. $x_{k+1} = x_k - \alpha_k g_k, k = k+1$
+
+The gradient can be modified by considering Q-conjugate directions $p_i$: $p_i^T Qp_j = 0, \textrm{ for }i\neq j$.
+
+We even cite the **Conjugate Gradient** algorithm, a very fast iterative algorithm for the minimization of a quadratic function (i.e. it solves a linear system $Qx=b$ with $Q$ symmetric and positive definite).
+
+$\begin{array}{l}
+\alpha_{k}=-\frac{g_{k}^{T} p_{k}}{p_{k}^{T} A p_{k}} \\
+x_{k+1}=x_{k}+\alpha_{k} p_{k} \\
+g_{k+1}=A x_{k+1}-b ; \textrm { if } g_{k+1}=0, \textrm { stop } \\
+\beta_{k}=\frac{g_{k+1}^{T} A p_{k}}{p_{k}^{T} A p_{k}} \\
+p_{k+1}=-g_{k+1}+\beta_{k} p_{k} \\
+k=k+1
+\end{array}$
+
+If A is symmetric and positive definite, with at most $s$ distinct eigenvalues, then the CG method **converges** in at most **$s$ iterations**!
+
+For any symmetric and positive definite matrix $Q$, we define the *energy norm* $\|x\|_Q=\sqrt{x^TQx}$. Concerning the convergence speed of gradient descent and conjugate gradient algorithms when they're applied to a quadratic function, we can say that the CG method is quite faster than the gradient descent: the steepest gradient descent holds $\left\|\mathbf{x}_{k}-\mathbf{x}^{*}\right\|_{Q}^{2} \leq\left(\frac{K(Q)-1}{K(Q)+1}\right)^{2}\left\|\mathbf{x}_{k-1}-\mathbf{x}^{*}\right\|_{Q}^{2}$, while the CG method holds $\left\|\mathbf{x}_{k}-\mathbf{x}^{*}\right\|_{Q}^{2} \leq\left(\frac{K(Q)-1}{K(Q)+1}\right)\left\|\mathbf{x}_{k-1}-\mathbf{x}^{*}\right\|_{Q}^{2}$, where $k$ is the iteration number and $K(Q)$ is the condition number of $Q$.
+
+## Stochastic optimization
+
+The objective function in ML problems is sometimes related to **probabilistic events**, and it can take the following form $G(x)=\sum_{i=1}^n G_i(x)$, where $G: \mathbb{R}^n\rightarrow \mathbb{R}$ is the loss function computed at the $i\textrm{-th}$ observation of the dataset.
+
+For example, in a **supervised classification problem** we'll want to minimize the **empirical risk function**, i.e. the sum of loss functions for all the examples $x_i$: $R_n(w) = \frac{1}{n}\sum_{i=1}^n l(h(x_i,w))$, where the loss function $l$ is related to the probability distribution of the examples $x_i$.
+
+In the case of a **standard gradient descent**, the iteration is $x_{k+1}=x{k}+\alpha_k \nabla G(x_k)$, which means that we have to calculate the gradient for every sample: $x_k-\alpha_k \sum_{i=1}^n \nabla G_i(x_k)$.
+
+As everyone can imagine, if we have millions of samples in the batch this is crazily difficult to compute🥴
+
+In **stochastic gradient descent**, the true gradient is approximated at each iteration by the gradient at a **single observation**, randomly picked. The iteration step becomes $x_{k+1}=x_k-\alpha_k \nabla G_i(x_k)$.
+
+A compromise between the SGD and the *standard* gradient descent is using a **mini-batch** of randomly picked samples. The step size $\alpha_k$ can be fixed or even computed with a line search procedure. Each iteration is now **very cheap**, and $x_1,\dots,x_k$ is a stochastic process, with a behaviour defined by the random sequence of $i$s. Even if the direction might not be a real descent direction, it is a descent direction in **expectation**, which is proved to converge *in expectation* to a local minimum. The convergence of SGD has been analyzed using the theories behind convex minimization and stochastic approximation; since ML doesn't require a super precise localization of the minimum, SGD is a tremendously good compromise between accuracy and speed.
+
+## Non-linear least squares problem
+
+In non-linear least squares problem we get residuals defined as a **non-linear function** $r: \mathbb{R}^n \rightarrow \mathbb{R}^m$, where $n$ is the dimension of the space of the data and $m$ is the dimension of the space of the unknowns. The minimization of these residuals can be written as $\text{min}\|r(x)\|^2 = \text{min}\sum_{i=1}^m r_i^2 (x)$. We can therefore write the **gradient** of the function $f$ representing the residuals $f: \mathbb{R}^m \rightarrow \mathbb{R}, f=\frac{1}{2}\sum_{i=1}^m r_i^2 (x)$, which is $\nabla f(x)=\sum_{i=1}^m r_i(x)\nabla r_i(x) = J_r^T (x)\cdot r(x)$. 
+
+We can even compute the **Hessian** of $f$ as $\begin{aligned}
+\mathrm{H}_{f}(\mathbf{x}) &=\sum_{i=1}^{m}\left(\nabla r_{i}(\mathbf{x}) \cdot \nabla^{T} r_{i}(\mathbf{x})+\nabla r_{i}(\mathbf{x}) \cdot \mathrm{H}_{r_{i}}^{T}(\mathbf{x})\right)=\\
+&=\mathrm{J}_{r}^{T}(\mathbf{x}) \cdot \mathrm{J}_{r}(\mathbf{x})+\sum_{i=1}^{m} \nabla r_{i}(\mathbf{x}) \cdot \mathrm{H}_{r_{i}}^{T}(\mathbf{x})
+\end{aligned}$
+
+As you can imagine, these formula can be pretty harsh to compute. The methods we can use to solve these problems are the *gradient methods, Newton-like methods, the Gauss-Newton method* (where $p_k$ is computed as $\left(\mathrm{J}_{r}^{T} \cdot \mathrm{J}_{r}\right)\left(\mathbf{x}_{k}\right) \cdot \mathbf{p}_{k}=-\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathbf{r}\left(\mathbf{x}_{k}\right)$), or *the Levenberh-Marquardt method*, which adds regularization because the product of the two Jacobians can be ill-conditioned ($p_k$ is computed as $\left(\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathrm{J}_{r}\left(\mathbf{x}_{k}\right)+\lambda \mathrm{I}\right) \cdot \mathbf{p}_{k}=-\mathrm{J}_{r}^{T}\left(\mathbf{x}_{k}\right) \cdot \mathbf{r}\left(\mathbf{x}_{k}\right)$).
+
+## Constrained optimization, Lagrange multipliers
+
+We finally consider the problem $\text{min}_xG(x)$, with $h_i(x) \le 0, i-1,\dots,m$.
+
+A possible way of solving this is the introduction of *Lagrange multipliers* $\lambda_i \ge 0$. The *Lagrangian function* associated to the problem is $L(x,\lambda) = G(x)+\sum_{i=1}^m \lambda_i h_i (x)$.
+
+Many numerical methods also use the concept of duality. The minimization in a set of variables, let's say $x$, is transformed into the minimization of another set of variables, like $\lambda$. 
+
+We can associate the **Lagrangian dual problem** to the *primal problem*, in the form of $\text{max}_{\lambda \in R^m} D(\lambda)$ such that $\lambda\ge0$, where $D(\lambda) = \text{min}_{x\in R^n} L(x,\lambda)$ and $\lambda$ are the **dual variables**.
+
+The first one ($D$) is the **minimax problem**; if the solution can be easily performed, then the problem is easy to solve. In fact, the maximization problem of $D(\lambda)$ is a **concave problem**, which has an easy to find maximum, even if $G$ and $h_i$ are not convex.
+
+A particular case is when the functions $G$ and $h_i$ are linear: this is called the **linear programming problem**.
 
 
 
-
-
-
+ 
 
