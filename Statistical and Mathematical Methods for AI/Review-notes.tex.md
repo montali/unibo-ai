@@ -619,7 +619,88 @@ The first one ($D$) is the **minimax problem**; if the solution can be easily pe
 
 A particular case is when the functions $G$ and $h_i$ are linear: this is called the **linear programming problem**.
 
+# Probability and statistics
+
+The objective of probability is to **quantify the uncertainty**. We want to first introduce the concepts of random variables and probability distributions. Cool shit. When working in ML, probability is often used to formalize the design of automated reasoning systems. We are also interested in the errors an algorithm produces. We can distinguish between two interpretations of probability: the **Bayesian** interpretation and the **frequentist** interpretation. The first one is also called *subjective probability* because it is used to quantify the degree of uncertainty the user has about an event. The second one considers the frequency of events related to the total number of them. 
+
+## Basics
+
+Here we are, back to basics. Let's define a **random experiment** as an experiment which has an outcome *determined by chance*. The **sample space** is simply the set of all possible outcomes of the experiment. An **event** is a collection of results, i.e. a **subset** of the sample space. The **space of the events** $S(A)$ is the set of all possible events. The **probability of an event $A$** is a function $P: S(A) \rightarrow [0,1] \in \mathbb{R}$ that associates each event $A$ to a number, called **probability** of $A$.
+
+Each **probability function** satisfies 3 properties:
+
+- $P(A)\ge0$, which means that a probability can't be negative;
+- $P(S)=1$ , which means that the probability of one of **all the possible outcomes** is 100%
+- Given $A_1,\dots,A_n$ disjoint events, the probability of any of them happening is the sum of all the probabilities: $P\left(A_{1} \cup A_{2} \cup \ldots \cup A_{n}\right)=\sum_{i=1}^{n} P\left(A_{i}\right)$
+
+The **conditional probability** of an event $B$ given the event $A$ is $P(B|A)=\frac{P(A \cup B)}{P(A)}$.
+
+For any fixed $A$ having $P(A)>0$, we know that $P(B|A)\ge0$ for every $B$ in the sample space. We know that $P(S|A)=1$, and given $B_1,\dots,B_n$ disjoint events, we know that the probability of one of them happening given $A$ is the sum of all the probabilities given A: $P\left(\bigcup_{i=1}^{n} B_{i} \mid A\right)=\sum_{i=1}^{n} P\left(B_{i} \mid A\right)$. We even know that $\forall A_1,\dots,A_n$ events, $P\left(A_{1} \cap \ldots \cap A_{n}\right)=P(A) \cdot P\left(A_{2} \mid A_{1}\right) \cdot \ldots \cdot P\left(A_{n} \mid A_{1} \cap \ldots \cap A_{n-1}\right)$, which means that the probability of them happening all at the same time is the multiplication of all the conditional probabilities.
+
+Two events $A$ and $B$ are **independent** if and only if the probability of them happening at the same time is the multiplication of the single probabilities: $P(A \cap B ) = P(A)\cdot P(B)$.
+
+Given two disjoint events $A,B$, with the union of them being the sample space, we have that $P(B|A) = \frac{P(A|B)P(B)}{P(A)}$. This theorem, known as the **Bayes' theorem**, can be extended to multiple events, pairwise disjoint and exhaustive: $P\left(B_{i} \mid A\right)=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{i=j}^{n} P\left(A \mid B_{j}\right) P\left(B_{j}\right)}$.
+
+## Random variables
+
+A **random variable** associates events to numbers. This helps us in the mathematical description of the probabilities. Mathematically speaking, a **random variable** is a function $X: S \rightarrow \mathbb{R}$ that associates each outcome $w\in S$ to a number $x\in\mathbb{R}$: $X(w)=x$. The set of all the possible values of the random variable is called **target space** (aka **support**) of $X, S_X$.
+
+If the target space is a countable set, the random variable is said **discrete**. If it is not countable, we're working with a **continuous RV**.
+
+We can associate to the RV probability functions, that describe how the probabilities are distributed. We'll talk about **univariate** distributions when there's a single RV involved, and **multivariate** when there's more.
+
+### Probability Mass Function
+
+Each **discrete** RV has a function associated to itself, called **Probability Mass Function** (PMF), which describes the mapping between the event and the outcome: $p_X: S_X \rightarrow [0,1] \in \mathbb{R}$, such that the function takes a value as input and outputs the probability that the RV has that value: $p_X(x)=P(X=x), x \in S_X$. Obviously, the sum of all the possible outputs will be equal to $1$.
+
+The **expectation** of a discrete RV is defined as $\mu = \mathbb{E}[X]=\sum_{x\in S_X} xf_X(x)$.
+
+We can extend the concept **to functions**, so that $\mathbb{E}[g(X)]=\sum_{x\in S_X} g(x)p_X(x)$.
+
+The **variance** of a discrete RV is defined as $\sigma^2=\mathbb{E}[(X-\mu)^2]$, or simply $\mathbb{E}[X^2]-\mathbb{E}^2[X]$.
+
+Some examples of PMF might be the *discrete uniform distribution* $\frac{1}{n}$, or the Poisson $p_X(x)=e^{-\lambda}\frac{\lambda^x}{x!}$, where $\mu=\lambda$ and $\sigma^2=\lambda$.
+
+### Multivariate discrete distributions
+
+While in the univariate case, the target space of a RV is a vector, now it's the cartesian product of the single target spaces: a **multidimensional array**. For example, in bivariate RVs it's a matrix.
+
+The **joint probability mass function** of $X$ and $Y$ is defined as $p_{XY}=P(X=x_i, Y=y_j)=\frac{a_{ij}}{N}$, with $(x,y) \in S_{XY}$, where $a_{ij}$ is the elemeent of the matrix storing all the possible $X$ and $Y$s, and $N$ is the total number of matrix elements. We can also write $f_{XY}$ as $p(x,y)$.
+
+Given the $p_{XY}$ joint probability mass function, we define the **marginal probability distribution** of $X$ as $p_X(x)=\sum_{y \in S_Y} P(X=x, Y=y)$ and the one of $Y$ as $p_Y(y)=\sum_{x \in S_X} P(X=x, Y=y)$. Note that this is basically just the consideration of the probabilities of a single variable.
+
+### Continuous random variables
+
+Obviously, we can't have PMFs with continuous RVs. What we have, though, are **Probability Density Functions** (PDF), which are basically the continuous version of PMFs: $P(a\le X\le b) = \int_a^b p_X(x)dx, \forall[a,b] \in S_X$. Obviously, when considering the whole target space we'll get $1$ as always: $\int_a^b p(x)dx=1$.
+
+Some examples of PDFs are the *normal distribution* $p_X(x)=\frac{1}{\sigma\sqrt{2\pi}} \text{exp}\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$, where $\mu$ is the expectation and $\sigma$ the standard deviation, and the *exponential distribution* $p_X(x)=\lambda e^{-\lambda x}$ which ahs mean $\mu=\frac{1}{\lambda}$ and standard deviation $\sigma=\frac{1}{\lambda}$.
+
+## Bayes' theorem
+
+Given two RVs $X$ and $Y$, let's consider the instances in which $X=x$. We can define ***conditional probability*** of $y$ given $x$  $p(y|x)$ the fraction of instances for which $Y=y$.
+
+Note that the following calculations are made in the *discrete* case: for continuous RVs, substitute sums with integrals.
+
+### Sum rule
+
+Let's consider two discrete RVs $x$ and $y$, we know that $p(x)=\sum_{y\in Y} p(x,y)$, i.e. the probability of $x$ happening is the sum of all the probabilities in which $x$ happens together with every $y$: the **marginal distribution** of one rv is the sum on the events of the other rv. If we have more RVs, we can just sum them:  $p\left(x_{i}\right)=\sum_{y \in\left(x 1, \ldots x_{i-1}, x i+1, \ldots x_{n}\right)} p\left(x_{1}, \ldots x_{n}\right)$.
+
+### Product rule
+
+Now, with $x$ and $y$, we can state that $p(x,y)=p(y|x)p(x)$, i.e. the probability of $x$ and $y$ happening is the probability of $y$ happening when $x$ has happened, multiplied by the probability of $x$ happening. Still pretty obvious.
+
+Let's suppose we have prior on an unobserved variable $x$, and we know the relationship between $x$ and another RV, $y$, which is observed. We can say that 
+
+$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$, where:
+
+- $p(x|y)$ is called **posterior**, and it is the information we're seeking;
+- $p(y|x)$ is the **likelihood**, which is the probability of the observed rv, $y$, given $x$. Basically the inverse of what we're seeking;
+- $p(x)$ is the **prior**, i.e. knowledge about the discrete probability distribution of $x$, the unobserved RV;
+- $p(y)$ is the **evidence**, i.e. the known probability of the observed $y$.
+
+Sometimes, calculating the exact posterior can be difficult, maybe because we only got some informations like the mean or the maximum. Some ML algorithms aim exactly at finding the posterior.
 
 
- 
+
+
 
