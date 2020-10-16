@@ -148,15 +148,15 @@ Empirically, the more training data we have the best we train the dataset.
 
 We can define a **confidence interval**, a concept that derives from the Bernoulli process, i.e. forecasting each element of the test set is like one experiment of a Bernoulli process, a binary success/failure. 
 
-Therefore, the empirical frequency of error is <img src="svgs/deb9016a8ab58949c99e5b5553bbd61b.svg?invert_in_darkmode" align=middle width=64.15513664999999pt height=24.65753399999998pt/>.
+Therefore, the empirical frequency of error is $f=S/N$.
 
-With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area <img src="svgs/900d920909b4893be83c15f105c8ae1c.svg?invert_in_darkmode" align=middle width=38.88690464999999pt height=21.18721440000001pt/> for a normal distribution. The formula doesn't have to be remembered.
+With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area $1-\alpha$ for a normal distribution. The formula doesn't have to be remembered.
 
-So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> is the probability of a wrong estimate. Increasing <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/>, with constant empirical frequency, the uncertainty for <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> narrows. 
+So, $\alpha$ is the probability of a wrong estimate. Increasing $N$, with constant empirical frequency, the uncertainty for $p$ narrows. 
 
 ## Accuracy of a classifier
 
-Accuracy and error frequency are complements (<img src="svgs/f5901e14df8c2452eaee8fb04a4397d4.svg?invert_in_darkmode" align=middle width=70.21096829999999pt height=22.465723500000017pt/>). Error frequency is thes um of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
+Accuracy and error frequency are complements ($A=1-e$). Error frequency is thes um of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
 
 So, why should we use other statistics? Maybe, estimating the cost of errors might need more statistics.
 
@@ -170,20 +170,20 @@ The train/validation loop is usually faster than cross validation.
 
 We already know what the accuracy is. For the moment, let's consider **binary predictions**. There are other possible indicators, like velocity, robustness, scalability, interpreatability. A classification error could have different consequences, which could be dangerous!
 
-Another important measure is the  **f-measure**, i.e. the armonic mean of precision and recall, aka F1 score or balanced F1 score: <img src="svgs/a13bc6fd22ea240e322a0279e464a445.svg?invert_in_darkmode" align=middle width=144.66795419999997pt height=30.648287999999997pt/>.
+Another important measure is the  **f-measure**, i.e. the armonic mean of precision and recall, aka F1 score or balanced F1 score: $F=2\frac{precision\cdot recall}{precision+recall}$.
 
 ### Beyond the accuracy
 
-When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with <img src="svgs/45a0b00b513fa74f40b37aafadb94773.svg?invert_in_darkmode" align=middle width=21.91788224999999pt height=24.65753399999998pt/> of positivity.
+When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with $2\%$ of positivity.
 
 So, when we evaluate a prediction, instead of just using accuracy, we should use a metric that considers the distribution. 
 
-So, considering a confusion matrix with 3 classes, we have accuracy <img src="svgs/10e4f71da84fa363761b231c6947575b.svg?invert_in_darkmode" align=middle width=39.16826595pt height=33.20569890000001pt/>, precision <img src="svgs/fbe9e0ae50f65372e974136f27c55182.svg?invert_in_darkmode" align=middle width=23.110393349999995pt height=29.205422400000014pt/> and recall <img src="svgs/6ce695eef38de31dfa13aa16c8ae1633.svg?invert_in_darkmode" align=middle width=23.110393349999995pt height=29.205422400000014pt/>. There will obviously be a number of false predictions. So, let's say that the classifier <img src="svgs/ff8ed7ff7206dcbee8e3ce3546c04a31.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=27.725679300000007pt/> generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
-If we had a random classifier <img src="svgs/c0965f62635cd7feb1d989d50a2a51c3.svg?invert_in_darkmode" align=middle width=23.53788524999999pt height=22.465723500000017pt/> which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of <img src="svgs/ff8ed7ff7206dcbee8e3ce3546c04a31.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=27.725679300000007pt/> over <img src="svgs/c0965f62635cd7feb1d989d50a2a51c3.svg?invert_in_darkmode" align=middle width=23.53788524999999pt height=22.465723500000017pt/> is 58. We now can define <img src="svgs/1c871f58bd45412a72aaed4d21f6fd77.svg?invert_in_darkmode" align=middle width=165.37901324999999pt height=27.725679300000007pt/> as the **improvement** of the classifier.
+So, considering a confusion matrix with 3 classes, we have accuracy $\frac{\sum TP_i}{N}$, precision $\frac{TP_i}{P_i}$ and recall $\frac{TP_i}{T_i}$. There will obviously be a number of false predictions. So, let's say that the classifier $\overline{C}$ generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
+If we had a random classifier $R_{\overline{C}}$ which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of $\overline{C}$ over $R_{\overline{C}}$ is 58. We now can define $k(\overline{C})=58/118=0.492$ as the **improvement** of the classifier.
 
 This statistic evaluates the concordance between two classifications. 
 
-<img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075495000000004pt height=22.831379999999992pt/> is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> means a total disagreement, <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> a random agreement, <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> total agreement.
+$k$ is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. $-1$ means a total disagreement, $0$ a random agreement, $1$ total agreement.
 
 ### Cost of errors
 
@@ -199,7 +199,7 @@ If we need an instant decision, a crisp classifier is good, but if the classific
 
 ### Lift chart
 
-This is used to evaluate various scenarios, depending on the application. Let's consider a dataset with 1k positives and apply a probabilistic classification scheme. We want to make a bidimensional chart with two axis, shere <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/> is the sample size, and <img src="svgs/deceeaf6940a8c7a5a02373728002b0f.svg?invert_in_darkmode" align=middle width=8.649225749999989pt height=14.15524440000002pt/> the positive samples. 
+This is used to evaluate various scenarios, depending on the application. Let's consider a dataset with 1k positives and apply a probabilistic classification scheme. We want to make a bidimensional chart with two axis, shere $x$ is the sample size, and $y$ the positive samples. 
 
 Now, a straight line plots the number of positives obtained with a random choice of a sample of test data, while the curve plots the number of positives obtained drawing a fraction of test data with decreasing probability. So, with the *sorting* I generated with my classifier, if I take the first 10% of my dataset we're able to get 400 positives. To reach another 400, we need to get to 40%. 
 
