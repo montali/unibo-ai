@@ -119,9 +119,13 @@ We can define different heuristics. For example, in a tiles game, we could defin
 
 ### Graphs
 
-We can adapt this algorithm to graphs: we keep two lists, one for the open nodes and one for the closed ones. The graph can therefore become a tree with repeated nodes.
+We can adapt this algorithm to graphs: we can keep two lists, one for the open nodes (not yet explored) and one for the closed ones. The graph can therefore become a tree with repeated nodes.
 
 If $n$ is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labelling them with the cost from the starting node. 
 
-If a child node is already in the open nodes, we update $g(n)$, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update it.
+If a child node is already in the open nodes, we update $g(n)$, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update its label. Note that we have to update its subnodes too!
+
+One node can now be reached from different paths, instead of having just one *father*. Therefore, when you re-find a node, you have found another path to reach the same node! You can just choose the best path then. 
+
+
 
