@@ -700,7 +700,78 @@ $p(x|y)=\frac{p(y|x)p(x)}{p(y)}$, where:
 
 Sometimes, calculating the exact posterior can be difficult, maybe because we only got some informations like the mean or the maximum. Some ML algorithms aim exactly at finding the posterior.
 
+# Statistics
 
+We call **statistic** and index related to a RV. Let's first introduce the **expected value** of a function $g(x)$ of a univariate RV $X$ with PDF $p(x)$ as $\mathbb{E}[g(x)]=\sum_{x \in S_X} g(x) p(x)dx$.
 
+If we consider multivariate RVs, we can just put the results in a vector.
 
+The **mean** of a univariate RV with states $\{x_1,...,x_n\}$ is an average defined as $\mathbb{E}_X[x]=\sum_{x_i \in S_X} x_i p(x_d=x_i)$, with extension for multivariate as before.
 
+We can also define the **median** as the measure of the center of the distribution.
+
+For two univariate RVs $X$ and $Y$ we can define the **covariance**, which measures how independent they are: $\operatorname{Cov}[x,y]=\mathbb{E}[(x-\mu_x)(y-\mu_y)]=\mathbb{E}[xy]-\mathbb{E}[x]\mathbb{E}[y]$.
+
+Obviously, $\operatorname{Cov}(x,x)$ is the variance of $X, \mathbb{V}_X[x]$, and the square root of the variance is the **standard deviation**. For multivariate RVs we can define the covariance as $\operatorname{Cov}(x,y)=\mathbb{E}[xy^T]-\mathbb{E}[x]\mathbb{E}[y^T]$.
+
+The **correlation** between two RVs $X$ and $Y$ is defined as $\operatorname{Corr}(x,y)=\frac{\operatorname{Cov}(x,y)}{\sigma(x)\sigma(y)} \in [-1,1]$
+
+## Inferential statistics
+
+**Inferential statistics** try to deduce underlying properties of a distribution just by looking at some samples. 
+
+Suppose we have identical distributed univariate RVs $X_1,\dots,X_n$, with realizations $x_1,\dots,x_n$. The **empirical mean** is defined as $\overline{x}=\frac{1}{N}\sum_{i=1}^N x_i$, while the **empirical covariance** is defined as $\Sigma=\frac{1}{N}\sum_{i=1}^N (x_i-\overline{x})^2$.
+
+In the case of multivariate RVs $X_1,\dots,X_n$, the mean is a $D$ vector of mean and the covariance is a $D \times D$ matrix defined by $\Sigma=\frac{1}{N} \sum_{i=1}^N (x_i-\overline{x})(x_i-\overline{x})^T$.
+
+Two RVs $X$ and $Y$ are **independent** if $p(x,y)=p(x)p(y)$.
+
+## Gaussian distribution
+
+The **Gaussian distribution** is super famous. The PDF is $p(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} \operatorname{exp}\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$. In the case of $\mu=0, \sigma=1$, the distribution is called **normal distribution**.
+
+The conditional and marginal distributions of the Gaussian have a closed form. If we consider the probability $p(\boldsymbol{x}, \boldsymbol{y})=\mathcal{N}\left(\left[\begin{array}{l}
+\boldsymbol{\mu}_{x} \\
+\boldsymbol{\mu}_{y}
+\end{array}\right],\left[\begin{array}{ll}
+\boldsymbol{\Sigma}_{x x} & \boldsymbol{\Sigma}_{x y} \\
+\boldsymbol{\Sigma}_{y x} & \boldsymbol{\Sigma}_{y y}
+\end{array}\right]\right)$ with $\Sigma_{xx} = \operatorname{Cov}[x,x]$ and $\Sigma_{yy}=\operatorname{Cov}[y,y]$, the **marginal covariance matrices** then $\begin{aligned}
+p(\boldsymbol{x} \mid \boldsymbol{y}) &=\mathcal{N}\left(\boldsymbol{\mu}_{x \mid y}, \boldsymbol{\Sigma}_{x \mid y}\right) \\
+\boldsymbol{\mu}_{x \mid y} &=\boldsymbol{\mu}_{x}+\boldsymbol{\Sigma}_{x y} \boldsymbol{\Sigma}_{y y}^{-1}\left(\boldsymbol{y}-\boldsymbol{\mu}_{y}\right) \\
+\boldsymbol{\Sigma}_{x \mid y} &=\boldsymbol{\Sigma}_{x x}-\boldsymbol{\Sigma}_{x y} \boldsymbol{\Sigma}_{y y}^{-1} \boldsymbol{\Sigma}_{y x}
+\end{aligned}$ and the marginal distribution is $p(x)=\int p(x,y)dy = \mathcal{N}(x|\mu_x, \Sigma_{xx})$.
+
+# Predictive function models
+
+Machine Learning aims at constructing functions to predict the behaviour of new data from the behaviour of training data.
+
+These functions are called **predictors**, and they can be a **deterministic function** or a **probabilistic model**.
+
+## Model as a function
+
+We must now determine a function $f: \mathbb{R}^D \rightarrow \mathbb{R}$, i.e. the **best predictor** basing on a measure of quality.
+
+This is called **empirical risk minimization**, with the empirical risk defined as the loss.
+
+Suppose we have $N$ examples $x_i$ and the corresponding labels $y_i$. We'll estimate a predictor $f(x_i, \theta)$ which approximates the labels as well as possible. The empirical risk is defined as
+
+$R_{emp}=\frac{1}{N}\sum_{i=1}^N l(y_i-f(x_i,\theta))$, where the loss function is decided by the programmer. A good loss function might be the quadratic function, from which we get:
+
+$\operatorname{min}_{\theta \in \mathbb{R}^D} \frac{1}{N} \sum_{i=1}^N (y_i-f(x_i,\theta))^2$
+
+The empirical risk minimization can lead to **overfitting**, which means that the predictor perfectly fits the training data but can't generalize to new data. We can introduce a penalty term for overly complicated models, choosing a regularization parameter $\lambda$ so that the problem now becomes $\operatorname{min}_\theta \frac{1}{N}\|y-X\theta\|^2 + \lambda \|\theta\|^2$.
+
+## Model as probability
+
+### Maximum Likelihood Estimation
+
+Now, we can consider a probability model and use the **Maximum Likelihood Estimation** procedure to define a function of the parameters to find a good model fitting the data. The Maximum Likelihood is in fact a function of the parameters of the probability function.  
+
+Now, given a sample $x_1,\dots,x_n$ and a probability function $p(x|\theta)$, the Likelihood is defined as $L(\theta)=\prod_{i=1}^N p(x_i|\theta)$, and we'll consider the negative log likelihood. 
+
+For example, if we supposed that the conditional distribution of the labels given the examples is a Gaussian with zero mean $N(0, \sigma^2)$, we get $p(y_i|x_i, \theta) = N(y_i|x_i^T \theta,\sigma^2)$, hence the negative log likelihood is $L(\theta)=-\log \prod_{i=1}^{N} p\left(y_{i} \mid x_{i}, \theta\right)=-\sum_{i=1}^{N} \log \left(p\left(y_{i} \mid x_{i}, \theta\right)\right)$.
+
+### Maximum A Posteriori Estimation
+
+We can use the **Maximum A Posteriori** estimate when we have **prior knowledge** about the distribution of the parameters $\theta$ through a term $p(\theta)$. We can therefore use the **Bayes' theorem** to infer about the a posteriori distribution: $p(\theta|x)=\frac{p(x|\theta)p(\theta)}{p((x))}$, which we want to maximize by minimizing its negative log likelihood.

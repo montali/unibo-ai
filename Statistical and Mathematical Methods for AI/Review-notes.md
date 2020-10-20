@@ -674,7 +674,68 @@ Let's suppose we have prior on an unobserved variable <img src="svgs/332cc365a49
 
 Sometimes, calculating the exact posterior can be difficult, maybe because we only got some informations like the mean or the maximum. Some ML algorithms aim exactly at finding the posterior.
 
+# Statistics
 
+We call **statistic** and index related to a RV. Let's first introduce the **expected value** of a function <img src="svgs/ffcbbb391bc04da2d07f7aef493d3e2a.svg?invert_in_darkmode" align=middle width=30.61077854999999pt height=24.65753399999998pt/> of a univariate RV <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> with PDF <img src="svgs/c9ea84eb1460d2895e0cf5125bd7f7b5.svg?invert_in_darkmode" align=middle width=30.450987599999987pt height=24.65753399999998pt/> as <img src="svgs/267500dec10f897be7e1d0cbd8fd9bcb.svg?invert_in_darkmode" align=middle width=207.52997594999997pt height=24.657735299999988pt/>.
 
+If we consider multivariate RVs, we can just put the results in a vector.
 
+The **mean** of a univariate RV with states <img src="svgs/b5c9d606f56792bd3b16906da1abdeb8.svg?invert_in_darkmode" align=middle width=79.86123089999998pt height=24.65753399999998pt/> is an average defined as <img src="svgs/ad4fcd96d28086b3447c1f883c561e20.svg?invert_in_darkmode" align=middle width=214.77469199999996pt height=24.657735299999988pt/>, with extension for multivariate as before.
 
+We can also define the **median** as the measure of the center of the distribution.
+
+For two univariate RVs <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> and <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> we can define the **covariance**, which measures how independent they are: <img src="svgs/a25533f20875bdabc22157edf07b6104.svg?invert_in_darkmode" align=middle width=363.18682455pt height=24.65753399999998pt/>.
+
+Obviously, <img src="svgs/c255598ba058a027a649d613c23c0dc4.svg?invert_in_darkmode" align=middle width=67.42013519999999pt height=24.65753399999998pt/> is the variance of <img src="svgs/2d6a31a9dd8ceb34f1e6538a49acc013.svg?invert_in_darkmode" align=middle width=64.19754164999999pt height=24.65753399999998pt/>, and the square root of the variance is the **standard deviation**. For multivariate RVs we can define the covariance as <img src="svgs/57a5d610d695891c97b9d56dcf28a56f.svg?invert_in_darkmode" align=middle width=225.75691544999995pt height=27.6567522pt/>.
+
+The **correlation** between two RVs <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> and <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> is defined as <img src="svgs/5d360d143589a6abf3530a2a8a401737.svg?invert_in_darkmode" align=middle width=214.09741155pt height=33.20539859999999pt/>
+
+## Inferential statistics
+
+**Inferential statistics** try to deduce underlying properties of a distribution just by looking at some samples. 
+
+Suppose we have identical distributed univariate RVs <img src="svgs/af0f1e27867ba32a19c3c23b01c4e22f.svg?invert_in_darkmode" align=middle width=79.26740084999999pt height=22.465723500000017pt/>, with realizations <img src="svgs/bcb176fe640c86be80f26bb0541055f2.svg?invert_in_darkmode" align=middle width=70.81987439999999pt height=14.15524440000002pt/>. The **empirical mean** is defined as <img src="svgs/ddf9eee1768ddb45c4d0bb17d0f1febd.svg?invert_in_darkmode" align=middle width=105.89749169999999pt height=32.256008400000006pt/>, while the **empirical covariance** is defined as <img src="svgs/4c34c914496646898a3a0deb75b58f2c.svg?invert_in_darkmode" align=middle width=155.28107924999998pt height=32.256008400000006pt/>.
+
+In the case of multivariate RVs <img src="svgs/af0f1e27867ba32a19c3c23b01c4e22f.svg?invert_in_darkmode" align=middle width=79.26740084999999pt height=22.465723500000017pt/>, the mean is a <img src="svgs/78ec2b7008296ce0561cf83393cb746d.svg?invert_in_darkmode" align=middle width=14.066250000000002pt height=22.46574pt/> vector of mean and the covariance is a <img src="svgs/b9128ca833f21b4c35f572408bd62404.svg?invert_in_darkmode" align=middle width=48.22365404999999pt height=22.465723500000017pt/> matrix defined by <img src="svgs/58333a51c4b226a9fff5a3a1136efcf6.svg?invert_in_darkmode" align=middle width=215.40162765000002pt height=32.256008400000006pt/>.
+
+Two RVs <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> and <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> are **independent** if <img src="svgs/91085e1441af80d0149d3d4493b11eba.svg?invert_in_darkmode" align=middle width=128.4799032pt height=24.65753399999998pt/>.
+
+## Gaussian distribution
+
+The **Gaussian distribution** is super famous. The PDF is <img src="svgs/d51ae0dc9eff2062043bd18725b1d359.svg?invert_in_darkmode" align=middle width=244.71549299999995pt height=37.80850590000001pt/>. In the case of <img src="svgs/66f52cfddf0ef06c36906f026a4137ac.svg?invert_in_darkmode" align=middle width=87.46736954999999pt height=21.18721440000001pt/>, the distribution is called **normal distribution**.
+
+The conditional and marginal distributions of the Gaussian have a closed form. If we consider the probability <img src="svgs/8663c300cd700e10a0b716e6337dbaa0.svg?invert_in_darkmode" align=middle width=286.64403899999996pt height=47.67162180000002pt/> with <img src="svgs/f1f4fd6ba122fa061ad194608537000f.svg?invert_in_darkmode" align=middle width=113.28757605pt height=24.65753399999998pt/> and <img src="svgs/24ff26e494a360d023d88bda7a59eac4.svg?invert_in_darkmode" align=middle width=111.04648499999999pt height=24.65753399999998pt/>, the **marginal covariance matrices** then <img src="svgs/443df210179594184e8c380ac652b225.svg?invert_in_darkmode" align=middle width=245.8801884pt height=93.4157796pt/> and the marginal distribution is <img src="svgs/498e748c470fcb0bde53af2620b4a7fd.svg?invert_in_darkmode" align=middle width=247.34243820000003pt height=26.48417309999999pt/>.
+
+# Predictive function models
+
+Machine Learning aims at constructing functions to predict the behaviour of new data from the behaviour of training data.
+
+These functions are called **predictors**, and they can be a **deterministic function** or a **probabilistic model**.
+
+## Model as a function
+
+We must now determine a function <img src="svgs/69fc366835e55601c0766b7c372442b0.svg?invert_in_darkmode" align=middle width=84.75479594999999pt height=27.6567522pt/>, i.e. the **best predictor** basing on a measure of quality.
+
+This is called **empirical risk minimization**, with the empirical risk defined as the loss.
+
+Suppose we have <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.99998994999999pt height=22.465723500000017pt/> examples <img src="svgs/9fc20fb1d3825674c6a279cb0d5ca636.svg?invert_in_darkmode" align=middle width=14.045955000000003pt height=14.155350000000013pt/> and the corresponding labels <img src="svgs/2b442e3e088d1b744730822d18e7aa21.svg?invert_in_darkmode" align=middle width=12.710331149999991pt height=14.15524440000002pt/>. We'll estimate a predictor <img src="svgs/250354226c83d4dcbd1956139ddd8ccc.svg?invert_in_darkmode" align=middle width=52.95004109999999pt height=24.65753399999998pt/> which approximates the labels as well as possible. The empirical risk is defined as
+
+<img src="svgs/41ce7b3a896d9a8717500334b8170f87.svg?invert_in_darkmode" align=middle width=225.0254721pt height=32.256008400000006pt/>, where the loss function is decided by the programmer. A good loss function might be the quadratic function, from which we get:
+
+<img src="svgs/2a3cf50e8727fcb2e4d8dc9b2e0d2b11.svg?invert_in_darkmode" align=middle width=228.68340659999998pt height=32.256008400000006pt/>
+
+The empirical risk minimization can lead to **overfitting**, which means that the predictor perfectly fits the training data but can't generalize to new data. We can introduce a penalty term for overly complicated models, choosing a regularization parameter <img src="svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.589140000000002pt height=22.831379999999992pt/> so that the problem now becomes <img src="svgs/6a921054d0d35a2752076b16a81ecb07.svg?invert_in_darkmode" align=middle width=189.64573814999997pt height=27.77565449999998pt/>.
+
+## Model as probability
+
+### Maximum Likelihood Estimation
+
+Now, we can consider a probability model and use the **Maximum Likelihood Estimation** procedure to define a function of the parameters to find a good model fitting the data. The Maximum Likelihood is in fact a function of the parameters of the probability function.  
+
+Now, given a sample <img src="svgs/bcb176fe640c86be80f26bb0541055f2.svg?invert_in_darkmode" align=middle width=70.81987439999999pt height=14.15524440000002pt/> and a probability function <img src="svgs/6e304c9ae39a9d71b07af315be32e733.svg?invert_in_darkmode" align=middle width=43.19073989999999pt height=24.65753399999998pt/>, the Likelihood is defined as <img src="svgs/c557decb70d8c865c94dd2b6110f2adc.svg?invert_in_darkmode" align=middle width=143.10889724999998pt height=32.256008400000006pt/>, and we'll consider the negative log likelihood. 
+
+For example, if we supposed that the conditional distribution of the labels given the examples is a Gaussian with zero mean <img src="svgs/e2d86821eaff142f54743ee593a467c5.svg?invert_in_darkmode" align=middle width=60.66783689999998pt height=26.76175259999998pt/>, we get <img src="svgs/aa9e06ff10a3f02e3ad018da741056f2.svg?invert_in_darkmode" align=middle width=189.89046449999998pt height=27.6567522pt/>, hence the negative log likelihood is <img src="svgs/4cefb295ead46516e4593a514d87d46c.svg?invert_in_darkmode" align=middle width=413.09870084999994pt height=32.256008400000006pt/>.
+
+### Maximum A Posteriori Estimation
+
+We can use the **Maximum A Posteriori** estimate when we have **prior knowledge** about the distribution of the parameters <img src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode" align=middle width=8.17352744999999pt height=22.831056599999986pt/> through a term <img src="svgs/0d3b1c8bc45ee48700a21f044adb8cba.svg?invert_in_darkmode" align=middle width=29.229527249999993pt height=24.65753399999998pt/>. We can therefore use the **Bayes' theorem** to infer about the a posteriori distribution: <img src="svgs/baf79b378bddcc692377fd99970145f9.svg?invert_in_darkmode" align=middle width=125.77103549999998pt height=33.20539859999999pt/>, which we want to maximize by minimizing its negative log likelihood.
