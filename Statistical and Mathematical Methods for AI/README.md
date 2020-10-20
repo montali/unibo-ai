@@ -1,5 +1,8 @@
 # Statistical and Mathematical methods for Artificial Intelligence
 
+- [Course web site for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599)
+- [Course material on Virtuale](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
+
 These notes were written in LaTeX and are meant to be that way.
 
 ## Useful resources
