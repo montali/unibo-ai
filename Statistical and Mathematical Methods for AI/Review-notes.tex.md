@@ -720,7 +720,7 @@ The **correlation** between two RVs $X$ and $Y$ is defined as $\operatorname{Cor
 
 **Inferential statistics** try to deduce underlying properties of a distribution just by looking at some samples. 
 
-Suppose we have identical distributed univariate RVs $X_1,\dots,X_n$, with realizations $x_1,\dots,x_n$. The **empirical mean** is defined as $\overline{x}=\frac{1}{N}\sum_{i=1}^N x_i$, while the **empirical covariance** is defined as $\Sigma=\frac{1}{N}\sum_{i=1}^N (x_i-\overline{x})^2$.
+Suppose we have identical distributed univariate RVs $X_1,\dots,X_n$, with realizations $x_1,\dots,x_n$. The **empirical mean** is defined as $\overline{x}=\frac{1}{N}\sum_{i=1}^N x_i$, while the **empirical variance** is defined as $\Sigma=\frac{1}{N}\sum_{i=1}^N (x_i-\overline{x})^2$.
 
 In the case of multivariate RVs $X_1,\dots,X_n$, the mean is a $D$ vector of mean and the covariance is a $D \times D$ matrix defined by $\Sigma=\frac{1}{N} \sum_{i=1}^N (x_i-\overline{x})(x_i-\overline{x})^T$.
 
