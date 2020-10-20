@@ -10,6 +10,6 @@ Teacher: Maurizio Gabbrielli
 
 ### Part 1: Introduction
 
-- [Summary](Languages\ and\ Algorithms\ for\ AI\1\ -\ Introduction.md)
+- [Summary](1%20-%20Introduction.md)
 - [Lesson 1 recording](https://web.microsoftstream.com/video/65b0bf2d-8bbd-4a3b-b405-43dea4a962df)
 
