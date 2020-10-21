@@ -217,3 +217,96 @@ Threshold steps allow to track the ROC curve: we sort the test elements by decre
 
 Decreasing the threshold increases the recall.
 
+# Transforming a binary classifier into multiclass
+
+Why this? We have seen that DT are able to classificate non-binary target and binary, but other classifiers cannot. How can we adapt a binary classifier to a non binary problem?
+
+They are One vs One, and One vs All.
+
+So, the idea is to use a set of binary classifiers and combine the results.
+
+## One vs One
+
+We have 3 or 4 classes, <img src="svgs/e2422452ef7d65e15f62276f42bcf94c.svg?invert_in_darkmode" align=middle width=53.33136764999998pt height=22.831056599999986pt/>, we generate a binary classifier for each pair of classes: <img src="svgs/d3c5844a77cb38963445bf7ccd567f82.svg?invert_in_darkmode" align=middle width=193.78449915pt height=24.65753399999998pt/> 
+
+Of course, each binary problem will be trained with the 2 classes. Then, at prediction time, we will use all the classifiers: for the right classifier, it will be right (there are 3 classifiers with the class), the others will have a random example. So, we count the maximum class, and that will be it. 
+
+## One vs Rest/One vs All
+
+We now consider <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/> binary problem, where class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> is a positive example, and all the others are negatives. We'll have <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/> classifiers, producing a *confidence score*, then choose the one with the maximum confidence. 
+
+So, OVO requires a higher number of problems, while OVA tends to be intrinsically unbalanced.
+
+## Ensemble methods
+
+We now consider methods related to this. We start training a set of **base classifiers** instead of a single one. Then, we obtain a final prediction taking the votes of the base classifiers. This works better than a single classifier. 
+
+Why is that? Let's consider 25 binary classifiers, each of them having an error rate <img src="svgs/568337fef6bd2e9f956188bc13ffc6a6.svg?invert_in_darkmode" align=middle width=58.79562149999999pt height=21.18721440000001pt/>.
+
+If we put them together, the error becomes: <img src="svgs/14bf11a81fa489ba0254ca4997ccdcbf.svg?invert_in_darkmode" align=middle width=332.27141969999997pt height=47.6716218pt/> 
+
+Of course, if we are using 25 times the same classifier, which is a deterministic machine, this reasoning doesn't work. But if they are different and independent, this makes it better!
+
+So, the ensemble will be wrong only if the majority is wrong, i.e. it will probably be statistically right!
+
+### Rationale for ensemble methods
+
+We can obtain good results only if the base classifiers are independent, and the performance of the base classifier is **better than a random choice**.
+
+So, how can we make them independent? We can, for example, train them on different datasets (i.e. partition the dataset). There are other methods too: **bagging** (repeatedly sampling with replacement according to a uniform probability distribution), **boosting** (iteratively change the distribution of training examples so that the base classifier focuses on examples which are hard to classify), **Adaboost** (the importance of each base classifier depends on its error rate).
+
+Another possibility, instead of working **horizontally**, is working **vertically**: we partition the columns!
+
+What should we consider? The correlation with the goal, the independency/correlation between columns...
+
+**Random Forest** is a variant of DT which works on these principles.
+
+There's another possibility, **manipulating class labels**, which we do when we have many class labels: this usually makes the classifier bad. So, we randomly partition the classes into two sets, and relabel the dataset. Then, we train binary classifiers as a *tree*, like a binary search. 
+
+![General scheme for ensemble methods](./res/ensemble.png)
+
+# Naive Bayes Classifier
+
+We can classify with methods different from a decision tree.
+
+We'll start with the **statistical modeling**, which is strictly related to the Bayes' theorem.
+
+We now consider the contribution of all the attributes of the dataset, assuming that each one of them if independent from others, given the class. So, the probability can be rewritten as a **joint probability**.
+
+We'll use the empirical frequency as probability.
+
+Considering a toy example, with temperature, outlook, humidity, wind, we have a terget **are we going to play or not?**
+
+So, the task is, given the features, are we going to play? We'll deal with this as a statistical problem, considering the features as **equally important** (they're independent evidence). We then obtain the likelihood of yes and no, then normalize to 1, getting <img src="svgs/8237fe839881ccf9479b09e460cc33ae.svg?invert_in_darkmode" align=middle width=122.34413894999997pt height=24.65753399999998pt/> and <img src="svgs/457415f8ba4f91e8148370c4eb28a624.svg?invert_in_darkmode" align=middle width=116.17024319999999pt height=24.65753399999998pt/>.
+
+So, in principle, things are not complicated. How can I train this classifier? I need to scan my dataset and compute those frequencies. 
+
+This works thanks to the Bayes' theorem <img src="svgs/cd477e562da2bc8c4dd60fe272a5434e.svg?invert_in_darkmode" align=middle width=184.29981239999998pt height=33.20539859999999pt/>, and the hypothesis is the class, say <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>, the evidence is the tuple of values to be classified. We can then split the evidence into pieces, one per attribute, and if the attributes are independent: <img src="svgs/ed00e7ca9989a05d3dfa5360419f5749.svg?invert_in_darkmode" align=middle width=359.78014049999996pt height=33.20539859999999pt/>.
+
+## The Naive Bayes method
+
+We can compute the probabilities for the classes, then choose the one having the maximum likelihood. It is **naive** cause the assumption of independence is quite simplicistic. 
+
+The problem is that we can overcast to a 0 probability of No, which kills our formula by setting everything to 0.
+
+Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> (typically <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>) let's say we have an absolute frequenci of <img src="svgs/9f7365802167fff585175c1750674d42.svg?invert_in_darkmode" align=middle width=12.61896569999999pt height=14.15524440000002pt/> in attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> over class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>, then <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> the number of distinct values, and the absolute frequency <img src="svgs/474a7c18247a3878e09311ac1a57cc03.svg?invert_in_darkmode" align=middle width=22.61179304999999pt height=22.831056599999986pt/> of class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> in the dataset. The smoothed frequency is: <img src="svgs/4bfac7769e0cb59235d6880b937c9b0b.svg?invert_in_darkmode" align=middle width=146.7369585pt height=34.95557999999999pt/>
+
+When <img src="svgs/1924b0e737a1c5c085f6e7f1b0fa4840.svg?invert_in_darkmode" align=middle width=40.713337499999994pt height=21.18721440000001pt/>, the formula is unsmoothed, but higher values of <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> give more importance to the prior probabilities for the values of <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/>. This means that this frequency will be smaller if we have a higher number of values. The <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> component is basically the prior probability. So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> allows us to mix the prior probability with the current value.
+
+So, the components of this classifier are **independence** and **smoothing**.
+
+If there's missing values, we may have another problem. In decision trees, we either remove the column or the row (or try to guess). 
+
+With the Naive Bayes Classifier, **they do not affect the model!** We simply don't include the record in the frequency count: it's not a big deal.
+
+So, here we have seen how we can count for categorical attributes. What happens if we have numerical attributes? We do an additional assumption: the values have a **Gaussian distribution**.
+
+Instead of fraction of counts, we can now compute the mean and the variance of teh values of each numeric attribute per class.
+
+For a given attribute and class, the distribution is supposed to be <img src="svgs/1567b5a4fdabae414e5ac827018eecaa.svg?invert_in_darkmode" align=middle width=148.95874289999998pt height=43.66282139999998pt/>
+
+The probability of a value assuming **exactly** a single real value is zero. A value of the density function is the probability that the variable lies in a small interval around that value. The value we use are of course rounded at some precision factor, i.e. the same for all classes. Null values don't break the algorithm. 
+
+So, what can we say about this classifier? First of all, the semantics is clear. In many cases, it works well (e.g. spam filters). It is obviously simplicistic. If there's no independence, we get a **dramatic degradation**. For example, if an attribute is the copy of another one, the result is squared.  
+
+Another possible violation of the assumption refers to the distribution: if it is not Gaussian, 
