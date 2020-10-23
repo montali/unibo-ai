@@ -160,13 +160,337 @@ So far we have seen how to map a 3D point expressed in the CRF: $k\tilde{m}=A[I|
 
 Now, the PPM can be expressed as $A[R|T]$, because $k\tilde{m}=A[RT]\tilde{w}$, or alternatively $\tilde{P}=\tilde{A}[I|0]G$.
 
-The PPM is based on the pinhole model. However, real lenses introduce distortions to the model, especially cheap ones. The most significant deviation is known as **radal distortion**, and second order effects are induced by tangential distortion. 
+The PPM is based on the pinhole model. However, real lenses introduce distortions to the model, especially cheap ones. The most significant deviation is known as **radial distortion**, and second order effects are induced by tangential distortion. 
 
 Lens distortion is modeled through a non-linear transformation which maps ideal (*undistorted*) image coordinates into the observed image coordinates. 
 
+## Calibration
+
+Calibration tries to estimate all the parameters defining the camera model, $A,R,T$, where $A$ is intrinsic, $R$ and $T$ are extrinsic.
+
+How do we actually estimate these? Basically, we can predict image points to the PPM as $\hat{m}= \hat{P}(A,R,T)\hat{M}$. $R$ and $T$ aren't obviously given, we have to estimate them.
+
+What could the idea be? We plug the coordinates in, multiply them by the perspecgtive projection matrix, and get pixel coordinates. 
+
+We'll need **calibration targets**: objects for which we **know the real world coordinates** (in a conveniently defined WRF), which have a set of **control points**. 
+
+There's plenty of types of calibration targets, but typically *chessboard patterns* are used:
+
+![Calibration target](./res/calibration_target.png)
+
+A **planar pattern** could be used too, which is obviously easier to do and super frequent.
+
+Creating a calibration algorithm isn't straightforward, but most toolboxes (*OpenCV* too) do include some: it is a crucial step.
+
+### How do they work?
+
+We're now gonna illustrate the general principles behind these algorithms.
+
+![Steps for calibration](./res/calibration_steps.png)
 
 
 
+First of all, we'll require $n$ images with $m$ internal corners (considering a chessboard pattern, for example). $m$ is arbitrary, depending on the calibration pattern. So, which are the control points? Since we printed the pattern, we know the exact size of the squares: as long as we know the origin, we know the world coordinates of the control points!
+
+Now, given the origin, the pattern is asymmetric: if you consider the internal squares, there's $6$ squares in a direction and $7$ in the other one. ![Coordinates](./res/coordinates.png)
+
+Having took these images, we have correspondence between the world coordinates and pixel coordinates; all the correspondences are *given* to the calibration engine.
+
+Note that **we'll get a number of extrinsic parameters equal to the number of images**! We then take one of these to choose the reference frame. 
+
+Note that lens distortion and intrinsic parameters are **device dependent**, so they stay the same for every image $n$.
+
+$k \tilde{\mathbf{m}}=\tilde{\mathbf{P}} \tilde{\mathbf{w}}=\left[\begin{array}{cccc}p_{1,1} & p_{1,2} & p_{1,3} & p_{1,4} \\p_{2,1} & p_{2,2} & p_{2,3} & p_{2,4} \\p_{3,1} & p_{3,2} & p_{3,3} & p_{3,4}\end{array}\right]\left[\begin{array}{c}x \\y \\0 \\1\end{array}\right]=\left[\begin{array}{ccc}p_{1,1} & p_{1,2} & p_{1,4} \\p_{2,1} & p_{2,2} & p_{2,4} \\p_{3,1} & p_{3,2} &p_{3,4}\end{array}\right]\left[\begin{array}{l}x \\y \\1\end{array}\right]=\mathbf{H} \tilde{\mathbf{w}}^{\prime}$
+
+Because of the choice of the calibration target (it is 2D), $z$ is zero for all the control points! 
+
+Now, we can setup as many equations as $m \times n$.
+
+Now, we consider all the $m$ equations related to a single image. Now, if $z$ is zero, when we multiply the first $p$ row by the column, $p_{1,3}$ is multiplied by zero and has no impact in finding the pixel coordinates. 
+
+Then, when we consider the second row, the same thing happens!
+
+The third one? Same thing. What we find is that we can just throw the third PPM column away.
+
+We could indeed rewrite the equation in which we have eliminated the third column and $z$, the third coordinate of the world coordinates.
+
+We therefore obtain $H\tilde{w}'$. The $'$ stands for *it is a $3\times 1$* vector instead of a $4\times1$ : these are planar coordinates!
+
+Based on this choice of considering a planar calibration target, we transform the PPM from a $3\times4$  into a $3\times3$.
+
+This $3\times3$ transformation, which maps points between two projective planes is known as **homography**: when the scene framed by the camera is planar, prospective projection becomes a simpler transformation called homography.
+
+Note that **any two images of a planar scene are related by homography**!
+
+The product of two homographies is an homography too.
+
+Then the problem is, how do we estimate this homographies?
+
+The key idea is using a set of such equations.
+
+There's plenty of methods to estimate homographies. We'll use DLT. Now, we can rewrite the homography $\mathbf{H}$ transposing the rows and getting column vectors $h_i^T$. Now, these are projective equalities. 
+
+The vectors $m$ and $\tilde{w}'$ are parallel, so the vector product is zero.
+
+We can use that:
+
+$k \tilde{\mathbf{m}}=\mathbf{H} \tilde{\mathbf{w}}^{\prime} \Rightarrow \mathbf{\tilde { m }} \times \mathbf{H} \tilde{\mathbf{w}}^{\prime}=\mathbf{0} \Rightarrow\left[\begin{array}{c}
+v \mathbf{h}_{3}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-\mathbf{h}_{2}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime} \\
+\mathbf{h}_{1}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-u \mathbf{h}_{3}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime} \\
+u \mathbf{h}_{2}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-v \mathbf{h}_{1}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}
+\end{array}\right]=\mathbf{0}, \mathbf{H}=\left[\begin{array}{c}
+\mathbf{h}_{1}^{\mathbf{T}} \\
+\mathbf{h}_{2}^{\mathbf{T}} \\
+\mathbf{h}_{3}^{\mathbf{T}}
+\end{array}\right]$ 
 
 
 
+We therefore get the matrix for the dot product$\left[\begin{array}{c}
+\mathbf{h}_{1}^{\mathbf{T}} \\
+\mathbf{h}_{2}^{\mathbf{T}} \\
+\mathbf{h}_{3}^{\mathbf{T}}
+\end{array}\right]\cdot \tilde{w}' \rightarrow \left[\begin{array}{c}
+\mathbf{h}_{1}^{\mathbf{T}}\cdot w \\
+\mathbf{h}_{2}^{\mathbf{T}}\cdot w \\
+\mathbf{h}_{3}^{\mathbf{T}}\cdot w
+\end{array}\right]$ 
+
+Using mathematical tricks, we get $\left[\begin{array}{c}
+i && j && k \\
+u && v && 1 \\
+\mathbf{h}_{1}^{\mathbf{T}}w && \mathbf{h}_{2}^{\mathbf{T}}w && \mathbf{h}_{3}^{\mathbf{T}}w
+\end{array}\right]$ and we calculate the determinant, getting $\left[\begin{array}{c}
+v \mathbf{h}_{3}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-\mathbf{h}_{2}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime} \\
+\mathbf{h}_{1}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-u \mathbf{h}_{3}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime} \\
+u \mathbf{h}_{2}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}-v \mathbf{h}_{1}^{\mathbf{T}} \tilde{\mathbf{w}}^{\prime}
+\end{array}\right]$ 
+
+Putting $\mathbf{\tilde { m }} \times \mathbf{H} \tilde{\mathbf{w}}^{\prime}=\mathbf{0} $ means that we're looking for the unknowns $\mathbf{H}$, and we can *highlight* the unknowns as following: $\left[\begin{array}{ccc}
+\mathbf{0}^{\mathbf{T}} & -\tilde{\mathbf{w}}^{\mathbf{T}} & \tilde{\mathbf{w}}^{\prime \mathbf{T}} \\
+\tilde{\mathbf{w}}^{\prime \mathbf{T}} & \mathbf{0}^{\mathbf{T}} & -u \tilde{\mathbf{w}}^{\prime \mathbf{T}} \\
+-\boldsymbol{v} \tilde{\mathbf{w}}^{\prime \mathbf{T}} & u \tilde{\mathbf{w}}^{\prime \mathbf{T}} & \mathbf{0}^{\mathbf{T}}
+\end{array}\right]\left[\begin{array}{l}
+\mathbf{h}_{1} \\
+\mathbf{h}_{2} \\
+\mathbf{h}_{3}
+\end{array}\right]=\mathbf{A} \mathbf{h}=\mathbf{0}$, where $h_1$ is the first row transposed as a column vector. So, this is a system of 3 equations and 9 unknowns. 
+
+There's another problem too: the equations are not linearly independent!
+
+Note that the real unknowns in the homography are 8 and not 9: it is a projective transformation, and every projective transformation is projected up to **scale**, which we can set to 1.
+
+So, we want to estimate 8 unknowns given $2m$ equations: this is a linear homogeneous system. Can we solve it precisely, having more equations than the unknowns? We can only solve this in a **least squares sense**, it's an *overdetermined system*! $A^*$ will sufficiently satisfy all of the equations.
+
+The problem is now formulated as finding $\mathbf{H}$ such that $h^*=\operatorname{argmin}(\|A\cdot h\|^2)$, which is the best approximation.
+
+The solution of this estimation problem can be obtained by computing the Singular Value Decomposition of $A=U\Sigma V^T$ with $A \in \mathbb{R}^{2m\times9}$, $U\in \mathbb{R}^{2m\times2m}$, $V \in \mathbb{R}^{9\times9}$. 
+
+It turns out that $h^*$ is **the last column of V**, $v_9$, being V composed of the left singular vectors $[v_1,\dots,v_9]$.
+
+Now, we're looking for the *best homography*, which makes the product equal to zero.
+
+The error obtained in the minimization is called **algebraic error**.
+
+We can refine the solution with the *Levenberg-Marquardt* algorithm for the non-linear minimization of the least squares problem $\min _{\mathbf{H}_{i}} \sum_{j}\left\|\tilde{\mathbf{m}}_{j}-\mathbf{H}_{i} \tilde{\mathbf{w}}_{j}^{\prime}\right\|^{2}, \quad j=1 \ldots . m$.
+
+### Estimation of the intrinsic parameters
+
+As $H_i$ is known up to a scale factor, we can establish a relation between $H_i$ and the PPM:
+
+$\mathbf{H}=\left[\begin{array}{lll}
+\mathbf{h}_{1} & \mathbf{h}_{2} & \mathbf{h}_{3}
+\end{array}\right]=\left[\begin{array}{lll}
+\mathbf{p}_{1} & \mathbf{p}_{2} & \mathbf{p}_{4}
+\end{array}\right]=\lambda \mathbf{A}\left[\begin{array}{lll}
+\mathbf{r}_{1} & \mathbf{r}_{2} & \mathbf{T}
+\end{array}\right]$ 
+
+notice that $r_1$ and $r_2$ are columns of the rotation matrix, therefore they are **orthonormal vectors**, so they are perpendicular! The scalar product is therefore $0$: $r_1^T r_2=0$.
+
+$\begin{array}{l}
+\mathbf{r}_{1}^{\mathrm{T}} \mathbf{r}_{2}=0 \quad \Rightarrow \quad \mathbf{h}_{1}^{\mathrm{T}} \mathbf{A}^{-\mathrm{T}} \mathbf{A}^{-1} \mathbf{h}_{2}=0 \\
+\mathbf{r}_{1}^{\mathrm{T}} \mathbf{r}_{1}=\mathbf{r}_{2}^{\mathrm{T}} \mathbf{r}_{2} \Rightarrow \mathbf{h}_{1}^{\mathrm{T}} \mathbf{A}^{-\mathrm{T}} \mathbf{A}^{-1} \mathbf{h}_{1}=\mathbf{h}_{2}^{\mathrm{T}} \mathbf{A}^{-\mathrm{T}} \mathbf{A}^{-1} \mathbf{h}_{2}
+\end{array}$
+
+The square norms are obviously $1$. Now we have two equations for each **image**! The unknowns in the equation are the entries of $B=A^{-T}A^{-1}$ , where $A$ is upper triangular and $B$ turns out to be symmetric: **the unknowns are just 6** (*$3\times3$ symmetric*)!
+
+As usual, rather than using 3 calibration images we prefer more images, thereby solving an overdetermined system.
+
+Again, taking $n$ calibration images will get a system of $2n$ equations in $6$ unknowns.
+
+What kind of system is that? In the end, we get $Vb=0$, with $2n$ equations and $6$ unknowns (you can skip the math in slide 34). We can solve that with **SVD**.
+
+Once $A$ ha been estimated, it is possible to compute $R_i$ and $T_i$ for each image $i$:
+
+$\begin{array}{l}
+\mathbf{H}_{i}=\left[\begin{array}{lll}
+\mathbf{h}_{1, i} & \mathbf{h}_{2, i} & \mathbf{h}_{3, i}
+\end{array}\right]=\lambda \mathbf{A}\left[\begin{array}{lll}
+\mathbf{r}_{1, i} & \mathbf{r}_{2, i} & \mathbf{T}_{i}
+\end{array}\right] \\
+\mathbf{h}_{k, i}=\lambda \mathbf{A} \mathbf{r}_{k, i} \Rightarrow \lambda \mathbf{r}_{k, i}=\mathbf{A}^{-1} \mathbf{h}_{k, i}, k=1,2
+\end{array}$
+
+As $r_{k,i}$ is a unit vector, $\mathbf{r}_{k, i}=\frac{1}{\lambda} \mathbf{A}^{-1} \mathbf{h}_{k, i}, \lambda=\left\|\mathbf{A}^{-1} \mathbf{h}_{k, i}\right\|, \quad k=1,2$. What we get is not exactly a rotation matrix $R$, but the closest orthogonal matrix. 
+
+Now, we can SVD decompose $R$, and because $R$ is not perfectly orthogonal, $R^*=UIV^T$, where we substituted $\Sigma$ with $I$ to get a truly orthogonal result.
+
+Now, we obtain $\mathbf{T}_{i}=\frac{1}{\lambda} \mathbf{A}^{-1} \mathbf{h}_{3, i}$.
+
+We still need to find the **lens distortion** though. 
+
+Now, given the homographies, we have both the real (distorted) coordinates of the corners as well as the ideal (undistorted) coordinates predicted by the homographies. Knowing $A$, we have the following model:
+
+$\left(\begin{array}{c}
+x^{\prime} \\
+y^{\prime}
+\end{array}\right)=L(r)\left(\begin{array}{c}
+\tilde{x} \\
+\tilde{y}
+\end{array}\right)=\left(1+k_{1} r^{2}+k_{2} r^{4}\right)\left(\begin{array}{c}
+\tilde{x} \\
+\tilde{y}
+\end{array}\right)$ and we first need to establish the relationship between distorted $(u',v')$ and ideal $(\tilde{u}, \tilde{v})$ (pixel) coordinates.
+
+Therefore, to proceed, we need to know both the distorted coordinates and the undistorted ones. 
+
+Now, the coordinates we have here **pixel coordinates**, but distortion happens **before pixelization!** So, we'd like to get the continuous coordinates. Is there a way to do so? $A$, the intrinsic matrix does the pixelization, so, since we have already estimated $A$, we can apply it to continuous distorted image coordinates, as well as we can apply $A$ to continuous ideal coordinates and get pixel ideal coordinates. 
+
+We can therefore rewrite the previous equation as function of pixel coordinates, not continuous anymore:
+
+$\left[\begin{array}{c}
+u^{\prime} \\
+v^{\prime} \\
+1
+\end{array}\right]=A\left[\begin{array}{l}
+x^{\prime} \\
+y^{\prime} \\
+1
+\end{array}\right]=\left(\begin{array}{ccc}
+\alpha_{u} & 0 & u_{0} \\
+0 & \alpha_{v} & v_{0} \\
+0 & 0 & 1
+\end{array}\right)\left[\begin{array}{l}
+x^{\prime} \\
+y^{\prime} \\
+1
+\end{array}\right] \rightarrow\left\{\begin{array}{l}
+x^{\prime}=\frac{u^{\prime}-u_{0}}{\alpha_{u}} \\
+y^{\prime}=\frac{v^{\prime}-v_{0}}{\alpha_{v}}
+\end{array} \quad\left[\begin{array}{l}
+\tilde{u} \\
+\tilde{v} \\
+1
+\end{array}\right]=A\left[\begin{array}{c}
+\tilde{x} \\
+\tilde{y} \\
+1
+\end{array}\right] \rightarrow\left\{\begin{array}{l}
+\tilde{x}=\frac{\tilde{u}-u_{0}}{\alpha_{u}} \\
+\tilde{y}=\frac{\tilde{v}-v_{0}}{\alpha_{v}}
+\end{array}\right.\right.$ 
+
+Now, these quantities are known, and we can resolve to get the lens distortion parameter:
+
+$\left[\begin{array}{c}
+x^{\prime} \\
+y^{\prime}
+\end{array}\right]=\left(1+k_{1} r^{2}+k_{2} r^{4}\right)\left[\begin{array}{c}
+\tilde{x} \\
+\tilde{y}
+\end{array}\right] \rightarrow\left\{\begin{array}{l}
+\frac{u^{\prime}-u_{0}}{\alpha_{u}}=\left(1+k_{1} r^{2}+k_{2} r^{4}\right)\left(\frac{\tilde{u}-u_{0}}{\alpha_{u}}\right) \\
+\frac{v^{\prime}-v_{0}}{\alpha_{v}}=\left(1+k_{1} r^{2}+k_{2} r^{4}\right)\left(\frac{\tilde{v}-v_{0}}{\alpha_{v}}\right)
+\end{array}\right.$
+
+So, this is a system of 2 equations in 2 unknowns, for every corner in every image, so we get $n\times n$ equations in 2 unknowns, providing us an overconstrained system, which is now no longer homogeneous. How do we solve that? In a least squares approach there's two methods, the first being this formula $\mathbf{D} \mathbf{k}=\mathbf{d} \rightarrow \mathbf{k}=\mathbf{D}^{+} \mathbf{d}=\left(\mathbf{D}^{\mathrm{T}} \mathbf{D}\right)^{-1} \mathbf{D}^{\mathrm{T}} \mathbf{d}$, the other one being finding the **pseudoinverse** (calculated through SVD). $k^*$ will therefore be the $k^*=argmin(\|Dk-d\|^2)$, which satisfies the equations as well as possible.
+
+We can then obtain the radius of distortion by:
+
+$\left[\begin{array}{ll}
+\left(\tilde{u}-u_{0}\right) r^{2} & \left(\tilde{u}-u_{0}\right) r^{4} \\
+\left(\tilde{v}-v_{0}\right) r^{2} & \left(\tilde{v}-v_{0}\right) r^{4}
+\end{array}\right]\left[\begin{array}{l}
+k_{1} \\
+k_{2}
+\end{array}\right]=\left[\begin{array}{l}
+u^{\prime}-\tilde{u} \\
+v^{\prime}-\tilde{v}
+\end{array}\right] \quad  r^{2}=\left(\frac{\tilde{u}-u_{0}}{\alpha_{u}}\right)^{2}+\left(\frac{\tilde{v}-v_{0}}{\alpha_{v}}\right)$ 
+
+As usal, rather than taking a single control point, we setup a system considering all of the equations we've got.
+
+The system is not homogeneous. 
+
+It now looks like we've got everything we need, but it is usual to add a final refinement to this initial guess, a non-linearity that reduces the geometric error, image reprjoection error.
+
+# Depth cameras
+
+Depth camera are cameras for which we obtain the $z$ axis too. What is usually done is outputting a **point cloud**, where for each point we get coordinates $x,y,z$.
+
+Now, our PPM will be something like $[R|T]\cdot \left[\begin{array}{c}
+x \\
+y \\z \\1\end{array}\right]$ where $R$ has become a $3\times3$ identity matrix, and $T$ is a null column vector, therefore we get $[I|\empty] \left[\begin{array}{c}
+x \\
+y \\z \\1\end{array}\right]$
+
+$\left[\begin{array}{c}
+\alpha_{u} x+u_{0} z \\
+\alpha_{v} y+v_{0} z \\
+z
+\end{array}\right]=\left[\begin{array}{ccc}
+\alpha_{u} & 0 & u_{0} \\
+0 & \alpha_{v} & v_{0} \\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y \\
+z
+\end{array}\right]$ , which is $p^* A p$. So, we divide by $z$ because we want a formula in which we can plug $p$:
+
+$\begin{aligned}
+&\mathrm{p}^{*}=\mathrm{A} \underline{\mathrm{P}}\\
+&\mathbf{P}=\mathbf{A}^{-1} \mathbf{p}^{*}\\\mathbf{P}=\mathbf{z} \mathbf{A}^{-1} \frac{\mathbf{p}^{*}}{\mathbf{z}}\end{aligned}$
+
+Indeed, any depth sensor deploys a point cloud $x,y,z$ in which coordinates are in the camera referene system of the given optical sensor. Indeed, there's a whole branch of CV which is concerned with processing point clouds.
+
+Thus, we get $P=zA^{-1}p$ with $A^{-1}=\left[\begin{array}{rrr}
+\frac{1}{\alpha_{u}} & 0 & -\frac{u_{0}}{\alpha_{u}} \\
+0 & \frac{1}{\alpha_{v}} & -\frac{v_{0}}{\alpha_{v}} \\
+0 & 0 & 1
+\end{array}\right]$. 
+
+Now, if we get a camera and move it to scan a static scene, knowing the rigid motion (rototranslation) between the two views, we get
+
+![Screenshot 2020-10-23 at 13.24.07](/Users/simone/UniBO/unibo-ai/Computer Vision/res/3d_crf.png)
+
+The transformation between the coordinates of the 3D point between the two systems is just a rototranslation!
+
+There's a technique named depth from mono, which gets 3D points from a single image
+
+Machine Learning is used in this sense. The question is, how can you train this? We've gotta show to the system images for which we know every pixel's depth.
+
+The idea is the following: assume that a camera is predicting the depth for pixel $p_1$. Assume tat we know the rototranslation. If the predicted depth is correct, where should we find the corresponding pixel in the second view? If  the prediction is correct, my model is good, if not, we'll change the parameters!
+
+We could obviously also have two different cameras!
+
+# Image warping
+
+In image warping, we have two images $I(u,v)$ and $I'(u',v')$, and we are given a warping function$\left\{\begin{array}{l}
+u^{\prime}=f_{u}(u, v) \\
+v^{\prime}=f_{v}(u, v)
+\end{array}\right. \rightarrow I^{\prime}\left(f_{u}(u, v), f_{v}(u, v)\right)=I(u, v)$. For example, a warping could be a rotation, where the warping function would be the rotation transformation. We could use a warping to remove perspective deformation too.
+
+We can proceed to a bilinear interpolation to compute the relationship between the input and the warp.
+
+You can observe that the interpolated intensity is given by a weighted sum of the input intensities.
+
+We can exploit warping thanks ot the lens distortion parameters, to get an undistorting warping function. For example, using Zhang's method:
+
+$\left\{\begin{array}{l}
+u^{\prime}=\tilde{u}+(k_{1} r^{2}+k_{2} r^{4})\left(\tilde{u}-u_{0}\right) \\
+{v}^{\prime}=\tilde{v}+(k_{1} r^{2}+k_{2} r^{4})\left(\tilde{v}-v_{0}\right)
+\end{array}\right.$ , which scan the output image, plug coordinates $\tilde{u},\tilde{v}$, and we find the undistorted coordinates.
+
+What we want to obtain is an undistorted image, so we have to scan the output ideal and undistorted function. 

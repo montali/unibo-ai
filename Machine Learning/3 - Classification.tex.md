@@ -294,7 +294,7 @@ The problem is that we can overcast to a 0 probability of No, which kills our fo
 
 Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter $\alpha$ (typically $1$) let's say we have an absolute frequenci of $v_i$ in attribute $d$ over class $c$, then $V$ the number of distinct values, and the absolute frequency $af_c$ of class $c$ in the dataset. The smoothed frequency is: $s f_{d=v_{i}, c}=\frac{a f_{d=v_{i}, c}+\alpha}{a f_{c}+\alpha V}$
 
-When $\alpha=0$, the formula is unsmoothed, but higher values of $\alpha$ give more importance to the prior probabilities for the values of $d$. This means that this frequency will be smaller if we have a higher number of values. The $V$ component is basically the prior probability. So, $\alpha$ allows us to mix the prior probability with the current value.
+When $\alpha=0$, the formula is unsmoothed, but higher values of $\alpha$ give more importance to the prior probabilities for the values of $d$. This means that this frequency will be smaller if we have a higher number of values. The $V$ component is basically the prior probability. So, $\alpha$ allows us to mix the prior probability with the current value. Smoothing is necessary when some frequencies are zero, and it reduces overfitting.
 
 So, the components of this classifier are **independence** and **smoothing**.
 
@@ -312,4 +312,76 @@ The probability of a value assuming **exactly** a single real value is zero. A v
 
 So, what can we say about this classifier? First of all, the semantics is clear. In many cases, it works well (e.g. spam filters). It is obviously simplicistic. If there's no independence, we get a **dramatic degradation**. For example, if an attribute is the copy of another one, the result is squared.  
 
-Another possible violation of the assumption refers to the distribution: if it is not Gaussian, 
+Another possible violation of the assumption refers to the distribution: if it is not Gaussian, we have problems.
+
+# Linear classification with Perceptrons
+
+This is also called **artificial neuron**: each input connection has a weight. In practice, it is a linear combination of weighted inputs.
+
+It learns a hyperplane such that all the positives lay on one side, the negatives on the other.
+
+The hyperplane is described as a set of weights $w_0,\dots,w_d$ in a linear equation on the data attributes $e_0,\dots,e_d$.
+
+There are either **none** or **infinite** such hyperplanes:
+
+$w_{0} * e_{0}+w_{1} * e_{1}+\ldots+w_{D} * e_{D} \quad\left\{\begin{array}{l}0 \Rightarrow \text { positive } \\
+<0 \Rightarrow \text { negative }
+\end{array}\right.$ 
+
+The following is a pseudocode algorithm:
+
+![Perceptron algorithm](./res/perceptron_algo.png)
+
+Each change ofweights moves the hyperplane towards the misclassified instance: $\left(w_{0}+e_{0}\right) * e_{0}+\left(w_{1}+e_{1}\right) * e_{1}+\ldots+\left(w_{D}+e_{D}\right) * e_{D}$, and the result is increased by a positive amount which is the squared value of the components: $e_0^2+\dots+e^2_D$, therefore the result will be less negative or even positive.
+
+The corrections are incremental and can interfere with previous updates, the algorithm converges if the dataset is linearly separable: this method is not so powerful 😔.
+
+# Support Vector Machines
+
+What can we do if data are not **linearly separable**?
+
+We could give up the linearity, like: $w_{1} * e_{1}^{3}+w_{2} * e_{1}^{2} * e_{2}+w_{3} * e_{1} * e_{2}^{2}+w_{4} * e_{3}^{3}$ .
+
+This method would become soon intractable for any reasonable number of variables, and **extremely prone** to overfitting (having thousands of coefficients...). 
+
+So, we must find different ways!
+
+We now consider using optimization instead of greedy search.
+
+So, let's consider a maximum margin hyperplane:
+
+![Maximum margin hyperplane](./res/maximum_margin.png)
+
+We could now track some separations on the plane, and may ask which is the best one.![MArgin calculation](./res/margin.png)
+
+We need the definition of **margin**: drawing parallel lines, we find the nearest example from the linear separation.
+
+Finding the support vectors and the maximum margin hyperplane belongs to the well known class of constrained quadratic optimization problems:
+
+$\begin{array}{l}
+\max _{w_{0}, W_{1}, \ldots, w_{D}} M \\
+\text { subject to } \sum_{j=1}^{D} w_{j}^{2}=1 \\
+c_{i}\left(w_{0}+w_{1} x_{i 1}+\ldots+w_{D} x_{i D}\right)>M, \forall i=1, \ldots, N
+\end{array}$
+
+where the class of exampole $i$ is either $-1$ or $1$ and $M$ is the margin.
+
+So, this is the first contribution: among the infinite hyperplanes, we want to find the one with the maximum margin. If a separating hyperplane does not exist, we want to find one which almost separates the classes, and disregard examples generating a very narrow margin. 
+
+The soft margin ensures a greater robustness to individual observation, and a better classification of most of the training observation. It is obtained by adding a constraint (penalty term, the sum of all the points on the wrong side) to the optimization problem expressed by a parameter $C$.
+
+So, we have seen how to deal with non-linear separability, but there's another possibility: we can have datasets which are non linearly-separable because of something more than a few exceptions, like:
+
+![Screenshot 2020-10-23 at 17.32.30](/Users/simone/UniBO/unibo-ai/Machine Learning/res/nonlineards.png)
+
+ 
+
+There is no linear hyperplane that separates these. We can then perform a linear transformation, to a higher dimension space with the third dimension being $X^2+Y^2$. It happens that if we project in the 3D space those points, now we have linear separability. We call the original space **input space**, and the new one **feature space**. 
+
+This idea is called a **kernel trick**: for mathematical reasons, it happens that this computation, seemingly difficult, is feasible with an affordable computational complexity. Separating the hyperplane requires a series of **dot products**. If we define the mapping on the basis of a particular family of functions, called **kernel functions**, the mapping doesn't need to be explicitly computed, and the computation is done in the input space. 
+
+What has to remembered for the exam is that there's different kernel functions available.
+
+The time complexity is mainly influenced by the efficiency of the optimization library (like *libSVM*), which scales from $\mathcal{O}(D*N^2)$ and $\mathcal{O}(D*N^3)$; in case of sparse data, it is reduced. 
+
+So, learning is generally slower than simpler methods, tuning is necessary (and not so easy), but the results can be very accurate. It is explicitly based on a strong mathematical model, it is not affected by local minima (optimizers can be very effective) and it does not suffer from the curse of dimensionality, since it doesn't use any notion of distance. 
