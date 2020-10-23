@@ -13,6 +13,13 @@
 ## Useful resources
 
 - [This series of videos](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) is incredibly useful and clarifies lots of concepts. Highly recommended.
+- [Numpy manual](https://numpy.org/doc/stable/)
+- [`numpy` reference](https://numpy.org/doc/stable/reference/index.html)
+- [`numpy.random` reference](https://numpy.org/doc/stable/reference/random/)
+- [MatPlotLib docs](https://matplotlib.org/contents.html)
+- [`matplotlib` reverence](https://matplotlib.org/api/index.html)
+- [Scipy docs](https://docs.scipy.org/doc/scipy/reference/)
+- [`scipy.linalg` reference](https://docs.scipy.org/doc/scipy/reference/linalg.html)
 
 ## Acknowledgements
 
