@@ -15,7 +15,7 @@ Tablut, no written trace of the original rules, we'll use the **Ashton** ones. G
 
 - [Official intro PDF](https://virtuale.unibo.it/pluginfile.php/612250/mod_resource/content/1/ChallengeAITablut2020-2021.pdf)
 - [More official info](http://ai.unibo.it/games/tablut).
-- Official server: https://github.com/AGalassi/TablutCompetition
+- [Official server](https://github.com/AGalassi/TablutCompetition)
 - [Android app with Tablut](https://play.google.com/store/apps/details?id=com.fellhuhn.hnefatafl) ("Linnaeus' Tablut" looks like our our rule except the starting color)
 
 ### What to make
@@ -48,10 +48,10 @@ We'll have 3 lab sessions:
 
 ## First lab
 
+Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?id=411632)
+
 - Python3
-
-- Clone the AIMA repository
-
+- Clone [the AIMA repository](https://github.com/aimacode/aima-python)
 - Venv suggested
 - Install **numpy**
 - Copy in project *search.py* and *utils.py*
