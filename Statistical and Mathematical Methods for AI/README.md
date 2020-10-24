@@ -5,10 +5,11 @@
 
 ## What you'll find here
 - Some LaTeX notes I wrote in the beginning, which were abandoned fast;
-- [A summary](https://github.com/montali/unibo-ai/blob/master/Statistical%20and%20Mathematical%20Methods%20for%20AI/Review-notes.md) containing pretty much everything you may need for the exam;
-- An [Anki](https://apps.ankiweb.net) package to review before the exam.
-- A [useful PDF](https://github.com/montali/unibo-ai/blob/master/Statistical%20and%20Mathematical%20Methods%20for%20AI/Useful%20PDF%20I%20wrote%20in%20my%20bachelors.pdf) (italian) I wrote during my bachelor's
-- Some [notes](https://github.com/montali/unibo-ai/blob/master/Statistical%20and%20Mathematical%20Methods%20for%20AI/exam-info.md) about the exam
+- [A summary](Review-notes.md) containing pretty much everything you may need for the exam;
+- An [Anki](https://apps.ankiweb.net) [package](Statistics%20and%20Mathematical%20Methods%20for%20AI.apkg) to review before the exam.
+- Some [notes](exam-info.md) about the exam
+- A [useful PDF](other_resources/Useful%20PDF%20I%20wrote%20in%20my%20bachelors.pdf) (italian) @montali wrote during its bachelor's
+- A [LaTeX document](other_resources/analisi2.tex) (italian) @Danysan1 wrote during its bachelor's
 
 ## Useful resources
 
