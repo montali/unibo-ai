@@ -44,5 +44,5 @@ Lesson recordings:
 ## Module 4
 
 
-## Competitions
+## Labs and competitions
 [Summary](Competitions.md)
