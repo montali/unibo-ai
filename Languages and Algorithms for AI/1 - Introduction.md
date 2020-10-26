@@ -107,3 +107,20 @@ There are several reasons:
 
 - **Historical reason**: Computer Science *derives from logic!* CS existed before actual computers existed. These studies on theoretical aspects of CS were crucial to the birth of computers.
 
+## TODO Second lesson
+1. Metalanguage
+2. Paradoxes in languages (natural, mathematical, ...) caused by overlap of language with metalanguage
+3. Total functions
+4. Facts
+5. Facts
+    1. Functions computed by programs are not only total
+    2. Termination is not decidable
+    3. any programming language cannot express all mathematical functions
+6. Meaning of AI
+7. History of AI 
+
+## Symbolic computation
+Also called *Expert systems* and *Decision Support Systems*. Examples are systems that ask doctor the syntoms/conditions of a patient and suggest a therapy basing on pre-existing specialistic medical knowledge.
+
+These can be implemented in standard languages such as python but it's better to use formalisms strongly based on logic.
+

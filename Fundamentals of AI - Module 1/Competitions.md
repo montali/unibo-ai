@@ -17,6 +17,7 @@ Tablut, no written trace of the original rules, we'll use the **Ashton** ones. G
 - [More official info](http://ai.unibo.it/games/tablut).
 - [Official server](https://github.com/AGalassi/TablutCompetition)
 - [Android app with Tablut](https://play.google.com/store/apps/details?id=com.fellhuhn.hnefatafl) ("Linnaeus' Tablut" looks like our our rule except the starting color)
+- Some previous implementations: [1](https://github.com/pptr3/TablutAI), [2](https://github.com/EleMisi/TablutAI), [3](https://github.com/AlessandroPomponio/B2P-Penicilin-Tablut-AI), [4](https://github.com/virtualms/Tablut2020_FrittoMisto)
 
 ### What to make
 
