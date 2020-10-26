@@ -107,20 +107,63 @@ There are several reasons:
 
 - **Historical reason**: Computer Science *derives from logic!* CS existed before actual computers existed. These studies on theoretical aspects of CS were crucial to the birth of computers.
 
-## TODO Second lesson
+## 2020-10-23 Lesson - **TODO**
+[MS Stream link](https://web.microsoftstream.com/video/b3cfb9f9-1697-4ed8-b507-0c3add4961ba?list=user&userId=f9f103f3-1732-4b8e-8ba9-fff748a59273)
 1. Metalanguage
 2. Paradoxes in languages (natural, mathematical, ...) caused by overlap of language with metalanguage
 3. Total functions
 4. Facts
-5. Facts
     1. Functions computed by programs are not only total
     2. Termination is not decidable
     3. any programming language cannot express all mathematical functions
-6. Meaning of AI
-7. History of AI 
+5. Meaning of AI
+6. History of AI 
 
-## Symbolic computation
-Also called *Expert systems* and *Decision Support Systems*. Examples are systems that ask doctor the syntoms/conditions of a patient and suggest a therapy basing on pre-existing specialistic medical knowledge.
+## 2020-10-26 Lesson
+### Symbolic computation
+Also called **Expert systems** and **Decision Support Systems**. Examples are systems that ask doctor the syntoms/conditions of a patient and suggest a therapy basing on **pre-existing specialistic knowledge** in the medical field.
 
-These can be implemented in standard languages such as python but it's better to use formalisms strongly based on logic.
+These can be implemented in standard languages such as python but it's better to **use formalisms strongly based on logic**. This is because we can represent all the facts and rules used by humans and let the system obtain a solution by creating a "*deduction tree*".
+
+Of course these systems solve problems in a limited domain but they can perform better than human experts. The system **does not create new knowledge**. The knowledge is explicitly contained in the given rules. It is possible to make modification to the system logic.
+
+### Sub-symbolic computation
+System treated in other courses (**Machine Learning and Deep Learning**). Examples are neural networks which are trained on images of normal and pathological cells and can suggest the state of the cell in a new image.
+
+The **knowledge is obtaind from the data**, but **it's impossible to extract any general rule** (which we can use outside the system). If any small modification is needed it is necessary to rebuild the system.
+
+### The notion of truth
+
+Any statement is true only in a certain domain (for example, the sum of inner angles of a triangle is 180° only in euclidean geometry, not in spherical geometry).
+
+Since we are not able to define a global domain for a truth, working with logic we will not focus on the notion of thruth but rather the notion of **logical consequence** (which is derived from the notion of truth).
+
+Given a set of sentences $\Gamma = F_1,\dots,F_n$ (*promises*) and a sentence $F$ (*conclusion*), $F$ is a logical consequence of  $\Gamma$ ($\bold{\Gamma |= F}$) if it always true that if all the formulas in $\Gamma$ are true then also $F$ is true.
+
+$F$ logically equivalent to $G \iff F|=G$ and $G|=F$.
+
+### Propostitional logic
+
+In any logic or programming language we distinguish 
+
+1. **Syntax**: rules that define **how sentences must be constructed**
+    - Defines the symbols used too represent propositions, variables, ...
+    - Well formed sentences are called *formulas* 
+2. **Semantics**: rules which define the **meaning of well formed sentences**
+    - Two realms (hopefully they coincide):
+        - Model theory: what is true
+        - Proof theory: what is provable
+
+A **proposition** is a statement about some world which in that world can be true, false or neither (but not both). The truth or falsity in our interpretation is called **truth value**.
+
+Propositions are joined with connectives (and, or, not...). We will use only useful connectives (for example, *but* is used to convey surprise, we use instead *and* which is neutral).
+
+We define an **alphabet** of propositional logic, consisting of:
+- A countable number of ***proposition symbols*** (also called ***atoms***):  $p_0, p_1, \dots$
+- ***Connectives***:  $\land, \lor, \neg, \rightarrow, \leftrightarrow, \dots$
+- ***Auxiliary symbols***:  ,
+
+The **syntax of propositional logic** can be defined with a recursive definition, an inductive definition or through Backus-Naur Form (BNF):
+
+![Propositional Logic syntax (Backus-Naur Form)](img/pls_bnf.png)
 
