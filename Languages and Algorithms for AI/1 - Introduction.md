@@ -159,11 +159,17 @@ A **proposition** is a statement about some world which in that world can be tru
 Propositions are joined with connectives (and, or, not...). We will use only useful connectives (for example, *but* is used to convey surprise, we use instead *and* which is neutral).
 
 We define an **alphabet** of propositional logic, consisting of:
-- A countable number of ***proposition symbols*** (also called ***atoms***):  $p_0, p_1, \dots$
-- ***Connectives***:  $\land, \lor, \neg, \rightarrow, \leftrightarrow, \dots$
-- ***Auxiliary symbols***:  ,
+- A countable number of **proposition symbols** (also called **atoms**):  $p_0, p_1, \dots$
+- **Connectives**:  $\land, \lor, \neg, \rightarrow, \leftrightarrow, \dots$
+- **Auxiliary symbols**:  ,
 
 The **syntax of propositional logic** can be defined with a recursive definition, an inductive definition or through Backus-Naur Form (BNF):
 
 ![Propositional Logic syntax (Backus-Naur Form)](img/pls_bnf.png)
+
+Once defined the syntax of a language, it's necessary to define the semantics: the first step is the definition of the **interpretation** of the formulas. Given a set of atoms $\{A_1, \dots, A_n\}$ which appear in a formula $G$, an intepretation $I$ of $G$ is an assigment of truth values to each atom $A_1, \dots, A_n$. 
+
+In propositional logic we use the Truth tables of the logical connectives.
+
+![Propositional logic truth tables](img/pls_tt.png)
 
