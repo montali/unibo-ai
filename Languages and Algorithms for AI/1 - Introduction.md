@@ -106,4 +106,55 @@ First of all, we should distinguish between types of logic:
 There are several reasons:
 
 - **Historical reason**: Computer Science *derives from logic!* CS existed before actual computers existed. These studies on theoretical aspects of CS were crucial to the birth of computers.
+- Logic provides a foundation for computation and declarative languages
+- Logic is a paradox free language: in many circumstances we have what we call pradoxes (i.e. something that has apparently right reasoning, giving apparently right premises, apparently or totally wrong conclusions). The thing is, natural language allows paradoxes! In order to deal with this kind of problems, logic is a great tool.
+  - An example of false paradox: $\begin{array}{l}
+    x=1=>x^{2}=x \quad=>x^{2}-1=x-1=>(x-1)(x+1)=x-1=> \\
+    \Rightarrow x+1=1=>\quad x=0
+    \end{array}$ 
+  - I am a liar $\rightarrow$ I am a liar if and only if what I'm saying is not true $\rightarrow$ I'm not a liar?
+  - Why do paradoxes happen? Metalinguistic (i.e. relating to a metalanguage, i.e. a language used to talk about language, something about the language) use of natural language, and self-application of a meta linguistic concept 
+  - How can we solve this problem? This is partially because of the natural language, but using mathematical language does not solve the problem: let $X=\{Y | Y \notin Y\}$ (set of all the $Y$ such that $Y$ does not belong to $Y$), then I have two cases, either $X$ belongs to $X$ or not. Therefore,d $X\in X$ iff $X \notin X$  (*Russel Paradox*)
+  - There's paradoxes in CS too! Let's define a function $f(g)= not(g(g))$, then $(f(f))=not (f(f))$, this means that functions are not only *total*, i.e. they can be undefined on some given input! An undefined function doesn't let the program terminate.
+  - So, why don't we design a programming language where, by design, all the non-terminating possibilities are eliminated? We technically could do so, but we would be missing things like *whiles* and *GOTOs*. This language would be less powerful than a Turing machine, which has power (in the sense of the set of computable functions) equal to the one of Python, C, Java... All of these languages are therefore equivalent, since they have the same set of functions. Now, if we take this *always-terminating language*, but the power of this language is strictly smaller than the power of a Turing Machine: you cannot compute functions that you can compute in C. Nonetheless, there are functions that terminate that still couldn't be executed in this language, like the *hackerman function* ([related](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DKEkrWRHCDQU&psig=AOvVaw0gWEJOAkBzBPHtkaxY2P9Z&ust=1603526792437000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCND70fmgyuwCFQAAAAAdAAAAABAD)).
+  - Therefore, **if we want to have the full expressive power** of a Turing machine, we **must have non-terminating programs**.
+  - Termination is **not decidable** (for programming languages having the expressive power of a Turing machine)
+  - Any programming language cannot express **every mathematical function**: the set of programs expressable in any programming language is countable, while the set of Boolean function is not countable. We cannot have any tool allowing to prove the correctness of a program.
+  - Now, the idea is trying to formalize a language, separate from meta-languages, which allows us to avoid paradoxes. This is not so easy. 
+  - Let's consider the Curry paradox: *if this sentence is true, then Santa Claus exists.* 
 
+### Short history of AI
+
+Why should we study logic in AI?
+
+- It's a tool to express human reasoinng
+- It's the foundation to a classic approach to AI
+- It's the foundation of declarative languages, used in AI
+- It's directly applicated in some programming languages used in AI
+
+So, **what is AI?** Turing said that the only way a machine could behave intelligently is sounding like a human. Therefore, the **imitation game** was born, an operational test for intelligent behavior:   machine fooling a person for 5 minutes. Note that the Turing test is not reproducible, constructive or amenable to mathematical analysis.
+
+So, we have 4 possible definitions:
+
+- Systems that think like humans
+- Systems that act like humans
+- Systems that think rationally
+- Systems that act rationally.
+
+Turing considers AI systems those which **act humanly**.
+
+### Two main AI categories
+
+1. **Symbolic computation**
+
+   Here, the **reasoning is based on logic**.
+
+   The general picture of an expert system is composed of two parts: the knowledge (on domain and control) and the inferential engine (the part of the system performing the deduction). The system itself does not create knowledge, just inference. The results are already in the data and in the knowledge. The system consists in units of computation, performing manipulation of symbols.
+
+2. **Subsymbolic (connectionistic) computation **(deep learning, basically)
+
+   Here, the following example provides inference on cancer: by analyzing lymph nodes, it provides insights on how possible it is that the patient has cancer. Here, a neural network is trained in order to recognize the patological situations. The machine has access to a very large set of labeled images. The first iteration has random parameters, therefore random predictions. Then, we take the provided answers, we compare them with the true ones and measure the error. Using some mathematical magic, and then tune the weights in order to reduce the error. Now, we can't derive rules from the model. There certainly are patterns in the data, but we can't know what these are. The machine identifies these patterns, extracts them and *create knowledge*: the machine is able to do something we can't do. The previous type had **rules** and you can check the reasoning made by the system, here you can't. The computation is the result of the computation of strongly connected small units. Once the network has been trained for a specific task, if you want to do something which is slightly different, you have to re-train the thing.
+
+   ![Subsymbolic computation](/Users/simone/UniBO/unibo-ai/Languages and Algorithms for AI/res/subsymbolic.png)
+
+These are both very important, the future of AI will probably consist on the integration of these two things.
