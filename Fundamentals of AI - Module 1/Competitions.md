@@ -1,4 +1,5 @@
-# Allegra De Filippo
+# Competitions 
+A lot of these notes are taken from Allegra De Filippo's talk during lesson.
 
 Non-mandatory challenges (?) **2** bonus points given. We can participate in teams.
 
@@ -10,11 +11,21 @@ Acceptable solutions: any solution **using AI** (exploration of the state space,
 
 Tablut, no written trace of the original rules, we'll use the **Ashton** ones. Game board of 9x9, two players alternating (attacker/defender). Checkers move orthogonally. They are captured if surrounded on 2 opposite sides. 
 
+### Useful links
+
+- [Official intro PDF](https://virtuale.unibo.it/pluginfile.php/612250/mod_resource/content/1/ChallengeAITablut2020-2021.pdf)
+- [More official info](http://ai.unibo.it/games/tablut).
+- [Official server](https://github.com/AGalassi/TablutCompetition)
+- [Android app with Tablut](https://play.google.com/store/apps/details?id=com.fellhuhn.hnefatafl) ("Linnaeus' Tablut" looks like our our rule except the starting color)
+- Some previous implementations: [1](https://github.com/pptr3/TablutAI), [2](https://github.com/EleMisi/TablutAI), [3](https://github.com/AlessandroPomponio/B2P-Penicilin-Tablut-AI), [4](https://github.com/virtualms/Tablut2020_FrittoMisto)
+
 ### What to make
 
 Gotta create a software agent able to play a game, by communicating with the engine. Communication messages are JSON strings, a possible state representation is provided (but may not be used). 
 
-## NAO plan
+## NAO planning
+
+Check out [the PDF](https://virtuale.unibo.it/pluginfile.php/612248/mod_resource/content/1/NAOPlanningChallenge2020-2021.pdf).
 
 **NAO** is a humanoid robot with lots of good sh*t inside. 
 
@@ -28,18 +39,20 @@ We must use at least 5 of the intermediate positions, which are in 2 types: simp
 
 # Lab sessions
 
+Check out [the PDF](https://virtuale.unibo.it/pluginfile.php/612251/mod_resource/content/1/Lab-VirtualMachineInstallation%2BRequirements.pdf).
+
 We'll have 3 lab sessions:
 
 - Search strategies (AIMA)
-- Swarm intelligence
-- ...[missed that]
+- Swarm Intelligence (Netlogo)
+- Graph Based Planning
 
 ## First lab
 
+Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?id=411632)
+
 - Python3
-
-- Clone the AIMA repository
-
+- Clone [the AIMA repository](https://github.com/aimacode/aima-python)
 - Venv suggested
 - Install **numpy**
 - Copy in project *search.py* and *utils.py*
