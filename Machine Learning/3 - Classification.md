@@ -291,7 +291,7 @@ The problem is that we can overcast to a 0 probability of No, which kills our fo
 
 Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> (typically <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>) let's say we have an absolute frequenci of <img src="svgs/9f7365802167fff585175c1750674d42.svg?invert_in_darkmode" align=middle width=12.61896569999999pt height=14.15524440000002pt/> in attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> over class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>, then <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> the number of distinct values, and the absolute frequency <img src="svgs/474a7c18247a3878e09311ac1a57cc03.svg?invert_in_darkmode" align=middle width=22.61179304999999pt height=22.831056599999986pt/> of class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> in the dataset. The smoothed frequency is: <img src="svgs/4bfac7769e0cb59235d6880b937c9b0b.svg?invert_in_darkmode" align=middle width=146.7369585pt height=34.95557999999999pt/>
 
-When <img src="svgs/1924b0e737a1c5c085f6e7f1b0fa4840.svg?invert_in_darkmode" align=middle width=40.713337499999994pt height=21.18721440000001pt/>, the formula is unsmoothed, but higher values of <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> give more importance to the prior probabilities for the values of <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/>. This means that this frequency will be smaller if we have a higher number of values. The <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> component is basically the prior probability. So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> allows us to mix the prior probability with the current value.
+When <img src="svgs/1924b0e737a1c5c085f6e7f1b0fa4840.svg?invert_in_darkmode" align=middle width=40.713337499999994pt height=21.18721440000001pt/>, the formula is unsmoothed, but higher values of <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> give more importance to the prior probabilities for the values of <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/>. This means that this frequency will be smaller if we have a higher number of values. The <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> component is basically the prior probability. So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> allows us to mix the prior probability with the current value. Smoothing is necessary when some frequencies are zero, and it reduces overfitting.
 
 So, the components of this classifier are **independence** and **smoothing**.
 
@@ -309,4 +309,132 @@ The probability of a value assuming **exactly** a single real value is zero. A v
 
 So, what can we say about this classifier? First of all, the semantics is clear. In many cases, it works well (e.g. spam filters). It is obviously simplicistic. If there's no independence, we get a **dramatic degradation**. For example, if an attribute is the copy of another one, the result is squared.  
 
-Another possible violation of the assumption refers to the distribution: if it is not Gaussian, 
+Another possible violation of the assumption refers to the distribution: if it is not Gaussian, we have problems.
+
+# Linear classification with Perceptrons
+
+This is also called **artificial neuron**: each input connection has a weight. In practice, it is a linear combination of weighted inputs.
+
+It learns a hyperplane such that all the positives lay on one side, the negatives on the other.
+
+The hyperplane is described as a set of weights <img src="svgs/39e4045199843ef756075817a5188988.svg?invert_in_darkmode" align=middle width=74.28397019999998pt height=14.15524440000002pt/> in a linear equation on the data attributes <img src="svgs/7fb477ffcc4ed26719221f90b9ae1789.svg?invert_in_darkmode" align=middle width=66.0552288pt height=14.15524440000002pt/>.
+
+There are either **none** or **infinite** such hyperplanes:
+
+<img src="svgs/e9d6c3f954bf258e847065880c1d42ab.svg?invert_in_darkmode" align=middle width=393.34797315000003pt height=47.6716218pt/> 
+
+The following is a pseudocode algorithm:
+
+![Perceptron algorithm](./res/perceptron_algo.png)
+
+Each change ofweights moves the hyperplane towards the misclassified instance: <img src="svgs/7e898f5524ebea623864829490b5455f.svg?invert_in_darkmode" align=middle width=385.083468pt height=24.65753399999998pt/>, and the result is increased by a positive amount which is the squared value of the components: <img src="svgs/ff95105af1a49e7a5b6d519ff5b89ee6.svg?invert_in_darkmode" align=middle width=93.14522249999999pt height=26.76175259999998pt/>, therefore the result will be less negative or even positive.
+
+The corrections are incremental and can interfere with previous updates, the algorithm converges if the dataset is linearly separable: this method is not so powerful 😔.
+
+# Support Vector Machines
+
+What can we do if data are not **linearly separable**?
+
+We could give up the linearity, like: <img src="svgs/16ae882da71b87b4235738505ecdc768.svg?invert_in_darkmode" align=middle width=319.34492205pt height=26.76175259999998pt/> .
+
+This method would become soon intractable for any reasonable number of variables, and **extremely prone** to overfitting (having thousands of coefficients...). 
+
+So, we must find different ways!
+
+We now consider using optimization instead of greedy search.
+
+So, let's consider a maximum margin hyperplane:
+
+![Maximum margin hyperplane](./res/maximum_margin.png)
+
+We could now track some separations on the plane, and may ask which is the best one.![MArgin calculation](./res/margin.png)
+
+We need the definition of **margin**: drawing parallel lines, we find the nearest example from the linear separation.
+
+Finding the support vectors and the maximum margin hyperplane belongs to the well known class of constrained quadratic optimization problems:
+
+<img src="svgs/53733bd5bde01f18cd01dfa19a9ed781.svg?invert_in_darkmode" align=middle width=359.44368239999994pt height=65.81767500000002pt/>
+
+where the class of exampole <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> is either <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> or <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> and <img src="svgs/fb97d38bcc19230b0acd442e17db879c.svg?invert_in_darkmode" align=middle width=17.73973739999999pt height=22.465723500000017pt/> is the margin.
+
+So, this is the first contribution: among the infinite hyperplanes, we want to find the one with the maximum margin. If a separating hyperplane does not exist, we want to find one which almost separates the classes, and disregard examples generating a very narrow margin. 
+
+The soft margin ensures a greater robustness to individual observation, and a better classification of most of the training observation. It is obtained by adding a constraint (penalty term, the sum of all the points on the wrong side) to the optimization problem expressed by a parameter <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/>.
+
+So, we have seen how to deal with non-linear separability, but there's another possibility: we can have datasets which are non linearly-separable because of something more than a few exceptions, like:
+
+![Screenshot 2020-10-23 at 17.32.30](/Users/simone/UniBO/unibo-ai/Machine Learning/res/nonlineards.png)
+
+ 
+
+There is no linear hyperplane that separates these. We can then perform a linear transformation, to a higher dimension space with the third dimension being <img src="svgs/1749ec7316ee7ac73b892273f7338fc3.svg?invert_in_darkmode" align=middle width=62.12324414999999pt height=26.76175259999998pt/>. It happens that if we project in the 3D space those points, now we have linear separability. We call the original space **input space**, and the new one **feature space**. 
+
+This idea is called a **kernel trick**: for mathematical reasons, it happens that this computation, seemingly difficult, is feasible with an affordable computational complexity. Separating the hyperplane requires a series of **dot products**. If we define the mapping on the basis of a particular family of functions, called **kernel functions**, the mapping doesn't need to be explicitly computed, and the computation is done in the input space. 
+
+What has to remembered for the exam is that there's different kernel functions available.
+
+The time complexity is mainly influenced by the efficiency of the optimization library (like *libSVM*), which scales from <img src="svgs/04512f6f2faaab87f50584ec70eeff54.svg?invert_in_darkmode" align=middle width=78.29449979999998pt height=26.76175259999998pt/> and <img src="svgs/fb213e6764b771627b3d91ce7ca026f2.svg?invert_in_darkmode" align=middle width=78.29449979999998pt height=26.76175259999998pt/>; in case of sparse data, it is reduced. 
+
+So, learning is generally slower than simpler methods, tuning is necessary (and not so easy), but the results can be very accurate. It is explicitly based on a strong mathematical model, it is not affected by local minima (optimizers can be very effective) and it does not suffer from the curse of dimensionality, since it doesn't use any notion of distance. 
+
+# Neural networks
+
+These were inspired by the brain of animals, trying to reproduce neutrons, generating intelligence.
+
+The idea is that if we put together several neurons, we can generate a decision boundary which is much more complicated.
+
+Brains are actually much more complicated than this, but who gives a sh*t?
+
+So, a **neuron** is a signal processor with a threshold: it receives inputs and it gives outputs. The inputs are not simply transmitted from a neuron to the other, but they are **weighted**. The weights are the *engine of the reasoning*, and they're adapted with learning.
+
+We have processors and weights, and we must learn the weights, through examples. It's actually better to limit the connections.
+
+This **multi-layer perceptron** has signals which are transmitted, and they're modeled as **real numbers**. The processing element is inspired to the biological system, when an input is higher than a threshold, something happens. We could linearly increase those, but there are better solutions, like using a **sigmoid** or an **arctan** or a **ReLU**.
+
+These are called **squashing functions**, which map reals into <img src="svgs/f27d1a8ebacee1389ff26e63ae976661.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=24.65753399999998pt/>. 
+
+Why are we using non-linearities? In linearities, noise is completely transmitted <img src="svgs/a9759fd3091d9449634c24dce3f24102.svg?invert_in_darkmode" align=middle width=196.98634395pt height=24.65753399999998pt/>, in particular if <img src="svgs/95d239357c7dfa2e8d1fd21ff6ed5c7b.svg?invert_in_darkmode" align=middle width=15.94753544999999pt height=14.15524440000002pt/> is generated by noise. In a non-linear system, in general, <img src="svgs/1acf81be9ab9909c48076ade663632b8.svg?invert_in_darkmode" align=middle width=196.98634395pt height=24.65753399999998pt/>, and the impact of the noise is reduced.
+
+The idea is that inputs feed an **input layer**, which feeds a **hidden layer**, which feeds an **output layer**. The signal flows through the input, then the layers, then the output. For binary classification, we have one single output node, while for multi-class classification the simplest way is having one node per class (*one-hot encoding)*.
+
+![Multi-layer NN](./res/multi-layer_net.png)
+
+This is a **feed-forward multi-layer neural network**. Why is it *feed-forward*? Signal flows left-to-right in this schema. We're missing a feedback. 
+
+We can add a unitary input <img src="svgs/824a0be2acf2b955fb812cf516864cf4.svg?invert_in_darkmode" align=middle width=14.206684799999989pt height=14.15524440000002pt/> to deal with the bias, as in the case of a linear perceptron. Therefore the dimensions are just 2. The number of nodes in the hidden layers is arbitrary, but a higher number is able to discover more complicated patterns. Note that <img src="svgs/a0377869f11bf54f0a0e8ac338ecea79.svg?invert_in_darkmode" align=middle width=25.782015599999987pt height=24.65753399999998pt/> is the non-linear transfer function, e.g. the sigmoid. 
+
+When you increase the number of layers, you move towards **deep learning**, which needs more complex techniques. 
+
+In the beginning, the network knows nothing, so we **randomly initialize** the weights. Then, we apply an example to the input nodes and obtain an output. Then, we compare the output with the desired one. Generally, they'll be different. 
+
+So, while the termination conditions are not met, we feed the network with an example, compute the weight corrections (through *gradient descent*) for <img src="svgs/9c9d07018c7de5bbfdd05ec608b0f982.svg?invert_in_darkmode" align=middle width=87.14519879999999pt height=24.65753399999998pt/>, then backpropagate them. The weights will then encode the knowledge given by the supervised examples, but the encoding is not easily understandable. Note that **convergence is not guaranteed**: the decision function is not guaranteed to be convex.
+
+So, what happens if there's a feature having values much higher than the other ones? This could be pretty bad. It is therefore useful to change the range of the attributes and standardize them, to have zero mean and unit variance.
+
+We could stop when we reach a situation where new rounds do not improve our accuracy, or maybe a threshold on accuracy. Note that we may be overfitting. 
+
+Therefore, we must decide **when to stop**: generally, we stop on timeouts, 100% accuracies, or performance not getting better.
+
+Letting <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/> and <img src="svgs/deceeaf6940a8c7a5a02373728002b0f.svg?invert_in_darkmode" align=middle width=8.649225749999989pt height=14.15524440000002pt/> be the input vector and the desired output, <img src="svgs/31fae8b8b78ebe01cbfbe2fe53832624.svg?invert_in_darkmode" align=middle width=12.210846449999991pt height=14.15524440000002pt/> the weight vector of a node, the error is <img src="svgs/696c0622e34463bdf5e84f60e8948077.svg?invert_in_darkmode" align=middle width=231.63763424999996pt height=27.77565449999998pt/>.
+
+![Error functions](/Users/simone/UniBO/unibo-ai/Machine Learning/res/error_fns.png)
+
+
+
+The error function could be **convex or not**. 
+
+### Gradient computation
+
+To move towards a minimum of the error, we follow the gradient, composed of the partial derivatives of the error as a function of the weights. 
+
+The weight is changed subtracting the partial derivative multiplied by a **learning rate**, which influences the convergence speed and can be adjusted as a tradeoff between speed and precision. The subtraction moves **towards smaller errors**. Generally, the learning rate is adaptively adjusted. 
+
+Obviously, the derivatives of the input weights of the nodes of a layer can be computed only if the derivatives for the following layers are known.
+
+We can then revise the algorithm:
+
+![Revised training algorithm](/Users/simone/UniBO/unibo-ai/Machine Learning/res/revised_nn.png)
+
+We cite two learning modes: **stochastic learning**, where each forward propagation is immediately followed by a weight update, which introduces some noise (transferred after each update) but reduces the chance of getting stuck in local minimums, and **batch learning**, where many propagation occur before updating the weights, accumulating errors over the samples within a batch, generally yielding faster and stable descent towards local minimums, since the update is performed in the direction of the average error.
+
+We should regularize to reduce overfitting, basically correcting the loss function in order to smooth the fitting to the data, and the amount of regularization must be tuned.
