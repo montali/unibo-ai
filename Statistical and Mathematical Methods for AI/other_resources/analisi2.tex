@@ -1,0 +1,304 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+
+\newcommand{\ux}{\vec{x}}
+\newcommand{\uf}{\vec{f}}
+\newcommand{\uh}{\vec{h}}
+\newcommand{\ul}{\vec{\lambda}}
+\newcommand{\cfi}[1]{f_{x_{#1}}(\ux)}
+\newcommand{\pfi}[1]{\frac{\partial f}{\partial x_{#1}}(\ux)}
+\newcommand{\dfi}[1]{D_{x_{#1}}f(\ux)}
+\newcommand{\scfi}[2]{f_{x_{#1}x_{#2}}(\ux)}
+\newcommand{\spfi}[2]{\frac{\partial^2 f}{\partial x_{#1} \partial x_{#2}}(\ux)}
+\newcommand{\sdfi}[2]{D_{x_{#1}x_{#2}}f(\ux)}
+\newcommand{\serie}{\sum\limits_{n=1}^{\infty}}
+\newcommand{\linf}{\lim\limits_{n \to \infty}}
+\newcommand{\conv}{\textnormal{ convergente }}
+\newcommand{\dive}{\textnormal{ divergente }}
+
+% \in\mathcal{R}^2
+\newcommand{\xy}{(x,y):}
+\newcommand{\rp}{(\rho,\varphi):}
+
+% \in\mathcal{R}^3
+\newcommand{\xyz}{(x,y,z):}
+\newcommand{\rpz}{(\rho,\varphi,z):}
+\newcommand{\rpt}{(\rho,\varphi,\theta):}
+
+
+\begin{document}
+
+\section{Calcolo differenziale in più dimensioni}
+\subsection{Derivate parziali}
+
+Derivata parziale \(\pfi{i}=\cfi{i}=\dfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\ux)}{h}}\) \newline
+Gradiente \(\nabla f(\ux)=\left(\pfi{1},...,\pfi{n}\right)\) \newline
+Derivata direzionale \(\frac{\partial f}{\partial \hat{v}}(\ux)=D_vf(\ux)=\lim\limits_{h\to0}\frac{f(\ux+h\hat{v})-f(\ux)}{h}=<\nabla f(\ux),\hat{v}>\) \newline
+Jacobiana \(J_{\uf}(\ux)=\left(\frac{\partial f_{j}}{\partial x_{i}}\right)_{i=1,...,m; \ j=1,...n}=\begin{pmatrix}
+\nabla f_{i}(\ux) \\
+\vdots\\
+\nabla f_{m}(\ux)
+\end{pmatrix} = \begin{pmatrix}
+D_{x_{1}}f_1(\ux) & \cdots & D_{x_{n}}f_1(\ux) \\
+\vdots & \ddots & \vdots \\
+D_{x_{1}}f_m(\ux) & \cdots & D_{x_{n}}f_m(\ux)
+\end{pmatrix}
+\)
+\[J_{f^{-1}}(y)=J_f^{-1}(f^{-1}(y)) \qquad\qquad\qquad 
+J_{f\circ g}(x)=J_f(g(x))J_g(x)\]
+\[g:\mathcal{R}\to \mathcal{R}^n; f:\mathcal{R}^n\to\mathcal{R}; D_x (f\circ g)(x)=D_x f(g(x))=<\nabla f(g(x)),D_x g(x)>=\sum_{i=1}^{n}{\frac{\partial f}{\partial g_i}(g_i(x))\frac{dg_i}{dx}(x)}\]
+
+\subsection{Derivate parziali seconde}
+Derivata parziale seconda \(\spfi{i}{j}=\scfi{i}{j}=\sdfi{i}{j}=\frac{\partial}{\partial x_{j}}\pfi{i}\) \newline
+Lemma di Schwarz: \(\scfi{i}{j} \textnormal{ e } \scfi{j}{i} \textnormal{ continue } \Rightarrow \scfi{i}{j}=\scfi{j}{i}\) \newline
+Hessiana \(H_{f}(\ux)=\left(\spfi{i}{j}\right)_{i,j=1,...,n} = \begin{pmatrix}
+\scfi{1}{1} & \cdots & \scfi{n}{1} \\
+\vdots & \ddots & \vdots \\
+\scfi{1}{m} & \cdots & \scfi{n}{m}
+\end{pmatrix}\)
+
+\section{Polinomio di Taylor in più dimensioni}
+
+Piano tangente a \(f(\ux)\) in \(\ux_0\): \(y=f(\ux_0)+<\nabla f(\ux_0),\ux-\ux_0>\) \newline
+Taylor al primo ordine: \(f(\ux_0+\uh)=f(\ux_0)+<\nabla f(\ux_0),\uh>+o(||\uh||) \textnormal{ per } ||\uh||\to 0\)\newline
+Taylor al secondo ordine: \(f(\ux_0+\uh)=f(\ux_0)+<\nabla f(\ux_0),\uh>+\frac{1}{2}<\uh\nabla f(\ux_0),\uh>+o(||\uh||^2) \textnormal{ per } ||\uh||\to 0\)\newline
+
+\section{Varietà}
+Varietà n-k dimensionale: \(\Gamma=\{\ux\in\mathcal{R}^n : g_1(\ux)=0,\dots,g_k(\ux)=0\}\) \newline
+Spazio normale \(N_{\ux}\Gamma=\{\uh\in\mathcal{R}^n : \exists \lambda_1,\dots,\lambda_k : \uh=\sum_{i=1}^{k}\lambda_i\nabla g_i(\ux)\}=span(\{\nabla g_i(\ux)\}_{i=1,\dots,k})\) \newline
+Spazio tangente \(T_{\ux}\Gamma=\{\uh\in\mathcal{R}^n : <\nabla g_1(\ux),\uh>=0,\dots,<\nabla g_k(\ux),\uh>=0\}\) \newline
+Caso n=3, k=2: \(T_x\Gamma=span(\nabla g_1(\ux)\wedge\nabla g_2(\ux))\)
+
+\section{Estremanti}
+\subsection{Richiamo a matrici definite positive o negative}
+Forma quadratica \(F_A:\mathcal{R}^n\to\mathcal{R}:\ F_A(\lambda)=<\lambda,A\lambda>=\lambda^T A \lambda \)
+\[
+A \textnormal{ definita positiva} \Leftrightarrow F_A(\lambda)>0 \ \forall \lambda\in\mathcal{R}^n \Leftrightarrow \textnormal{Tutti gli autovalori sono positivi}
+\]
+\[
+A \textnormal{ semidefinita positiva} \Leftrightarrow F_A(\lambda)\ge0 \ \forall \lambda\in\mathcal{R}^n \Leftrightarrow \textnormal{Tutti gli autovalori sono positivi o nulli}
+\]
+\[
+A \textnormal{ definita negativa} \Leftrightarrow F_A(\lambda)<0 \ \forall \lambda\in\mathcal{R}^n \Leftrightarrow \textnormal{Tutti gli autovalori sono negativi}
+\]
+\[
+A \textnormal{ semidefinita negativa} \Leftrightarrow F_A(\lambda)\le0 \ \forall \lambda\in\mathcal{R}^n \Leftrightarrow \textnormal{Tutti gli autovalori sono negativi o nulli}
+\]
+%\subsubsection{Criterio di Sylvester}
+A matrice reale simmetrica n x n \(\Rightarrow \left\{\begin{array}{l}
+A \textnormal{ definita positiva} \Leftrightarrow \det A_k>0 \ \forall k=1,...,n \\
+A \textnormal{ definita negativa} \Leftrightarrow (-1)^k \det A_k>0 \ \forall k=1,...,n \\
+\end{array}\right. \)
+
+\subsection{Estremanti relativi}
+Teorema di Fermat: \(A\in\mathcal{R}^n\) aperto; \(f:A\rightarrow\mathcal{R}; \ \ux_0 \in A\) estremante relativo per \(f \Rightarrow \nabla f(\ux_0)=0\) \newline
+\[\nabla f(\ux_0)=0, \left\{\begin{array}{l}
+H_f(\ux_0) \textnormal{ definita positiva } \Rightarrow \ux_0 \textnormal{ minimo relativo}\\
+H_f(\ux_0) \textnormal{ semidefinita positiva } \Rightarrow \ux_0 \textnormal{ minimo relativo o punto di sella}\\
+H_f(\ux_0) \textnormal{ indefinita } \Rightarrow \ux_0 \textnormal{ punto di sella}\\
+H_f(\ux_0) \textnormal{ semidefinita negativa } \Rightarrow \ux_0 \textnormal{ massimo relativo o punto di sella}\\
+H_f(\ux_0) \textnormal{ definita negativa } \Rightarrow \ux_0 \textnormal{ massimo relativo}
+\end{array}\right.\]
+
+\subsection{Estremanti vincolati (ottimizzazione)}
+\(A\in\mathcal{R}^n; \ f:A\to\mathcal{R}; \ \Gamma \in A\) varietà n-k dim.; \(\ul\in\mathcal{R}^k\); Lagrangiana \(F(\ux,\ul)=f(\ux)-\sum_{i=1}^{k}{\lambda_i g_i(\ux)}\)\newline
+\(\ux_0\in A\) estremante relativo per \(f\) su \(\Gamma \Rightarrow F(\ux_0,\ul_0)=0\)
+
+\section{Cambio di coordinate}
+\[T:\mathcal{R}_{\vec{u}}^n\to\mathcal{R}_{\ux}^n \qquad \ \int_{T(A)} f(\ux) \ d\ux=\int_A f(T(\vec{u})) \ |\det J_T(\vec{u})| \ d\vec{u}\]
+
+\subsection{Coordinate polari}
+\[\left(\begin{array}{c}
+\rho \\ \varphi
+\end{array}\right)=\left(\begin{array}{c}
+\sqrt{x^2+y^2} \\ \arg\{y,x\}
+\end{array}\right) \qquad
+\left(\begin{array}{c}
+x \\ y
+\end{array}\right)=\left(\begin{array}{c}
+\rho\cos(\varphi) \\ \rho\sin(\varphi)
+\end{array}\right) \qquad
+\det J_T(\rho,\varphi)=\rho
+\]
+
+\subsubsection{Cerchio}
+\[
+\{\xy x^2+y^2 \le r^2 \}=\{\rp 0 \le\rho\le r; \ 0 \le\varphi\le 2\pi \}
+\]
+
+\subsubsection{Semicerchio}
+\[
+\{\xy x^2+y^2 \le r^2; \ x \ge 0 \}=\{\xy 0 \le x \le \sqrt{r^2-y^2} \}=\{\rp 0 \le\rho\le r; \ 0 \le\varphi\le \pi \}
+\]
+\[
+\{\xy x^2+y^2 \le r^2; \ y \ge x \}=\left\{\rp 0 \le\rho\le r; \ \frac{\pi}{4} \le\varphi\le \frac{5}{4}\pi \right\}
+\]
+
+\subsubsection{Corona circolare}
+\[
+\{\xy a^2 \le x^2+y^2 \le b^2 \}=\{\rp a \le\rho\le b; \ 0 \le\varphi\le 2\pi \}
+\]
+
+\subsubsection{Ellisse}
+\[
+\left\{\xy \frac{x^2}{a^2}+\frac{y^2}{b^2}\le 1 \right\}=\{\rp 0 \le\rho\le 1; \ 0 \le\varphi\le 2\pi \} \qquad
+\left\{\begin{array}{l}
+x=a\rho\cos(\varphi) \\
+y=b\rho\sin(\varphi)
+\end{array}\right. \qquad
+\det J_T(\rho,\varphi)=a b \rho
+\]
+
+\subsection{Coordinate cilindriche}
+\[\left(\begin{array}{c}
+\rho \\ \varphi \\ z
+\end{array}\right)=\left(\begin{array}{c}
+\sqrt{x^2+y^2} \\ \arg\{y,x\} \\ z
+\end{array}\right) \qquad
+\left(\begin{array}{c}
+x \\ y \\ z
+\end{array}\right)=\left(\begin{array}{c}
+\rho\cos(\varphi) \\ \rho\sin(\varphi) \\ z
+\end{array}\right) \qquad
+\det J_T(\rho,\varphi,z)=\rho
+\]
+
+\subsubsection{Cilindro a sezioni circolari}
+\[
+\{\xyz x^2+y^2 \le r^2; \ a \le z \le b \}=\{\rpz 0 \le\rho\le r; \ 0 \le\varphi\le 2\pi ; \ a \le z \le b \}
+\]
+
+\subsection{Coordinate sferiche}
+\[
+\left(\begin{array}{c}
+\rho \\ \varphi \\ \theta
+\end{array}\right)=\left(\begin{array}{c}
+\sqrt{x^2+y^2+z^2} \\ \arg\{y,x\} \\ \arg\{\sqrt{x^2+y^2},z\}
+\end{array}\right) \qquad
+\left(\begin{array}{c}
+x \\ y \\ z
+\end{array}\right)=\left(\begin{array}{c}
+\rho\sin(\theta)\cos(\varphi) \\ \rho\sin(\theta)\sin(\varphi) \\ \rho\cos(\theta)
+\end{array}\right) \qquad
+\det J_T(\rho,\varphi,\theta)=\rho^2 \sin(\theta)
+\]
+
+\subsubsection{Sfera}
+\[
+\{\xyz x^2+y^2+z^2 \le r^2\}=\{\rpt 0 \le\rho\le r; \ 0 \le\varphi\le 2\pi; \ 0 \le\theta\le \pi \}
+\]
+
+\subsubsection{Semisfera}
+\[
+\{\xyz 0 \le z \le \sqrt{r^2-x^2-y^2}\}=\left\{\rpt 0 \le\rho\le r; \ 0 \le\varphi\le 2\pi; \ 0 \le\theta\le \frac{\pi}{2} \right\}
+\]
+
+\subsubsection{Elissoide}
+\[
+\left\{\xyz \frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2} \le 1 \right\}=\{\rpt 0 \le\rho\le 1; \ 0 \le\varphi\le 2\pi; \ 0 \le\theta\le \pi \}
+\]
+\[
+\left(\begin{array}{c}
+x \\ y \\ z
+\end{array}\right)=\left(\begin{array}{c}
+a\rho\sin(\theta)\cos(\varphi) \\ b\rho\sin(\theta)\sin(\varphi) \\ c\rho\cos(\theta)
+\end{array}\right) \qquad
+\det J_T(\rho,\varphi,\theta)=a b c \rho^2 \sin(\theta)
+\]
+
+\section{Funzioni iperboliche}
+\[
+\cosh^2(x)-\sinh^2(x)=1 \qquad
+\sinh(x)=\frac{e^x-e^{-x}}{2} \qquad
+\cosh(x)=\frac{e^x+e^{-x}}{2} \qquad
+\tanh(x)=\frac{\sinh(x)}{\cosh(x)}
+\]
+\[
+\sinh(a+b)=\sinh(a)\cosh(b)+\cosh(a)\cosh(b) \qquad
+\cosh(a+b)=\cosh(a)\cosh(b)+\sinh(a)\sinh(b)
+\]
+\[
+\int \cosh(x) dx=\sinh(x)+c \qquad
+\int \sinh(x) dx=\cosh(x)+c \qquad
+\int \tanh(h) dx=\tan(\cosh(x))+c
+\]
+
+\section{Serie}
+
+Serie telescopica \(\serie a_{n+1}-a_n=\linf a_{n+1}-a_1\)\newline
+\(\serie x_n\) convergente \(\Rightarrow \lim\limits_{n\to\infty} x_n=0\)\newline
+Serie geometrica \(\serie x^n=\left\{\begin{array}{lr}
+\textnormal{Oscillante} & x\leq -1 \\
+\frac{1}{1-x} & |x|<1\\
+\textnormal{Divergente positivamente} & x\geq 1
+\end{array}\right.\)\newline
+Serie armonica generalizzata \(\serie \frac{1}{n^p}\) converge solo se \(p>1\)\newline
+\(\serie |x_n|\) convergente \(\Leftrightarrow  \serie x_n\) assolutamente convergente \(\Rightarrow \serie x_n\) convergente\newline
+
+\subsection{Criteri di convergenza}
+Criterio del confronto: \(0\le a_n \le b_n \ \forall n, \left\{\begin{array}{l}
+\serie b_n \conv \Rightarrow \serie a_n \conv, \ \serie a_n \le \serie b_n \\
+\serie a_n \textnormal{ diverge positivamente } \Rightarrow \serie b_n \textnormal{ diverge positivamente }
+\end{array}\right.\)\newline
+Criterio del rapporto: \(a_n\ge0 \ \forall n, \left\{\begin{array}{l}
+\linf\frac{a_{n+1}}{a_n}<1 \Rightarrow \serie a_n \conv \\
+\linf\frac{a_{n+1}}{a_n}>1 \Rightarrow \serie a_n \dive
+\end{array}\right. \) \newline
+Criterio della radice: \(a_n\ge 0 \ \forall n,\left\{\begin{array}{l}
+\linf \sqrt[n]{a_n}<1 \Rightarrow \serie a_n \conv \\
+\linf \sqrt[n]{a_n}>1 \Rightarrow \serie a_n \dive
+\end{array}\right.\) \newline
+Criterio integrale: \(f:[1,+\infty[\to \mathcal{R} \searrow 0, \left\{\begin{array}{l}
+\int\limits_{1}^{+\infty}{f(x)dx}<+\infty \Leftrightarrow \serie f(n) \conv \\
+\int\limits_{1}^{+\infty}{f(x)dx}=+\infty \Leftrightarrow \serie f(n) \dive
+\end{array}\right. \) \newline
+Criterio di Leibniz: \(\{a_n\}_{n\in\mathcal{N}}\searrow 0 \Rightarrow \serie (-1)^{n-1}a_n\) \conv \newline
+Criterio di Drichelet: \(\left\{\begin{array}{l}
+\serie z_n \textnormal{ a somme parziali limitate } \\
+\{b_n\}_{n\in\mathcal{N}} \textnormal{ decrescente e infinitesima } (b_n \searrow 0)
+\end{array}\right. \Rightarrow \serie b_n z_n \conv\) \newline
+Criterio di Abel: \(\left\{\begin{array}{l}
+\serie z_n \conv \\
+\{b_n\}_{n\in\mathcal{N}} \textnormal{ monotona e limitata}
+\end{array}\right. \Rightarrow \serie b_n z_n \conv\)
+
+\subsection{Serie di potenze}
+
+\[\serie a_n x_0^n \conv \Rightarrow \serie a_n x^n \textnormal{ assolutamente convergetne per } |x|<|x_0| \]
+Raggio di convergenza \(R=\sup\left\{|x| : \serie a_n x^n \textnormal{ converge assolutamente }\right\}\)\newline
+\[R=\linf\left|\frac{a_n}{a_{n+1}}\right| \textnormal{ se esiste} \qquad\qquad
+\lambda=\linf \sqrt[n]{|a_n|} \textnormal{ se esiste}; \ R=\left\{\begin{array}{l r}
+\frac{1}{\lambda} & \lambda>0 \\
++\infty & \lambda=0
+\end{array}\right.\]
+
+\subsection{Serie di Taylor}
+\[
+\exists M>0 : |f^{(n)}(x)| \le M^n \ \forall x\in ]x_0-\delta,x_0+\delta[ \ \Rightarrow \ f(x_0)=\serie f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}, \ x\in]x_0-\delta,x_0+\delta[
+\]
+
+\subsection{Serie di Fourier}
+\[
+f(x)=\frac{a_{0}}{2}+\serie{a_{n}\cos\left(\frac{2\pi}{T}nx\right)}+\serie{b_{n}\sin\left(\frac{2\pi}{T}nx\right)}
+\]
+\[
+a_{0}=
+%2c_{0}=
+\frac{2}{T}\int_0^T{f(x)dx} \qquad
+a_{n}=
+%\Re\{c_{n}\}=
+\frac{2}{T}\int_0^T{f(x)\cos\left(\frac{2\pi}{T}nx\right)dx} \qquad
+b_{n}=
+%-\Im\{c_{n}\}=
+\frac{2}{T}\int_0^T{f(x)\sin\left(\frac{2\pi}{T}nx\right)dx}
+\]
+\[
+f(x) \textnormal{ pari } \Rightarrow \ b_{n}=0, \ \ a_{n}=\frac{4}{T}\int_{0}^{\frac{T}{2}}{f(x)\cos\left(\frac{2\pi}{T}nx\right)dx}
+\]
+\[
+f(x) \textnormal{ dispari } \Rightarrow \ a_{n}=0, \ \ b_{n}=\frac{4}{T}\int_{0}^{\frac{T}{2}}{f(x)\sin\left(\frac{2\pi}{T}nx\right)dx}
+\]
+
+\end{document}
