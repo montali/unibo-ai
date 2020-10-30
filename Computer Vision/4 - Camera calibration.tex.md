@@ -494,3 +494,4 @@ u^{\prime}=\tilde{u}+(k_{1} r^{2}+k_{2} r^{4})\left(\tilde{u}-u_{0}\right) \\
 \end{array}\right.$ , which scan the output image, plug coordinates $\tilde{u},\tilde{v}$, and we find the undistorted coordinates.
 
 What we want to obtain is an undistorted image, so we have to scan the output ideal and undistorted function. 
+
