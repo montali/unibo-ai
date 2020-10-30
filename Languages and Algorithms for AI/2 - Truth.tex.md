@@ -51,3 +51,68 @@ Note that the implication $A\rightarrow B$ was not included in the first syntax,
 
 Let's define **interpretations**: given a propositional formula, i.e. a set of atoms $A_1,\dots,A_n$, an interpretation $I$ is an assignment of truth values to $A_1,\dots,A_n$. For example, if we take the formula $G$ in the language defined by $(P\_Q)$ ^$\neg (P$^$Q)$. *ha cambiato slide scusate mi sono perso un pezzo dioccc*.
 
+
+
+## Evaluation of a formula
+
+Once we have the meaning of the symbols, we can use truth tables to evaluate the truth value of a formula:
+
+![Truth table](./res/truth_table.png)
+
+## Model
+
+The notion of **model** is important. We can say that an interpretation $INT$ is a model of the formula $F$ written $INT|=F$ if $F$ is true when the truth value of propositional symbols is defined according to $INT$.
+
+Note that it is the same symbol we're using for logical consequence.
+
+A **valid formula** is true, no matter the interpretation. A valid formula is also called a **Tautology**.
+
+For example: $F\text{ or not }F$.
+
+If $F$ is valid, we can write $|=F$.
+
+For example, we prove the *deMorgan's Law*:
+
+![de Morgan's Law](./res/deMorgans_law.png)
+
+An **unsatisfiable** formula is always false, under any interpretation.
+
+A formula which is not inconsistent is consistent/satisfiable.
+
+Note that **invalid** $\neq$ **inconsistent**.
+
+From the definitions we can prove that a formula is valid iff its negation is inconsistent (if you take a valid F it is true for every possible interpreation, so the negation is always false).
+
+We say that a formula is **consistent** if there's at least one interpretation in which it is true. An inconsistent formula is always invalid, but an invalid formula isn't always inconsistent.
+
+### Decidability
+
+What we are interested in, given a formula, is checking wheter it is valid.
+
+Suppose we have a set of axioms $A$ which describe some *world*. Then, we have a formula $F$. We want to know whether $A|=F$ i.e. $F$ is a logical consequence of $A$: it is true under all the possible interpretations which make the set of axioms $A$ true.
+
+For example $F$ is a formula describing a fault in an electric circuit involving the variables $x_1,\dots,x_n$. *Is F satisfiable?* means: is there an $I$ such that $I|=F$?
+
+So, to define whether a formula is valid, we can enumerate all possible interpretations (exponential, not so good), then evaluate the formula for each interpretation. The number of interpretations is finite: $2^n$.
+
+Decidability is a very strong and desirable property.
+
+A problem is **NP hard** when the best algorithm has **exponential complexity**.
+
+With **logical equivalence** we mean that two formulas $F$ and $G$ are said so iff the truth values of $F$ and $G$ are the same every under interpretation of them. We can list some useful equivalence rules:
+
+![Equivalence rules](./res/equivalence.png)
+
+## Standard forms
+
+We have two standard ways of writing formulas: the **Conjunctive Normal Form** and the **Disjunctive Normal Form**. A **literal** is an atom or the negation of an atom. A formula is said to be in **Negation Normal Form** iff negations only appear in front of atoms.
+
+A clause is formed as $L_1 \text{V} L_2 \text{V} L_3$. Sometimes we write formulas in CNF as a set of clauses. 
+
+The DNF is a disjunction of conjunctions of literals.
+
+It is always possible to transform a formula into normal form by using the equivalences.
+
+## Deduction theorem
+
+Given a set of formulas $\{F_1,\dots,F_n\}$ and a formula G, $(F_1$/\ $\dots$ /\ $F_n) |=G $ meaning it is a logical consequence from the Fs. From the definition of logical consequence, we can derive that every interpretation $I$ which makes $F_1,\dots,F_n$ true makes $G$ true too.
