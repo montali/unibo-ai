@@ -386,6 +386,12 @@ The time complexity is mainly influenced by the efficiency of the optimization l
 
 So, learning is generally slower than simpler methods, tuning is necessary (and not so easy), but the results can be very accurate. It is explicitly based on a strong mathematical model, it is not affected by local minima (optimizers can be very effective) and it does not suffer from the curse of dimensionality, since it doesn't use any notion of distance. 
 
+## K Nearest Neighbour classifier
+
+This classifier **keeps all the training data**, i.e. the model is the entire training set.
+
+The idea is that new predictions can be copmuted simply computing the similarities between the new data and the dataset. Then, it picks the K closest entries among the training set data. The main parameters are the number of neighbours to track, and the metric used to compute the distance (like the Mahalanobis distance).
+
 # Neural networks
 
 These were inspired by the brain of animals, trying to reproduce neutrons, generating intelligence.
@@ -447,3 +453,113 @@ We can then revise the algorithm:
 We cite two learning modes: **stochastic learning**, where each forward propagation is immediately followed by a weight update, which introduces some noise (transferred after each update) but reduces the chance of getting stuck in local minimums, and **batch learning**, where many propagation occur before updating the weights, accumulating errors over the samples within a batch, generally yielding faster and stable descent towards local minimums, since the update is performed in the direction of the average error.
 
 We should regularize to reduce overfitting, basically correcting the loss function in order to smooth the fitting to the data, and the amount of regularization must be tuned.
+
+# Preprocessing
+
+## Similarity and dissimilarity
+
+**Similarity** is a numerical measure of how alike two data objects are, while **dissimilarity** is the measure of how different they are.
+
+**Proximity** is a synonim of both.
+
+![Similarity and dissimilarity](./res/similarity.png)
+
+The **euclidean distance** $\text { dist }=\sqrt{\sum_{d=1}^{D}\left(p_{d}-q_{d}\right)^{2}}$ tells us how near $p$ and $q$ are. $L_2$ distance is just a special case of the **Minkowski distance** $\text { dist }=\left(\sum_{d=1}^{D}\left|p_{d}-q_{d}\right|^{r}\right)^{\frac{1}{r}}$, which when $r=2$ is the euclidean norm, $r=1$ Manhatthan distance, $r=\infty$ the Chebyshev distance, which only considers the maximum difference among coordinates.
+
+Another, more sofisticated, distance which considers the data distribution is the **Mahalanobis distance**.
+
+It increases if, keeping the same euclidean distance, the sehment connecting the points is stretched along a direction of greater variation of data.
+
+We need the **covariance matrix** of the dataset to calculate it, which is the summation of differences between the mean and the elements. 
+
+Then, 
+
+$\begin{array}{c}
+\Sigma_{i j}=\frac{1}{N-1} \sum_{k=1}^{N}\left(e_{k i}-\bar{e}_{i}\right)\left(e_{k j}-\bar{e}_{j}\right) \\
+\operatorname{dist}_{m}=\sqrt{(p-q) \Sigma^{-1}(p-q)^{T}}
+\end{array}$
+
+A distance has some common properties: **positive definiteness**, **symmetry**, and **triangle inequality**.
+
+Similarity has some properties too: $Sim(p,q)=1$ only if $p=q$ and $Sim(p,q)=Sim(q,p)$.
+
+If we have binary spaces instead of vector spaces, it's more common to define similarity in another way:
+
+![Binary similarity](./res/binary-similarity.png)
+
+We can now defone two coefficients, the **SMC** and the **Jaccard Coefficient**, the latter being the one ignoring zero values.
+
+The **cosine similarity** is usually more interested for positive values, and it is a dot product divided by the product of the norms: $\cos (p, q)=\frac{p \cdot q}{\|p\|\|q\|}$.
+
+The **extended Jaccard distance** is an evolution of the latter used for continuous or count attributes: $\mathrm{T}(p, q)=\frac{p \cdot q}{\|p\|^{2}+\|q\|^{2}-p \cdot q}$
+
+It is crucial to choose the **right proximity measure**.
+
+Finally, we consider the **correlation of quantitative data**: after the standardization of data, for two given attributes $p$ and $q$ is the dot product between $p'$ and $q'$. A zero correlation states an absence of linear relationship between the variables. 
+
+The **symmetric uncertainty** $U(p, q)=2 \frac{H(p)+H(q)-H(p, q)}{H(p)+H(q)}$ is a ratio (between 0 and 1) calculated using the entropies on $p$ and $q$. It tells us how many values of $p$ are strictly related to the values of $q$.
+
+# Clustering
+
+Given a set of $N$ ovjects, the task is now finding a partitioning in K clusters and possibly a number of noise objects.
+
+We want this classification to *emerge from the data*. Our mapping ahs to maximize the intra-cluster similarity, and minimize the inter-cluster one.
+
+There's a large number of methods, like partitioning, hierarchic, methods based on linkafe, density, statistics...
+
+## K-means clustering
+
+We'll start with an intuitive algorithm. Given a 2D dataset, where we have *5 clouds*, how can we model this distribution?
+
+![Distribution](./res/clustering-distribution.png)
+
+So, how do we guess the numver *five* in a D-dimensional space? In order to reason about this, we consider the idea of **transmission**: we have this 2D dataset, with each point being a pair of coordinates, and we want to **transmit** this by using only two bits per point. This transmission will obviously be lossy. Our task is to find the best approximation in this transmission: we need a coding/decoding mechanism, where each point will be encoded/decoded. We could split the plane into 4 subsquares 00,01,10,11.  
+
+We could the partition the space into a different grid, moving the *centroid* (average of the vector/center of gravity) to the *clouds* of points. 
+
+So, let's say that a user gives us the number $K$ of clusters. Given that, we can start with a random set of centroids (temporary centers), then start labeling the points of the dataset. For each one, we can find the nearest center to the point. 
+
+After that, each center can find the center of gravity of its points (which are the ones having that center as the nearest one), and move the center there.
+
+Remember that **centroid=center of gravity**.
+
+### Distortion
+
+We now have two functions, encoding and decoding. Since the encoding is lossy, the result will be different from the input. We can define the distortion as the difference between the original value and the decoded one: $\text { Distortion }=\sum_{i=1}^{N}\left(e_{i}-\mathbf{C}_{\text {Encode }\left(e_{i}\right)}\right)^{2}$.
+
+Which properties are requested to the $c$ to have minimal distortion? 
+
+- $e_i$ must be encoded with the nearest center (otherwise it could be reducible by changing center)
+- The partial derivative of distortion with respect to the position of each center must be zero, because in that case the function has either a maximum or a minimum
+  - $\begin{aligned}
+    &\begin{aligned}
+    \text { Distortion } &=\sum_{i=1}^{N}\left(e_{i}-\mathbf{c}_{\text {Encode }\left(e_{i}\right)}\right)^{2} \\
+    &=\sum_{j=1}^{K} \sum_{i \in \text { Owned } B y\left(c_{j}\right)}\left(e_{i}-\mathbf{c}_{j}\right)^{2} \\
+    \frac{\partial \text { Distortion }}{\partial \mathbf{c}_{j}} &=\frac{\partial}{\partial \mathbf{c}_{j}} \sum_{i \in \text { Owned } B y\left(\mathbf{c}_{j}\right)}\left(e_{i}-\mathbf{c}_{j}\right)^{2} \\
+    &=-2 \sum_{i \in \text { Owned } B y\left(c_{j}\right)}\left(e_{i}-\mathbf{c}_{j}\right)
+    \end{aligned}\\
+    &=0 \text { when minimum distortion }
+    \end{aligned}$
+  - $\mathbf{c}_{j}=\frac{1}{\mid \text { OwnedBy }\left(\mathbf{c}_{j}\right) \mid} \sum_{i \in \text { Owned } B y\left(c_{j}\right)}\left(e_{i}-\mathbf{c}_{j}\right)$
+  - Therefore, each center **must be the centroid** of the points it owns!
+
+### Improving a sub-optimal solution
+
+We can alternately perform steps 1 and 2: it can be proved that after a finite number of steps, either one of the two steps produces no change, reaching a final state.
+
+### Algorithm termination
+
+Note that the distortion function is **convex**: this means that we can reach a final state!
+
+There's a finite number of configurations, and if after one iteration the state changes, the distortion is reduced. In summary, sooner or later there will be no new reachable states. 
+
+*Is this the best solution?* No, we could end in a state which is not the best one.
+
+How do we choose the number of clusters? We could consider it as an hyperparameter, since the best value is a compromise.
+
+
+
+
+
+
+
