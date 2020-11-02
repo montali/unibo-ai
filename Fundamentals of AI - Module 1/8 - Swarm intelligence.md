@@ -113,5 +113,74 @@ Optionally, we can introduce `DaemonActions()` which are **centralized actions**
 
 We can even apply local searches to solutions after we've found them.
 
+### Honey bee-colony
+
+Sometimes, we could imagine that the involved agents are not always the same: they may have **different roles**! 
+
+This algorithm is called **honey bee-colony**, and we have **3 kinds of bees**:
+
+- Employeed bees, associated with a nectar source
+- Onlookers, that observing the employed bees choose a nectar source
+- Scouts that discover new nectar sources
+
+Initially, nectar source are discovered by scouts, then food is consumed and the source is exhausted. The employeed bees in that source become scouts. 
+
+Remember that there are 2 components in the algorithm: **exploration** and **exploitation**, i.e. moving to a different source after finding one, which is what makes this different from a local search. 
+
+Now, the solution is the **position of food** (as many solutions as employed bees), and the **food quantity** for each source.
+
+We have three phases, one for each type of bees, an initialization and a saving of the best solution so far:
+
+![Honey bee-colony algorithm](./res/bee-colony.png)
+
+In the **initialization**, we want to find <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.99998994999999pt height=22.465723500000017pt/> starting points: each bee will start from one of these.
+
+Now, we have a set of employee bees, which travel the the food source area visited in the last cycle, then chooses a new good source in the neighbourhood. We use a fitness function: <img src="svgs/60479b40bef7a70a03ea202f2a50431c.svg?invert_in_darkmode" align=middle width=369.40468619999996pt height=47.6716218pt/> 
+
+The onlooker bees decide among the solutions, depending on the probability value associated with that source: <img src="https://cdn.mathpix.com/snip/images/a0U5LiLnpl4SGakpDMzvwaeIN9JqPnOnxJ0f_1K1A8A.original.fullsize.png" /> 
+
+An employee bee that is performing local search becomes a scout if it can't improve its solution, i.e. *the nectar source is exhausted*.
+
+**Remarks**: The important thing here is that agents have different roles!
+
+### Particle swarm optimization
+
+This is **widely used in robotics**. It was proposed in 1995, and it is still used!
+
+Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices: moving away from the group to reach the food, or staying in the group.
+
+We can solve optimization problems with two analogies: individuals (tentative configurations that move and sample the solution space) and social interaction (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of balance between exploration and exploitation.
+
+Individuals are affected by the actions of other individuals (closer to them), so they're part of more subgroups which are not tied to the physical proximity of the configurations in the parameter space but are a priori defined.
+
+The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of stigmergy. 
+
+Mathematically speaking, the move is calculated with <img src="svgs/0d19b0a4827a28ecffa01dfedf5f5f2c.svg?invert_in_darkmode" align=middle width=12.92146679999999pt height=14.15524440000002pt/> which is the best solution found by the particle <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> and <img src="svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>, the best solution found by the entire swarm. For each particle, we:
+
+- Initialize the starting value <img src="svgs/14f12dabfc4051bbf95e967b0410c501.svg?invert_in_darkmode" align=middle width=117.67626915pt height=24.65753399999998pt/> where <img src="svgs/5fb566d7c70c0f34898e1fcb4c079b81.svg?invert_in_darkmode" align=middle width=17.76718679999999pt height=22.831056599999986pt/> and <img src="svgs/3a603aa504a0f0d892683a669b4ee180.svg?invert_in_darkmode" align=middle width=21.60342524999999pt height=22.831056599999986pt/> are the lower and upper boundaries of the search space
+- Initialize the particle's best known position to that
+- If <img src="svgs/5adf13a4433b49a8bc3d823b03c1ccf7.svg?invert_in_darkmode" align=middle width=89.29704464999999pt height=24.65753399999998pt/> we update the swarm's best solution: <img src="svgs/6dd8466a7e20a77e009cdae28914e6d3.svg?invert_in_darkmode" align=middle width=43.26945479999999pt height=14.15524440000002pt/> 
+- Initialize the speed <img src="svgs/2617d75a8062e9fbad6e63dc90ed34e4.svg?invert_in_darkmode" align=middle width=251.0605647pt height=24.65753399999998pt/> which is a vector of two quantities 
+
+After this initialization, until a termination criteria is met:
+
+- For each particle we move the swarm according to the position and the speed:
+  - Pick random <img src="svgs/d2f1d244924ae495a3650ff05e4bf724.svg?invert_in_darkmode" align=middle width=14.192798399999992pt height=14.15524440000002pt/> and <img src="svgs/4364b58caba8ae1923651f1ca93c1515.svg?invert_in_darkmode" align=middle width=14.24229014999999pt height=14.15524440000002pt/> 
+  - Update the velocity <img src="svgs/fbe57c3c76cdfdc600615be821ba04dc.svg?invert_in_darkmode" align=middle width=294.7576302pt height=24.65753399999998pt/> with <img src="svgs/417a5301693b60807fa658e5ef9f9535.svg?invert_in_darkmode" align=middle width=10.75343279999999pt height=14.15524440000002pt/> and <img src="svgs/ae4fb5973f393577570881fc24fc2054.svg?invert_in_darkmode" align=middle width=10.82192594999999pt height=14.15524440000002pt/> being hyperparameters
+  - Update the particle's position <img src="svgs/9fc20fb1d3825674c6a279cb0d5ca636.svg?invert_in_darkmode" align=middle width=14.045887349999989pt height=14.15524440000002pt/> 
+  - If  <img src="svgs/eaf88e88bc9841ceddc1492184c640d0.svg?invert_in_darkmode" align=middle width=95.7344718pt height=24.65753399999998pt/> we update the best known position <img src="svgs/7b8fc22642ded4862dcf66ea344ba573.svg?invert_in_darkmode" align=middle width=49.70688194999998pt height=14.15524440000002pt/> and if it's the best in the swam we update that too <img src="svgs/6dd8466a7e20a77e009cdae28914e6d3.svg?invert_in_darkmode" align=middle width=43.26945479999999pt height=14.15524440000002pt/>
+
+## Remarks
+
+Note that these algorithms **have to be non-deterministic**, i.e. working with a *probability*. 
+
+## Parameter tuning
+
+These algorithm are very subject to a good parameter tuning: doing that badly will result in a bad solution!
+
+It is really hard to find the optimal configuration, but there are techniques for automatic parameter tuning like *ParamILS*.
+
+
+
 
 
