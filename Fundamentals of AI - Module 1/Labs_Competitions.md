@@ -63,6 +63,6 @@ Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?
 Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?id=426404)
 
 - We'll use a Xubuntu VM, using VirtualBox and its extension pack. The planners and material are already present. Username: **VM-info**	Password: **admin**
-- It is also possible to [download NetLogo on any PC](https://ccl.northwestern.edu/netlogo/)
+- It is also possible to [download NetLogo on any PC](https://ccl.northwestern.edu/netlogo/) (note: Allegra De Filippo said that implementing the second problem on 6.1.1 is different than on 5.0.2, the version we used in lab)
 - [NetLogo manual](https://ccl.northwestern.edu/netlogo/docs/)
 
