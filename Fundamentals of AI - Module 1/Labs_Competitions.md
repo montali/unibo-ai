@@ -51,18 +51,18 @@ We'll have 3 lab sessions:
 
 Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?id=411632)
 
-- Python3
-- Clone [the AIMA repository](https://github.com/aimacode/aima-python)
-- Venv suggested
-- Install **numpy**
-- Copy in project *search.py* and *utils.py*
-- Install Jupyter
+1. Python3 (Venv suggested)
+2. Install **numpy**
+3. Clone [the AIMA repository](https://github.com/aimacode/aima-python)
+4. Copy in project *search.py* and *utils.py*
+5. Install Jupyter
+6. Follow instructions in lab pdf
 
 ## Second lab
 
-We'll use a Xubuntu VM, using VirtualBox and its extension pack. The planners and material are already present.
+Check out [the official material](https://virtuale.unibo.it/mod/folder/view.php?id=426404)
 
-Username: **VM-info**	Password: **admin**
-
-
+- We'll use a Xubuntu VM, using VirtualBox and its extension pack. The planners and material are already present. Username: **VM-info**	Password: **admin**
+- It is also possible to [download NetLogo on any PC](https://ccl.northwestern.edu/netlogo/)
+- [NetLogo manual](https://ccl.northwestern.edu/netlogo/docs/)
 
