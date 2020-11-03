@@ -45,4 +45,4 @@ Lesson recordings:
 
 
 ## Labs and competitions
-[Summary](Competitions.md)
+[Summary](Labs_Competitions.md)
