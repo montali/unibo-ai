@@ -128,9 +128,98 @@ o(x, y) &=T\left\{\sum_{k} w_{k} e_{k}\left(x-x_{k}, y-y_{k}\right)\right\} \\
 
 If the input is a weighted sum of displaced elementary functinos, the output is given by the same weighted sum of the displaced responses to elementary functions.
 
+We know that if an operator is an LSI (linear/shift-invariant), if the input can be expressed as a weighted sum, it turns out that the output is given by the same weighted sum (the $w$ aren't gonna change) of the responses to the elementary functions shifted by the same quantity. 
 
+This is useful: every signal can be expressed as a weighted sum of elementary functions. More specifically, a sum of displaced unit impulses (dirac delta function):
+$$
+i(x, y)=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} i(\alpha, \beta) \delta(x-\alpha, y-\beta) d \alpha d \beta
+$$
+We normally have a sum of a certain number of functions $e_k$, but now this is an infinite sum. We have this double integral summing across the whole 2D plane. The weights are the $i(\alpha, \beta)$ and not the $w_k$ anymore. 
 
+What we can see is that the amount of shift is given by $\alpha,\beta$. So, how can we read this formula? This is expressed as impulses which can be located everywhere, and each fo them is multiplied by the value of the function in that position. We are seeing the function as impulses multiplied by the value of the function in the position they are located.
 
+This property (that we can see a function as a weighted sum of weighted impulses) is known as the *sifting property of the unit impulse*.
+
+The output we get if we feed the operator $T$ by the elementary function dirac delta is known as $h$, the **impulse response** or point-spread function: $h(x,y)=T\{\delta(x,y)\}$.
+
+So, we know that for whatever input signal (every one of them can be expressed in this form) we can get the output of an LSI operator in this form. 
+$$
+o(x, y)=T\{i(x, y)\}=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} i(\alpha, \beta) h(x-\alpha, y-\beta) d \alpha d \beta
+$$
+Now that we've found this formula to compute the output of T, a convolution gets applied. More precisely, since we're working with 2D continuous signals, this is known as a **2D continuous convolution**. 
+
+We often denote the convolution operation by the symbol $*$:
+$$
+o(x, y)=i(x, y) * h(x, y)
+$$
+The convolution has some useful properties: the **associative** property ($f*(g*h)=(f*g)*h$), the **commutative** property ($f*g=g*f$), the **distributive** property wrt the sum ($f*(g+h)=f*g+f*h$) and the **convolutional commutes** with differentiation ($(f*g)'=f'*g=f*g'$). The last one is pretty much esoteric but so useful. I want to compute the derivative of $f*g$ (could be first,second, third...), it is the same as applying that derivation to either one of the two functions.
+
+ A practical interpretation of convolution: for every point in the domain, we're kind of multypling them (by a value linked to the function's value) and adding up all these products.
+
+So, we have two functions $i$ and $h$ defined in the domain known as *plane $\alpha,\beta$*.
+
+The first square is representing the set in the domain $\alpha,\beta$ in which $i$ is non-zero. Then we have $h$, another function which is non-zero in another region. Usually we consider $i$ as the input and $h$ as the filter: this is why $h$ has a smaller square. So, now, $a,b,c,d$ represent the set of values $h$ takes in the four subregions. We said convolution is about multiplying corresponding values, and if we look at $i$ in the definition, it appears unchanged, while $h$ is not appearing as $h(\alpha,\beta)$ but is manipulated. We have $h(-\alpha, -\beta)$: this means that we're flipping $h$ around the origin. $h$ not only undergoes a flip, but a shift too by $x,y$. So, to compute the convolution at $(x,y)$ we leave $i$ unchanged, then pick $h$, reflect it around the origin and shift it at $x,y$. Then, we multiply them together and sum them.
+
+![Convolution](./res/Convolution.png)
+
+### Correlation
+
+We can introduce the **correlation**:
+$$
+i(x, y) \circ h(x, y)=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} i(\alpha, \beta) h(x+\alpha, y+\beta) d \alpha d \beta
+$$
+Accordingly, the correlation of $h$ vs $i$:
+$$
+h(x, y) \circ i(x, y)=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} h(\alpha, \beta) i(x+\alpha, y+\beta) d \alpha d \beta
+$$
+Note that correlation, differently from convolution, **is not commutative**.
+
+Convolution is about flipping and shifting, correlation is about shifting only. In convolution you take $h$ flip and shift, in correlation of $h$ vs $i$ you take $h$ and shift it only. Now, because $h$ gets reflected in convolution, left unchanged in correlation, there's a special case in which **the two coincide**.
+
+If the function is symmetric around the origin (which often happens), if you flip you don't really change anything!
+
+Let us now consider a discrete 2D KSI operator, $T\{\cdot\}$, whose response to the 2D discrete unit impulse (*Kronecker Delta Function*) is denoted as $H(l,j)$.
+$$
+H(i, j)=T\{\delta(i, j)\} \quad \text { with } \quad\left\{\begin{array}{ll}
+\delta(i, j)=1 & \text { at } \quad(0,0) \\
+\delta(i, j)=0 & \text { elsewhere }
+\end{array}\right.
+$$
+In imag processing both the input and impulse are stored into matrices of given sizes. Conceptually, we need to slide the kernel across the whole image to compute the new intensity at each pixel, without overwriting the input matrix.
+
+## Mean Filter
+
+Mean filtering is the simplest way to carry out an image smoothing (i.e. a low-pass filtering). Note that the notion of frequency in images is applicable (Fourier's theory). When you low-pass a signal, remind that high frequencies are responsible for rapid changes in the signal, so the signal will be smoother. This is foten aimed at image denoising, though sometimes the purpose is to just cancel out small-size unwanted details that might hinder the image analysis task. 
+
+Note that noise is usually in the high frequencies!
+
+Another reason to perform smoothing is to create a so-called *scale-space*, which is a representation made of multiple images, smoothed by larger and larger filters, used, for example, to recognize objects.
+
+Scale is the term used to denote *size in the image*: a small scale object occupies a small portion of the image.
+
+The mean filter just **replaces each pixel intensity by the average intensity over a given neighbourhood**.
+
+Formally, a mean filter is an LSI operator, but in practice we can just compute the mean. We can use **box filtering** to efficiently compute the mean by incremental calculation. 
+
+In box filtering, we proceed adding a column and removing another one. Calling these columns $V^+$ and $V^-$. So, when we compute the sum, given the sum at position $i,j$, we simply add a column's sum and subtract the other one. Doing that from scratch, we would need $(2k+1)^2$ computations, resulting in a complexity of $\mathcal{O}(k^2)$, while using box filtering results in a complexity of $\mathcal{O}(k)$:
+$$
+s(i, j+1)=s(i, j)+V^{+}(i, j+1)-V^{-}(i, j+1)
+$$
+![Gaussian noise](./res/gaussian-noise.png)
+
+![Impulse noise](./res/impulse-image.png)
+
+The latter is sometimes called *salt and pepper noise*, being built by adding outliers.
+
+## Gaussian filter
+
+This is the **best filter** among the linear operators. It's the most widespread for smoothing operations.
+
+It's a filter whose kernel is a **Gaussian function**. Since we're dealing with 2D signals, this will be a 2D Gaussian. 
+
+![Gaussian function](./res/gaussian-function.png)
+
+Note that a 2D Gaussian is just the product of 2 Gaussians along x and y.
 
 
 
