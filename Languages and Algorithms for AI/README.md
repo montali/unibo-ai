@@ -17,3 +17,4 @@ Teacher: Maurizio Gabbrielli
 ## Useful resources
 
 - The [MiniZinc Handbook](https://www.minizinc.org/doc-2.5.0/en/index.html) contains all the documentation for the MiniZinc language and system.
+- [An article](https://zitoc.com/natural-deduction/) on natural deduction
