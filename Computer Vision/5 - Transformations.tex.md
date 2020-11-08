@@ -221,5 +221,51 @@ It's a filter whose kernel is a **Gaussian function**. Since we're dealing with 
 
 Note that a 2D Gaussian is just the product of 2 Gaussians along x and y.
 
+The larger the $\sigma$, the stronger is the smoothing filter. This can be understood by observing that as $\sigma$ increases, the weights of closer points get smaller while those of farther points become larger.
 
+Another way of proving this is computing the Fourier transform, which is another Gaussian with sigma $\sigma_\omega = 1/\sigma$, meaning that the higher the $\sigma$ the narrower the bandwidth of the filter.
+
+If the Gaussian is large in the signal domain, it shall be narrow in the Fourier domain, and vice versa. 
+
+The Gaussian is more effective than the Mean filter, as the frequency response of the former is monotonically decreasing, while the latter exihibits significant ripple.
+
+The discrete Gaussian kernel can be obtained by sampling the corresponding continuous function, which is however of infinite extent. A finite size must therefore be properly chosen. 
+
+Sigma is what decides how many coefficients we need for a precise approximation of the continuous filter: the larger the size of the kernel, the more accurate the approximaiton. Note that the computational cost rises with filter size, and the gaussian gets smaller when we move away from the origin. Therefore, we can use a *rule of thumb*: it is ok if we use a $k$ (size of the kernel, $2k+1$ squared for 2D) equal to $3\sigma$. 
+
+It may be convenient/mandatory to convolve the image by an integer rather than floating point kernel. 
+
+An integer Gaussian kernel can be obtained by dividing all coefficients by the smallest one, rounding to the nearest integer and finally normalizing by the sum of the integer coefficients. 
+
+Another important thing is how we can make the filter faster. We can deploy the separability property, due to the 2D Gaussian being the product of 2 1D Gaussians, the original 2D convolution can be split into the chain of two 1D convolutions, i.e. either along x first and then along y.
+
+## Median filter
+
+This is a **non-linear** filter where each pixel intensity is replaced by th median over a neighbourhood, the median being the value falling half-way in the sorted set of intensities (*50-th percentile*).
+
+This is able to deal with impulse noise too, without introducing significant blur. Yet, gaussian like noise can't be solved with a median filter.
+
+## Bilateral filter
+
+This is an advanced non-linear filter to accomplish the denoising of Gaussian-like noise without blurring the image: **edge preserving smoothing**. It basically only denoises the noisy areas.
+
+Let's start with an example. Let's say we had a filter built like this:
+
+![Bilateral filter](./res/bilateral-filter.png)
+
+A bilateral filter would smooth the *step*. 
+
+The function of the filter is the product of two Gaussian functions:![Screenshot 2020-11-06 at 14.38.19](/Users/simone/UniBO/unibo-ai/Computer Vision/res/bilinear-fomrula.png)
+
+where $d_r$ is the distance between intensities, which is large only for those pixels $q$ such that $I_q$ is near to $I_p$.
+
+We want the filter to have a unitary gain, so if we multiply two gaussians, we get that all the coefficients have to be normalized by the sum of all the coefficients. 
+
+The bilateral filter is not super-fast: it is computationally pretty heavy. 
+
+### Non-local means filter
+
+This is a more recent *edge preserving smoothing filter*, based on the key idea that the similarityamong parches spread over the image can be deployed to achieve denoising.
+
+How large is the computational complexity of this? If we have $n$ pixels, we'll get a complexity of $n^2$: for each pixel, we have to take a weighted sum of all the other pixels in the image.
 

@@ -109,11 +109,75 @@ The measures are obviously influenced by the K number. SSE and silhouettes are t
 
 We can even use **supervised measures**, like a partition named **gold standard** to validate a clustering technique which can be applied later to new data.
 
+# Hierarchical clustering
+
+This is also quite old, and it generates **a nested structure** of clusters, which can be **agglomerative** (bottom-up), where we start considering each point as a cluster then aggregate, or **divisive**, where we start with a single cluster which gets partitioned.
+
+The output is called a **dendogram** or a **nested cluster diagram**, which represent the same structure and can be used either for agglomerative or divisive. The first are more widely used. 
+
+## Agglomerative
+
+To decide which clusters to merge, we compute the **separation** between clusters.
+
+### Single linkage algorithm
+
+We initialize the clusters, one for object, then we compute the distance matrix between the clusters, squared, symmetric, the size is the number of objects N while the main diagonal is null. So, while he number of clusters is greater than 1, we merge them and delete from the distance matrix the relative rows and columns.
+
+The space and time complexity is $\mathcal{O}(N^2)$, in the worst case having $N-1$ iterations to reach the final cluster. For the i-th step we get that the search of the pair to merge is $\mathcal{O}((N-i)^2)$, while the recomputation of the distance matrix is $\mathcal{O}(N-i)$. So, time, in summary is $\mathcal{O}(N^3)$, reducible to $\mathcal{O}(N^2 logN)$ with indexing.
 
 
 
+# Density-based clustering
 
+We have two obvious solutions: a grid-based one, where we split the space by a grid, and an object-centered one, where we define the radius of a hypersphere and attach to each object the number of objects being inside that square.
 
+So, let's assume the second solution, which is used in **DBSCAN**.
 
+First, we need some definitions: a **border point** is on the border of the readius, while a **core point** won't. So, we define a radius and the nighbourhood of a point che $\epsilon$-hypersphere centered at that point. 
 
+To define the direct density reachability, we define a threshold $minPoints$ and define as core a point with at least $minPoints$ in its neighbourhood, as a border otherwise. We then define that a point $p$ is directly density reachable from point $q$ iff $q$ is core and it is in the neighbourhood of $p$.
+
+Direct density reachability is not symmetric, in the example $q$ is not directly density reachable from $p$, since $p$ is border.
+
+Border points can be part of a cluster if they are not noise, i.e. they are connected by density to a core point.
+
+These methods are good in finding clusters of any shape, robust wrt noise, but have problems when clusters have widely varying densities.
+
+Being based on distances between noises, the complexity is $\mathcal{O}(N^2)$, reduced to $\mathcal{O}(Nlog(N))$ if spatial indexes such as $R^*$ are available. It is very sensitive to the values of $\epsilon$ and $minPoints$.
+
+Decreasing these two values reduces the cluster size and increases the number of noise points.
+
+## Model based clustering
+
+Here, we want to estimate the parameters of a statistical model to maximizr the ability of the model to explain the data. The main technique is the usage of **mixture models**, which view the data as a set of observation from a mixture of different probability distributions.
+
+### Expectation maximization
+
+If the data can be approximated by a single distribution, the derivation of parameters is straightforard, but generally this isn't possible.
+
+The algorithm works in this way:
+
+- we set an initial set of parameters
+- We repeat two steps:
+  - Expectation: for each object we compute the probability that the objects belongs to each distribution 
+  - Maximization: given the probs, we find the new estimates of the parameters that maximize the expected likelihood
+- Until: the parameters do not change
+
+## Kernel Density Estimation
+
+We consider, for each point, its kernel function (*influence function*), which is a symmetric and monotonically decreasing function. For example, if you have a Gaussian kernel
+
+### DENCLUE algorithm
+
+We derive a density function, identify the local maxima, associate each point with a density attractor by moving in the directions of maximum increase in density, define clusters consisting of points associated with a particular density attractor, discard clusters which have a density attractor incompatible with the threshold, the combine thoes that have a compatible density.
+
+This method has a strong theoretical foundation on statistics, it's good at dealing with noise and different shapes/sizes, but has expensive computation and trouble with high dimensional data.
+
+# Remarks
+
+We have seen 4 types of clustering: **partitioning** (*k-means*), **hierarchic**, **density-based** and **model-based**.
+
+The effectiveness decreases with dimensionality and noise level, and the computational cost increases with dataset size and dimensionality. 
+
+Clustering is used in summarization, data compression and search of the nearest neighbours.
 

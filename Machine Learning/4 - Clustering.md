@@ -99,11 +99,75 @@ The measures are obviously influenced by the K number. SSE and silhouettes are t
 
 We can even use **supervised measures**, like a partition named **gold standard** to validate a clustering technique which can be applied later to new data.
 
+# Hierarchical clustering
+
+This is also quite old, and it generates **a nested structure** of clusters, which can be **agglomerative** (bottom-up), where we start considering each point as a cluster then aggregate, or **divisive**, where we start with a single cluster which gets partitioned.
+
+The output is called a **dendogram** or a **nested cluster diagram**, which represent the same structure and can be used either for agglomerative or divisive. The first are more widely used. 
+
+## Agglomerative
+
+To decide which clusters to merge, we compute the **separation** between clusters.
+
+### Single linkage algorithm
+
+We initialize the clusters, one for object, then we compute the distance matrix between the clusters, squared, symmetric, the size is the number of objects N while the main diagonal is null. So, while he number of clusters is greater than 1, we merge them and delete from the distance matrix the relative rows and columns.
+
+The space and time complexity is <img src="svgs/8e90dbe2d3ca28b3ad0012cb03e7ead6.svg?invert_in_darkmode" align=middle width=48.70330244999999pt height=26.76175259999998pt/>, in the worst case having <img src="svgs/e35caf405a5e9b4afd75a0d338c4dc12.svg?invert_in_darkmode" align=middle width=43.31036984999999pt height=22.465723500000017pt/> iterations to reach the final cluster. For the i-th step we get that the search of the pair to merge is <img src="svgs/7ab5bd55366a5d285ce22bec4a1ad054.svg?invert_in_darkmode" align=middle width=87.2431527pt height=26.76175259999998pt/>, while the recomputation of the distance matrix is <img src="svgs/87cfc524546a21b41c9adc2dbde15d66.svg?invert_in_darkmode" align=middle width=67.08325964999999pt height=24.65753399999998pt/>. So, time, in summary is <img src="svgs/3c5638d37c66029a01e04817cbad1d37.svg?invert_in_darkmode" align=middle width=48.70330244999999pt height=26.76175259999998pt/>, reducible to <img src="svgs/df8538366a31e93428627f57e5e26eef.svg?invert_in_darkmode" align=middle width=85.33002389999999pt height=26.76175259999998pt/> with indexing.
 
 
 
+# Density-based clustering
 
+We have two obvious solutions: a grid-based one, where we split the space by a grid, and an object-centered one, where we define the radius of a hypersphere and attach to each object the number of objects being inside that square.
 
+So, let's assume the second solution, which is used in **DBSCAN**.
 
+First, we need some definitions: a **border point** is on the border of the readius, while a **core point** won't. So, we define a radius and the nighbourhood of a point che <img src="svgs/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode" align=middle width=6.672392099999992pt height=14.15524440000002pt/>-hypersphere centered at that point. 
 
+To define the direct density reachability, we define a threshold <img src="svgs/c78ca258a61e2af605738edfba5e828a.svg?invert_in_darkmode" align=middle width=79.93970654999998pt height=22.465723500000017pt/> and define as core a point with at least <img src="svgs/c78ca258a61e2af605738edfba5e828a.svg?invert_in_darkmode" align=middle width=79.93970654999998pt height=22.465723500000017pt/> in its neighbourhood, as a border otherwise. We then define that a point <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> is directly density reachable from point <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> iff <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> is core and it is in the neighbourhood of <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/>.
+
+Direct density reachability is not symmetric, in the example <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> is not directly density reachable from <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/>, since <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> is border.
+
+Border points can be part of a cluster if they are not noise, i.e. they are connected by density to a core point.
+
+These methods are good in finding clusters of any shape, robust wrt noise, but have problems when clusters have widely varying densities.
+
+Being based on distances between noises, the complexity is <img src="svgs/8e90dbe2d3ca28b3ad0012cb03e7ead6.svg?invert_in_darkmode" align=middle width=48.70330244999999pt height=26.76175259999998pt/>, reduced to <img src="svgs/dc9f52ee34a9803b8c0ca413e32494b4.svg?invert_in_darkmode" align=middle width=90.74099759999999pt height=24.65753399999998pt/> if spatial indexes such as <img src="svgs/8ab9f1f6e98c58c82839a03ab5b56548.svg?invert_in_darkmode" align=middle width=19.343664449999988pt height=22.63846199999998pt/> are available. It is very sensitive to the values of <img src="svgs/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode" align=middle width=6.672392099999992pt height=14.15524440000002pt/> and <img src="svgs/c78ca258a61e2af605738edfba5e828a.svg?invert_in_darkmode" align=middle width=79.93970654999998pt height=22.465723500000017pt/>.
+
+Decreasing these two values reduces the cluster size and increases the number of noise points.
+
+## Model based clustering
+
+Here, we want to estimate the parameters of a statistical model to maximizr the ability of the model to explain the data. The main technique is the usage of **mixture models**, which view the data as a set of observation from a mixture of different probability distributions.
+
+### Expectation maximization
+
+If the data can be approximated by a single distribution, the derivation of parameters is straightforard, but generally this isn't possible.
+
+The algorithm works in this way:
+
+- we set an initial set of parameters
+- We repeat two steps:
+  - Expectation: for each object we compute the probability that the objects belongs to each distribution 
+  - Maximization: given the probs, we find the new estimates of the parameters that maximize the expected likelihood
+- Until: the parameters do not change
+
+## Kernel Density Estimation
+
+We consider, for each point, its kernel function (*influence function*), which is a symmetric and monotonically decreasing function. For example, if you have a Gaussian kernel
+
+### DENCLUE algorithm
+
+We derive a density function, identify the local maxima, associate each point with a density attractor by moving in the directions of maximum increase in density, define clusters consisting of points associated with a particular density attractor, discard clusters which have a density attractor incompatible with the threshold, the combine thoes that have a compatible density.
+
+This method has a strong theoretical foundation on statistics, it's good at dealing with noise and different shapes/sizes, but has expensive computation and trouble with high dimensional data.
+
+# Remarks
+
+We have seen 4 types of clustering: **partitioning** (*k-means*), **hierarchic**, **density-based** and **model-based**.
+
+The effectiveness decreases with dimensionality and noise level, and the computational cost increases with dataset size and dimensionality. 
+
+Clustering is used in summarization, data compression and search of the nearest neighbours.
 

@@ -158,6 +158,48 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   What we're saying is that we start with an assumption and reach a conclusion, then I can introduce the implication and while doing so I can delete the assumption itself: it won't be needed anymore, as it is contained in the implication. If starting from *if it's raining* I can derive that *I have to take the umbrella*, I can state *If it's raining I have to take the umbrella*, then I can remove the assumption that *It is raining*.
 
+  ### Two more rules
+
+  These ruels concern the use of negation ($\neg$) and false ($\bot$). If at a certain point in your derivation, you get to a premise which is false, than you can conclude that any possible formula can be derived from false:
+  $$
+  (\perp) \frac{\perp}{\varphi} \perp
+  $$
+  Remember that the *fraction* is composed of a premise and a conclusion.
+
+  The other rule is the *reduction ad absurdum*: suppose that you start from a formula $\neg \varphi$ (forget about the square brackets), then you perform some kind of derivation, then you can derive false and conclude that $\varphi$ and you discard the hypothesis $\neg \varphi$, which means that you have proved $\varphi$ without any assumption. This is exactly the way you perform proof by reductio ad absurdo in all sciences: you want to prove that something holds, you start with a negation of it (*assume that $\varphi$ doesn't hold*), and reach a contradiction: this means that $\varphi$ was true.
+  $$
+  \begin{array}{l}
+  {[\neg \varphi]} \\
+  \vdots \\
+  \frac{\perp}{\varphi} \mathrm{RAA}
+  \end{array}
+  $$
+  Note that the symbols that surround the definition are just there to *name* the rules, they don't serve a purpose.
+
+  Note that only the latter allows us to discard the hypothesis.
+
+  ## Derivations
+
+  Reminding that $PROP$ being the set of all propositional formulas (defined in the inductive way too), we want to define all the possible derivations: reasoning by induction, a single formula is a tree, if I have two trees I can compose them to construct a bigger tree. I can repeat this process for all the possible trees.
+
+  ### Completeness theorem
+
+  Having seen the notion $\Gamma \vDash \varphi$ , $\Gamma \vdash \varphi$  means that you can find a derivation (and therefore a derivation tree) that, starting from the hypothesis contained in $\Gamma$, allows you to derive the conclusion. If the set of $\Gamma$ is the empty set (i.e. all the assumptions have been canceled), then we can say that $\varphi$ is a **theorem**.
+
+  One can observe that the notion of derivability and the notion of truth coincide, i.e. the following holds:
+  $$
+  \Gamma \vdash \varphi \Leftrightarrow \Gamma \vDash \varphi
+  $$
+  This gets us a **corollary too**: the set of theorems coincide with the set of tautologies.
+
+  The theorem is derived in two parts, the **soundness** (correctness), which says that if you can perform a derivation, then $\Gamma \vdash \varphi \rightarrow \Gamma \vDash \varphi$. The inverse is provable too: $ \Gamma \vDash \varphi\rightarrow\Gamma \vdash \varphi $. 
+
+  If a set of formulas $\Gamma$ is inconsistent (i.e. you can derive false), then you can divide it into two parts $\Gamma \cup \neg\varphi$ and $\Gamma \cup \varphi$...
+
+  If something cannot be derived, that is not a logical consequence.
+
+   
+
   
 
   ## Resources
