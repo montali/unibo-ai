@@ -14,71 +14,93 @@
 \maketitle
 
 \section{Propositional logic}
-	
-	\noindent $\Gamma = F_1,\dots,F_n$ (\textit{promises});
-	$F$ \textit{conclusion}; 	
-	$\bold{\Gamma \vDash F} \iff F$ is a \textbf{logical consequence} of $\Gamma$.
-	
-	\noindent Valid formula $\iff$ Tautology $\iff$ True in any circumstance.
-	
-	\noindent Inconsistent formula $\iff$ Unsatisfiable formula $\iff$ False in any circumstance.
-	
-	\noindent $G$ valid $\iff \neg G$ inconsistent.
-	
-	\begin{center}
-		\begin{tabular}{ |c |c|c | c | c| c | c | } 
-			\hline
-			\multicolumn{7}{|c|}{Truth table of main logical connectives} \\
-			\hline
-			\textbf{$P_1$} & \textbf{$P_2$} & \textbf{$\neg P_1$} & \textbf{$P_1 \land P_2$} & \textbf{$P_1 \lor P_2$} & \textbf{$P_1 \rightarrow P_2$} & \textbf{$P_1 \leftrightarrow P_2$} \\
-			\hline
-			T & T & F & T & T & T & T \\
-			\hline
-			T & F & F & F & T & F & F \\
-			\hline
-			F & T & T & F & T & T & F \\
-			\hline
-			F & F & T & F & F & T & T \\
-			\hline
-		\end{tabular}
-	\end{center}
 
-	\noindent $F \equiv G \iff F \vDash G$ and $G \vDash F \iff F$ logically equivalent to G.
-	
-	\begin{center}
-		\begin{tabular}{ | r  c  l | c | } 
-			\hline
-			\multicolumn{4}{|c|}{Logical equivalence rules} \\
-			\hline
-			$P \land Q$ & $\equiv$ & $Q \land P$ & Commutativity of AND\\
-			\hline
-			$P \lor Q$ & $\equiv$ & $Q \lor P$ & Commutativity of OR\\
-			\hline
-			$(P \land Q) \land R$ & $\equiv$ & $P \land (Q \land R)$ & Associativity of AND\\
-			\hline
-			$(P \lor Q) \lor R$ & $\equiv$ & $P \lor (Q \lor R)$ & Associativity of OR\\
-			\hline
-			$\neg(\neg P)$ & $\equiv$ & $P$ & Double-negation elimination\\
-			\hline
-			$P \rightarrow Q$ & $\equiv$ & $\neg P \rightarrow \neg Q$ & Contraposition\\
-			\hline
-			$P \rightarrow Q$ & $\equiv$ & $\neg P \land Q$ & Implication elimination\\
-			\hline
-			$P \leftrightarrow Q$ & $\equiv$ & $(P \rightarrow Q) \land (Q \rightarrow P)$ & Biconditional elimination \\
-			\hline
-			$\neg(P \land Q)$ & $\equiv$ & $\neg P \lor \neg Q$ & De Morgan\\
-			\hline
-			$\neg(P \lor Q)$ & $\equiv$ & $\neg P \land \neg Q$ & De Morgan\\
-			\hline
-			$P \land (Q \lor R)$ & $\equiv$ & $(P \land Q) \lor (P \land R)$ & Distributivity of AND over OR\\
-			\hline
-			$P \lor (Q \land R)$ & $\equiv$ & $(P \lor Q) \land (P \lor R)$ & Distributivity of OR over AND\\
-			\hline
-		\end{tabular}
-	\end{center}
-	
-	\noindent 
-	
-	\noindent 
+\noindent $\Gamma = F_1,\dots,F_n$ (\textit{promises});
+$F$ \textit{conclusion}; 	
+$\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
+
+\noindent Valid formula $\iff$ Tautology $\iff$ True in any circumstance.
+
+\noindent Inconsistent formula $\iff$ Unsatisfiable formula $\iff$ False in any circumstance.
+
+\noindent $G$ valid $\iff \neg G$ inconsistent.
+
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{ |c |c|c | c | c| c | c | } 
+		\hline
+		\multicolumn{7}{|c|}{Truth table of main logical connectives} \\
+		\hline
+		\textbf{$P_1$} & \textbf{$P_2$} & \textbf{$\neg P_1$} & \textbf{$P_1 \land P_2$} & \textbf{$P_1 \lor P_2$} & \textbf{$P_1 \rightarrow P_2$} & \textbf{$P_1 \leftrightarrow P_2$} \\
+		\hline
+		T & T & F & T & T & T & T \\
+		\hline
+		T & F & F & F & T & F & F \\
+		\hline
+		F & T & T & F & T & T & F \\
+		\hline
+		F & F & T & F & F & T & T \\
+		\hline
+	\end{tabular}
+%\caption{Truth table of main logical connectives}
+\end{figure}
+
+\noindent $F$ logically equivalent to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
+
+\begin{figure}[h]
+	\centering
+	\begin{tabular}{ | r  c  l  c | } 
+		\hline
+		\multicolumn{4}{|c|}{Logical equivalence rules} \\
+		\hline
+		$P \land Q$ & $\equiv$ & $Q \land P$ & Commutativity of AND\\
+		\hline
+		$P \lor Q$ & $\equiv$ & $Q \lor P$ & Commutativity of OR\\
+		\hline
+		$(P \land Q) \land R$ & $\equiv$ & $P \land (Q \land R)$ & Associativity of AND\\
+		\hline
+		$(P \lor Q) \lor R$ & $\equiv$ & $P \lor (Q \lor R)$ & Associativity of OR\\
+		\hline
+		$\neg(\neg P)$ & $\equiv$ & $P$ & Double-negation elimination\\
+		\hline
+		$P \rightarrow Q$ & $\equiv$ & $\neg P \rightarrow \neg Q$ & Contraposition\\
+		\hline
+		$P \rightarrow Q$ & $\equiv$ & $\neg P \land Q$ & Implication elimination\\
+		\hline
+		$P \leftrightarrow Q$ & $\equiv$ & $(P \rightarrow Q) \land (Q \rightarrow P)$ & Biconditional elimination \\
+		\hline
+		$\neg(P \land Q)$ & $\equiv$ & $\neg P \lor \neg Q$ & De Morgan\\
+		\hline
+		$\neg(P \lor Q)$ & $\equiv$ & $\neg P \land \neg Q$ & De Morgan\\
+		\hline
+		$P \land (Q \lor R)$ & $\equiv$ & $(P \land Q) \lor (P \land R)$ & Distributivity of AND over OR\\
+		\hline
+		$P \lor (Q \land R)$ & $\equiv$ & $(P \lor Q) \land (P \lor R)$ & Distributivity of OR over AND\\
+		\hline
+	\end{tabular}
+	%\caption{Logical equivalence rules}
+\end{figure}
+
+\noindent Conjunctive Normal Form (CNF): $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $.
+
+\noindent Disjunctive Normal Form (DNF): $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $.
+
+\noindent Deduction Theorem: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff (\vDash(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
+
+\noindent Proof by refutation: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
+
+\subsection{Natural deduction}
+
+\noindent AND: $\hspace{1em} \dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I \hspace{5em} \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E$
+
+\noindent OR: $\hspace{1em} \dfrac{\varphi}{\varphi \lor \theta}\lor I \hspace{1em} \dfrac{\theta}{\varphi \lor \theta}\lor I \hspace{5em} $
+
+\noindent IMPLIES: $\hspace{1em} \dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \theta \end{array}}{\varphi \rightarrow \theta} \rightarrow I \hspace{5em} \hspace{1em} \dfrac{\varphi \hspace{1em} \varphi \rightarrow \theta}{\theta} \rightarrow E $
+
+\noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$.
+
+\noindent Reduction ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
+
+\noindent 
 
 \end{document}
