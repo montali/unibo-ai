@@ -182,7 +182,38 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   If something cannot be derived, that is not a logical consequence.
 
-   
+   # Resolution for propositional logic
+
+  First of all, summarising what we've seen: if a logic can be considered as a *formal system* it consists in 3 components, syntax (i.e. the set of rules which allow us to specify how expression are constructed), semantics (i.e. specifies the meanings of expressions) and calculus.
+
+  **Axioms** are given formulas , elementary tautologies and contradictions which cannot be derived within the calculus. A **derivation** <img src="svgs/f1880a0fe6ac5dc59d8fe1d1215ac54d.svg?invert_in_darkmode" align=middle width=40.27003529999999pt height=22.831056599999986pt/> is the sequence of inference rule applications starting from formula <img src="svgs/f50853d41be7d55874e952eb0d80c53e.svg?invert_in_darkmode" align=middle width=9.794543549999991pt height=22.831056599999986pt/> and ending with formula <img src="svgs/7e3c241c2dec821bd6c6fbd314fe4762.svg?invert_in_darkmode" align=middle width=11.29760774999999pt height=22.831056599999986pt/>.
+
+  An inference rule has the form
+  <p align="center"><img src="svgs/d7b67ab5889e11322b0300d3ce6e2648.svg?invert_in_darkmode" align=middle width=73.9933722pt height=33.62942055pt/></p>
+  where the formulae <img src="svgs/252db897805def69d9476e5b5a76c4ac.svg?invert_in_darkmode" align=middle width=73.171494pt height=22.465723500000017pt/> are the premises, and <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.85392569999999pt height=22.465723500000017pt/> is the conclusion. Given a set of formulae <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/>, if the premises are given (i.e. <img src="svgs/21fd4e8eecd6bdf1a4d3d6bd1fb8d733.svg?invert_in_darkmode" align=middle width=8.515988249999989pt height=22.465723500000017pt/> contained in <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/>), then the conclusion is added to <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/>.
+
+  A derivation step is the application of an inference rules: <img src="svgs/04232136c4cb89614df62eea645761ca.svg?invert_in_darkmode" align=middle width=106.02521819999998pt height=22.831056599999986pt/>.
+
+  A derivation is just a sequence of derivation steps where the conclusion is taken as premises for the next step. A set of derivations can be represented by derivation trees.
+
+  ## Resolution
+
+  This was invented by Robinson in 1965. The idea was to try and find the set of inference rules which would be easier to use with machines. The idea is to work with contradictions.
+
+  # First order logic
+
+  Why do we need another, complicated, logic? The fact is that propositional logic is nice about lots of things, but it's too simple: it doesn't allow structures, no reasoning about specific object in specific domains. E.g. *every man is mortal, Socrate is a man, Socrate is mortal*. If you try to express this in propositional logic, you can't derive it. 
+
+  We now have <img src="svgs/03c54486f0c18b8e265a9c922d83ad33.svg?invert_in_darkmode" align=middle width=12.78544904999999pt height=22.465723500000017pt/> predicate symbols, <img src="svgs/84cc939597f3eec200843a2fc8830732.svg?invert_in_darkmode" align=middle width=13.447466999999989pt height=22.465723500000017pt/> function symbols, <img src="svgs/76105ebc974ce8a02de91bcaf0d6d25f.svg?invert_in_darkmode" align=middle width=11.424730349999988pt height=22.465723500000017pt/> a countably infinite set of variables.
+
+  Then, as logic symbols, we have the truth symbols, the logical connectives, the quantors and syntactic symbols.
+
+  A set of terms <img src="svgs/e170e1cca0005f6e4238b82ae55d22c2.svg?invert_in_darkmode" align=middle width=56.51937554999999pt height=24.65753399999998pt/> is a variable from <img src="svgs/76105ebc974ce8a02de91bcaf0d6d25f.svg?invert_in_darkmode" align=middle width=11.424730349999988pt height=22.465723500000017pt/> and a function term <img src="svgs/ff35acb96f985564864b679072cc2665.svg?invert_in_darkmode" align=middle width=28.538924699999992pt height=25.481758500000016pt/> where <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> is an n-ary function symbol from <img src="svgs/813cd865c037c89fcdc609b25c465a05.svg?invert_in_darkmode" align=middle width=11.87217899999999pt height=22.465723500000017pt/> and arguments <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936097749999991pt height=20.221802699999984pt/> are terms.
+
+  We can define a set of well-formed formulae <img src="svgs/0887a8cbf5c75ad0d58b14d1679e5d55.svg?invert_in_darkmode" align=middle width=157.48278315pt height=24.65753399999998pt/>:
+
+  -  an atomic formula (constructed with <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> and n-ary predicate symbol from <img src="svgs/813cd865c037c89fcdc609b25c465a05.svg?invert_in_darkmode" align=middle width=11.87217899999999pt height=22.465723500000017pt/> and arity <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/>, <img src="svgs/1f22ccc3f2b4c20e0139b41a1466bd16.svg?invert_in_darkmode" align=middle width=77.56103024999999pt height=24.65753399999998pt/> where the <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936097749999991pt height=20.221802699999984pt/>s are terms.
+  - 
 
   
 

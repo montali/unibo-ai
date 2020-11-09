@@ -198,7 +198,40 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   If something cannot be derived, that is not a logical consequence.
 
-   
+   # Resolution for propositional logic
+
+  First of all, summarising what we've seen: if a logic can be considered as a *formal system* it consists in 3 components, syntax (i.e. the set of rules which allow us to specify how expression are constructed), semantics (i.e. specifies the meanings of expressions) and calculus.
+
+  **Axioms** are given formulas , elementary tautologies and contradictions which cannot be derived within the calculus. A **derivation** $\phi\vdash\psi$ is the sequence of inference rule applications starting from formula $\phi$ and ending with formula $\psi$.
+
+  An inference rule has the form
+  $$
+  \frac{F_1,\dots,F_n}{F}
+  $$
+  where the formulae $F_1,\dots,F_n$ are the premises, and $F$ is the conclusion. Given a set of formulae $X$, if the premises are given (i.e. $I$ contained in $X$), then the conclusion is added to $X$.
+
+  A derivation step is the application of an inference rules: $F_1,\dots,F_n \vdash F$.
+
+  A derivation is just a sequence of derivation steps where the conclusion is taken as premises for the next step. A set of derivations can be represented by derivation trees.
+
+  ## Resolution
+
+  This was invented by Robinson in 1965. The idea was to try and find the set of inference rules which would be easier to use with machines. The idea is to work with contradictions.
+
+  # First order logic
+
+  Why do we need another, complicated, logic? The fact is that propositional logic is nice about lots of things, but it's too simple: it doesn't allow structures, no reasoning about specific object in specific domains. E.g. *every man is mortal, Socrate is a man, Socrate is mortal*. If you try to express this in propositional logic, you can't derive it. 
+
+  We now have $\mathcal{P}$ predicate symbols, $\mathcal{F}$ function symbols, $\mathcal{V}$ a countably infinite set of variables.
+
+  Then, as logic symbols, we have the truth symbols, the logical connectives, the quantors and syntactic symbols.
+
+  A set of terms $\mathcal{T}(\Sigma, \mathcal{V})$ is a variable from $\mathcal{V}$ and a function term $f(\overline{t})$ where $f$ is an n-ary function symbol from $\Sigma$ and arguments $t$ are terms.
+
+  We can define a set of well-formed formulae $\mathcal{F}(\Sigma,\mathcal{V})=(A,B,C...)$:
+
+  -  an atomic formula (constructed with $p$ and n-ary predicate symbol from $\Sigma$ and arity $n$, $p(t_1,...,t_n)$ where the $t$s are terms.
+  - 
 
   
 
