@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\maketitle
+%\maketitle
 
 \section{Propositional logic}
 
@@ -91,16 +91,19 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 
 \subsection{Natural deduction}
 
-\noindent AND: $\hspace{1em} \dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I \hspace{5em} \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E$
+\noindent AND: $\hspace{1em} \dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I \hspace{5em} \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E$.
 
-\noindent OR: $\hspace{1em} \dfrac{\varphi}{\varphi \lor \theta}\lor I \hspace{1em} \dfrac{\theta}{\varphi \lor \theta}\lor I \hspace{5em} $
+\noindent OR: $\hspace{1em} \dfrac{\varphi}{\varphi \lor \theta}\lor I \hspace{1em} \dfrac{\theta}{\varphi \lor \theta}\lor I \hspace{5em} $.
 
-\noindent IMPLIES: $\hspace{1em} \dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \theta \end{array}}{\varphi \rightarrow \theta} \rightarrow I \hspace{5em} \hspace{1em} \dfrac{\varphi \hspace{1em} \varphi \rightarrow \theta}{\theta} \rightarrow E $
+\noindent IMPLIES: $\hspace{1em} \dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \theta \end{array}}{\varphi \rightarrow \theta} \rightarrow I \hspace{5em} \hspace{1em} \dfrac{\varphi \hspace{1em} \varphi \rightarrow \theta}{\theta} \rightarrow E $.
 
-\noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$.
+\noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$. Reduction ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
 
-\noindent Reduction ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
+%\noindent $\begin{cases}
+%	\Gamma \vdash \varphi \\
+%	\Gamma = \emptyset
+%\end{cases} \Rightarrow \vdash \varphi \Rightarrow \varphi$ theorem.
 
-\noindent 
+\noindent Completeness theorem: $\Gamma \vdash \varphi \Rightarrow \Gamma \vDash \varphi$. Soundness theorem $\Gamma \vdash \varphi \Leftarrow \Gamma \vDash \varphi$.
 
 \end{document}
