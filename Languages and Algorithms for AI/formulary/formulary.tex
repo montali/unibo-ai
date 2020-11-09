@@ -15,6 +15,8 @@
 
 \section{Propositional logic}
 
+\subsection{Semantics}
+
 \noindent $\Gamma = F_1,\dots,F_n$ (\textit{promises});
 $F$ \textit{conclusion}; 	
 $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
@@ -46,6 +48,8 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 \end{figure}
 
 \noindent $F$ logically equivalent to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
+
+\subsection{Calculus}
 
 \begin{figure}[h]
 	\centering
@@ -81,15 +85,15 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 	%\caption{Logical equivalence rules}
 \end{figure}
 
-\noindent Conjunctive Normal Form (CNF): $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $.
+\noindent Conjunctive Normal Form: $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $ (disjunction of atoms).
 
-\noindent Disjunctive Normal Form (DNF): $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $.
+\noindent Disjunctive Normal Form: $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $ (conjunction of atoms).
 
 \noindent Deduction Theorem: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff (\vDash(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
 
 \noindent Proof by refutation: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
 
-\subsection{Natural deduction}
+\subsubsection{Natural deduction}
 
 \noindent AND: $\hspace{1em} \dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I \hspace{5em} \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E$.
 
@@ -104,6 +108,16 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 %	\Gamma = \emptyset
 %\end{cases} \Rightarrow \vdash \varphi \Rightarrow \varphi$ theorem.
 
-\noindent Completeness theorem: $\Gamma \vdash \varphi \Rightarrow \Gamma \vDash \varphi$. Soundness theorem $\Gamma \vdash \varphi \Leftarrow \Gamma \vDash \varphi$.
+\noindent $\Gamma \vdash \varphi \iff \Gamma \vDash \varphi$ (Completeness theorem: $\Gamma \vdash \varphi \Rightarrow \Gamma \vDash \varphi$; Soundness theorem: $\Gamma \vdash \varphi \Leftarrow \Gamma \vDash \varphi$).
+
+\subsubsection{Resolution}
+
+%\noindent Proof by refutation: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
+
+\noindent $\dfrac{R \lor A \hspace{1em} R' \lor \bot A}{R \lor R'}$
+
+\section{First Order Logic}
+
+TODO
 
 \end{document}
