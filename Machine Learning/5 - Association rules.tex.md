@@ -49,9 +49,55 @@ So, there are a few ways of reducing the number of these frequent itemsets. It i
 
 A *MFI* does not have any frequent immediate supersets. The MFI are near the border dividing frequent by not frequent itemsets in the lattice.
 
-## Confidence
+## Confidence from the supports
 
 The **confidence** can be **computed from the supports!**
 $$
 \text{conf}(A\Rightarrow C) = \frac{sup(A\Rightarrow C)}{sup(A)}
 $$
+
+## FP-growth
+
+This is an alternative way of computing association rules, different from priori, which has some problems: it needs to generate the candidate itemsets (which are a lot), and it needs multiple scans of the database to check the results. The FP-growth algorithm transforms the problem into a search of patterns by looking at nodes. First of all it scans the DB to find the support of 1-itemsets, creating a root for the tree. Then, we reorder the items for descending support, focusing on the root node of the tree. The idea is to match the prefix of a transaction, and add new branches when needed. In the end, we'll have a tree containing the items having support of the path from the root to the node. Note that we reordered them because if an item has a higher support, it is better to put it near the root. The numbers are incremented every time I find a common prefix. 
+
+So, what can we do with this tree? We consider the complete set of frequent items projections of transactions in the DB, derivable from the respective FP-tree. 
+
+### Performance
+
+This algorithm has better results with lower runtime. Note that Apriori won't be computed for small support thresholds. 
+
+## Rule generation
+
+We have already seen that it is sufficient to know the support of the frequent itemsets. In particular, following a good strategy, we can even have some pruning. Given a frequent itemset $L$, we can find all the non-empty sybsets belonging to $L$ having a confidence higher than the threshold. If the size is $k$, there are $2^k-2$ candidate rules. How can we generate these? Generally, confidence is not anti-monotone. If we consider the rules generated from the same itemset, we can forecast the direction of the *antimonotonity*.
+
+When we move an item from the left to the right, the numerator does not change, but the antecedent decreases, so the support will not decrease. Considering a given itemset, we can have a series of descendants. If a rule has low confidence, all of its descendants can be pruned. 
+
+In apriori, we can generate candidate rules by merging two rules sharing the same prefix. We will then prune the rule if it has low confidence. Of course, the effect of support distribution can influence the way fo working with the dataset: real datasets can have a skewed support distribution. It means that the choice of the support count to filter is not easy. So, how can we set the appropriate threshold? If it is too high, we could miss itemsets, if it is too low, we have too many itemsets. 
+
+### Multiple minimum supports
+
+Having different minimum supports for different items, we could maybe choose the minimum between them. The traditional apriori could be modified to deal with multiple minimum supports.
+
+### Pattern evaluation
+
+Generally, the algorithm tends to produce too many rules. We can encounter redundancies. We can use several measures to rank the rules, other than support/confidence. The **interestingness measures** can be used pretty much anywhere in the process. How can we compute these measures? Given a contingency table, i.e. a table containing the elements needed to compute those, we check the confidence of the various implications.
+
+![Contingency table](./res/contingency-table.png)
+
+Statistical independence proves that these rules can be non-symmetrical. We can either have statistical independence, positive correlation, or negative correlation.
+
+The **lift** measure is the ratio of the confidence of A implies C, divided by the support of C. It evaluates to 1 for independence, it is insensitive to rule direction, and it is the ratio of true cases wrt independence.
+
+The **leverage** is the probability of A and C minus the joint probability of them. It evaluates to 0 for independence. 
+
+The **conviction** takes into account the deviation. 
+$$
+\operatorname{conv}(A \Rightarrow C)=\frac{1-\sup (C)}{1-\operatorname{conf}(A \Rightarrow C)}=\frac{\operatorname{Pr}(A)(1-\operatorname{Pr}(C))}{\operatorname{Pr}(A)-\operatorname{Pr}(A, C)}
+$$
+It's the deviation of incorrect predictions wrt to independence.
+
+With an *higher support*, the rule applies to more records. With *higher confidence*, we habe higher chance that the rule is true for some record is higher, with *higher lift*, the chance that the rule is just a coincidence is lower, with *higher conviction*, the rule is violated less often than it would be if the antecedent and the consequent were independent.
+
+A good measure must be 0 or 1 if A and B are statistically independent. It should increase monotonically with $Pr(A,B)$ when $Pr(A)$ and $Pr(B)$ remain unchanged, and should decrease monotonically with $Pr(A)$ (or $Pr(B)$) when $Pr(A,B)$ and $Pr(B)$ (or $Pr(A)$) remain unchanged.
+
+We can say that there are lots of measures, usually the confidence is the base, and other measures support that.
