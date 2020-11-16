@@ -48,27 +48,15 @@ The previous two are never used, because they have a problem: *we still don't kn
 
 **Deductive planning** is a general purpose type of planning, based on *First Order Logic*, which describes the initial states, the actions and the goal.
 
-The **situation** is a world snapshot describing properties (*fluents*) that hold in a given state $s$.
-$$
-Example: block\ world\\
-o n(b, a, s)\\
-ontable (c, s)
-$$
+The **situation** is a world snapshot describing properties (*fluents*) that hold in a given state <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>.
+<p align="center"><img src="svgs/d186dd57f2b31c9c4bcd172a8ce927de.svg?invert_in_darkmode" align=middle width=320.19646725pt height=16.438356pt/></p>
 The **actions** define which fluents are true as a consequence of an action. Note that uppercase letters are constants. The *put on table* action might be defined as follows:
-$$
-\begin{aligned}
-&\begin{array}{l}
-\text { on }(X, Y, S) \text { and } \operatorname{clear}(X, S) \rightarrow \\
-\text { (ontable }(X, d o \text { (putOntable }(X), S))) \text { and }
-\end{array}\\
-&\text { (clear(Y,do(putOn Table }(X), \text { S }) \text { ) }
-\end{aligned}
-$$
+<p align="center"><img src="svgs/3bc591acc550451d800743a93c053f18.svg?invert_in_darkmode" align=middle width=313.0769466pt height=62.4657528pt/></p>
 The action *put on table* has two preconditions, before the arrow, and consequences after.
 
 Given the situation calculus (initial state, actions) we can use *resolution* (i.e. the traditional way we use in logic to solve problems) to create a plan. We'll use  *unification* too, as in logic. 
 
-If, for example, we ask *Is it possible to find an $s$ where $b$ is on the table?* We can use our resolution to put $b$ on top of the table, because it is on top of it and the table is clear. 
+If, for example, we ask *Is it possible to find an <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/> where <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> is on the table?* We can use our resolution to put <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> on top of the table, because it is on top of it and the table is clear. 
 
 The resolution tells us that it is true that you can achieve the required state.
 
@@ -86,13 +74,13 @@ The frame axioms specify, for all the possible fluents, that if they do not chan
 
 ### Kowalski formulation
 
-We use a predicate $holds(rel,s/a)$ to describe all the true relations in a state $s$ or made true by an action $a$. Then, we have a preidcate $poss(s)$ that states if a state is *possible* (i.e. reachable). Finally, a predicate $pact(a,s)$ to indicate that it is possible to execute an action $A$ in state $s$, namely the preconditions of $a$ are true in $s$. 
+We use a predicate <img src="svgs/3877cb5357d9f5d32d1ac0cf74027860.svg?invert_in_darkmode" align=middle width=104.38955009999998pt height=24.65753399999998pt/> to describe all the true relations in a state <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/> or made true by an action <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/>. Then, we have a preidcate <img src="svgs/c6063dee34bb89b356faef33041e48fe.svg?invert_in_darkmode" align=middle width=52.14049005pt height=24.65753399999998pt/> that states if a state is *possible* (i.e. reachable). Finally, a predicate <img src="svgs/be5ad361b7c6393c0a249e3a1cdb081d.svg?invert_in_darkmode" align=middle width=66.49557254999999pt height=24.65753399999998pt/> to indicate that it is possible to execute an action <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.32879834999999pt height=22.465723500000017pt/> in state <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>, namely the preconditions of <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/> are true in <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>. 
 
 So, we need one frame assertion per action (which is good compared to Green).
 
-We have moved the property as **terms**, which can be done in PROLOG etc. We say that the initial state is reachable, and in the initial state $s_0$ we list the properties that hold. For the action *move*, we have two facts that describe the effects. So we can say that for every state $s$, if we apply the action *move*, it holds *clear(Y)*...
+We have moved the property as **terms**, which can be done in PROLOG etc. We say that the initial state is reachable, and in the initial state <img src="svgs/ac3148a5746b81298cb0c456b661f197.svg?invert_in_darkmode" align=middle width=14.25802619999999pt height=14.15524440000002pt/> we list the properties that hold. For the action *move*, we have two facts that describe the effects. So we can say that for every state <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>, if we apply the action *move*, it holds *clear(Y)*...
 
-When you have the effects, you have to use one single fact for all of the effects. For the preconditions, we use $pact$ (*precondition actions*).  
+When you have the effects, you have to use one single fact for all of the effects. For the preconditions, we use <img src="svgs/4bfc6ac3c3de9b97bda4cb7a27b58bfe.svg?invert_in_darkmode" align=middle width=30.00962249999999pt height=20.221802699999984pt/> (*precondition actions*).  
 
 ## STRIPS
 
@@ -110,14 +98,14 @@ First of all, as for all the other planners we have seen so far, **STRIPS is a g
 
 - We initialize the stack with the goals to reach
 - At each step
-  - We remove the top from the stack and analyze it. The thing is simple: there can be different things here. Initially, we just have a goal. We can then check if the goal can be unified (the unified is stated as $\theta$) with the *current state*. We remove the goal, because it is true, and apply the unification on the other stack. If it is not true in the current state, we have to find an action that achieves this goal! How can we find it? Where should this goal unified with the other stack? We have to find an action where this $A$ is in the *ADD list*. 
+  - We remove the top from the stack and analyze it. The thing is simple: there can be different things here. Initially, we just have a goal. We can then check if the goal can be unified (the unified is stated as <img src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode" align=middle width=8.17352744999999pt height=22.831056599999986pt/>) with the *current state*. We remove the goal, because it is true, and apply the unification on the other stack. If it is not true in the current state, we have to find an action that achieves this goal! How can we find it? Where should this goal unified with the other stack? We have to find an action where this <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.32879834999999pt height=22.465723500000017pt/> is in the *ADD list*. 
   - Then, you remove the goal from the stack, you insert the action and all the preconditions in the *GOAL stack*
   - Finally, having pushed the action on the stack, this will emerge when all the preconditions are true.
   - This is the only time where you change the state description by **applying this action**!
 
 ### Example
 
-The only thing that emerges from the goal stack is an AND. Note that the order in which we put these goals is extremely important. So, now, we extract $on(a,c)$ and we ask ourselves if it is already true in the initial state. The answer is no: we extract it from the stack, and have to find an action that does so, which will be $stack(a,c)$, and *all its preconditions*. We put the action and the precondition in the goal stack, where $on(a,c)$ was. Now, we order the preconditions and leave an AND. $holding(c)$ is not true, so we have to find an action that makes that true! We then substitute $holding(c)$ with the preconditions and action that makes that true. This proceeds until we find the preconditions in the initial state! When that happens, we can apply the action in the state stack! We therefore add to the DELETE list $handempty$ and $on(c,a)$, and ADD $holding(c)$. So, we remove from the goal stack what has to be removed, and so on....
+The only thing that emerges from the goal stack is an AND. Note that the order in which we put these goals is extremely important. So, now, we extract <img src="svgs/af979635ef7802ab3b04b8873ff87a2e.svg?invert_in_darkmode" align=middle width=53.72920244999999pt height=24.65753399999998pt/> and we ask ourselves if it is already true in the initial state. The answer is no: we extract it from the stack, and have to find an action that does so, which will be <img src="svgs/7eb9036488e81f21079cff78a692c743.svg?invert_in_darkmode" align=middle width=74.4141717pt height=24.65753399999998pt/>, and *all its preconditions*. We put the action and the precondition in the goal stack, where <img src="svgs/af979635ef7802ab3b04b8873ff87a2e.svg?invert_in_darkmode" align=middle width=53.72920244999999pt height=24.65753399999998pt/> was. Now, we order the preconditions and leave an AND. <img src="svgs/2b102fcbacb0cb8567a9efc877eb0a98.svg?invert_in_darkmode" align=middle width=75.08317244999998pt height=24.65753399999998pt/> is not true, so we have to find an action that makes that true! We then substitute <img src="svgs/2b102fcbacb0cb8567a9efc877eb0a98.svg?invert_in_darkmode" align=middle width=75.08317244999998pt height=24.65753399999998pt/> with the preconditions and action that makes that true. This proceeds until we find the preconditions in the initial state! When that happens, we can apply the action in the state stack! We therefore add to the DELETE list <img src="svgs/726bda387c1871286ef346160d7e1cb0.svg?invert_in_darkmode" align=middle width=81.52623599999998pt height=22.831056599999986pt/> and <img src="svgs/e3aa54c3802958dc561a36d46b7a2042.svg?invert_in_darkmode" align=middle width=53.72920244999999pt height=24.65753399999998pt/>, and ADD <img src="svgs/2b102fcbacb0cb8567a9efc877eb0a98.svg?invert_in_darkmode" align=middle width=75.08317244999998pt height=24.65753399999998pt/>. So, we remove from the goal stack what has to be removed, and so on....
 
 ### Some notes
 

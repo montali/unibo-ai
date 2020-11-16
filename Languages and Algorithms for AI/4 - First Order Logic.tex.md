@@ -35,3 +35,27 @@ These are provided without proof, we trust those. The notion of logical conseque
 
 Two sentences/theories are equivalent $\leftrightarrow$ if they are logical consequences of each other. Given that, **it is undecidable whether a FOL formula $F$ is true under all possible interpretations, i.e. $if \vDash F$.** We cannot list all the possible cases through the truthness table anymore, as we could do in propositional logic. In fact, we should now consider all possible universes of interpretations, domains... and this can't be done.
 
+## Resolution
+
+The idea is the same as for propositional logic: we take a theory, we negate the consequence that we want to prove, and we must show that this theory is unsatisfied. However, we have to transform FOL formulae in clauses, which is more complicated. Then we must define the resolution inference rule for FOL, which requires substitutions and unification.
+
+In **Negation Normal Form**, if you have a negation, then the negation is in front of an atomic formula. So, for every sentence $F$, there is an equivalent sentence $F_{neg}$ in the NNF.
+
+### Clauses
+
+A clause is a disjunction of literals(i.e. either an atomic formula or a negation of one). The part on the left of the arrow is called the **body**, the **head** is the part on the right. 
+
+### Normalization
+
+An arbitrary theory can be transformed into clausual form by converting to NNF, performing Skolemization (preserves satisfiability) to eliminate all the existential quantifiers, then convert the resulting theory, still in NNF, to clausal form, by moving conjunctions and universal quantifiers outwards. 
+
+### Substitution
+
+The **substitution** is something you may already have seen in functional languages. It is simply a mapping to a function which has the domain $\mathcal{V}$ set of all variables, codomain $\mathcal{T}$ all the possible terms, modifying a finite number of variables in the sense that it replaces the finite number of variables by a finite number of terms.
+
+### Unifiers
+
+$\sigma$ is a unifier for $e_1,...,e_n$ if $e_1\sigma=...=e_n\sigma$
+
+$e_1,...,e_n$ is **unifiable** if a unifier exists. The most general unifier (mgu) exists if every unifier $\tau$ for $\overline{e}$ is instance of $\sigma$, i.e. $\tau=\sigma\rho$ for some $\rho$
+
