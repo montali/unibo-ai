@@ -8,6 +8,7 @@
 Teacher: Maurizio Gabbrielli
 
 - [Gabbrielli's channel on MS Stream](https://web.microsoftstream.com/user/f9f103f3-1732-4b8e-8ba9-fff748a59273)
+- [Formulary](formulary/formulary.pdf)
 
 ### Part 1: Introduction
 
