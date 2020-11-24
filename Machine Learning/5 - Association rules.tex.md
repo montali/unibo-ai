@@ -101,3 +101,21 @@ With an *higher support*, the rule applies to more records. With *higher confide
 A good measure must be 0 or 1 if A and B are statistically independent. It should increase monotonically with $Pr(A,B)$ when $Pr(A)$ and $Pr(B)$ remain unchanged, and should decrease monotonically with $Pr(A)$ (or $Pr(B)$) when $Pr(A,B)$ and $Pr(B)$ (or $Pr(A)$) remain unchanged.
 
 We can say that there are lots of measures, usually the confidence is the base, and other measures support that.
+
+### comparing mono-dimensional and multi-dimensional
+
+In the **mono-dimensional** the events are **transactions**, while in the multi-dimensional they are tuples. 
+
+Most software packages for association rules discovery do not deal with quantitative attributes, so we can **discretize** things.
+
+## Multilevel AR
+
+Another variant of AR are the **multi-level rules**, back to the basket market analysis. We know that in a real DB we can have tens of thousands of items, and this generates a fragmentation of the rules. Sometimes this can be useful, sometimes not. Experts prefer reasoning at a higher level. A common background knowledge is the organization of the items into a hierarchy of concepts. If we move up in the hierarchy, the support will tend to increase. In other words, we go from specialized to general and new rules can become interesting. If we do the opposite, i.e. we go from general to specialized, the support decreases, and can go under the threshold. A level change can influence the confidence in any direction. It may also happen that the specialized rule has the same confidence of the specialized rule, and it doesn't add knowledge. For example, we can say low-fat milk is a subclass of milk. If we have 1k transactions, 80 with milk+bread, 114 with milk, 20 with low-fat milk+bread, 28 with low-fat milk. We build 2 rules:
+
+- $milk \rightarrow bread$ (support $8\%$, confidence $70\%$)
+- $low-fat milk \rightarrow bread$ (support $2\%$, confidence $71\%$)
+
+Rule $b$ has almost the same confidence of $a$, so it doesn't add informations. 
+
+This tells us that generally, if we need to discover association rules, we can start with frequent itemsets at the top level of abstraction, and go deeper decreasing the threshold in lower levels. 
+

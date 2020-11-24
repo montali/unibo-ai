@@ -45,19 +45,19 @@ How do we compute these? There are multiple approaches, and we can start by simp
     Recapping:
 
 
-  $$
+$$
     \begin{aligned}
     \mu_{1}(t) &=\sum_{i=1}^{t} i p(i) / q_{1}(t) & & \sigma_{1}^{2}(t)=\sum_{i=1}^{t}\left(i-\mu_{1}(t)\right)^{2} p(i) / q_{1}(t) \\
     \mu_{2}(t) &=\sum_{i=t+1}^{L} i p(i) / q_{2}(t) & & \sigma_{2}^{2}(t)=\sum_{i=t+1}^{L}\left(i-\mu_{2}(t)\right)^{2} p(i) / q_{2}(t)
     \end{aligned}
-  $$
+$$
 
   ​		with 
-  $$
+$$
   q_{1}(t)=\sum_{i=1}^{t} p(i) \quad q_{2}(t)=\sum_{i=t+1}^{L} p(i)
-  $$
+$$
 
-    
+​    
 
   - Now, we can find the *within-group variance*, which is the **weighted sum** of the two variances: $\sigma_{W}^{2}(t)=q_{1}(t) \sigma_{1}^{2}(t)+q_{2}(t) \sigma_{2}^{2}(t)$. If this is small, it means that the classes are homogeneous! The search space is 1D, which makes it easy, but it could make sense to make this a little faster. This is obtained by sum algebraic manipulations turning this minimzation problem into an easier maximisation problem. Minimization of the within-group variance requires computing the means and the variances. By deploying a property of this parameter, i.e. its relation with the whole image's variance, we can cast this problem into a more efficient one.
 
@@ -82,18 +82,18 @@ How do we compute these? There are multiple approaches, and we can start by simp
   - So, now we get $\sigma^{2}=\sum_{i=1}^{t}\left(i-\mu_{1}(t)\right)^{2} p(i)+\sum_{i=t+1}^{L}\left(i-\mu_{2}(t)\right)^{2} p(i)+\left(\mu_{1}(t)-\mu\right)^{2} q_{1}(t)+\left(\mu_{2}(t)-\mu\right)^{2} q_{2}(t)$, and we know that maximizing the between group variance minimizes the withing-group variance
 
   Finally:
-  $$
+$$
   \begin{aligned}
   \sigma^{2} &=\left[q_{1}(t) \sigma_{1}^{2}(t)+q_{2}(t) \sigma_{2}^{2}(t)\right]+\left[\left(\mu_{1}(t)-\mu\right)^{2} q_{1}(t)+\left(\mu_{2}(t)-\mu\right)^{2} q_{2}(t)\right] \\
   \sigma^{2} &=\sigma_{W}^{2}(t)+\sigma_{B}^{2}(t)
   \end{aligned}
-  $$
+$$
   where $\sigma^2_B(t)$ being the between-group variance, which is maximized. 
 
   So, as $\sigma^2$ is independent of $t$, the above relation suggests we might wish to maximize the between-group variance rather than minimizing the within-group one, since we don't need to compute variances in the first one. Further computational savings can be achieved, getting to:
-  $$
+$$
   \sigma_{B}^{2}(t)=q_{1}(t)\left(1-q_{1}(t)\right)_{i}\left(\mu_{1}(t)-\mu_{2}(t)\right)^{2}
-  $$
+$$
 
   ## Adaptive thresholding
 
@@ -108,28 +108,90 @@ How do we compute these? There are multiple approaches, and we can start by simp
   \end{array}\right]$ .
 
   Then, segmentation can be achieved by computing and thresholding the distance between the pixel's colour and the reference background colour $\mu$.
-  $$
+$$
   \forall p \in \mathbf{I}:\left\{\begin{array}{l}
   d(\mathbf{I}(p), \boldsymbol{\mu}) \leq T \rightarrow O(p)=B \\
   d(\mathbf{I}(p), \boldsymbol{\mu})>T \rightarrow O(p)=F
   \end{array}\right.
-  $$
+$$
 
-  $$
+$$
   d(\mathbf{I}(p), \boldsymbol{\mu})=\left(\left(I_{r}(p)-\mu_{r}\right)^{2}+\left(I_{g}(p)-\mu_{g}\right)^{2}+\left(I_{b}(p)-\mu_{b}\right)^{2}\right)^{\frac{1}{2}}
-  $$
+$$
 
   How can we **estimate the reference colour**? This is tipically done by taking some training images, then estimating it, for example by taking pixels, then taking their mean:
-  $$
+$$
   \boldsymbol{\mu}=\left[\begin{array}{c}
   \mu_{r} \\
   \mu_{g} \\
   \mu_{b}
   \end{array}\right]=\frac{1}{N} \sum_{k=1}^{N} \mathbf{I}\left(p_{k}\right)
-  $$
-  Another kind of distance (different from this *Euclidean distance*) is frequently used. *We'll discover that in the next episode.*
+$$
+We consider a threshold of color, then whatever color appears in the circle is part of the background, whatever is out of it is not.
 
-  
+![Color threshold in the RGB plot](./res/color_threshold.png)
 
-  
+It may happen that there's more variation along one axis or the other (i.e. the circle has to be *kind of oval*).
+
+In such a case, the error we end up with is pretty high. ![Wrong color threshold](./res/color-threshold-wrong.png)
+
+To create a *oval* threshold, we can use a slightly more complex approach, based into taking into account not only the mean, but also next order statistics, the *covariance* (not the variance because we have a multivariate random vector).
+
+Another kind of distance (different from this *Euclidean distance*) is frequently used. *We'll discover that in the next episode.*
+
+## Mahalanobis distance
+
+A far richer probabilistic characterization of the colour distribution among the foreground pixels can be obtained by estimating the covariance too:
+$$
+\Sigma=\left(\begin{array}{lll}
+\sigma_{r r}^{2} & \sigma_{r g}^{2} & \sigma_{r b}^{2} \\
+\sigma_{g r}^{2} & \sigma_{g g}^{2} & \sigma_{g b}^{2} \\
+\sigma_{b r}^{2} & \sigma_{b g}^{2} & \sigma_{b b}^{2}
+\end{array}\right) \quad \rightarrow \quad\left\{\begin{array}{l}
+\sigma_{i j}^{2}=\frac{1}{N} \sum_{k=1}^{N}\left(I_{i}\left(p_{k}\right)-\mu_{i}\right)\left(I_{j}\left(p_{k}\right)-\mu_{j}\right) \\
+i, j \in\{r, g, b\}
+\end{array}\right.
+$$
+In this way, we capture the correlation between channels too. The covariance matrix is symmetric. To go from the plain euclidean distance, we add the inverse of $\Sigma$, the covariance matrix:
+$$
+d_M(I(p),\mu)=\left[(I(p)-\mu)^T \Sigma^{-1} (I(p)-\mu)\right]^{1/2}
+$$
+
+### Understanding the difference between Euclidean and Mahalanobis
+
+To understand the difference between the two distances, let's for now assume that the convariance matrix is diagonal (this isn't true, actually). This means that the data are not correlated. Computing the inverse of this is easy:
+$$
+\Sigma=\left(\begin{array}{ccc}
+\sigma_{r r}^{2} & 0 & 0 \\
+0 & \sigma_{g g}^{2} & 0 \\
+0 & 0 & \sigma_{b b}^{2}
+\end{array}\right) \quad \longrightarrow \quad \Sigma^{-1}=\left(\begin{array}{ccc}
+1 / \sigma_{r r}^{2} & 0 & 0 \\
+0 & 1 / \sigma_{g g}^{2} & 0 \\
+0 & 0 & 1 / \sigma_{b b}^{2}
+\end{array}\right)
+$$
+Therefore, we can multiply the last two terms of the distance $\Sigma^{-1}(I(p)-\mu)$ getting $\left[\begin{array}{l}
+\left(I_{r}(p)-\mu_{r}\right) / \sigma_{r r}^{2} \\
+\left(I_{g}(p)-\mu_{g}\right) / \sigma_{g g}^{2} \\
+\left(I_{b}(p)-\mu_{b}\right) / \sigma_{b b}^{2}
+\end{array}\right]$.
+
+Finally, we get:
+$$
+d_{M}(\mathbf{I}(p), \boldsymbol{\mu})=\left(\frac{\left(I_{r}(p)-\mu_{r}\right)^{2}}{\sigma_{r r}^{2}}+\frac{\left(I_{g}(p)-\mu_{g}\right)^{2}}{\sigma_{g g}^{2}}+\frac{\left(I_{b}(p)-\mu_{b}\right)^{2}}{\sigma_{b b}^{2}}\right)^{\frac{1}{2}}
+$$
+  Contrary to the euclidean distance, the Mahalanobis distance weighs the differences along the components of the random vector differently. In particular, they are weighted according to the inverse proportionality to the learned variances. 
+
+Now, which region of the RGB space determines the segmentation? ![Which region determines the segmentation?](./res/segmentation-rgb-region.png)
+
+This interpretation is of general validity! Indeed, the convariance matrix can always be diagonalized by a rotation of the coordinate axes. Thus, in the new coordinate system, it is a weighted sum of the contribution along the new axes, with weights being inversely proportional to the variances along the new axes. This is due to the *EigenValue Decomposition* (EVD) of any real and symmetric matrix:
+$$
+\mathbf{\Sigma}=\mathbf{R} \mathbf{D} \mathbf{R}^{T}: \mathbf{R}=\left(\mathbf{e}_{1} \mathbf{e}_{2} \mathbf{e}_{3}\right), \quad \mathbf{D}=\left(\begin{array}{ccc}
+\lambda_{1} & 0 & 0 \\
+0 & \lambda_{2} & 0 \\
+0 & 0 & \lambda_{3}
+\end{array}\right)
+$$
+Now, there's always a transformation which turns the covariance into a diagonal matrix. This is a rotation to matrix $R^T$. So if we start with the initial data (color pixel), rotate them (in the color space) according to $R^T$ we get what we want. 
 

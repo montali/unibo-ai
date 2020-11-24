@@ -45,7 +45,69 @@ So, there are a few ways of reducing the number of these frequent itemsets. It i
 
 A *MFI* does not have any frequent immediate supersets. The MFI are near the border dividing frequent by not frequent itemsets in the lattice.
 
-## Confidence
+## Confidence from the supports
 
 The **confidence** can be **computed from the supports!**
 <p align="center"><img src="svgs/ed6802aa4316485e447b50e60a38e8a7.svg?invert_in_darkmode" align=middle width=206.17592985pt height=38.83491479999999pt/></p>
+
+## FP-growth
+
+This is an alternative way of computing association rules, different from priori, which has some problems: it needs to generate the candidate itemsets (which are a lot), and it needs multiple scans of the database to check the results. The FP-growth algorithm transforms the problem into a search of patterns by looking at nodes. First of all it scans the DB to find the support of 1-itemsets, creating a root for the tree. Then, we reorder the items for descending support, focusing on the root node of the tree. The idea is to match the prefix of a transaction, and add new branches when needed. In the end, we'll have a tree containing the items having support of the path from the root to the node. Note that we reordered them because if an item has a higher support, it is better to put it near the root. The numbers are incremented every time I find a common prefix. 
+
+So, what can we do with this tree? We consider the complete set of frequent items projections of transactions in the DB, derivable from the respective FP-tree. 
+
+### Performance
+
+This algorithm has better results with lower runtime. Note that Apriori won't be computed for small support thresholds. 
+
+## Rule generation
+
+We have already seen that it is sufficient to know the support of the frequent itemsets. In particular, following a good strategy, we can even have some pruning. Given a frequent itemset <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.18724254999999pt height=22.465723500000017pt/>, we can find all the non-empty sybsets belonging to <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.18724254999999pt height=22.465723500000017pt/> having a confidence higher than the threshold. If the size is <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075495000000004pt height=22.831379999999992pt/>, there are <img src="svgs/3dfa801464bd353c57b06ae29ce40414.svg?invert_in_darkmode" align=middle width=44.61755429999999pt height=27.91243950000002pt/> candidate rules. How can we generate these? Generally, confidence is not anti-monotone. If we consider the rules generated from the same itemset, we can forecast the direction of the *antimonotonity*.
+
+When we move an item from the left to the right, the numerator does not change, but the antecedent decreases, so the support will not decrease. Considering a given itemset, we can have a series of descendants. If a rule has low confidence, all of its descendants can be pruned. 
+
+In apriori, we can generate candidate rules by merging two rules sharing the same prefix. We will then prune the rule if it has low confidence. Of course, the effect of support distribution can influence the way fo working with the dataset: real datasets can have a skewed support distribution. It means that the choice of the support count to filter is not easy. So, how can we set the appropriate threshold? If it is too high, we could miss itemsets, if it is too low, we have too many itemsets. 
+
+### Multiple minimum supports
+
+Having different minimum supports for different items, we could maybe choose the minimum between them. The traditional apriori could be modified to deal with multiple minimum supports.
+
+### Pattern evaluation
+
+Generally, the algorithm tends to produce too many rules. We can encounter redundancies. We can use several measures to rank the rules, other than support/confidence. The **interestingness measures** can be used pretty much anywhere in the process. How can we compute these measures? Given a contingency table, i.e. a table containing the elements needed to compute those, we check the confidence of the various implications.
+
+![Contingency table](./res/contingency-table.png)
+
+Statistical independence proves that these rules can be non-symmetrical. We can either have statistical independence, positive correlation, or negative correlation.
+
+The **lift** measure is the ratio of the confidence of A implies C, divided by the support of C. It evaluates to 1 for independence, it is insensitive to rule direction, and it is the ratio of true cases wrt independence.
+
+The **leverage** is the probability of A and C minus the joint probability of them. It evaluates to 0 for independence. 
+
+The **conviction** takes into account the deviation. 
+<p align="center"><img src="svgs/55d68aa2bd903260568f535c089e25b7.svg?invert_in_darkmode" align=middle width=396.51776175pt height=38.83491479999999pt/></p>
+It's the deviation of incorrect predictions wrt to independence.
+
+With an *higher support*, the rule applies to more records. With *higher confidence*, we habe higher chance that the rule is true for some record is higher, with *higher lift*, the chance that the rule is just a coincidence is lower, with *higher conviction*, the rule is violated less often than it would be if the antecedent and the consequent were independent.
+
+A good measure must be 0 or 1 if A and B are statistically independent. It should increase monotonically with <img src="svgs/3fda37547821a099050c1db251c78e53.svg?invert_in_darkmode" align=middle width=66.42324644999998pt height=24.65753399999998pt/> when <img src="svgs/0123d1127fca8f9be57e495876eaa43b.svg?invert_in_darkmode" align=middle width=45.823958399999995pt height=24.65753399999998pt/> and <img src="svgs/c21fe2f29d1db89cabc59d3b9f6fb6f1.svg?invert_in_darkmode" align=middle width=46.78856489999999pt height=24.65753399999998pt/> remain unchanged, and should decrease monotonically with <img src="svgs/0123d1127fca8f9be57e495876eaa43b.svg?invert_in_darkmode" align=middle width=45.823958399999995pt height=24.65753399999998pt/> (or <img src="svgs/c21fe2f29d1db89cabc59d3b9f6fb6f1.svg?invert_in_darkmode" align=middle width=46.78856489999999pt height=24.65753399999998pt/>) when <img src="svgs/3fda37547821a099050c1db251c78e53.svg?invert_in_darkmode" align=middle width=66.42324644999998pt height=24.65753399999998pt/> and <img src="svgs/c21fe2f29d1db89cabc59d3b9f6fb6f1.svg?invert_in_darkmode" align=middle width=46.78856489999999pt height=24.65753399999998pt/> (or <img src="svgs/0123d1127fca8f9be57e495876eaa43b.svg?invert_in_darkmode" align=middle width=45.823958399999995pt height=24.65753399999998pt/>) remain unchanged.
+
+We can say that there are lots of measures, usually the confidence is the base, and other measures support that.
+
+### comparing mono-dimensional and multi-dimensional
+
+In the **mono-dimensional** the events are **transactions**, while in the multi-dimensional they are tuples. 
+
+Most software packages for association rules discovery do not deal with quantitative attributes, so we can **discretize** things.
+
+## Multilevel AR
+
+Another variant of AR are the **multi-level rules**, back to the basket market analysis. We know that in a real DB we can have tens of thousands of items, and this generates a fragmentation of the rules. Sometimes this can be useful, sometimes not. Experts prefer reasoning at a higher level. A common background knowledge is the organization of the items into a hierarchy of concepts. If we move up in the hierarchy, the support will tend to increase. In other words, we go from specialized to general and new rules can become interesting. If we do the opposite, i.e. we go from general to specialized, the support decreases, and can go under the threshold. A level change can influence the confidence in any direction. It may also happen that the specialized rule has the same confidence of the specialized rule, and it doesn't add knowledge. For example, we can say low-fat milk is a subclass of milk. If we have 1k transactions, 80 with milk+bread, 114 with milk, 20 with low-fat milk+bread, 28 with low-fat milk. We build 2 rules:
+
+- <img src="svgs/5d8e0ab89650fd686adc7feb183ba149.svg?invert_in_darkmode" align=middle width=99.79764134999999pt height=22.831056599999986pt/> (support <img src="svgs/57e3ae6b249906929b439f9fdf1802b9.svg?invert_in_darkmode" align=middle width=21.91788224999999pt height=24.65753399999998pt/>, confidence <img src="svgs/dd29ee30b2071ea575c9177a0c27cd57.svg?invert_in_darkmode" align=middle width=30.137091599999987pt height=24.65753399999998pt/>)
+- <img src="svgs/7b831829f63917718cde01b4ebc4c1a6.svg?invert_in_darkmode" align=middle width=169.73873894999997pt height=22.831056599999986pt/> (support <img src="svgs/45a0b00b513fa74f40b37aafadb94773.svg?invert_in_darkmode" align=middle width=21.91788224999999pt height=24.65753399999998pt/>, confidence <img src="svgs/318095ab8cec5e20f1646ed9cb5b98d0.svg?invert_in_darkmode" align=middle width=30.137091599999987pt height=24.65753399999998pt/>)
+
+Rule <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> has almost the same confidence of <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/>, so it doesn't add informations. 
+
+This tells us that generally, if we need to discover association rules, we can start with frequent itemsets at the top level of abstraction, and go deeper decreasing the threshold in lower levels. 
+
