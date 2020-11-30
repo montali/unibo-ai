@@ -244,3 +244,5 @@ Note that **the inconsistencies basically prune the search tree**.
 
 The Fast Forward is an extremely efficient heuristic planner introduced in 2k, which uses graph planning as heuristic!
 
+
+
