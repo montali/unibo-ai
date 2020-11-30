@@ -10,6 +10,7 @@ Teacher: Michela Milano
 
 - [Milano's channel on MS Stream](https://web.microsoftstream.com/user/501dc13d-1074-4934-8386-df921ca87533)
 - [De Filippo's channel on MS Stream](https://web.microsoftstream.com/user/d98e4f5d-db09-4542-a943-0c02bbc12d50)
+- [Summary](summary/summary.pdf)
 
 ### Part 1: Introduction
 
@@ -35,15 +36,6 @@ Lesson recordings:
 - [2020-10-12 (5)](https://web.microsoftstream.com/video/cd3badb9-ecca-457a-b6b6-fd4d1ef42c05?list=user&userId=501dc13d-1074-4934-8386-df921ca87533)
 - [2020-10-13 (6)](https://web.microsoftstream.com/video/0c58377b-518b-4b6d-a6e9-9a6b41af92c7?list=user&userId=501dc13d-1074-4934-8386-df921ca87533)
 - [2020-10-19 (7)](https://web.microsoftstream.com/video/2b485795-a7b2-45c0-9c6b-bdb943b4b4da?list=user&userId=501dc13d-1074-4934-8386-df921ca87533)
-
-## Module 2
-
-
-## Module 3
-
-
-## Module 4
-
 
 ## Labs and competitions
 [Summary](Labs_Competitions.md)

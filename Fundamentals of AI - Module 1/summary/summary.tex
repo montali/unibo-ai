@@ -1,0 +1,96 @@
+\documentclass[]{article}
+\usepackage[a4paper, portrait, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\setlength\parindent{0pt}
+
+%opening
+\title{Summary \\ \large Fundamentals of Artificial Intelligence and Knowledge Representation - Module 1}
+\author{Daniele Santini}
+
+\begin{document}
+
+%\maketitle
+
+\section{Search}
+
+Total cost = Time to find a solution (off-line cost) + Cost of the solution path (
+on-line cost).
+
+Strategy evaluation criteria:
+\begin{itemize}
+	\item Completeness: does the strategy guarantees to find a solution if one exists?
+	\item Time complexity: how long does it take to find a solution?
+	\item Space complexity: how much memory is needed to carry out the search?
+	\item Optimality: does the strategy find the best solution when there are more solutions?
+\end{itemize}
+
+\section{Swarm intelligence}
+
+TODO
+
+\section{Games}
+
+TODO
+
+\section{Constraint Programming}
+
+TODO
+
+\section{Algorithms}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ c l }
+		b & branching factor\\
+		d & solution depth\\
+		m & maximum depth of the search tree\\
+		l & depth limit\\
+	\end{tabular}
+	\begin{tabular}{ | c | c | c | c | c | c | }
+		\hline
+		Name & Complete? & Optimal? & Time complexity & Space complexity & Notes\\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Non-informed search strategies}} \\
+		\hline
+		Breadth-First & Yes & Yes & $b^d$ & $b^d$ & \\
+		\hline
+		Uniform-Cost & Yes & Yes & $b^d$ & $b^d$ & \\
+		\hline
+		Depth-First & No & No & $b^m$ & $bm$ & \\
+		\hline
+		Depth-First, limited depth & If $l \ge d$ & No & $b^l$ & $bl$ & \\
+		\hline
+		Iterative Deepening & Yes & Yes & $b^d$ & $bd$ & \\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Informed search strategies}} \\
+		\hline
+		Best-First & No & No & $b^d$ & $b^d$ & \\
+		\hline
+		A* & Yes & If heuristic is optimistic &  &  & \\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Local search}} \\
+		\hline
+		TODO & TODO & TODO & TODO & TODO & \\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Swarm intelligence}} \\
+		\hline
+		TODO & TODO & TODO & TODO & TODO & \\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Games}} \\
+		\hline
+		Min-Max & Yes & Yes & $b^m$ & $bm$ & \\
+		\hline
+		Min-Max, $\alpha/\beta$ pruning & Yes & Yes & $b^{\frac{3}{4}d}$ & TODO & \\
+		\hline
+		\multicolumn{6}{|c|}{\textbf{Constraint programming}} \\
+		\hline
+		TODO & TODO & TODO & TODO & TODO & \\
+		\hline
+	\end{tabular}
+	%\caption{Algorithms for Artificial Intelligence}
+\end{table}
+
+\end{document}

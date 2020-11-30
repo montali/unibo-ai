@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{tabularx}
+\setlength\parindent{0pt}
 
 %opening
 \title{Formulary \\ \large Languages and Algorithms for Artificial Intelligence}
@@ -27,7 +28,7 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 
 \noindent $G$ valid $\iff \neg G$ inconsistent.
 
-\begin{figure}[h]
+\begin{table}[h]
 	\centering
 	\begin{tabular}{ |c |c|c | c | c| c | c | } 
 		\hline
@@ -44,14 +45,14 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 		F & F & T & F & F & T & T \\
 		\hline
 	\end{tabular}
-%\caption{Truth table of main logical connectives}
-\end{figure}
+	%\caption{Truth table of main logical connectives}
+\end{table}
 
 \noindent $F$ logically equivalent to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
 
 \subsection{Calculus}
 
-\begin{figure}[h]
+\begin{table}[h]
 	\centering
 	\begin{tabular}{ | r  c  l  c | } 
 		\hline
@@ -83,7 +84,7 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 		\hline
 	\end{tabular}
 	%\caption{Logical equivalence rules}
-\end{figure}
+\end{table}
 
 \noindent Conjunctive Normal Form: $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $ (disjunction of atoms).
 
