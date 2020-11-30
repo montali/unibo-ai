@@ -19,3 +19,5 @@ Teacher: Maurizio Gabbrielli
 
 - The [MiniZinc Handbook](https://www.minizinc.org/doc-2.5.0/en/index.html) contains all the documentation for the MiniZinc language and system.
 - [An article](https://zitoc.com/natural-deduction/) on natural deduction
+- [SWI-Prolog manual](https://www.swi-prolog.org/pldoc/man?section=overview)
+- [SWI-Prolog CLPfd documentation](https://www.swi-prolog.org/man/clpfd.html)
