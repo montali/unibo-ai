@@ -40,13 +40,13 @@ Basically, in stigmergy agents **change the environment**, communicating.
 
 We will see 3 algorithms for swarm intelligence:
 
-- **Ant Colony Optimization** (*Dorigo, 1992*): based on ants' behaviour, positive feedback based on pheromone trails
+- **Ant Colony Optimization** (*Dorigo, 1992*): based on ants' behaviour, positive feedback based on pheromone trails;
 - **Artificial Bee Colony Algorithm**: we can also have individuals with different functions;
 - **Particle Swarm Optimization PSO**: based on the observation of bird flocks or fish shouls. Stigmergy is used as communication.
 
 ### Ant Colony Optimization
 
-From the observation of ants we discover that they deposti pheromone trails while walking from the nest to the food and vice versa. They tend to choose the paths marked with higher pheromone concentrations. It emerges that they're always choosing the shortest path to the food.![Ants finding the way](./res/ants.png)
+From the observation of ants we discover that they deposit pheromone trails while walking from the nest to the food and vice versa. They tend to choose the paths marked with higher pheromone concentrations. It emerges that they're always choosing the shortest path to the food.![Ants finding the way](./res/ants.png)
 
 When you insert an obstacle, these systems tend to be **adaptive**. 
 
@@ -56,7 +56,7 @@ First of all, we have to build a **probabilistic, parametrized model**: the ***p
 
 Note that the solution is **built incrementally**: we're not in the field of local searches, we're building the path arc by arc, and at the end we can evaluate the solution.
 
-So, we have a graph called *construction graph* <img src="svgs/8552f1f7272fd3c4ddd05346f173861b.svg?invert_in_darkmode" align=middle width=78.13222559999998pt height=24.65753399999998pt/>, where vertexes <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/> are solution components and arcs <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.18724254999999pt height=22.465723500000017pt/> are connections. States are paths on <img src="svgs/5201385589993766eea584cd3aa6fa13.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/>. Contraints can be represented to define what is a consistent solution.
+So, we have a graph called *construction graph* <img src="svgs/8552f1f7272fd3c4ddd05346f173861b.svg?invert_in_darkmode" align=middle width=78.13222559999998pt height=24.65753399999998pt/>, where vertices <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/> are solution components and arcs <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.18724254999999pt height=22.465723500000017pt/> are connections. States are paths on <img src="svgs/5201385589993766eea584cd3aa6fa13.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/>. Constraints can be represented to define what is a consistent solution.
 
 For example, in solving the *Traveling Salesmen Problem*, we can build a model where:
 
@@ -89,7 +89,7 @@ ApplyOnlineDelayedPheromoneUpdate()
 
 So, how do we select a path? The longer the distance, the lower the heuristic: we prefer shorter arcs. How do we combine them? The **probability** of choosing an arc <img src="svgs/e5a8bc7bac1dd7d337c9e609a4ae3f99.svg?invert_in_darkmode" align=middle width=13.373644349999989pt height=21.68300969999999pt/> is proportional to the pheromone to the power of <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/>, the heuristic to the power <img src="svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.16555099999999pt height=22.831056599999986pt/>, divided by the sum of the other possibilities to normalize the thing:
 
-<img src="svgs/93b82f56370a405b372890fd65d70279.svg?invert_in_darkmode" align=middle width=301.26545955pt height=57.53473439999999pt/>  
+<img src="svgs/3093fe86607981467f8bbf5ca81d15fd.svg?invert_in_darkmode" align=middle width=300.2951506499999pt height=57.53473439999999pt/>  
 
 This is different from 0 if we have an arc ij. We associate this probability which is proportional to a product of the pheromone trail on that arc times the heuristic that is the inverse of the distance, normalized for all the feasible paths.
 
@@ -147,13 +147,13 @@ An employee bee that is performing local search becomes a scout if it can't impr
 
 This is **widely used in robotics**. It was proposed in 1995, and it is still used!
 
-Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices: moving away from the group to reach the food, or staying in the group.
+Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices, i.e. moving away from the group to reach the food, or staying in the group.
 
-We can solve optimization problems with two analogies: individuals (tentative configurations that move and sample the solution space) and social interaction (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of balance between exploration and exploitation.
+We can solve optimization problems with two analogies: **individuals** (tentative configurations that move and sample the solution space) and **social interaction** (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of **balance** between **exploration** and **exploitation**.
 
 Individuals are affected by the actions of other individuals (closer to them), so they're part of more subgroups which are not tied to the physical proximity of the configurations in the parameter space but are a priori defined.
 
-The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of stigmergy. 
+The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
 
 Mathematically speaking, the move is calculated with <img src="svgs/0d19b0a4827a28ecffa01dfedf5f5f2c.svg?invert_in_darkmode" align=middle width=12.92146679999999pt height=14.15524440000002pt/> which is the best solution found by the particle <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> and <img src="svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>, the best solution found by the entire swarm. For each particle, we:
 

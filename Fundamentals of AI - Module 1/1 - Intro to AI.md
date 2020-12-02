@@ -30,16 +30,17 @@ Things like common sense (e.g. your age always grows every year) are connected w
 
 ### Artificial Intelligence 
 _The study is to proceed on the basis of the conjecture that every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it._
-AI: _Study on how to make computers do things that humans do better._ Or, better: **/Study of how to build computers that pass the Turing test. If situated in an environment also perception, vision, movement, robotics. /**
+AI: _Study on how to make computers do things that humans do better._ Or, better: **Study of how to build computers that pass the Turing test. If situated in an environment also perception, vision, movement, robotics**.
 
 ### Two main AI approaches
 We can work top-down (**symbolic AI**), where we try to encode all the knowledge on the problem into symbols: logics, ontologies, rule based systems, declarative architecture. The models are here human understandable. 
-We can work bottom-up (**connessionist approach**) too. The knowledge, here, is not symbolic and it is _encoded_ into connections between **neurons**. Concepts are learned by examples, the neural network is not understandable by humans. 
+We can work bottom-up (**connectionist approach**) too. The knowledge, here, is not symbolic and it is _encoded_ into connections between **neurons**. Concepts are learned by examples, the neural network is not understandable by humans. 
 There are some domains in which the capability of explaining your model is crucial: suppose you are a doctor, and the machine says there’s something but you cannot understand what it is, the result is useless.
+
 ### PROLOG program
 PROLOG is a logic programming language. You have **rules**, **facts** and a **goal**.  If we wanted to define a sum program, a fact might be, for example, that 0+x is x.  It is not really performant.
 ### Reasoning and logic
-* Deductive reasoning: it doesn’t not allow us to learn a new knowledge.
+* Deductive reasoning: it doesn’t allow us to learn a new knowledge.
 * Inductive reasoning starts from the observation, and extracts a generalisation.
 * Hypothetical or abductive reasoning makes hypothesis: you make hypothesis that don’t prove your model (?)
 * Reasoning by analogy: you have seen many before, and work basing on experience.

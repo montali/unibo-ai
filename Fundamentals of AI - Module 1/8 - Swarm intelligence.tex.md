@@ -40,13 +40,13 @@ Basically, in stigmergy agents **change the environment**, communicating.
 
 We will see 3 algorithms for swarm intelligence:
 
-- **Ant Colony Optimization** (*Dorigo, 1992*): based on ants' behaviour, positive feedback based on pheromone trails
+- **Ant Colony Optimization** (*Dorigo, 1992*): based on ants' behaviour, positive feedback based on pheromone trails;
 - **Artificial Bee Colony Algorithm**: we can also have individuals with different functions;
 - **Particle Swarm Optimization PSO**: based on the observation of bird flocks or fish shouls. Stigmergy is used as communication.
 
 ### Ant Colony Optimization
 
-From the observation of ants we discover that they deposti pheromone trails while walking from the nest to the food and vice versa. They tend to choose the paths marked with higher pheromone concentrations. It emerges that they're always choosing the shortest path to the food.![Ants finding the way](./res/ants.png)
+From the observation of ants we discover that they deposit pheromone trails while walking from the nest to the food and vice versa. They tend to choose the paths marked with higher pheromone concentrations. It emerges that they're always choosing the shortest path to the food.![Ants finding the way](./res/ants.png)
 
 When you insert an obstacle, these systems tend to be **adaptive**. 
 
@@ -56,7 +56,7 @@ First of all, we have to build a **probabilistic, parametrized model**: the ***p
 
 Note that the solution is **built incrementally**: we're not in the field of local searches, we're building the path arc by arc, and at the end we can evaluate the solution.
 
-So, we have a graph called *construction graph* $G=(C,L)$, where vertexes $C$ are solution components and arcs $L$ are connections. States are paths on $G$. Contraints can be represented to define what is a consistent solution.
+So, we have a graph called *construction graph* $G=(C,L)$, where vertices $C$ are solution components and arcs $L$ are connections. States are paths on $G$. Constraints can be represented to define what is a consistent solution.
 
 For example, in solving the *Traveling Salesmen Problem*, we can build a model where:
 
@@ -89,7 +89,7 @@ ApplyOnlineDelayedPheromoneUpdate()
 
 So, how do we select a path? The longer the distance, the lower the heuristic: we prefer shorter arcs. How do we combine them? The **probability** of choosing an arc $ij$ is proportional to the pheromone to the power of $\alpha$, the heuristic to the power $\beta$, divided by the sum of the other possibilities to normalize the thing:
 
-$\mathrm{pij}=\left\{\begin{array}{c}
+$\mathrm{p_{ij}}=\left\{\begin{array}{c}
 \frac{\left[\tau_{i j}\right]^{\alpha}\left[\eta_{i j}\right]^\beta}{\sum_{k \text { feasible }}\left[\tau_{i j}\right]^{\alpha}\left[\eta_{i j}\right] \beta} \hspace{5px}\text{if j consistent}\\
 0 \hspace{5px}\text{otherwise}
 \end{array}\right.$  
@@ -156,13 +156,13 @@ An employee bee that is performing local search becomes a scout if it can't impr
 
 This is **widely used in robotics**. It was proposed in 1995, and it is still used!
 
-Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices: moving away from the group to reach the food, or staying in the group.
+Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices, i.e. moving away from the group to reach the food, or staying in the group.
 
-We can solve optimization problems with two analogies: individuals (tentative configurations that move and sample the solution space) and social interaction (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of balance between exploration and exploitation.
+We can solve optimization problems with two analogies: **individuals** (tentative configurations that move and sample the solution space) and **social interaction** (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of **balance** between **exploration** and **exploitation**.
 
 Individuals are affected by the actions of other individuals (closer to them), so they're part of more subgroups which are not tied to the physical proximity of the configurations in the parameter space but are a priori defined.
 
-The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of stigmergy. 
+The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
 
 Mathematically speaking, the move is calculated with $p_i$ which is the best solution found by the particle $i$ and $g$, the best solution found by the entire swarm. For each particle, we:
 

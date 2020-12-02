@@ -6,9 +6,9 @@ The search algorithms are kind of different: we're using a game and have an oppo
 
 Each of the players has a goal, which are opponent: everyone wants to win!
 
-There are of course techniques that deal with probabilistic information (e.g. poker cards), but we don't have deterministic certainty. In boards games, all the players have the same informations. 
+There are of course techniques that deal with probabilistic information (e.g. poker cards), but we don't have deterministic certainty. In board games, all the players have the same informations. 
 
-The development of a match **can be seen as a tree**, with the root being the starting position and leaver being the final positions. At each level, one player makes a move. 
+The development of a match **can be seen as a tree**, with the root being the starting position and the leaves being the final positions. At each level, one player makes a move. 
 
 If we can reach these leaves, we can assign $-1$ to the configurations where $MIN$ wins, $0$ when nobody wins, $+1$ where $MAX$ wins. $MIN$ and $MAX$ are the two players, called like that because they have complementary objective functions. 
 
@@ -38,7 +38,7 @@ The only difference is basically in the moment we assign the heuristic value.
 
 The question now is: *how do we decide whether or not to expand a given node?* We could maybe set a number of levels to stop at, and this could work for simple games, but would work badly in complicated games.
 
-Sometimes it pays to do a secondary search, focused on the bewst move search. 
+Sometimes it pays to do a secondary search, focused on the best move search. 
 
 ### Alfa-beta cuts
 

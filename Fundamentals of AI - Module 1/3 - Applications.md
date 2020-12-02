@@ -50,9 +50,9 @@ Jeopardy is a quiz where you have possible answers and participants have to deci
 
 ## Computer vision
 
-Computer vision is a research field that's bee investigated from the very beginning: if a computer can understand what it sees, it can do extraordinary things. 
+Computer vision is a research field that's been investigated from the very beginning: if a computer can understand what it sees, it can do *extraordinary* things. 
 
-But before deep learning, CV was basically done this way: you had an image, you tried to **extract** the relevant objects than tried to classify these objects. It was a bit stuck: you could not really achieve human-comparable performances. By using Deep Learning techinques (classifying the content in a set of concepts), the classification error got down **from 26% to 3%**. Humans are less efficient, floating around 5%. 
+But before deep learning, CV was basically done this way: you had an image, you tried to **extract** the relevant objects then tried to classify these objects. It was a bit stuck: you could not really achieve human-comparable performances. By using Deep Learning techinques (classifying the content in a set of concepts), the classification error got down **from 26% to 3%**. Humans are less efficient, floating around 5%. 
 
 The problem with DNN is that they can sometimes make **big mistakes**: some modifications in few pixels could make a persian cat a toaster! 😿
 

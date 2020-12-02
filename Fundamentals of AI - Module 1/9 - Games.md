@@ -6,9 +6,9 @@ The search algorithms are kind of different: we're using a game and have an oppo
 
 Each of the players has a goal, which are opponent: everyone wants to win!
 
-There are of course techniques that deal with probabilistic information (e.g. poker cards), but we don't have deterministic certainty. In boards games, all the players have the same informations. 
+There are of course techniques that deal with probabilistic information (e.g. poker cards), but we don't have deterministic certainty. In board games, all the players have the same informations. 
 
-The development of a match **can be seen as a tree**, with the root being the starting position and leaver being the final positions. At each level, one player makes a move. 
+The development of a match **can be seen as a tree**, with the root being the starting position and the leaves being the final positions. At each level, one player makes a move. 
 
 If we can reach these leaves, we can assign <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> to the configurations where <img src="svgs/a7101771c696ecea3c61d4c7eae04429.svg?invert_in_darkmode" align=middle width=41.25567269999999pt height=22.465723500000017pt/> wins, <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219209349999991pt height=21.18721440000001pt/> when nobody wins, <img src="svgs/c11fe0cea175e1b787b3403c763dc9b0.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> where <img src="svgs/14644715e552e23b94c15f767c509df8.svg?invert_in_darkmode" align=middle width=44.977203149999994pt height=22.465723500000017pt/> wins. <img src="svgs/a7101771c696ecea3c61d4c7eae04429.svg?invert_in_darkmode" align=middle width=41.25567269999999pt height=22.465723500000017pt/> and <img src="svgs/14644715e552e23b94c15f767c509df8.svg?invert_in_darkmode" align=middle width=44.977203149999994pt height=22.465723500000017pt/> are the two players, called like that because they have complementary objective functions. 
 
@@ -38,7 +38,7 @@ The only difference is basically in the moment we assign the heuristic value.
 
 The question now is: *how do we decide whether or not to expand a given node?* We could maybe set a number of levels to stop at, and this could work for simple games, but would work badly in complicated games.
 
-Sometimes it pays to do a secondary search, focused on the bewst move search. 
+Sometimes it pays to do a secondary search, focused on the best move search. 
 
 ### Alfa-beta cuts
 
@@ -47,6 +47,3 @@ From what we've seen so far, computers simply play all possible matches up to a 
 Considering a node <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.99998994999999pt height=22.465723500000017pt/> in the three, *will the player move to that node?* If the player had a better choice in the parent node level or anywhere else along the path, then <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.99998994999999pt height=22.465723500000017pt/> will **never be selected!** We'll call ALFA the value of the best choice found on the path for MAX (i.e. the highest), while BETA the same thing for MIN (i.e. the lowest). We update ALPHA and BETA during the search, and when there are specific conditions we can **cut branches**!
 
 So, how **effective** are these cuts? Suppose that the nodes are ordered from the most promising to the less promising, or vice versa, in which situation will the cuts be more effective? Obviously, the first one: here, we can always cut.
-
-
-

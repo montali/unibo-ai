@@ -47,7 +47,7 @@ These are algorithms that are based on local search, but **have a way of escapin
 
 ### Simulated annealing
 
-The first we'll talk about is **simulated annealing**, which has origins in statistical mechanixs. It allows moves resulting in worsening solutions, with a given probability. This probability is **decreased during search**. At the beginning, it may be high, and we're *free to move around*, than we decrease it during search. 
+The first we'll talk about is **simulated annealing**, which has origins in statistical mechanics. It allows moves resulting in worsening solutions, with a given probability. This probability is **decreased during search**. At the beginning, it may be high, and we're *free to move around*, than we decrease it during search. 
 
 $p\left(\text { accept up-hill move } s^{\prime}\right)=\exp \left(-\left(f\left(s^{\prime}\right)-f(s)\right)\right) / T$ 
 
@@ -83,7 +83,7 @@ You start from an initial solution and improve it, perturb (maybe using history)
 
 ![Screenshot 2020-10-26 at 10.15.55](./res/iterated_local_search.png)
 
-In literature you can find lots of algorithms. We learned that **modeling is an issue**, high level search strategies **have to be applied** to effectivey explore the state space, the searchhistory is important, and the parameter tuning is critical. 
+In literature you can find lots of algorithms. We learned that **modeling is an issue**, high level search strategies **have to be applied** to effectivey explore the state space, the search history is important, and the parameter tuning is critical. 
 
 So, what are the **termination conditions?** While before we stopped on local optimum, what we
 
@@ -105,7 +105,7 @@ The **proportional selection** is the process in which the probability for an in
 
 One possibility is to keep the best $n$ individuals from the old and new solution, or choose any variant. 
 
-When you have a genetic operator, the solution is composed by real values, mutations and crossovers of these. For the latter, how can we create those? We can, for example, linearly combine those like $z=\lambda 1 x+\lambda 2 y$.
+When you have a genetic operator, the solution is composed by real values, mutations and crossovers of these. For the latter, how can we create those? We can, for example, linearly combine those like $z=\lambda_1 x+\lambda_2 y$.
 
 ![Genetic algorithm](./res/genetic_algo.png)
 
@@ -113,7 +113,7 @@ Remember that the **initialization is random**.
 
 ## Design guidelines
 
-One type of algorithms is the **memetic**, where you start with a population, and for each individual you find the best possible move, so all the individuals in the population are local optima.
+One type of algorithms is the **memetic**, where you start with a population, and for each individual you find the best possible move, such that all the individuals in the population are local optima.
 
 Local search/meta-heuristics are preferable when neighbourhood structures create a correlated search graph, and computational cost of moves is low: inventing moves is easy. 
 

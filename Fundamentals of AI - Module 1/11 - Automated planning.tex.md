@@ -1,6 +1,6 @@
 # Automated planning
 
-**Automated planning** is a problem solving activity which consists in synthetising a **sequence of actions** performed bu an agent that leads from an inital state of the world to a given target state. 
+**Automated planning** is a problem solving activity which consists in synthesizing a **sequence of actions** performed by an agent that leads from an inital state of the world to a given target state. 
 
 In other words, it is devoted to create a **plan** from an initial state to a final state.
 
@@ -28,7 +28,7 @@ A planner is **complete** if it always finds a plan, given that a plan exists.
 
 A planner is **correct** when the solution found is correct, i.e. the solution leads from the initial state to the goal.
 
-The **exectution** is generally **irreversible** (often the execution of an action is not backtrackable, e.g. I can drink a bottle of water but can't put it back) and **non-deterministic**, i.e. the plan can have effects that are different from what we expect: working in the real world, the effects are not deterministic/totally predictable.
+The **execution** is generally **irreversible** (often the execution of an action is not backtrackable, e.g. I can drink a bottle of water but can't put it back) and **non-deterministic**, i.e. the plan can have effects that are different from what we expect: working in the real world, the effects are not deterministic/totally predictable.
 
 ## Generative Planning
 
@@ -38,7 +38,7 @@ This is an off-line planning that produces the whole plan before execution: this
 
 Planning can be seen as a search activity! At the end of the day, though, we'll resort to special purpose algorithms because general purpose search is often too complex.
 
-The search algorithm could proceed **forward** (starting from the initial state and finding a state which is a superset of the goal) or **backward** (starting from the goal and finding a state which is subset of the initial state).
+The search algorithm could proceed **forward** (starting from the initial state and finding a state which is a superset of the goal) or **backwards** (starting from the goal and finding a state which is subset of the initial state).
 
 The latter is basically **goal regression**, i.e. a mechanism to reduce a goal in subgoals during search by applying rules.
 
@@ -66,7 +66,7 @@ $$
 $$
 The action *put on table* has two preconditions, before the arrow, and consequences after.
 
-Given the situation calculus (initial state, actions) we can use *resolution* (i.e. the traditional way we use in logic to solve problems) to create a plan. We'll use  *unification* too, as in logic. 
+Given the situation calculus (initial state, actions) we can use *resolution* (i.e. the traditional way we use in logic to solve problems) to create a plan. We'll use *unification* too, as in logic. 
 
 If, for example, we ask *Is it possible to find an $s$ where $b$ is on the table?* We can use our resolution to put $b$ on top of the table, because it is on top of it and the table is clear. 
 
@@ -80,13 +80,13 @@ To solve this, we can transform the implications with *not A, or B*,. **We take 
 
 Resolution works by finding contradictions: we negate the goal and we try to find the empty clause, by unifying the clauses.
 
-Since we have to move all of the fluents, we need a frame aziom for each condition that is not changed by each action! To describe an action, we therefore need all the fluents. This means that **if the problem is too complex, we have too many axioms!**
+Since we have to move all of the fluents, we need a frame axiom for each condition that is not changed by each action! To describe an action, we therefore need all the fluents. This means that **if the problem is too complex, we have too many axioms!**
 
 The frame axioms specify, for all the possible fluents, that if they do not change thanks to the action, they have to stay right where they are.
 
 ### Kowalski formulation
 
-We use a predicate $holds(rel,s/a)$ to describe all the true relations in a state $s$ or made true by an action $a$. Then, we have a preidcate $poss(s)$ that states if a state is *possible* (i.e. reachable). Finally, a predicate $pact(a,s)$ to indicate that it is possible to execute an action $A$ in state $s$, namely the preconditions of $a$ are true in $s$. 
+We use a predicate $holds(rel,s/a)$ to describe all the true relations in a state $s$ or made true by an action $a$. Then, we have a predicate $poss(s)$ that states if a state is *possible* (i.e. reachable). Finally, a predicate $pact(a,s)$ to indicate that it is possible to execute an action $A$ in state $s$, namely the preconditions of $a$ are true in $s$. 
 
 So, we need one frame assertion per action (which is good compared to Green).
 
@@ -96,7 +96,7 @@ When you have the effects, you have to use one single fact for all of the effect
 
 ## STRIPS
 
-**Stanford Research Institute Problem Solver** is a specific language for the actions, having an easier syntax and an ad hoc algorithm for the plan construction. The state is represented through the fluents that are true in a given state, and the goal is represented as the fluent that are true in the goal state. 
+**STanford Research Institute Problem Solver** is a specific language for the actions, having an easier syntax and an ad hoc algorithm for the plan construction. The state is represented through the fluents that are true in a given state, and the goal is represented as the fluents that are true in the goal state. 
 
 The **action representation** is composed of 3 components: 
 
@@ -106,7 +106,7 @@ The **action representation** is composed of 3 components:
 
 ### Algorithm
 
-First of all, as for all the other planners we have seen so far, **STRIPS is a generative planner** (i.e. nobody else is changing our world while we search). Remember that what we state in the state is true, what we don't is false. We have two data structures: the **goal stack** and the **description of the current state**, which obviously starts from the initial one. The goal stack **proceeds backward**, while the current state **proceeds forward**. Here we have the two components: it applies the **goal regression** and the **the state forward search**. These two structures should *meet*.
+First of all, as for all the other planners we have seen so far, **STRIPS is a generative planner** (i.e. nobody else is changing our world while we search). Remember that what we state in the state is true, what we don't is false. We have two data structures: the **goal stack** and the **description of the current state**, which obviously starts from the initial one. The goal stack **proceeds backwards**, while the current state **proceeds forward**. Here we have the two components: it applies the **goal regression** and the **state forward search**. These two structures should *meet*.
 
 - We initialize the stack with the goals to reach
 - At each step
@@ -133,7 +133,7 @@ We always find one exercise that is either a **STRIPS**, asking to explore one *
 
 ## Search in the space of plans
 
-If I don't have to commit to an order, why do I use it? While the algorithms we have seen are in the **state space**, we now want to deal with non-linear planners: we don't work in a tree search where each node is a state, rather each node **is a plan**. We start with an empty plan, having the initial state and the goal. We don't impose constraints that we don't really need: if we make a non-necessary decision, which may be wrong, we'll have to backtrack. A non-linear plan is represented by a **set of actions**, a non-exhaustive set of **orderings** between actions and a set of **casual links**.
+If I don't have to commit to an order, why do I use it? While the algorithms we have seen are in the **state space**, we now want to deal with non-linear planners: we don't work in a tree search where each node is a state, rather each node **is a plan**. We start with an empty plan, having the initial state and the goal. We don't impose constraints that we don't really need: if we take a non-necessary decision, which may be wrong, we'll have to backtrack. A non-linear plan is represented by a **set of actions**, a non-exhaustive set of **orderings** between actions and a set of **causal links**.
 
 The empty plan has two fake actions, i.e. **start** (no preconditions, effects matching the initial state) and **stop** (no effects, preconditions matching the goal), and an ordering, i.e. the start has to precede the stop.
 
@@ -142,7 +142,7 @@ At each step, you can do two things to refine the plan:
 - Adding an action
 - Play with the orderings, and if the ordering is not required you don't post it
 
-A **causal link** is a triple that consists of two operator $S_i,S_j$ and a subgoal $c$, . This shows how we can understand, syntactically how two plans can interact with each other. Therefore, a causal link might be threatened by another action in the plan. Basically, a causal link stores the causal relations between actions, tracing why a given operator has been introduced in the plan.
+A **causal link** is a triple that consists of two operator $S_i,S_j$ and a subgoal $c$. This shows how we can understand, syntactically how two plans can interact with each other. Therefore, a causal link might be threatened by another action in the plan. Basically, a causal link stores the causal relations between actions, tracing why a given operator has been introduced in the plan.
 
 While the plan is not complete (i.e. not achieved all goals and no interactions threatening the plan) I have to select an action $S_n$ having a not satisfied precondition (aka an **open goal**), either already in the plan or a new one, that has $c$ among its effects. I then have to add an ordering constraint and a *causal link* ($S$ has been inserted in the plan because $S_n$ requires $c$).
 
@@ -150,11 +150,11 @@ To check if there are threatenings, we have to check if there are actions which 
 
 # Partial Order Planning
 
-We start with an initial empty plan, having the start, the stop and the goal, then we go on. If the plan has achieved all open goals and the threats are safe, we return the plan. Otherwise, we select a subgoal from the plan, which is still open, with $c$ precondition of $S_n$ and choose an opeartor that satisfies $c$, then resolve the threats (protect the causal links which are threatened by the action).
+We start with an initial empty plan, having the start, the stop and the goal, then we go on. If the plan has achieved all open goals and the threats are safe, we return the plan. Otherwise, we select a subgoal from the plan, which is still open, with $c$ precondition of $S_n$ and choose an operator that satisfies $c$, then resolve the threats (protect the causal links which are threatened by the action).
 
 The *choose_operator* chooses an action $S$ with effect $c$ from ops or from the steps of the plan (already inserted actions).  If $S$ does not exist, we fail, otherwise we add the causal link and add the ordering constraint. If $S$ is new we add it to the plan then add it to the steps, with the constraint $Start<S<Stop$.
 
-The *solve_threat*, for each action $S$ threatening a causall link, we either choose **demotion** (add the constraint $S<S_i$) or **promotion** (add the constraint $S_j<S$). If the plan is not consistent, it fails.
+The *solve_threat*, for each action $S$ threatening a causal link, we either choose **demotion** (add the constraint $S<S_i$) or **promotion** (add the constraint $S_j<S$). If the plan is not consistent, it fails.
 
 If there are more than one chain from the goal to the start, we have to check that there are no threats, i.e. solve the problem of interacting goals.
 
@@ -162,25 +162,25 @@ If there are more than one chain from the goal to the start, we have to check th
 
 Up to now, we've seen two ways of solving a threat: demotion or promotion. We need 4, to cover all possibilities. There is a criterion, named **modal truth criterion**, which is basically a construction process that guarantees the completeness of a planner. It tells us which operators we can use to move in the partial space, i.e. from one node of the search tree to another one. 
 
-We have 5 methods: the first one is not a way of solving threats, just an estblishment (I pick an open goal, and you can achieve it throw either a new action inserted in the plan, or an action which is already there, or through a variable assignment). What is this *variable assignment*? It's a unification (with an action which is already in the plan) that enables us to achieve something. We then have 4 other ways: the first two we have already seen, then two other ones. The first one is the **white knight**, something that should be used when you cannot solve the threat through ordering constraints (demotion/promotion): the action should go between $S_1$ and $S_2$, i.e. the 2 actions that you don't want. I cannot use demotion/promotion, so I have to accept this but then impose a white knight that re establishes the precondition. Then, the **separation** (less used), where you basically say that the two blocks should not be the same. This is quite rarely used, and is useful when variable have not been instantiated. 
+We have 5 methods: the first one is not a way of solving threats, just an establishment (I pick an open goal, and you can achieve it through either a new action inserted in the plan, an action which is already there, or through a variable assignment). What is this *variable assignment*? It's a unification (with an action which is already in the plan) that enables us to achieve something. We then have 4 other ways: the first two we have already seen, then two other ones. The first one is the **white knight**, something that should be used when you cannot solve the threat through ordering constraints (demotion/promotion): the action should go between $S_1$ and $S_2$, i.e. the 2 actions that you don't want. I cannot use demotion/promotion, so I have to accept this but then impose a white knight that re establishes the precondition. Then, the **separation** (less used), where you basically say that the two blocks should not be the same. This is quite rarely used, and is useful when variable have not been instantiated. 
 
 In the Sussman anomaly, we can obtain the same plan as we had for strips after a few readjustments, just by considering the goal as independent and then understanding the solutions through threats.
 
 # Closing Remarks
 
-It is always preferable to apply demotion/promotion, because we keep the number of actions limited, before inserting the white knite. These can generate very long plans, even if correct.
+It is always preferable to apply demotion/promotion, because we keep the number of actions limited, before inserting the white knight. These can generate very long plans, even if correct.
 
 # Hierarchical Planning
 
-Hierarchical planners are search algorithms that manage the creation of complex plans at different levels of abstraction, by considering the simplest details only after finding a solution for the most difficult ones. The thing is the following: hierarchical planners basically organiza meta-level searcha nd then extract abstract planning to concrete plans.
+Hierarchical planners are search algorithms that manage the creation of complex plans at different levels of abstraction, by considering the simplest details only after finding a solution for the most difficult ones. The thing is the following: hierarchical planners basically organiza meta-level search, then extract abstract planning to concrete plans.
 
-The first example is **ABSTRIPS** (abstract strips), basically ait assigns a criticality value to a precondition, i.e. the less intuitive approach. The most intuitive would be starting from macro actions. 
+The first example is **ABSTRIPS** (abstract strips), basically assigning a criticality value to a precondition, i.e. the less intuitive approach. The most intuitive would be starting from macro actions. 
 
 At every level of abstraction we only consider some preconditions, so we impose a value of criticality, all the preconditions having a criticality value lower than the threshold are considered true, for the other ones, we have to plan. Then, we refine this macro-level planning by lowering the criticality value. 
 
 Considering the block world, which is the most difficult precondition? The *on*. Then, we have ontable, clear and holding. Finally, we have handempty.
 
-We have two types of operatoers: **atomic** operators (defined as STRIPS rules) and **macro** operators. The first ones are usually described with preconditions and postconditions, while the latter is a sequence or partial plan of atomic operators. 
+We have two types of operators: **atomic** operators (defined as STRIPS rules) and **macro** operators. The first ones are usually described with preconditions and postconditions, while the latter is a sequence or partial plan of atomic operators. 
 
 We have to be careful when **decomposing** an action: we have to decompose an action **only if this action has specific features**: we have to take into account some things. We have that $A$ is the big action, and $X$ an effect of it, expanded with a plan $P$. We know that $X$ is an effect of at least one of the actions, and it is protected (no other action deletes it). A precondition must be guaranteed by its previous action, or to be guaranteed by the macro action!
 
@@ -214,7 +214,7 @@ Going back to generative planners, **graph plan** is one of the most efficient g
 
 The new concept is that while planning, it builds a **data structure**. This is called **planning graph**, and it is built at each time point. Then, at some point it stops the construction of this graph, and it *backward finds* a possible plan. This graph basically contains all the possible plans. It creates **optimal plans**, i.e. the shortest possible plans. Differently from POP, which is complete but creates very long plans because of the white knights: it doesn't backtrack on failures but it tries to *always adjust a threat*.
 
-Here, actions are represented as in STRIPS with preconditions, add list, delete list. Note that since objects have a type, you can move them. The interesting thing is that basically if you do not model actions by expretssing the fact that $A$ and $B$ are loads, $T$ is a track.... i.e. you don't treat them as real objects, then you can have a strange behaviour of the actions. In graph plans this doesn't happen: we know the type. There is also a *no-op* action, which does not change the state.
+Here, actions are represented as in STRIPS with preconditions, add list, delete list. Note that since objects have a type, you can move them. The interesting thing is that basically if you do not model actions by expressing the fact that $A$ and $B$ are loads, $T$ is a track.... i.e. you don't treat them as real objects, then you can have a strange behaviour of the actions. In graph plans this doesn't happen: we know the type. There is also a *no-op* action, which does not change the state.
 
 In a planning graph, there are different levels, the **proposition levels** (where nodes represent propositions) and **the action levels** (where nodes represent actions). The level 0 corresponds to initial state. Arcs are divided into *precondition arcs* (proposition $\rightarrow$ action), *add arcs* (action $\rightarrow$ proposition), *delete arcs* (action $\rightarrow$ proposition).
 
@@ -234,7 +234,7 @@ Now, talking about **inconsistent actions**, we might see:
 
 While **inconsistent propositions** might be *one is the negation of the other*, or if *all the ways to reach them are exclusive*.
 
-All true propositions in the initial state are inserted in the first proposition level, then the action level gets created unifying its preconditions to rpopositions in the previous proposition level. Then, for every proposition in the previous prop level, add a no-op operator. Then, we check if the action nodes do not interfere each other: otherwise, we mark them as mutually exclusive. We can then **create the proposition level**, for each actoin node in the previous level, add propositions in its add list through solid arcs and add dotted arcs for the delete list. We do the same process for no-op, then mark as mutually exclusive two propositions such that all the ways to achieve one are incompatible with all the ways to reach the other. 
+All true propositions in the initial state are inserted in the first proposition level, then the action level gets created unifying its preconditions to propositions in the previous proposition level. Then, for every proposition in the previous prop level, add a no-op operator. Then, we check if the action nodes do not interfere with each other: otherwise, we mark them as mutually exclusive. We can then **create the proposition level**, for each action node in the previous level, add propositions in its add list through solid arcs and add dotted arcs for the delete list. We do the same process for no-op, then mark as mutually exclusive two propositions such that all the ways to achieve one are incompatible with all the ways to reach the other. 
 
 So, now we have to extract (if it exists!) a valid plan, i.e. a connected and consistent subgraph of the graph. Note that actions can be executed either in parallel or in order (they don't need to be ordered, they do not interfere). If in a planning graph two actions are mutually exclusive in a time step if a valid plan that contains both does not exist. If there is a valid plan then this is a subgraph of the planning graph. In a planning graph, two propositions are incompatible in a time step if they are mutually exclusive.
 

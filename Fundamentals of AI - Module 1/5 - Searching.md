@@ -95,7 +95,7 @@ Heuristics are not always right! In the following case, the *always move towards
 
 ![Heuristics are not always right!](./res/heuristics-wrong.png)
 
-For example, in the *Game of 8*, we could use the quantity of right numbers as an estimate of distance from the solution. It is approximated: the distance might actually be more.
+For example, in the *Game of 8*, we could use the quantity of correct numbers as an estimate of distance from the solution. It is approximated: the distance might actually be more.
 
 ### Best-first search
 
@@ -121,7 +121,7 @@ We can define different heuristics. For example, in a tiles game, we could defin
 
 We can adapt this algorithm to graphs: we can keep two lists, one for the open nodes (not yet explored) and one for the closed ones. The graph can therefore become a tree with repeated nodes.
 
-If $n$ is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labelling them with the cost from the starting node. 
+If $n$ is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labeling them with the cost from the starting node. 
 
 If a child node is already in the open nodes, we update $g(n)$, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update its label. Note that we have to update its subnodes too!
 
