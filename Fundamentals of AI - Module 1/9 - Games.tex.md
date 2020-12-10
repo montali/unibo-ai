@@ -1,4 +1,4 @@
-# Games
+# wGames
 
 Now, a crucial topic: **how to deal with games**.
 

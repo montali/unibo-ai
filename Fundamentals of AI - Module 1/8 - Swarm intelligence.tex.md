@@ -158,11 +158,7 @@ This is **widely used in robotics**. It was proposed in 1995, and it is still us
 
 Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices, i.e. moving away from the group to reach the food, or staying in the group.
 
-We can solve optimization problems with two analogies: **individuals** (tentative configurations that move and sample the solution space) and **social interaction** (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of **balance** between **exploration** and **exploitation**.
-
-Individuals are affected by the actions of other individuals (closer to them), so they're part of more subgroups which are not tied to the physical proximity of the configurations in the parameter space but are a priori defined.
-
-The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
+We can solve optimization problems with two  The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
 
 Mathematically speaking, the move is calculated with $p_i$ which is the best solution found by the particle $i$ and $g$, the best solution found by the entire swarm. For each particle, we:
 
