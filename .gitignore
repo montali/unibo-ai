@@ -6,8 +6,8 @@
 __latexindent_temp.tex
 /Statistical and Mathematical Methods for AI/Report/
 
-# Created by https://www.toptal.com/developers/gitignore/api/latex
-# Edit at https://www.toptal.com/developers/gitignore?templates=latex
+# Created by https://www.toptal.com/developers/gitignore/api/latex,visualstudiocode,metals
+# Edit at https://www.toptal.com/developers/gitignore?templates=latex,visualstudiocode,metals
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
@@ -300,4 +300,20 @@ TSWLatexianTemp*
 # glossaries
 *.glstex
 
-# End of https://www.toptal.com/developers/gitignore/api/latex
+### Metals ###
+.metals/
+.bloop/
+project/metals.sbt
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/latex,visualstudiocode,metals
