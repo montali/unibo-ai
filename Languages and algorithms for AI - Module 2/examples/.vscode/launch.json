@@ -10,6 +10,13 @@
             "request": "launch",
             "mainClass": "QuickSort",
             "args": []
-        }
+        },
+        {
+            "type": "scala",
+            "name": "Run T9",
+            "request": "launch",
+            "mainClass": "T9",
+            "args": []
+        },
     ]
 }
