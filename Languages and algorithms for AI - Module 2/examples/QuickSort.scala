@@ -19,11 +19,14 @@ object QuickSort {
       val pivot = xs(xs.length / 2)
       Array.concat(
         //quickSort(xs filter (pivot >)),
-        quickSort(xs filter ((x) => (pivot > x))),
+        quickSort(xs filter (pivot > _)),
+        //quickSort(xs filter ((x) => (pivot > x))),
         //xs filter (pivot ==),
         xs filter (pivot == _),
+        //xs filter ((x) => (pivot == x)),
         //quickSort(xs filter (pivot <))
         quickSort(xs filter (pivot < _))
+        //quickSort(xs filter ((x) => (pivot < x)))
       )
     }
   }
