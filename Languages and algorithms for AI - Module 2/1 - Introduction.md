@@ -45,7 +45,21 @@ object QuickSort {
 
 the `QuickSort` object will auto-start itself once it is part of the JVM, starting the `main()` method, which calls `quickSort()`, then print the results.
 
+## Scala's collection
 
+Scala offers some data structures, provided by the standard libraries, called **collections**. These are equiped with useful higher-order functions, which we'll use often when exploiting the possibilities of the standard collections.
+
+They allow us to *prettify* the code, since we can delegate fucntions to these.
+
+Take a read to *An empirical comparison ofseveral programming languages*, a paper containing the same problems solved with different languages. We can see that Scala showed an easiness and shortness of the code that led to less lines of code, written in less time.
+
+## Multithreaded programming
+
+Scala is obviously 
+
+Scala provides parallel collections too: this enables us to exploit parallel threads, where the data are split in separated groups and elaborated in parallel, then the results are combined. 
+
+This obviously improves the performances of our programs. 
 
 
 
