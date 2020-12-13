@@ -16,11 +16,13 @@ The basic idea is a simulated exploration obtained by expanding states that have
 
 If the node contains a goal state, we have a solution, so we return the corresponding solution. 
 
-For example, let's say our goal is being in Bucharest, the state is being in a city, and the actions are just travels between connected cities. The solution is the sequence of states that gets you to Bucharest from Arad. ![Cities example](./res/map-cities.png)
+For example, let's say our goal is being in Bucharest, the state is being in a city, and the actions are just travels between connected cities. The solution is the sequence of states that gets you to Bucharest from Arad.
+
+![Cities example](./res/map-cities.png)
 
 The problem has four points: the initial state, the successor functions (i.e. actions-state pairs), a goal, the cost of the path, and a solution.
 
-![Tree search algorithm](./res/tree-search-algo.png)
+![Tree search algorithm](./res/search-algo.png)
 
 The problem takes a problem, and a fringe, i.e. the available nodes. The action is the operator you can apply. Now, we have to ask ourselves a few questions:
 
@@ -65,6 +67,8 @@ It is **not complete** (it could be, but if fails, for instance, in infinite dep
 
 This one is a depth first variant. When we reach the maximum depth (previously defined), it explores alternative paths, then alternative paths at less than one unit of depth, and so forth: this thing is called **backtracking**. It is **not complete**: the solution might be at a higher depth, but at least it avoids infinite branches. The implementation has to be **recursive**, we have a flag that defines if we reached the maximum depth. 
 
+![Algorithm pseudo-code](res/search-limited-depth.png)
+
 ### Iterative deepening
 
 This one is a limited depth search, but it increases the depth at every iteration. This solves the incompleteness problem. It has the advantages of depth-first and breadth-first searches, but the drawback is that it analyzes the same nodes a shit ton of times. 
@@ -72,6 +76,8 @@ This one is a limited depth search, but it increases the depth at every iteratio
 When the search space is very large we can use variants of iterative deepening.
 
 It is **complete**, has **exponential time**, has **linear space**, and it is **optimal**: you always find the shortest path if every step has cost equal to 1.
+
+![Algorithm pseudo-code](res/search-iterative-deepening.png)
 
 ## Production systems
 
