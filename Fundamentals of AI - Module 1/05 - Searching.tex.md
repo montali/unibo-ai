@@ -91,7 +91,9 @@ Actually, uninformed search strategies are not really used.
 Nobody recognizes intelligence in speed: it is embedded in the exploitation of knowledge. If we have the control on how these solutions are generated, we can find an order in which they appear faster.
 
 Uninformed search methods in a search space of depth $d$ and branching factor $b$ have space complexity proportional $b^d$ to find a goal in one of the leaves.
-This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state). The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it 🤷🏻‍♂️. This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
+This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state).
+The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it!
+This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
 
 Heuristics are not always right! In the following case, the *always move towards the goal* might slow us down a lot.
 
@@ -107,11 +109,14 @@ So, now we have a problem: this is not optimal, i.e. it doesn't always find the 
 
 ### A* algorithm
 
-This is one of the most used search algorithms. The idea is that we consider **both costs**: the cost we have already traversed AND the cost that we are supposed to traverse in the future. The first is known, the second one is estimated. We expand nodes for increasing values of $f(n)=g(n)+h'(n)$, where $g(n)$ is the **depth** of the node, and $h'(n)$ is the **estimated distance** from the goal.
+This is one of the most used search algorithms. The idea is that we consider **both costs**: the cost we have already traversed AND the cost that we are supposed to traverse in the future. The first is known, the second one is estimated.
+We expand nodes for increasing values of $f(n)=g(n)+h'(n)$, where $g(n)$ is the **depth** of the node, and $h'(n)$ is the **estimated distance** from the goal.
 
 If we have a tie, you can have two possibility: choose a **random** one or have a second **heuristic** built to break ties.
 
-The heuristic function $h'(n)$ is said to be **optimistic** if it always underestimates the real distance $h(n)$. This heuristic is said **feasible**, i.e. it always underestimates. It is feasible even if $h'=0$ is always true: it will just be a breadth-first search. 
+The heuristic function $h'(n)$ is said to be **optimistic** if it always underestimates the real distance $h(n)$.
+This heuristic is said **feasible**, i.e. it always underestimates.
+It is feasible even if $h'=0$ is always true: it will just be a breadth-first search. 
 
 There's a theorem that says that if $h'(n)$ always underestimates, then the A* algorithm always finds the optimal path!
 
