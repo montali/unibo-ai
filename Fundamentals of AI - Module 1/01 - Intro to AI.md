@@ -1,4 +1,4 @@
-# RFundamentals of AI
+# Fundamentals of AI
 ## Lesson 1
 ### Exam: two averaged parts
 * Part I: material taught in fall: 2 types of exercise (asking to solve a problem; theoretical questions)

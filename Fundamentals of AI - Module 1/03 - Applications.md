@@ -26,7 +26,7 @@ These systems can also be done though machine learning, regression, simulations.
 
 These are able to optimize, solve problems, solve logic and therefore reach decisions where we need to select an optimal scenario.
 
-###Spread
+### Spread
 
 If we analyse the penetration of these analytics across all industries, we go from **99%** (descriptive), 30% (diagnostic), 13% (predictive), to **3%** on prescriptive analytics.
 
