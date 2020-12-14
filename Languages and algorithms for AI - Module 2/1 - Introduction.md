@@ -45,17 +45,19 @@ object QuickSort {
 
 the `QuickSort` object will auto-start itself once it is part of the JVM, starting the `main()` method, which calls `quickSort()`, then print the results.
 
+The full commented example cand be found [in the examples](examples/QuickSort.scala).
+
 ## Scala's collection
 
 Scala offers some data structures, provided by the standard libraries, called **collections**. These are equiped with useful higher-order functions, which we'll use often when exploiting the possibilities of the standard collections.
 
 They allow us to *prettify* the code, since we can delegate fucntions to these.
 
-Take a read to *An empirical comparison ofseveral programming languages*, a paper containing the same problems solved with different languages. We can see that Scala showed an easiness and shortness of the code that led to less lines of code, written in less time.
+Take a read to *An empirical comparison of several programming languages*, a paper containing the same problems solved with different languages. We can see that Scala showed an easiness and shortness of the code that led to less lines of code, written in less time.
+
+An example of usage of collections can be found [in the examples](examples/T9.scala).
 
 ## Multithreaded programming
-
-Scala is obviously 
 
 Scala provides parallel collections too: this enables us to exploit parallel threads, where the data are split in separated groups and elaborated in parallel, then the results are combined. 
 
@@ -67,6 +69,8 @@ We'll have our parallel architecture with independent nodes, that work at the sa
 
 The *Mandelbrot set* example consists of computing what is known as the *Mandelbrot set*, a set of complex numbers, being composed of a pair of real numbers in which the second one is multiplied by the imaginary unit, $i$.
 
+The Scala Mandelbrot example can be found [in the examples](examples/Mandelbrot.scala).
+
 # Spark
 
 Spark is the platform we'll use to speriment Scala large-scale data processing. We need to move from a single computing node to a distributed context. 
@@ -74,6 +78,8 @@ Spark is the platform we'll use to speriment Scala large-scale data processing. 
 What we'll experiment will be the programming style we studied, but with some specific features related to Spark that we'll need to study in order to adapt the programming style in the distributed setting.
 
 **RDD** stands for *Resilient Distributed Dataset*, where *Resilient* means that Spark offers some fault-prevention mechanisms.
+
+A small example of usage of Spark can be found [in the examples](examples/PageRank.scala).
 
 # Exam
 
