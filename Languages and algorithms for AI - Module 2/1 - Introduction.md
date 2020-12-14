@@ -61,5 +61,35 @@ Scala provides parallel collections too: this enables us to exploit parallel thr
 
 This obviously improves the performances of our programs. 
 
+We can consider the possibility to have several collaborating threads (independent executions), performing work parallelly. They *collaborate* in the sense that they sync, avoiding thread locks and threats.
+
+We'll have our parallel architecture with independent nodes, that work at the same time in order to ocmplete the manipulation behind the higher order function. If we take advantage of the parallel architecture our same program will be executed in this parallel way. We won't use the stanard lubrary collections, but the ones from the *parallel library*. We can cast the collections to this type.
+
+The *Mandelbrot set* example consists of computing what is known as the *Mandelbrot set*, a set of complex numbers, being composed of a pair of real numbers in which the second one is multiplied by the imaginary unit, $i$.
+
+# Spark
+
+Spark is the platform we'll use to speriment Scala large-scale data processing. We need to move from a single computing node to a distributed context. 
+
+What we'll experiment will be the programming style we studied, but with some specific features related to Spark that we'll need to study in order to adapt the programming style in the distributed setting.
+
+**RDD** stands for *Resilient Distributed Dataset*, where *Resilient* means that Spark offers some fault-prevention mechanisms.
+
+# Exam
+
+Written examination for Module 2, first date in June. 6 dates for the academic year: 3 in June/july, 1 in september, 2 in the winter.
+
+It's composed of 5 open questions, usually simple. The time will be 50 minutes (more or less 10 minutes per question).
+
+One type may be about interpretation of code, asking to comment a snippet of code, then some questions about the meaning of functions, like *groupby*...
+
+The exam doesn't ask to write code from scratch, rather to interpret pieces of code or theoretical questions (like *What is an higher order function?*).
+
+Possibility of an alternative project work, proposed by the student and presented to the prof. 
+
+This could be used as the 3-points project work for the MSc. 
+
+
+
 
 
