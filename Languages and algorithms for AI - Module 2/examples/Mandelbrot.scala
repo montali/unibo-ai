@@ -1,5 +1,6 @@
 import java.io._
 
+// Apparently scala 2.13 and later requires to use this import to use parallel collections
 // https://stackoverflow.com/a/57290463/2347196
 // https://stackoverflow.com/a/56542577/2347196
 import scala.collection.parallel.CollectionConverters._
@@ -77,21 +78,19 @@ object Mandelbrot {
         //out.write(255 * (level - i) / level)
 
         //Only for parallel iteration
-        a(j) = 255*(level-i)/level
+        a(j) = 255 * (level - i) / level
       }
 
       // Only for parallel iteration
-      //for (k <- 0 until n * n) out.write(a(k)) // Gives a compilation error...
       for (k <- 0 until n * n) out.write(a(k))
 
       out.close()
     }
 
-    println("running")
     val t1 = System.nanoTime()
     run(4000, 50)
     val durationMs = (System.nanoTime() - t1) / 1e9d
-    println(durationMs+"ms")
+    println(durationMs + " s")
     // During lesson on professr's dual core computer serial using n=1000 took 5995ms while parallel took 4812ms
     // On my exa-core using n=4000 took 46703ms while parallel took 45943ms
   }
