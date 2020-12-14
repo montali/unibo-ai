@@ -57,7 +57,7 @@ If we now consider the cost, where each node is labelled with a cost, we shall e
 ### Depth-first search
 
 This always expands the deepest nodes. In this case, you don't have to keep a huge fringe open, so the memory cost is super low. You just have to store the nodes of a path. The temporal complexity is exponential, though.
-In the worst case, if the maximum depth is <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.55596444999999pt height=22.831056599999986pt/> and the branching factor <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/>, the maximum number of nodes is <img src="svgs/6aa43869cb559d386ace2adef5c1fcd8.svg?invert_in_darkmode" align=middle width=13.897874099999989pt height=27.91243950000002pt/>. 
+In the worst case, if the maximum depth is $d$ and the branching factor $b$, the maximum number of nodes is $b^d$. 
 
 The algorithm is **efficient**, but **not complete.** The fringe here is a LIFO stack. 
 
@@ -96,7 +96,7 @@ Actually, uninformed search strategies are not really used.
 
 Nobody recognizes intelligence in speed: it is embedded in the exploitation of knowledge. If we have the control on how these solutions are generated, we can find an order in which they appear faster.
 
-Uninformed search methods in a search space of depth <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.55596444999999pt height=22.831056599999986pt/> and branching factor <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> have space complexity proportional <img src="svgs/6aa43869cb559d386ace2adef5c1fcd8.svg?invert_in_darkmode" align=middle width=13.897874099999989pt height=27.91243950000002pt/> to find a goal in one of the leaves.
+Uninformed search methods in a search space of depth $d$ and branching factor $b$ have space complexity proportional $b^d$ to find a goal in one of the leaves.
 This is unacceptable for certain problems: therefore, we can resort to expanding the nodes using heuristic domain knowledge (evaluation functions, that give an insight on the effort needed to reach the final state).
 The time spent to evaluate a node by means of a heuristic function should correspond to a reduction in the size of the explored space: it has to be worth it!
 This is one of the most difficult characteristics of informed search strategies: you just have to try and check. 
@@ -116,27 +116,27 @@ So, now we have a problem: this is not optimal, i.e. it doesn't always find the 
 ### A* algorithm
 
 This is one of the most used search algorithms. The idea is that we consider **both costs**: the cost we have already traversed AND the cost that we are supposed to traverse in the future. The first is known, the second one is estimated.
-We expand nodes for increasing values of <img src="svgs/3ec5aa8ea4f52b501a1ba0f9f9314235.svg?invert_in_darkmode" align=middle width=142.29651149999998pt height=24.7161288pt/>, where <img src="svgs/f010a0fda7cdcc04209d9381ef5fca27.svg?invert_in_darkmode" align=middle width=31.08266699999999pt height=24.65753399999998pt/> is the **depth** of the node, and <img src="svgs/17196d5dfedddb88c19fbfc0dda901f3.svg?invert_in_darkmode" align=middle width=36.735299699999985pt height=24.7161288pt/> is the **estimated distance** from the goal.
+We expand nodes for increasing values of $f(n)=g(n)+h'(n)$, where $g(n)$ is the **depth** of the node, and $h'(n)$ is the **estimated distance** from the goal.
 
 If we have a tie, you can have two possibility: choose a **random** one or have a second **heuristic** built to break ties.
 
-The heuristic function <img src="svgs/17196d5dfedddb88c19fbfc0dda901f3.svg?invert_in_darkmode" align=middle width=36.735299699999985pt height=24.7161288pt/> is said to be **optimistic** if it always underestimates the real distance <img src="svgs/72b322da8035af6f39a0a9b5134877a2.svg?invert_in_darkmode" align=middle width=32.12342429999999pt height=24.65753399999998pt/>.
+The heuristic function $h'(n)$ is said to be **optimistic** if it always underestimates the real distance $h(n)$.
 This heuristic is said **feasible**, i.e. it always underestimates.
-It is feasible even if <img src="svgs/8c47754b92fa0ad93b3bfe1abea4e7b7.svg?invert_in_darkmode" align=middle width=44.21983004999999pt height=24.7161288pt/> is always true: it will just be a breadth-first search. 
+It is feasible even if $h'=0$ is always true: it will just be a breadth-first search. 
 
-There's a theorem that says that if <img src="svgs/17196d5dfedddb88c19fbfc0dda901f3.svg?invert_in_darkmode" align=middle width=36.735299699999985pt height=24.7161288pt/> always underestimates, then the A* algorithm always finds the optimal path!
+There's a theorem that says that if $h'(n)$ always underestimates, then the A* algorithm always finds the optimal path!
 
 ### Eligible functions heuristics
 
-We can define different heuristics. For example, in a tiles game, we could define <img src="svgs/5a95dbebd5e79e850a576db54f501ab8.svg?invert_in_darkmode" align=middle width=16.02366149999999pt height=22.831056599999986pt/> as the number of tiles that are out of place, or <img src="svgs/0f7cea0b89929faf20eda59174bc247f.svg?invert_in_darkmode" align=middle width=16.02366149999999pt height=22.831056599999986pt/> as the sum of the Manhattan distances from the initial and final position for each tile.
+We can define different heuristics. For example, in a tiles game, we could define $h_1$ as the number of tiles that are out of place, or $h_2$ as the sum of the Manhattan distances from the initial and final position for each tile.
 
 ### Graphs
 
 We can adapt this algorithm to graphs: we can keep two lists, one for the open nodes (not yet explored) and one for the closed ones. The graph can therefore become a tree with repeated nodes.
 
-If <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/> is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labeling them with the cost from the starting node. 
+If $n$ is the goal we stop, otherwise we remove it from the open nodes and add it to the closed ones, adding its children to the open nodes, labeling them with the cost from the starting node. 
 
-If a child node is already in the open nodes, we update <img src="svgs/f010a0fda7cdcc04209d9381ef5fca27.svg?invert_in_darkmode" align=middle width=31.08266699999999pt height=24.65753399999998pt/>, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update its label. Note that we have to update its subnodes too!
+If a child node is already in the open nodes, we update $g(n)$, if it is in the closed ones we don't add it to the open ones but if its cost is better, we update its label. Note that we have to update its subnodes too!
 
 One node can now be reached from different paths, instead of having just one *father*. Therefore, when you re-find a node, you have found another path to reach the same node! You can just choose the best path then. 
 
