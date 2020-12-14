@@ -76,3 +76,5 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" 
 
 // To learn more about multi-project builds, head over to the official sbt
 // documentation at http://www.scala-sbt.org/documentation.html
+
+unmanagedSources / excludeFilter := "PageRank.scala" // The file contains known errors and must not be compiled
