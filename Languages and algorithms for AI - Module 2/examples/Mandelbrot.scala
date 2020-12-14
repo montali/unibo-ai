@@ -1,5 +1,9 @@
 import java.io._
 
+// https://stackoverflow.com/a/57290463/2347196
+// https://stackoverflow.com/a/56542577/2347196
+import scala.collection.parallel.CollectionConverters._
+
 /** Implementation of the complex number
   *
   * @param a Real part
@@ -42,9 +46,11 @@ object Mandelbrot {
       out.write(("P5\n" + n + " " + n + "\n255\n").getBytes())
 
       // Serial iteration
+      //println("Running serial")
       //for (j <- (0 until n * n)) {
 
       // Parallel iteration
+      println("Running parallel")
       var a = new Array[Int](n * n)
       for (j <- (0 until n * n).par) {
 
@@ -69,15 +75,24 @@ object Mandelbrot {
 
         // Only for serial iteration
         //out.write(255 * (level - i) / level)
+
+        //Only for parallel iteration
+        a(j) = 255*(level-i)/level
       }
 
       // Only for parallel iteration
-      for (k <- 0 until n * n) out.write(a[k])
+      //for (k <- 0 until n * n) out.write(a(k)) // Gives a compilation error...
+      for (k <- 0 until n * n) out.write(a(k))
 
       out.close()
     }
 
-    run(1000, 50)
-    // During lesson on professr's dual core computer serial took 5995ms while parallel took 4812ms
+    println("running")
+    val t1 = System.nanoTime()
+    run(4000, 50)
+    val durationMs = (System.nanoTime() - t1) / 1e9d
+    println(durationMs+"ms")
+    // During lesson on professr's dual core computer serial using n=1000 took 5995ms while parallel took 4812ms
+    // On my exa-core using n=4000 took 46703ms while parallel took 45943ms
   }
 }

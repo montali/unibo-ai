@@ -1,5 +1,6 @@
 project/project/
 target/
+*.pgm
 
 # Created by https://www.toptal.com/developers/gitignore/api/scala,metals,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=scala,metals,visualstudiocode
