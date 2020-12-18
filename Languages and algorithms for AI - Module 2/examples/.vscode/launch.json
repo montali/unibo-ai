@@ -18,5 +18,12 @@
             "mainClass": "T9",
             "args": []
         },
+        {
+            "type": "scala",
+            "name": "Run Mandelbrot",
+            "request": "launch",
+            "mainClass": "Mandelbrot",
+            "args": []
+        },
     ]
 }
