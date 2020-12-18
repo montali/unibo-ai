@@ -21,10 +21,10 @@ on-line cost).
 
 Strategy evaluation criteria:
 \begin{itemize}
-	\item Completeness: does the strategy guarantees to find a solution if one exists?
-	\item Time complexity: how long does it take to find a solution?
-	\item Space complexity: how much memory is needed to carry out the search?
-	\item Optimality: does the strategy find the best solution when there are more solutions?
+	\item \textbf{Completeness}: does the strategy guarantees to find a solution if one exists?
+	\item \textbf{Time complexity}: how long does it take to find a solution?
+	\item \textbf{Space complexity}: how much memory is needed to carry out the search?
+	\item \textbf{Optimality}: does the strategy find the best solution when there are more solutions?
 \end{itemize}
 
 \section{Swarm intelligence}
@@ -38,6 +38,15 @@ TODO
 \section{Constraint Programming}
 
 TODO
+
+\subsection{Propagation algorithms}
+
+\begin{itemize}
+	\item \textbf{Standard Backtracking}: Assign without checking future constraints, then check validity
+	\item \textbf{Forward Checking}: After each assignment propagate the constraints from the assigned value to the free values
+	\item \textbf{Partial Look Ahead}: After Forward Checking check constraints between free values in one direction
+	\item \textbf{Full Look Ahead}: After Forward Checking check constraints between free values in both directions
+\end{itemize}
 
 \section{Algorithms}
 
@@ -83,7 +92,7 @@ TODO
 		\hline
 		Min-Max & Yes & Yes & $b^m$ & $bm$ & \\
 		\hline
-		Min-Max, $\alpha/\beta$ pruning & Yes & Yes & $b^{\frac{3}{4}d}$ & TODO & \\
+		Min-Max, $\alpha/\beta$ pruning & Yes & Yes & Depends, $\sim b^{\frac{3}{4}d}$ & TODO & \\
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Constraint programming}} \\
 		\hline
