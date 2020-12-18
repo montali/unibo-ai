@@ -26,7 +26,7 @@ Given a CSP, we have two approaches: **propagation algorithms** and **consistenc
 
 The available **a posteriori** algorithms are the **Generate and Test** (GT) and **Standard Backtracking.**
 
-The **propagation algorithms** we'll see re **Forward Checking** and **Look Ahead**, we constrain then generate.
+The **propagation algorithms** we'll see are **Forward Checking** and **Look Ahead**, where we constraint then generate.
 
 ## Tree search
 
@@ -54,7 +54,7 @@ At every assignment of a variable $x_i$, it **propagates** all the contraints in
 
 Look Ahead, besides checking the constraints with the current instantiated variable, also checks the **non-assigned variables**. Checking the existence, in the domains associated with non-assigned variables, of values that are compatible with...
 
-This is a further step for propagating the constraints. We have two variants, **partial** and **full**. They all perform a forward checking step (I check the constraint between the assigned and the future), then **it checks constraints between two unassigned variables!**
+This is a further step for propagating the constraints. We have two variants, **partial** and **full**. They all perform a forward checking step (I check the constraint between the assigned and the future), then **it checks for constraints between two unassigned variables!**
 
 The **partial** one goes forward, from lower indices to higher indices. For every value in the domain of the variable we're checking, it checks if the other variable's values are compatible. 
 

@@ -8,9 +8,9 @@ When we have to solve this problem automatically, we have to find out what the s
 
 So, we want to **generate a sequence of actions** that bring you from the initial state to the goal. 
 
-- **Expansion**: one starts from a state, and it generates new states by choosing which node to expand. When you reach a leave, it is either a goal or a node to expand.
-- **Search strategy**: at each step, choose which state to expand
-- **Search tree**
+- **Expansion**: one starts from a state, and it generates new states by choosing which node to expand. When you reach a leaf, it is either a goal or a node to expand;
+- **Search strategy**: at each step, choose which state to expand;
+- **Search tree.**
 
 The basic idea is a simulated exploration obtained by expanding states that have already been explored. So you **start** from the initial state, and you **loop**. If you don't have nodes to expand and you didn't find a goal, you've **failed**. If there are candidates, then you have to choose one according to the strategy. 
 

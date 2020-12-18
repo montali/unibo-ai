@@ -1,4 +1,4 @@
-# wGames
+# Games
 
 Now, a crucial topic: **how to deal with games**.
 
@@ -47,3 +47,4 @@ From what we've seen so far, computers simply play all possible matches up to a 
 Considering a node $N$ in the three, *will the player move to that node?* If the player had a better choice in the parent node level or anywhere else along the path, then $N$ will **never be selected!** We'll call ALFA the value of the best choice found on the path for MAX (i.e. the highest), while BETA the same thing for MIN (i.e. the lowest). We update ALPHA and BETA during the search, and when there are specific conditions we can **cut branches**!
 
 So, how **effective** are these cuts? Suppose that the nodes are ordered from the most promising to the less promising, or vice versa, in which situation will the cuts be more effective? Obviously, the first one: here, we can always cut.
+

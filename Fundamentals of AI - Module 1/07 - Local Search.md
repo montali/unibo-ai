@@ -10,7 +10,7 @@ Given the n queens problem (i.e. position n queens into a chessboard so that the
 
 Local search does it another way: we start by randomly putting the queens on the board. Then, we begin making local moves, i.e. I take a queen and move it. Indeed, I select one queen and explore all the possible moves, than pick one. So, how can we select a new position? We **foresee some improvement.**
 
-In a way, every configuration has a value which measures how good or bad is a situation. 
+In a way, every configuration has a value which measures how good or bad a situation is. 
 
 Every time we define a local move, this move can be applied to a configuration for all possible components: suppose you have a local move that picks up a queen and moves it to the bottom. The same movement could be applied to the other queens too. This is called a **neighbourhood**. It is a function from the **state space** to the power set of this state space. It basically assigns a set of other configurations to a given state, obtainable by local moves. 
 
