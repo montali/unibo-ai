@@ -18,9 +18,9 @@ E.g. we want to build a system to analyse data from a plant and realize a diagno
 
 ### Predictive analytics
 
-This one uses data to **predict future system evolutions**. For example, it could simulate the future evolutions basing on some actions. It tries to forecast future values of the temporal series, and could usee ML classification and regression. So if you had just a predictive analytics system, and wanted to take a decision, you have to perform a *what if analysis*: i.e. *what if I take this decision?*
+This one uses data to **predict future system evolutions**. For example, it could simulate the future evolutions basing on some actions. It tries to forecast future values of the temporal series, and could usee ML classification and regression. So if you only had a predictive analytics system, and wanted to take a decision, you have to perform a *what if analysis*: i.e. *what if I take this decision?*
 
-These systems can also be done though machine learning, regression, simulations...
+These systems can also be done through machine learning, regression, simulations...
 
 ### Prescriptive analytics
 
@@ -52,7 +52,7 @@ Jeopardy is a quiz where you have possible answers and participants have to deci
 
 Computer vision is a research field that's been investigated from the very beginning: if a computer can understand what it sees, it can do *extraordinary* things. 
 
-But before deep learning, CV was basically done this way: you had an image, you tried to **extract** the relevant objects then tried to classify these objects. It was a bit stuck: you could not really achieve human-comparable performances. By using Deep Learning techinques (classifying the content in a set of concepts), the classification error got down **from 26% to 3%**. Humans are less efficient, floating around 5%. 
+But before deep learning, CV was basically done this way: you had an image, you tried to **extract** the relevant objects then tried to classify these objects. It was a bit stuck: you could not really achieve human-comparable performances. By using Deep Learning techniques (classifying the content in a set of concepts), the classification error got down **from 26% to 3%**. Humans are less efficient, floating around 5%. 
 
 The problem with DNN is that they can sometimes make **big mistakes**: some modifications in few pixels could make a persian cat a toaster! 😿
 

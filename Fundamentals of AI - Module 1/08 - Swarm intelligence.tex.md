@@ -14,7 +14,7 @@ The first thing we have to take into account is that the system is composed by a
 
 They **aren't aware** of the system in its **global view**, nor the goal of the system, just their *local goal* (e.g. find food).
 
-They **interact** through local communication patterns, with mechanisms like *stigmergic*, i.e. an indirect interaction that happens through *changes of the environment*. 
+They **interact** through local communication patterns, with mechanisms like *stigmergy*, i.e. an indirect interaction that happens through *changes of the environment*. 
 
 We have **no centralized coordination** of individual activities: the computation is fully distributed.
 
@@ -148,7 +148,7 @@ Now, we have a set of employee bees, which travel the the food source area visit
 
 The onlooker bees decide among the solutions, depending on the probability value associated with that source: <img src="https://cdn.mathpix.com/snip/images/a0U5LiLnpl4SGakpDMzvwaeIN9JqPnOnxJ0f_1K1A8A.original.fullsize.png" /> 
 
-An employee bee that is performing local search becomes a scout if it can't improve its solution, i.e. *the nectar source is exhausted*.
+An employeed bee that is performing local search becomes a scout if it can't improve its solution, i.e. *the nectar source is exhausted*.
 
 **Remarks**: The important thing here is that agents have different roles!
 

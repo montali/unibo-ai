@@ -14,7 +14,7 @@ The first thing we have to take into account is that the system is composed by a
 
 They **aren't aware** of the system in its **global view**, nor the goal of the system, just their *local goal* (e.g. find food).
 
-They **interact** through local communication patterns, with mechanisms like *stigmergic*, i.e. an indirect interaction that happens through *changes of the environment*. 
+They **interact** through local communication patterns, with mechanisms like *stigmergy*, i.e. an indirect interaction that happens through *changes of the environment*. 
 
 We have **no centralized coordination** of individual activities: the computation is fully distributed.
 
@@ -139,7 +139,7 @@ Now, we have a set of employee bees, which travel the the food source area visit
 
 The onlooker bees decide among the solutions, depending on the probability value associated with that source: <img src="https://cdn.mathpix.com/snip/images/a0U5LiLnpl4SGakpDMzvwaeIN9JqPnOnxJ0f_1K1A8A.original.fullsize.png" /> 
 
-An employee bee that is performing local search becomes a scout if it can't improve its solution, i.e. *the nectar source is exhausted*.
+An employeed bee that is performing local search becomes a scout if it can't improve its solution, i.e. *the nectar source is exhausted*.
 
 **Remarks**: The important thing here is that agents have different roles!
 
@@ -149,11 +149,7 @@ This is **widely used in robotics**. It was proposed in 1995, and it is still us
 
 Basically, this was born through the observation of bird flocks: they follow neighbours, stay in the flock and avoid collisions. Usually there's a bird who separates from the flock, then the flock follows it. Every single individual wants to find food, but there's no common objective. What we'd like is having one: with a common objective, a single individual has two choices, i.e. moving away from the group to reach the food, or staying in the group.
 
-We can solve optimization problems with two analogies: **individuals** (tentative configurations that move and sample the solution space) and **social interaction** (each individual takes advantage from other searches moving toward promising regions). In this way, we have a positive feedback and they're attracted to promising areas. As always, it is a matter of **balance** between **exploration** and **exploitation**.
-
-Individuals are affected by the actions of other individuals (closer to them), so they're part of more subgroups which are not tied to the physical proximity of the configurations in the parameter space but are a priori defined.
-
-The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
+We can solve optimization problems with two  The algorihtm moves these particles in the search space through very simple mathematical formulas, deciding direction and speed of movement. The movement is decided by two parts: the best position found by the particle, and the best one found by everyone. This is, in a way, a form of **stigmergy**. 
 
 Mathematically speaking, the move is calculated with <img src="svgs/0d19b0a4827a28ecffa01dfedf5f5f2c.svg?invert_in_darkmode" align=middle width=12.92146679999999pt height=14.15524440000002pt/> which is the best solution found by the particle <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> and <img src="svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>, the best solution found by the entire swarm. For each particle, we:
 

@@ -2,7 +2,7 @@
 
 ## Should AI be regulated?
 
-Lots of AI applications need trust in the system: if you don't trust the system, you can't follow the decision it suggests. **However**, there are dangerous applications, like *autonomous weapons*. AI allows us to create things like *deepfakes*, and that's good, but that's a problem too! 
+Lots of AI applications need trust in the system: if you don't trust the system, you can't follow the decisions it suggests. **However**, there are dangerous applications, like *autonomous weapons*. AI allows us to create things like *deepfakes*, and that's good (😯), but that's a problem too! 
 
 The EU created a high-level expert group to divise **trustworthy AI guidelines**. Essentially, there are two main components to it: 
 
