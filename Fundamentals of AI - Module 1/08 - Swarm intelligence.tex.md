@@ -42,7 +42,7 @@ We will see 3 algorithms for swarm intelligence:
 
 - **Ant Colony Optimization** (*Dorigo, 1992*): based on ants' behaviour, positive feedback based on pheromone trails;
 - **Artificial Bee Colony Algorithm**: we can also have individuals with different functions;
-- **Particle Swarm Optimization PSO**: based on the observation of bird flocks or fish shouls. Stigmergy is used as communication.
+- **Particle Swarm Optimization PSO**: based on the observation of bird flocks or fish shoals. Stigmergy is used as communication.
 
 ### Ant Colony Optimization
 

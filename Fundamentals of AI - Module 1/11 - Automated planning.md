@@ -10,7 +10,12 @@ While it is basically an *obvious activity*, it is quite complex for a machine: 
 
 An important notion is that of the **action**: it depends on the kind of moves that you can do.
 
-We start with: an *initial state*, a *set of actions we can perform*, and a *state to achieve*. We want to find **a plan**: a partially or totally ordered set of actions needed to achieve the goal from the initial state. Planning is one application per se, or a common activity in many applications such as *diagnosis, scheduling, robotics*...
+We start with:
+- an *initial state*
+- a *set of actions we can perform*
+- a *state to achieve*
+
+We want to find **a plan**: a partially or totally ordered set of actions needed to achieve the goal from the initial state. Planning is one application per se, or a common activity in many applications such as *diagnosis, scheduling, robotics*...
 
 An **automated planner** is an intelligent agent that operates in a certain domain described by a *representation of the initial state*, a *representation of the goal* and *a formal description of the executable actions*. I repeat: we need a **non-ambiguous, formal** way of describing these.
 
@@ -49,8 +54,11 @@ The previous two are never used, because they have a problem: *we still don't kn
 **Deductive planning** is a general purpose type of planning, based on *First Order Logic*, which describes the initial states, the actions and the goal.
 
 The **situation** is a world snapshot describing properties (*fluents*) that hold in a given state <img src="svgs/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>.
+
 <p align="center"><img src="svgs/d186dd57f2b31c9c4bcd172a8ce927de.svg?invert_in_darkmode" align=middle width=320.19646725pt height=16.438356pt/></p>
+
 The **actions** define which fluents are true as a consequence of an action. Note that uppercase letters are constants. The *put on table* action might be defined as follows:
+
 <p align="center"><img src="svgs/3bc591acc550451d800743a93c053f18.svg?invert_in_darkmode" align=middle width=313.0769466pt height=62.4657528pt/></p>
 The action *put on table* has two preconditions, before the arrow, and consequences after.
 

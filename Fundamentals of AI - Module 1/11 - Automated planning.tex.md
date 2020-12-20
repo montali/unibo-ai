@@ -10,7 +10,12 @@ While it is basically an *obvious activity*, it is quite complex for a machine: 
 
 An important notion is that of the **action**: it depends on the kind of moves that you can do.
 
-We start with: an *initial state*, a *set of actions we can perform*, and a *state to achieve*. We want to find **a plan**: a partially or totally ordered set of actions needed to achieve the goal from the initial state. Planning is one application per se, or a common activity in many applications such as *diagnosis, scheduling, robotics*...
+We start with:
+- an *initial state*
+- a *set of actions we can perform*
+- a *state to achieve*
+
+We want to find **a plan**: a partially or totally ordered set of actions needed to achieve the goal from the initial state. Planning is one application per se, or a common activity in many applications such as *diagnosis, scheduling, robotics*...
 
 An **automated planner** is an intelligent agent that operates in a certain domain described by a *representation of the initial state*, a *representation of the goal* and *a formal description of the executable actions*. I repeat: we need a **non-ambiguous, formal** way of describing these.
 
@@ -49,12 +54,15 @@ The previous two are never used, because they have a problem: *we still don't kn
 **Deductive planning** is a general purpose type of planning, based on *First Order Logic*, which describes the initial states, the actions and the goal.
 
 The **situation** is a world snapshot describing properties (*fluents*) that hold in a given state $s$.
+
 $$
 Example: block\ world\\
 o n(b, a, s)\\
 ontable (c, s)
 $$
+
 The **actions** define which fluents are true as a consequence of an action. Note that uppercase letters are constants. The *put on table* action might be defined as follows:
+
 $$
 \begin{aligned}
 &\begin{array}{l}

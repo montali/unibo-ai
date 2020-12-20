@@ -1,5 +1,5 @@
 \documentclass[]{article}
-\usepackage[a4paper, portrait, margin=1in]{geometry}
+\usepackage[a4paper, portrait, margin=0.75in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -27,10 +27,6 @@ Strategy evaluation criteria:
 	\item \textbf{Optimality}: does the strategy find the best solution when there are more solutions?
 \end{itemize}
 
-\section{Swarm intelligence}
-
-TODO
-
 \section{Games}
 
 TODO
@@ -52,15 +48,17 @@ TODO
 
 \begin{table}[h]
 	\centering
+	
 	\begin{tabular}{ c l }
 		b & branching factor\\
 		d & solution depth\\
 		m & maximum depth of the search tree\\
 		l & depth limit\\
 	\end{tabular}
-	\begin{tabular}{ | c | c | c | c | c | c | }
+
+	\begin{tabular}{|p{12em}|p{4em}|p{4em}|p{3em}|p{3em}|p{13em}|}
 		\hline
-		Name & Complete? & Optimal? & Time complexity & Space complexity & Notes\\
+		Name & Complete & Optimal & Time & Space & Notes\\
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Non-informed search strategies}} \\
 		\hline
@@ -76,9 +74,9 @@ TODO
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Informed search strategies}} \\
 		\hline
-		Best-First & No & No & $b^d$ & $b^d$ & \\
+		Best-First & No & No & $b^d$ & $b^d$ & Breadth-first with cost of passed steps \\
 		\hline
-		A* & Yes & If heuristic is optimistic &  &  & \\
+		A* & Yes & Optimistic heuristic &  &  & Breadth-first with cost of passed and future steps \\
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Local search}} \\
 		\hline
@@ -86,13 +84,17 @@ TODO
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Swarm intelligence}} \\
 		\hline
-		TODO & TODO & TODO & TODO & TODO & \\
+		Ant Colony Optimization &  &  &  &  & Based on ants' behaviour, positive feedback based on pheromone trails \\
+		\hline
+		Artificial Bee Colony &  &  &  &  & Individuals with different functions \\
+		\hline
+		Particle Swarm Optimization &  &  &  &  & Based on the observation of bird flocks or fish shoals. Stigmergy is used as communication. \\
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Games}} \\
 		\hline
 		Min-Max & Yes & Yes & $b^m$ & $bm$ & \\
 		\hline
-		Min-Max, $\alpha/\beta$ pruning & Yes & Yes & Depends, $\sim b^{\frac{3}{4}d}$ & TODO & \\
+		Min-Max, $\alpha/\beta$ pruning & Yes & Yes & $\le b^m$, $\ge b^{\frac{m}{2}}$ &  &  \\
 		\hline
 		\multicolumn{6}{|c|}{\textbf{Constraint programming}} \\
 		\hline
