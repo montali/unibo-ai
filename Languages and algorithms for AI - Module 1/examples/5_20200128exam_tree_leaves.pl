@@ -12,10 +12,26 @@
 %
 % count_leaves(T,N) :- the binary tree T has N leaves.
 %
-% POSSIBLE IMPLEMENTATION WITHOUT constraints:
+% Implementation WITHOUT constraints:
 
-% TODO
+tree_count(nil, 0) :- !.
+tree_count(t(_, nil, nil), 1) :- !.
+tree_count(t(_, L, R), N) :-
+    tree_count(L, N1), tree_count(R, N2), N is N1+N2.
+    % BEWARE! This would not work:
+    % N is N1+N2, tree_count(L, N1), tree_count(R, N2)
+    % The "is" operator requires the right-hand elements to be already defined
 
-% POSSIBLE IMPLEMENTATION WITH CONSTRAINTS
+% Alternative implementation WITH constraints:
 
-% TODO
+:- use_module(library(clpfd)).
+tree_count(nil, 0) :- !.
+tree_count(t(_, nil, nil), 1) :- !.
+tree_count(t(_, L, R), N) :-
+    N = N1+N2, tree_count(L, N1), tree_count(R, N2).
+
+% Interrogation:
+
+%?- tree_count(t(a,t(b,nil,nil),t(c,nil,nil)), N)
+%?- tree_count(t(a,t(b,nil,nil),t(c,nil,nil)), 1)
+%?- tree_count(t(a,t(b,nil,nil),t(c,nil,nil)), 2)

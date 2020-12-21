@@ -25,5 +25,19 @@
             "mainClass": "Mandelbrot",
             "args": []
         },
+        {
+            "type": "scala",
+            "name": "Run NewtonSQRT",
+            "request": "launch",
+            "mainClass": "NewtonSQRT",
+            "args": []
+        },
+        {
+            "type": "scala",
+            "name": "Run HigherOrderSum",
+            "request": "launch",
+            "mainClass": "HigherOrderSum",
+            "args": []
+        },
     ]
 }
