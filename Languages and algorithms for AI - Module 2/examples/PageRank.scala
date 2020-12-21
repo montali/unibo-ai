@@ -1,3 +1,8 @@
+/*
+This file has some compilation errors, it can be used for information but not to be run.
+Also, it's evaluation is currently disabled in build.sbt.
+*/
+
 import org.apache.spark.SparkContext, org.apache.spark.SparkConf,
 org.apache.commons.io.FileUtils, org.apache.spark.HashPartitioner, java.io._
 
