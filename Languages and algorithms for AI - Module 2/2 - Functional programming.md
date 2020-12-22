@@ -23,7 +23,8 @@ Scala is *lazy* in the evaluation of parameters, meaning that the evaluation of 
 
 ![Second approach](./res/sumofsquares2.png)
 
-As you can see, we may have two different evaluation strategies, leading to the same result. These are known as *call-by-value* and *call-by-name*. At the end, the two different strategies return the same result, but it is possible (in some cases) that one of them might infinitely loop and fail. 
+As you can see, we may have two different evaluation strategies, leading to the same result. These are known as *call-by-value* (CBV) and *call-by-name* (CBN).
+At the end, the two different strategies return the same result, but it is possible (in some cases) that one of them might infinitely loop and fail. 
 
 They both reduce to the same values, **as long as**: there are no side-effects (no changing of the environment when the evaluation is performed) and both evaluations terminate. 
 
@@ -57,5 +58,15 @@ def or(x:Boolean, y:Boolean) =
 	if(x) x else y
 ```
 
+More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
 
+| Variable type | Lazy/Eager? | Stored? | Constant? |
+| ----- | ----- | ----- | ----- |
+| `def` | Lazy | Not stored | Yes |
+| `val` | Eager | Stored | Yes |
+| `lazy val` | Lazy | Stored | Yes |
+| `var` | Eager | Stored | No |
+
+An important feature of Scala is higher order functions.
+An example can be found [here](examples/6_HigherOrderSum.scala).
 
