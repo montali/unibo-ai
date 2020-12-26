@@ -50,7 +50,7 @@ This is the most known operator. It uniformly spreads pixel intensities aceoss t
 
 To find the mapping, considering a continuous variable x and a strictlt monotonically increasing function T:
 
-![HE](/Users/simone/UniBO/unibo-ai/Computer Vision/res/HE.png)
+![HE](./res/HE.png)
 
 
 
