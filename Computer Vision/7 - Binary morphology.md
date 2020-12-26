@@ -16,7 +16,7 @@ Now, <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" ali
 
 The **dilation** is defined as follows:
 <p align="center"><img src="svgs/5e391e064c817abe62f7c8730c843a6a.svg?invert_in_darkmode" align=middle width=358.51117665pt height=19.9563243pt/></p>
-![Dilation](/Users/simone/UniBO/unibo-ai/Computer Vision/res/dilation.png)
+![Dilation](./res/dilation.png)
 
 ## Erosion
 
