@@ -222,7 +222,7 @@ Let's start with an example. Let's say we had a filter built like this:
 
 A bilateral filter would smooth the *step*. 
 
-The function of the filter is the product of two Gaussian functions:![Screenshot 2020-11-06 at 14.38.19](/Users/simone/UniBO/unibo-ai/Computer Vision/res/bilinear-fomrula.png)
+The function of the filter is the product of two Gaussian functions:![Screenshot 2020-11-06 at 14.38.19](./res/bilinear-fomrula.png)
 
 where <img src="svgs/4ab2481d9106644aa2e5c96abf7a3f5c.svg?invert_in_darkmode" align=middle width=15.01341104999999pt height=22.831056599999986pt/> is the distance between intensities, which is large only for those pixels <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> such that <img src="svgs/8a92ec65f5e20227f5a41adda70d26d0.svg?invert_in_darkmode" align=middle width=13.66388759999999pt height=22.465723500000017pt/> is near to <img src="svgs/336cf683005129257f2753915c5f3974.svg?invert_in_darkmode" align=middle width=14.00252864999999pt height=22.465723500000017pt/>.
 
