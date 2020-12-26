@@ -24,7 +24,7 @@ Pay attention to the **minus**: this means that the image will be **inverted**!
 
 To avoid the problems an inversion causes, we can imagine the image plane as lying in front rather than behind the optical center.
 
-![Flipping the perspective projection](/Users/simone/UniBO/unibo-ai/Computer Vision/res/flipped-perspective.png)
+![Flipping the perspective projection](./res/flipped-perspective.png)
 
 This proves an important fact: **image coordinates are a scaled version of the scene ones!** Thus, knowing a point's position in the real world, we can find its position in the image.
 
