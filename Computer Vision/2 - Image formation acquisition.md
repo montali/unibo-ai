@@ -14,7 +14,7 @@ So, **when should we use this?** This is the case of two different settings: whe
 
 ### Using lenses
 
-A scene point is on focus when all its light rays gahtered by the camera hit the image plane at the same point. In a pinhole device this happens to all sceen because of the verys small size of the hole. Therefore, the camera features an infinite depth of field. That is because ideally, a single light ray passes the hole, so there is no way for the light to spread.
+A scene point is on focus when all the light rays gathered by the camera hit the image plane at the same point. In a pinhole device this happens to the whole scene, because of the very small size of the hole. Therefore, the camera features an infinite depth of field. Ideally, a single light ray passes the hole, so there is no way for the light to spread.
 
 The drawback is that such a small aperture gathers a really small amount of light. Therefore, cameras rely on lenses to gather more light from the scene point and focus it on a single image point. This enables much smaller exposure times. However, the DOF is no longer infinite!
 
