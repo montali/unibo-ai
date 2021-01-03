@@ -1,4 +1,4 @@
-REN https://ss64.com/nt/for_cmd.html
+REM https://ss64.com/nt/for_cmd.html
 REM https://stackoverflow.com/a/5274061/2347196
 REM dir . /b/s | find ".tex.md"
 
