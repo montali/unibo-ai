@@ -30,10 +30,10 @@ These should explain why we're studying these things. We're talking about progra
 
 ### A combinatorial problem
 
-Arrange three 1s, three 2s,..., three 9s in sequence in such a way that between two successive occurrences of the number <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/>, there are exactly <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> numbers netween successive occurrences of <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/>.
-**Coding a solution would be a pain in the ass.** So we can work in a _declarative_ way, by expressing, for example, that the 1s have to be like <img src="svgs/d110c0af9adf426ac5ba0a8b9708bc73.svg?invert_in_darkmode" align=middle width=88.58447564999999pt height=24.65753399999998pt/>.
-This will have to be a sublist of the full sequence <img src="svgs/e257acd1ccbe7fcb654708f1a866bfe9.svg?invert_in_darkmode" align=middle width=11.027402099999989pt height=22.465723500000017pt/>, containing 27 elements.
-Then we consider the pattern for the 2s, <img src="svgs/791c2ae428d90bc9f85ccfa84834578d.svg?invert_in_darkmode" align=middle width=128.7671088pt height=24.65753399999998pt/>.
+Arrange three 1s, three 2s,..., three 9s in sequence in such a way that between two successive occurrences of the number $i$, there are exactly $i$ numbers netween successive occurrences of $i$.
+**Coding a solution would be a pain in the ass.** So we can work in a _declarative_ way, by expressing, for example, that the 1s have to be like $[1,-,1,-,1]$.
+This will have to be a sublist of the full sequence $S$, containing 27 elements.
+Then we consider the pattern for the 2s, $[2,-,-,2,-,-,2]$.
 We can do so for every number, than try to merge them thanks to a PROLOG program:
 
 ```prolog
@@ -99,7 +99,7 @@ First of all, we should distinguish between types of logic:
 
 - **Classical logic**, considering truth and inference. Normally it's interested in deriving new facts from the known ones. I can use the proof technique, in ways like the _reductio ad absurdo_, where I start from what I know, then assume that a third thing is false, and check if I obtain a contradiction;
 - **Intuitionistic logic**, considering constructive proofs. The previous direct way is no more allowed: I must construct the proof, starting from the other proofs. If I start from X and Y and examine all the possible cases, and in no one W was false, then I deduce that W must be true: this isn't sufficient, _we need proof_;
-- **Linear logic**, considering resources. _If I have X and Y, can I exchange them for W?_ _It rains today and it rains today._ <img src="svgs/04de81d576ce79f945575d59b5754b6f.svg?invert_in_darkmode" align=middle width=12.785434199999989pt height=22.831056599999986pt/> _I have a server with 2TB and I have a server with 2TB. The total is 4TB!_;
+- **Linear logic**, considering resources. _If I have X and Y, can I exchange them for W?_ _It rains today and it rains today._ $\neq$ _I have a server with 2TB and I have a server with 2TB. The total is 4TB!_;
 - **Epistemic logic**, considering knowledge and belief;
 - **Temporal logic**, considering evolutions in time: _sooner or later it will rain_.
 
@@ -110,11 +110,14 @@ There are several reasons:
 - **Historical reason**: Computer Science _derives from logic!_ CS existed before actual computers existed. These studies on theoretical aspects of CS were crucial to the birth of computers.
 - Logic provides a foundation for computation and declarative languages
 - Logic is a paradox free language: in many circumstances we have what we call pradoxes (i.e. something that has apparently right reasoning, giving apparently right premises, apparently or totally wrong conclusions). The thing is, natural language allows paradoxes! In order to deal with this kind of problems, logic is a great tool.
-  - An example of false paradox: <img src="svgs/f321bca261d3c92c5d22bde7d21eaee3.svg?invert_in_darkmode" align=middle width=503.60596274999995pt height=46.81666769999998pt/>
-  - I am a liar <img src="svgs/e5d134f35dc4949fab12ec64d186248a.svg?invert_in_darkmode" align=middle width=16.43840384999999pt height=14.15524440000002pt/> I am a liar if and only if what I'm saying is not true <img src="svgs/e5d134f35dc4949fab12ec64d186248a.svg?invert_in_darkmode" align=middle width=16.43840384999999pt height=14.15524440000002pt/> I'm not a liar?
+  - An example of false paradox: $\begin{array}{l}
+    x=1=>x^{2}=x \quad=>x^{2}-1=x-1=>(x-1)(x+1)=x-1=> \\
+    \Rightarrow x+1=1=>\quad x=0
+    \end{array}$
+  - I am a liar $\rightarrow$ I am a liar if and only if what I'm saying is not true $\rightarrow$ I'm not a liar?
   - Why do paradoxes happen? Metalinguistic (i.e. relating to a metalanguage, i.e. a language used to talk about language, something about the language) use of natural language, and self-application of a meta linguistic concept
-  - How can we solve this problem? This is partially because of the natural language, but using mathematical language does not solve the problem: let <img src="svgs/05b1b76953eb86aae275b26eb67e29f2.svg?invert_in_darkmode" align=middle width=117.51121469999997pt height=24.65753399999998pt/> (set of all the <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> such that <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> does not belong to <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/>), then I have two cases, either <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> belongs to <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/> or not. Therefore,d <img src="svgs/3869f0773427bc94464652f3e32a24f5.svg?invert_in_darkmode" align=middle width=49.90849379999998pt height=22.465723500000017pt/> iff <img src="svgs/84ad49a33987f9b913e0bb3798491da3.svg?invert_in_darkmode" align=middle width=49.90849049999999pt height=24.65753399999998pt/> (_Russel Paradox_)
-  - There's paradoxes in CS too! Let's define a function <img src="svgs/c692b2774192b06919d7668f4983b772.svg?invert_in_darkmode" align=middle width=119.15344154999997pt height=24.65753399999998pt/>, then <img src="svgs/18e102bed001f7d78320dc1f092bf9ae.svg?invert_in_darkmode" align=middle width=136.10004045pt height=24.65753399999998pt/>, this means that functions are not only _total_, i.e. they can be undefined on some given input! An undefined function doesn't let the program terminate.
+  - How can we solve this problem? This is partially because of the natural language, but using mathematical language does not solve the problem: let $X=\{Y | Y \notin Y\}$ (set of all the $Y$ such that $Y$ does not belong to $Y$), then I have two cases, either $X$ belongs to $X$ or not. Therefore,d $X\in X$ iff $X \notin X$ (_Russel Paradox_)
+  - There's paradoxes in CS too! Let's define a function $f(g)= not(g(g))$, then $(f(f))=not (f(f))$, this means that functions are not only _total_, i.e. they can be undefined on some given input! An undefined function doesn't let the program terminate.
   - So, why don't we design a programming language where, by design, all the non-terminating possibilities are eliminated? We technically could do so, but we would be missing things like _whiles_ and _GOTOs_. This language would be less powerful than a Turing machine, which has power (in the sense of the set of computable functions) equal to the one of Python, C, Java... All of these languages are therefore equivalent, since they have the same set of functions. Now, if we take this _always-terminating language_, but the power of this language is strictly smaller than the power of a Turing Machine: you cannot compute functions that you can compute in C. Nonetheless, there are functions that terminate that still couldn't be executed in this language, like the _hackerman function_ ([related](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DKEkrWRHCDQU&psig=AOvVaw0gWEJOAkBzBPHtkaxY2P9Z&ust=1603526792437000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCND70fmgyuwCFQAAAAAdAAAAABAD)).
   - Therefore, **if we want to have the full expressive power** of a Turing machine, we **must have non-terminating programs**.
   - Termination is **not decidable** (for programming languages having the expressive power of a Turing machine)
@@ -194,9 +197,9 @@ Any statement is true only in a certain domain (for example, the sum of inner an
 
 Since we are not able to define a global domain for a truth, working with logic we will not focus on the notion of thruth but rather the notion of **logical consequence** (which is derived from the notion of truth).
 
-Given a set of sentences <img src="svgs/a5a104f216cd55bf1f85019d761dc379.svg?invert_in_darkmode" align=middle width=105.3631293pt height=22.465723500000017pt/> (_promises_) and a sentence <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.85392569999999pt height=22.465723500000017pt/> (_conclusion_), <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.85392569999999pt height=22.465723500000017pt/> is a logical consequence of <img src="svgs/b2af456716f3117a91da7afe70758041.svg?invert_in_darkmode" align=middle width=10.274003849999989pt height=22.465723500000017pt/> (<img src="svgs/00d24c8173566d6a0e231997933f7294.svg?invert_in_darkmode" align=middle width=49.748564249999994pt height=24.65753399999998pt/>) if it always true that if all the formulas in <img src="svgs/b2af456716f3117a91da7afe70758041.svg?invert_in_darkmode" align=middle width=10.274003849999989pt height=22.465723500000017pt/> are true then also <img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.85392569999999pt height=22.465723500000017pt/> is true.
+Given a set of sentences $\Gamma = F_1,\dots,F_n$ (_promises_) and a sentence $F$ (_conclusion_), $F$ is a logical consequence of $\Gamma$ ($\bold{\Gamma |= F}$) if it always true that if all the formulas in $\Gamma$ are true then also $F$ is true.
 
-<img src="svgs/b8bc815b5e9d5177af01fd4d3d3c2f10.svg?invert_in_darkmode" align=middle width=12.85392569999999pt height=22.465723500000017pt/> logically equivalent to <img src="svgs/319114c5674177dd993d65f01ca74ed3.svg?invert_in_darkmode" align=middle width=113.58860534999998pt height=24.65753399999998pt/> and <img src="svgs/b039a87f36932efdb2986affbc621f1d.svg?invert_in_darkmode" align=middle width=52.26242339999999pt height=24.65753399999998pt/>.
+$F$ logically equivalent to $G \iff F|=G$ and $G|=F$.
 
 ### Propostitional logic
 
@@ -216,8 +219,8 @@ Propositions are joined with connectives (and, or, not...). We will use only use
 
 We define an **alphabet** of propositional logic, consisting of:
 
-- A countable number of **proposition symbols** (also called **atoms**): <img src="svgs/7fb2e9e177d2183050e14daa3fc748d7.svg?invert_in_darkmode" align=middle width=65.07980984999999pt height=14.15524440000002pt/>
-- **Connectives**: <img src="svgs/b956f296b90a178a98acc0419e0023db.svg?invert_in_darkmode" align=middle width=121.46103419999999pt height=18.264896099999987pt/>
+- A countable number of **proposition symbols** (also called **atoms**): $p_0, p_1, \dots$
+- **Connectives**: $\land, \lor, \neg, \rightarrow, \leftrightarrow, \dots$
 - **Auxiliary symbols**: ,
 
 The **syntax of propositional logic** can be defined with a recursive definition, an inductive definition or through Backus-Naur Form (BNF):
@@ -225,7 +228,7 @@ The **syntax of propositional logic** can be defined with a recursive definition
 ![Propositional Logic syntax (Backus-Naur Form)](img/pls_bnf.png)
 
 Once defined the syntax of a language, it's necessary to define the semantics: the first step is the definition of the **interpretation** of the formulas.
-Given a set of atoms <img src="svgs/75fd0816057e9389a98ae995369f03ca.svg?invert_in_darkmode" align=middle width=93.94782869999999pt height=24.65753399999998pt/> which appear in a formula <img src="svgs/5201385589993766eea584cd3aa6fa13.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/>, an intepretation <img src="svgs/21fd4e8eecd6bdf1a4d3d6bd1fb8d733.svg?invert_in_darkmode" align=middle width=8.515988249999989pt height=22.465723500000017pt/> of <img src="svgs/5201385589993766eea584cd3aa6fa13.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/> is an assigment of truth values to each atom <img src="svgs/f6d5184d24a7bfd2ccc1504d12e571e9.svg?invert_in_darkmode" align=middle width=76.6874955pt height=22.465723500000017pt/>.
+Given a set of atoms $\{A_1, \dots, A_n\}$ which appear in a formula $G$, an intepretation $I$ of $G$ is an assigment of truth values to each atom $A_1, \dots, A_n$.
 
 In propositional logic we use the Truth tables of the logical connectives.
 

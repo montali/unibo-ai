@@ -487,7 +487,7 @@ In order to evaluate how fast the algorithm will approximate the solution, we de
 - **Q-superlinear** if the same limit converges to <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>: <img src="svgs/a78c71aa30081a4dadde27045d347ee9.svg?invert_in_darkmode" align=middle width=160.45747244999998pt height=33.989986799999976pt/>
 - **Q-quadratic** if it is even faster, in fact <img src="svgs/0a303f351e87e85870da0fe05d11ac9b.svg?invert_in_darkmode" align=middle width=170.7112836pt height=33.989986799999976pt/>
 
-The Q stands for **Q**uotient because, well, they're quotients 🤷🏻‍♂️
+The Q stands for **Q**uotient because, well, they're quotients 🤷
 
 Remember that these methods converge to a **stationary point**, but that **doesn't always mean** it is a global minimum too.
 

@@ -502,7 +502,7 @@ In order to evaluate how fast the algorithm will approximate the solution, we de
 - **Q-superlinear** if the same limit converges to $0$: $lim_{k\rightarrow\infty} \frac{\|x_{k+1}-x^*\|}{\|x_k-x^*\|}=0$
 - **Q-quadratic** if it is even faster, in fact $\frac{\|x_{k+1}-x^*\|}{\|x_k-x^*\|^2} \le M, \forall k > k^*$
 
-The Q stands for **Q**uotient because, well, they're quotients 🤷🏻‍♂️
+The Q stands for **Q**uotient because, well, they're quotients 🤷
 
 Remember that these methods converge to a **stationary point**, but that **doesn't always mean** it is a global minimum too.
 
