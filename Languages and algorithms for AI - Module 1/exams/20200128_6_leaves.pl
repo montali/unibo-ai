@@ -15,11 +15,10 @@
 % Implementation WITHOUT constraints:
 
 tree_count(nil, 0) :- !.
-tree_count(t(_, nil, nil), 1) :- !.
-tree_count(t(_, L, R), N) :-
+tree_count(t(_, nil, nil), 1) :- !. % Leaf
+tree_count(t(_, L, R), N) :- % Node is NOT a leaf
     tree_count(L, N1), tree_count(R, N2), N is N1+N2.
-    % BEWARE! This would not work:
-    % N is N1+N2, tree_count(L, N1), tree_count(R, N2)
+    % BEWARE! This would not work: N is N1+N2, tree_count(L, N1), tree_count(R, N2)
     % The "is" operator requires the right-hand elements to be already defined
 
 % Alternative implementation WITH constraints:

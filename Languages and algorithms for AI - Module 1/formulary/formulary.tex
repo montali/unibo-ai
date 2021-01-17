@@ -1,5 +1,5 @@
 \documentclass[]{article}
-\usepackage[a4paper, portrait, margin=1in]{geometry}
+\usepackage[a4paper, portrait, margin=0.75in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -18,23 +18,24 @@
 
 \subsection{Semantics}
 
-\noindent $\Gamma = F_1,\dots,F_n$ (\textit{promises});
+\noindent $\Gamma = F_1,\dots,F_n$ (\textit{axioms}/\textit{promises});
 $F$ \textit{conclusion}; 	
 $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 
-\noindent Valid formula $\iff$ Tautology $\iff$ True in any circumstance.
+\noindent \textbf{Valid} formula $\iff$ \textbf{Tautology} $\iff$ True in any circumstance.
 
-\noindent Inconsistent formula $\iff$ Unsatisfiable formula $\iff$ False in any circumstance.
+\noindent \textbf{Inconsistent} formula $\iff$ \textbf{Unsatisfiable} formula $\iff$ False in any circumstance.
 
 \noindent $G$ valid $\iff \neg G$ inconsistent.
 
 \begin{table}[h]
 	\centering
+	\caption{Truth table of main logical connectives}
 	\begin{tabular}{ |c |c|c | c | c| c | c | } 
 		\hline
-		\multicolumn{7}{|c|}{Truth table of main logical connectives} \\
+		 &  & \textbf{Not} & \textbf{And} & \textbf{Or} & \textbf{Implication} & \textbf{Double implication} \\
 		\hline
-		\textbf{$P_1$} & \textbf{$P_2$} & \textbf{$\neg P_1$} & \textbf{$P_1 \land P_2$} & \textbf{$P_1 \lor P_2$} & \textbf{$P_1 \rightarrow P_2$} & \textbf{$P_1 \leftrightarrow P_2$} \\
+		$P_1$ & $P_2$ & $\neg P_1$ & $P_1 \land P_2$ & $P_1 \lor P_2$ & $P_1 \rightarrow P_2$ & $P_1 \leftrightarrow P_2$ \\
 		\hline
 		T & T & F & T & T & T & T \\
 		\hline
@@ -45,18 +46,16 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 		F & F & T & F & F & T & T \\
 		\hline
 	\end{tabular}
-	%\caption{Truth table of main logical connectives}
 \end{table}
 
-\noindent $F$ logically equivalent to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
+\noindent $F$ \textbf{logically equivalent} to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
 
 \subsection{Calculus}
 
 \begin{table}[h]
 	\centering
+	\caption{Logical equivalence rules}
 	\begin{tabular}{ | r  c  l  c | } 
-		\hline
-		\multicolumn{4}{|c|}{Logical equivalence rules} \\
 		\hline
 		$P \land Q$ & $\equiv$ & $Q \land P$ & Commutativity of AND\\
 		\hline
@@ -83,26 +82,36 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 		$P \lor (Q \land R)$ & $\equiv$ & $(P \lor Q) \land (P \lor R)$ & Distributivity of OR over AND\\
 		\hline
 	\end{tabular}
-	%\caption{Logical equivalence rules}
 \end{table}
 
-\noindent Conjunctive Normal Form: $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $ (disjunction of atoms).
+\noindent \textbf{Conjunctive Normal Form}: $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $ (disjunction of atoms).
 
-\noindent Disjunctive Normal Form: $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $ (conjunction of atoms).
+\noindent \textbf{Disjunctive Normal Form}: $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $ (conjunction of atoms).
 
-\noindent Deduction Theorem: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff (\vDash(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
+\noindent \textbf{Deduction Theorem}: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff (\vDash(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
 
-\noindent Proof by refutation: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
+\noindent \textbf{Proof by refutation}: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
 
 \subsubsection{Natural deduction}
 
-\noindent AND: $\hspace{1em} \dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I \hspace{5em} \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E \hspace{1em} \dfrac{\varphi \land \theta}{\varphi}\land E$.
+\begin{table}[h]
+	\centering
+	\caption{Introduction and elimination rules for main logical connectives}
+	% https://www.cs.cornell.edu/courses/cs3110/2012sp/lectures/lec15-logic-contd/lec15.html
+	\begin{tabular}{ |c |c|c | } 
+		\hline
+		& \textbf{Introduction} & \textbf{Elimination} \\
+		\hline
+		\textbf{And} & $\dfrac{\varphi \hspace{1em} \theta}{\varphi \land \theta}\land I$ & $\dfrac{\varphi \land \theta}{\varphi}\land E \hspace{3em} \dfrac{\varphi \land \theta}{\varphi}\land E$ \\
+		\hline
+		\textbf{Or} & $\dfrac{\varphi}{\varphi \lor \theta} \lor I \hspace{3em} \dfrac{\theta}{\varphi \lor \theta} \lor I$ & $\dfrac{\varphi \lor \theta \hspace{1em} \varphi \rightarrow \psi \hspace{1em} \theta \rightarrow \psi}{\psi} \lor E$ \\
+		\hline
+		\textbf{Implication} & $\dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \theta \end{array}}{\varphi \rightarrow \theta} \rightarrow I$ & $\dfrac{\varphi \hspace{1em} \varphi \rightarrow \theta}{\theta} \rightarrow E$ (\textit{modus ponens}) \\
+		\hline
+	\end{tabular}
+\end{table}
 
-\noindent OR: $\hspace{1em} \dfrac{\varphi}{\varphi \lor \theta}\lor I \hspace{1em} \dfrac{\theta}{\varphi \lor \theta}\lor I \hspace{5em} $.
-
-\noindent IMPLIES: $\hspace{1em} \dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \theta \end{array}}{\varphi \rightarrow \theta} \rightarrow I \hspace{5em} \hspace{1em} \dfrac{\varphi \hspace{1em} \varphi \rightarrow \theta}{\theta} \rightarrow E $.
-
-\noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$. Reduction ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
+\noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$. Reductio ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
 
 %\noindent $\begin{cases}
 %	\Gamma \vdash \varphi \\
