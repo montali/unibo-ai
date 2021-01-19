@@ -20,7 +20,7 @@
 
 \noindent $\Gamma = F_1,\dots,F_n$ (\textit{axioms}/\textit{promises});
 $F$ \textit{conclusion}; 	
-$\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
+$\Gamma \models F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 
 \noindent \textbf{Valid} formula $\iff$ \textbf{Tautology} $\iff$ True in any circumstance.
 
@@ -48,7 +48,7 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 	\end{tabular}
 \end{table}
 
-\noindent $F$ \textbf{logically equivalent} to $G \iff F \equiv G \iff (F \vDash G$ and $G \vDash F)$.
+\noindent $F$ \textbf{logically equivalent} to $G \iff F \equiv G \iff (F \models G$ and $G \models F)$.
 
 \subsection{Calculus}
 
@@ -88,9 +88,9 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 
 \noindent \textbf{Disjunctive Normal Form}: $F = F_1 \lor F_2 \lor ... \lor F_n $ where $F_i = F_{i1} \land F_{i2} \land ... \land F_{ik} $ (conjunction of atoms).
 
-\noindent \textbf{Deduction Theorem}: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff (\vDash(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
+\noindent \textbf{Deduction Theorem}: $(F_1 \land F_2 \land ... \land F_n) \models G \iff (\models(F_1 \land F_2 \land ... \land F_n)) \rightarrow G$
 
-\noindent \textbf{Proof by refutation}: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
+\noindent \textbf{Proof by refutation}: $(F_1 \land F_2 \land ... \land F_n) \models G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
 
 \subsubsection{Natural deduction}
 
@@ -114,17 +114,17 @@ $\Gamma \vDash F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 \noindent Ex falso sequitur quodlibet: $\dfrac{\bot}{\varphi}\bot$. Reductio ad absurdum: $\dfrac{\begin{array}{c} [\neg \varphi] \\ \vdots \\ \bot \end{array}}{\varphi} RAA$.
 
 %\noindent $\begin{cases}
-%	\Gamma \vdash \varphi \\
+%	\Gamma \models \varphi \\
 %	\Gamma = \emptyset
-%\end{cases} \Rightarrow \vdash \varphi \Rightarrow \varphi$ theorem.
+%\end{cases} \Rightarrow \models \varphi \Rightarrow \varphi$ theorem.
 
-\noindent $\Gamma \vdash \varphi \iff \Gamma \vDash \varphi$ (Completeness theorem: $\Gamma \vdash \varphi \Rightarrow \Gamma \vDash \varphi$; Soundness theorem: $\Gamma \vdash \varphi \Leftarrow \Gamma \vDash \varphi$).
+\noindent $\Gamma \models \varphi \iff \Gamma \models \varphi$ (Completeness theorem: $\Gamma \models \varphi \Rightarrow \Gamma \models \varphi$; Soundness theorem: $\Gamma \models \varphi \Leftarrow \Gamma \models \varphi$).
 
 \subsubsection{Resolution}
 
-%\noindent Proof by refutation: $(F_1 \land F_2 \land ... \land F_n) \vDash G \iff F_1 \land F_2 \land ... \land F_n \land \neg G $ inconsistent.
+\noindent Refutation theorem: $\theta \models \psi \iff \not\models \psi \land \neg\theta$
 
-\noindent $\dfrac{R \lor A \hspace{1em} R' \lor \bot A}{R \lor R'}$
+\noindent Resolution: $\dfrac{R \lor A \hspace{1em} R' \lor \neg A'}{R \lor R'}$
 
 \section{First Order Logic}
 

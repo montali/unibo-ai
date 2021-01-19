@@ -9,7 +9,7 @@
 - An [Anki](https://apps.ankiweb.net) [package](Statistics%20and%20Mathematical%20Methods%20for%20AI.apkg) to review before the exam.
 - Some [notes](exam-info.md) about the exam
 - A [useful PDF](other_resources/Useful%20PDF%20I%20wrote%20in%20my%20bachelors.pdf) (italian) @montali wrote during its bachelor's
-- A [LaTeX document](other_resources/analisi2.tex) (italian) @Danysan1 wrote during its bachelor's
+- A [LaTeX](other_resources/analisi2.tex)/[PDF](other_resources/analisi2.pdf) document (italian) @Danysan1 wrote during its bachelor's
 
 ## Useful resources
 
