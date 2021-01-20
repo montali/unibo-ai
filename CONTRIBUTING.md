@@ -11,8 +11,6 @@ Files are grouped by course and module in their respective folders. Typical stru
 
 `.tex.md` files can be compiled to normal `.md` files with the [`readme2tex`](https://github.com/leegao/readme2tex) python module.
 
-Full installation and usage instructions for `readme2tex` can be found [here](https://github.com/leegao/readme2tex#installation).
-
 ### Installation
 
 With `python` 2.7 or superior and `pip` installed run this command:
@@ -20,6 +18,8 @@ With `python` 2.7 or superior and `pip` installed run this command:
 ```
 sudo pip install readme2tex
 ```
+
+Full installation instructions for `readme2tex` can be found [here](https://github.com/leegao/readme2tex#installation).
 
 ### Usage
 
@@ -31,3 +31,5 @@ python3 -m readme2tex --nocdn --readme path_to_input.tex.md --output  path_to_ou
 
 Alternatevily, to compile all files in the project run the [`compile_tex_md.bat`](compile_tex_md.bat) script from Windows or the [`compile_tex_md.sh`](compile_tex_md.sh) script from Linux.
 (NOTE: the [`compile_tex_md.sh`](compile_tex_md.sh) script is not yet complete, your contribute to complete it would be apreciated)
+
+Full usage instructions for `readme2tex` can be found [here](https://github.com/leegao/readme2tex#usage).
