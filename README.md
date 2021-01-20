@@ -5,3 +5,5 @@ Notes monorepo for the UniBO Artificial Intelligence MSc. Don't count on me sinc
 ## Please contribute!
 
 If you'd like to contribute to this repo, just ask me and I will add you as a collaborator.
+
+Useful information for contributing can be found in [CONTRIBUTING.md](CONTRIBUTING.md)
