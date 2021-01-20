@@ -30,6 +30,6 @@ python3 -m readme2tex --nocdn --readme path_to_input.tex.md --output  path_to_ou
 ```
 
 Alternatevily, to compile all files in the project run the [`compile_tex_md.bat`](compile_tex_md.bat) script from Windows or the [`compile_tex_md.sh`](compile_tex_md.sh) script from Linux.
-(NOTE: the [`compile_tex_md.sh`](compile_tex_md.sh) script is not yet complete, your contribute to complete it would be apreciated)
+(NOTE: the [`compile_tex_md.sh`](compile_tex_md.sh) script is not yet complete, your contribute to complete it would be appreciated)
 
 Full usage instructions for `readme2tex` can be found [here](https://github.com/leegao/readme2tex#usage).
