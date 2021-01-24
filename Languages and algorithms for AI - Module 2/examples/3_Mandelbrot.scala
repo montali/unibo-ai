@@ -28,6 +28,7 @@ class Complex(val a: Double, val b: Double) {
   * z_1(c) = c
   * z_2(c) = c^2 + c
   * z_3(c) = (c^2 + c)^2 + c
+  * z_4(c) = ((c^2 + c)^2 + c)^2 + c
   * ...
   * z_i(c) = z_{i-1}(c)^2 + c
   *

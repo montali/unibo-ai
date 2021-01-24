@@ -18,10 +18,10 @@ object NewtonSQRT {
     * We implement the algorithm recursively
     * It would also be possible to implement it iteratively
     * Typically the iterative implementation would be faster (it would not have an overhead for new local variables)
-    * Scala however optimizes the execution in case of tail recursion (such as this example) making it as fast as iterative
+    * Scala however optimizes the execution in case of TAIL RECURSION (such as this example) making it as fast as iterative
     * Tail recursion is a kind of recursion where
     *   - the recursive call is the last call of the function
-    *   - the value returned by the recrsive call is returned without being touched
+    *   - the value returned by the recursive call is returned without being touched
     *
     * @param z Input value
     * @return Square root of the input value

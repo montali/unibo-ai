@@ -1,7 +1,9 @@
 # Statistical and Mathematical methods for Artificial Intelligence
 
 - [Course web site for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599)
-- [Course material on Virtuale](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
+- [Course material on Virtuale](https://virtuale.unibo.it/course/view.php?id=18589)
+- [Lesson recordings](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
+- [Course material on Overleaf](https://www.overleaf.com/project/5f60c5c944a6da000183463e)
 
 ## What you'll find here
 - Some LaTeX notes I wrote in the beginning, which were abandoned fast;
@@ -18,7 +20,7 @@
 - [`numpy` reference](https://numpy.org/doc/stable/reference/index.html)
 - [`numpy.random` reference](https://numpy.org/doc/stable/reference/random/)
 - [MatPlotLib docs](https://matplotlib.org/contents.html)
-- [`matplotlib` reverence](https://matplotlib.org/api/index.html)
+- [`matplotlib` reference](https://matplotlib.org/api/index.html)
 - [Scipy docs](https://docs.scipy.org/doc/scipy/reference/)
 - [`scipy.linalg` reference](https://docs.scipy.org/doc/scipy/reference/linalg.html)
 
