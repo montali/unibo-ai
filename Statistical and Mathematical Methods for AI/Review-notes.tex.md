@@ -375,7 +375,7 @@ We can therefore conclude that we can decompose a matrix in lots of ways:
 
 A **linear system** can be written as $Ax=b$, where $A$ is a matrix of size $m\times n$ (let's suppose $m\ge n$ for now),  $x$ is a column vector of length $n$ and $b$ is a column vector of length $m$. $x$ represents the unknown solution, while $b$ is given. This form can therefore be expanded as 
 
-$\begin{array}
+$\begin{array}{l}
 a_{11} x_{1}+a_{12} x_{2}+\ldots+a_{1 n} x_{n}=b_{1} \\
 a_{21} x_{1}+a_{22} x_{2}+\ldots+a_{2 n} x_{n}=b_{2} \\
 \vdots \\
@@ -479,7 +479,7 @@ To analyze the existence and uniqueness of the solution, we can consider two dif
 
   $\mathrm{Ax}=\mathbf{b} \Longrightarrow \mathrm{A}^{+} \mathrm{Ax}^{*}=\mathrm{A}^{+} \mathbf{b} \Longrightarrow \mathbf{x}^{*}=\mathrm{A}^{+} \mathbf{b} \Longrightarrow \mathbf{x}^{*}=\sum_{i=1}^{k} \frac{\mathbf{u}_{\mathrm{i}}^{T} \mathbf{b}}{\sigma_{i}} \mathbf{v}_{i}$
 
-  It is possible to modify the linear least squares problem by introducing a weight matrix with the aim of giving different weights to the components of $x$: $\hat{\mathbf{x}}=\operatorname{argmin}_{x}\|\mathbf{W} \AA \mathbf{x}-\mathbf{b}\|_{2}^{2}$ where $W$ is an invertible matrix, which gets us to the *weighted normal equations*: $(\mathrm{WA})^{T} \mathrm{WAx}=(\mathrm{WA})^{T} \mathbf{b}$
+  It is possible to modify the linear least squares problem by introducing a weight matrix with the aim of giving different weights to the components of $x$: $\hat{\mathbf{x}}=\operatorname{argmin}_{x}\|\mathbf{W} A \mathbf{x}-\mathbf{b}\|_{2}^{2}$ where $W$ is an invertible matrix, which gets us to the *weighted normal equations*: $(\mathrm{WA})^{T} \mathrm{WAx}=(\mathrm{WA})^{T} \mathbf{b}$
 
 # Numerical optimization
 
