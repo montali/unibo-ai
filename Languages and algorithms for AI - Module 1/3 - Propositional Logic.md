@@ -131,7 +131,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
   This is still complete: limiting the connectives is not a limitation itself. The or is one of the major complications when moving from classical logic to intuitionistic logic: in the latter, the rule <img src="svgs/b546af1cb1548941e23cb36c264ccf76.svg?invert_in_darkmode" align=middle width=105.06836999999997pt height=22.465723500000017pt/> is not valid.
 
   These 3 connectives allow us to define the **introduction rules**:
-  <p align="center"><img src="svgs/f42e6bb397f0e5eca4014c7223c46b8d.svg?invert_in_darkmode" align=middle width=103.30193114999999pt height=37.0084374pt/></p>
+  <p align="center"><img src="svgs/3f483f14cc7a2a5693d1c52db524d3e4.svg?invert_in_darkmode" align=middle width=119.74031354999998pt height=37.0084374pt/></p>
   where <img src="svgs/a812d3a7f0501c27242993b0fcbffb77.svg?invert_in_darkmode" align=middle width=34.1961081pt height=30.648287999999997pt/> has the premise on the upper side and the conclusion on the lower side.
 
   What about the elimination of a connective, for example the conjunction?
@@ -143,12 +143,12 @@ The third definition (100% precise) defines by induction: we have three rules, w
   Note that <img src="svgs/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode" align=middle width=13.08219659999999pt height=22.465723500000017pt/> stands for elimination, and <img src="svgs/21fd4e8eecd6bdf1a4d3d6bd1fb8d733.svg?invert_in_darkmode" align=middle width=8.515988249999989pt height=22.465723500000017pt/> for introduction.
 
   Now, we can eliminate an implication: if I have an implication <img src="svgs/05c18f81fe556aca8d688971df554168.svg?invert_in_darkmode" align=middle width=47.62164164999999pt height=22.831056599999986pt/> and I have proof of <img src="svgs/417a5301693b60807fa658e5ef9f9535.svg?invert_in_darkmode" align=middle width=10.75343279999999pt height=14.15524440000002pt/> , I can derive the conclusion <img src="svgs/7e3c241c2dec821bd6c6fbd314fe4762.svg?invert_in_darkmode" align=middle width=11.29760774999999pt height=22.831056599999986pt/>:
-  <p align="center"><img src="svgs/8e67c729bf5718bfea593b207c1838d0.svg?invert_in_darkmode" align=middle width=164.28351225pt height=37.0084374pt/></p>
+  <p align="center"><img src="svgs/bc4dc12f8eb52ddb079f48f6fe029b4b.svg?invert_in_darkmode" align=middle width=180.721893pt height=37.0084374pt/></p>
    *Elimination rules* means that we eliminate a connective, in this case the implication. 
 
   The difficult rule is the last one, the rule of implication introduction. It basically says: assume I have a formula <img src="svgs/417a5301693b60807fa658e5ef9f9535.svg?invert_in_darkmode" align=middle width=10.75343279999999pt height=14.15524440000002pt/>, assuming that using some other *derivation steps* (i.e. application of rules), and I have reached the proof of <img src="svgs/7e3c241c2dec821bd6c6fbd314fe4762.svg?invert_in_darkmode" align=middle width=11.29760774999999pt height=22.831056599999986pt/>, using the implication introduction rule I can introduce the formula <img src="svgs/05c18f81fe556aca8d688971df554168.svg?invert_in_darkmode" align=middle width=47.62164164999999pt height=22.831056599999986pt/> and I **discard the hypothesis**. What does *discard the hypothesis* mean? Suppose we want to get the deduction of *a triangle has two equal sides, then the two angles are equal*. In order for the theorem to be true, do we need the assumption? Not anymore: the assumption is contained in the theorem we obtain *if the sides are equal, the angles are too*. Here we are doing the same: assume that starting from <img src="svgs/417a5301693b60807fa658e5ef9f9535.svg?invert_in_darkmode" align=middle width=10.75343279999999pt height=14.15524440000002pt/> I reach <img src="svgs/7e3c241c2dec821bd6c6fbd314fe4762.svg?invert_in_darkmode" align=middle width=11.29760774999999pt height=22.831056599999986pt/>, then I have proved that <img src="svgs/05c18f81fe556aca8d688971df554168.svg?invert_in_darkmode" align=middle width=47.62164164999999pt height=22.831056599999986pt/> is false, because this assumption is not needed anymore, I can prove that without any assumption.
-
-  <img src="https://cdn.mathpix.com/snip/images/AXjJg1OhwP-6g-DnMH48EWGsYBK9t6h_5WjNYoJzBnc.original.fullsize.png" />
+  
+  <p align="center"><img src="svgs/1ae7b693d635296ea81995c1da59b521.svg?invert_in_darkmode" align=middle width=144.39765945pt height=89.5224528pt/></p>
 
   What we're saying is that we start with an assumption and reach a conclusion, then I can introduce the implication and while doing so I can delete the assumption itself: it won't be needed anymore, as it is contained in the implication. If starting from *if it's raining* I can derive that *I have to take the umbrella*, I can state *If it's raining I have to take the umbrella*, then I can remove the assumption that *It is raining*.
 

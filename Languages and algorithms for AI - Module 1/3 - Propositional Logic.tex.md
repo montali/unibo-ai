@@ -132,7 +132,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   These 3 connectives allow us to define the **introduction rules**:
   $$
-  (\wedge I) \frac{\varphi \quad \psi}{\varphi \wedge \psi} \wedge I \\
+  (\wedge I) \quad \frac{\varphi \quad \psi}{\varphi \wedge \psi} \wedge I \\
   $$
   where $\frac{\varphi \quad \psi}{\varphi \wedge \psi}$ has the premise on the upper side and the conclusion on the lower side.
 
@@ -148,13 +148,15 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   Now, we can eliminate an implication: if I have an implication $\varphi \rightarrow \psi$ and I have proof of $\varphi$ , I can derive the conclusion $\psi$:
   $$
-  (\rightarrow E) \frac{\varphi \quad \varphi \rightarrow \psi}{\psi} \rightarrow E
+  (\rightarrow E) \quad \frac{\varphi \quad \varphi \rightarrow \psi}{\psi} \rightarrow E
   $$
    *Elimination rules* means that we eliminate a connective, in this case the implication. 
 
   The difficult rule is the last one, the rule of implication introduction. It basically says: assume I have a formula $\varphi$, assuming that using some other *derivation steps* (i.e. application of rules), and I have reached the proof of $\psi$, using the implication introduction rule I can introduce the formula $\varphi \rightarrow \psi$ and I **discard the hypothesis**. What does *discard the hypothesis* mean? Suppose we want to get the deduction of *a triangle has two equal sides, then the two angles are equal*. In order for the theorem to be true, do we need the assumption? Not anymore: the assumption is contained in the theorem we obtain *if the sides are equal, the angles are too*. Here we are doing the same: assume that starting from $\varphi$ I reach $\psi$, then I have proved that $\varphi \rightarrow \psi$ is false, because this assumption is not needed anymore, I can prove that without any assumption.
-
-  <img src="https://cdn.mathpix.com/snip/images/AXjJg1OhwP-6g-DnMH48EWGsYBK9t6h_5WjNYoJzBnc.original.fullsize.png" />
+  
+  $$
+  (\rightarrow I) \quad \dfrac{\begin{array}{c} [\varphi] \\ \vdots \\ \psi \end{array}}{\varphi \rightarrow \psi} \rightarrow I
+  $$
 
   What we're saying is that we start with an assumption and reach a conclusion, then I can introduce the implication and while doing so I can delete the assumption itself: it won't be needed anymore, as it is contained in the implication. If starting from *if it's raining* I can derive that *I have to take the umbrella*, I can state *If it's raining I have to take the umbrella*, then I can remove the assumption that *It is raining*.
 

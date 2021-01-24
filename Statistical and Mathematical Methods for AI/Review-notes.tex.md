@@ -41,7 +41,7 @@ We can further divide the computational error into the **truncation error** and 
 
 **Sensitivity** and **conditioning** are concerned with propagated data error. **Conditioning** is just a way to quantitatively measure sensitivity. A problem is **sensitive** (or **ill-conditioned**) if the relative change in the solution can be much larger than the one in the input data. In other words, a problem is sensitive when, if we change the input by a small quantity, the result changes a lot.
 
-The condition number is expressed as $K = \frac{\left|\textrm{relative change in solution}\right|}{\left|\textrm{relative change in input data}\right|}$.
+The condition number is expressed as $K = \dfrac{\left|\textrm{relative change in solution}\right|}{\left|\textrm{relative change in input data}\right|}$.
 
 ## Representation of a real number in basis $\beta$
 
@@ -303,7 +303,9 @@ Any matrix $A \in \mathbb{R}^{m\times n}$ with $rank(A)=k$, where $k \le n$ can 
 
 $A = U \Sigma V^T$
 
-where $U \in \mathbb{R}^{m\times m}$ is an **orthogonal matrix** with orthogonal vectors $u_i$, $V \in \mathbb{R}^{n\times n}$ is an orthogonal matrix with orthogonal vectors $v_i$, and $\Sigma \in \mathbb{R}^{m\times n}$ is a matrix whose diagonal entries are the **singular values** $\sigma_i$ of $A$ and with extra-diagonal entries equal to $0$. <img src="https://cdn.mathpix.com/snip/images/N3oanb3v-5R-_eXPha80gAU0FPOP4Y7gUgHKkjIDZrM.original.fullsize.png" />
+where $U \in \mathbb{R}^{m\times m}$ is an **orthogonal matrix** with orthogonal vectors $u_i$, $V \in \mathbb{R}^{n\times n}$ is an orthogonal matrix with orthogonal vectors $v_i$, and $\Sigma \in \mathbb{R}^{m\times n}$ is a matrix whose diagonal entries are the **singular values** $\sigma_i$ of $A$ and with extra-diagonal entries equal to $0$.
+
+![Singular Value Decomposition](res/singular_value_decomposition.png)
 
 The singular values are in **ascending order** in the diagonal, and the first $k$ are non-null while the other $n-k$ are equal to $0$. The singular matrix $\Sigma$ **is unique**, the other two **aren't**.
 
