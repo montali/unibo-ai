@@ -6,8 +6,8 @@
 - [Course material on Overleaf](https://www.overleaf.com/project/5f60c5c944a6da000183463e)
 
 ## What you'll find here
-- Some LaTeX notes I wrote in the beginning, which were abandoned fast;
-- [A summary](Review-notes.md) containing pretty much everything you may need for the exam;
+- A [summary](Review-notes.md) containing pretty much everything you may need for the exam;
+- Some [LaTeX](sec5.tex)/[PDF](sec5.pdf) notes I wrote in the beginning, which were abandoned fast;
 - An [Anki](https://apps.ankiweb.net) [package](Statistics%20and%20Mathematical%20Methods%20for%20AI.apkg) to review before the exam.
 - Some [notes](exam-info.md) about the exam
 - A [useful PDF](other_resources/Useful%20PDF%20I%20wrote%20in%20my%20bachelors.pdf) (italian) @montali wrote during its bachelor's
