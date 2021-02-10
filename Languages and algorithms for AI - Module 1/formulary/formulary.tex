@@ -73,15 +73,17 @@ $\Gamma \models F \iff F$ is a \textbf{logical consequence} of $\Gamma$.
 		\hline
 		$P \leftrightarrow Q$ & $\equiv$ & $(P \rightarrow Q) \land (Q \rightarrow P)$ & Biconditional elimination \\
 		\hline
-		$\neg(P \land Q)$ & $\equiv$ & $\neg P \lor \neg Q$ & De Morgan\\
+		$\neg(P \land Q)$ & $\equiv$ & $\neg P \lor \neg Q$ & De Morgan's law *\\
 		\hline
-		$\neg(P \lor Q)$ & $\equiv$ & $\neg P \land \neg Q$ & De Morgan\\
+		$\neg(P \lor Q)$ & $\equiv$ & $\neg P \land \neg Q$ & De Morgan's law *\\
 		\hline
 		$P \land (Q \lor R)$ & $\equiv$ & $(P \land Q) \lor (P \land R)$ & Distributivity of AND over OR\\
 		\hline
 		$P \lor (Q \land R)$ & $\equiv$ & $(P \lor Q) \land (P \lor R)$ & Distributivity of OR over AND\\
 		\hline
 	\end{tabular}
+
+	* De Morgan's law can be generalized to any arbitrary finite number of connected variables.
 \end{table}
 
 \noindent \textbf{Conjunctive Normal Form}: $F = F_1 \land F_2 \land ... \land F_n $ where $F_i = F_{i1} \lor F_{i2} \lor ... \lor F_{ik} $ (disjunction of atoms).
@@ -136,6 +138,7 @@ TODO
 
 $ A \doteq B \Leftrightarrow A $ unifiable with $ B $
 
-
+Let $A_1, \dots, A_k$ be atomic formulas; A unifier for the set ${A_1,\dots, A_k}$ is a substitution $\sigma$ such that $A_1 \sigma = A_2 \sigma = \dots = A_k \sigma$, where = represents the property of being the identical formula.
+A unifier $\sigma$ is said to be a Most General Unifier (MGU) if, for every unifier $\tau$ for the same set, there is a unifier $\rho$ such that $\tau = \sigma \rho$ . From the MGU you can derive any other unifier.
 
 \end{document}

@@ -7,7 +7,7 @@ p(b,c,Z) :- q(Z),r(Z).
 q(f(W)). % Correct exercise
 r(a).
 
-%:?- q(X1,b,Z1)
+%:?- p(X1,b,Z1)
 
 % With original exercise it nevr terminates because at some point p(a,b,Z) keeps failing to unify with p(a,X,Z) and unifying with itself
 % With correct exercise it ends with a failure because f() is undefined
