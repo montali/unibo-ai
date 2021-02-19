@@ -12,8 +12,9 @@ object NewtonSQRT {
     * Suppose f'(x)=x and f(x)=r/x
     * We are searching the intersection of the two function (such that r=x^2)
     * Approximate x with z_1, z_2, ..., sqrt(r) until desired estimation precision
-    * z_1 is arbitrary
+    * z_1 is an arbitrary approximation
     * z_{n+1} = z_n + (f'(z_n) + f(z_n))/2
+    * The approximation change is the average of f'(z_n) with f(z_n)
     * 
     * We implement the algorithm recursively
     * It would also be possible to implement it iteratively
