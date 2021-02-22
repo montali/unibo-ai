@@ -4,6 +4,7 @@
 
 abstract class IntSet {
   def add(x: Int): IntSet
+  def union(x: IntSet): IntSet
   def contains(x: Int): Boolean
 }
 
@@ -12,6 +13,7 @@ class Empty extends IntSet {
   def isEmpty = true
   def contains(x: Int): Boolean = false
   def add(x: Int): IntSet = new NonEmpty(x, new Empty, new Empty)
+  def union(x: IntSet): IntSet = x
   override def tostring = "."
 }
 
@@ -28,6 +30,10 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
     if (x < elem) new NonEmpty(elem, left add x, right)
     else if (x > elem) new NonEmpty(elem, left, right add x)
     else this
+
+  def union(x: IntSet): IntSet = {
+    throw new NotImplementedError // How could 'x union b' be implemented?
+  }
 
   override def toString = "{" + left + elem + right + "}"
 }
@@ -48,5 +54,3 @@ object IntSetTest {
         */
     }
 }
-
-// How could 'x union b' be implemented?
