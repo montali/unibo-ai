@@ -1,11 +1,11 @@
 
 # Clustering
 
-Given a set of $N$ ovjects, the task is now finding a partitioning in K clusters and possibly a number of noise objects.
+Given a set of $N$ objects, the task is now finding a partitioning in K clusters and possibly a number of noise objects.
 
-We want this classification to *emerge from the data*. Our mapping ahs to maximize the intra-cluster similarity, and minimize the inter-cluster one.
+We want this classification to *emerge from the data*. Our mapping has to maximize the intra-cluster similarity, and minimize the inter-cluster one.
 
-There's a large number of methods, like partitioning, hierarchic, methods based on linkafe, density, statistics...
+There's a large number of methods, like partitioning, hierarchic, methods based on linkage, density, statistics...
 
 ## K-means clustering
 
@@ -13,9 +13,9 @@ We'll start with an intuitive algorithm. Given a 2D dataset, where we have *5 cl
 
 ![Distribution](./res/clustering-distribution.png)
 
-So, how do we guess the numver *five* in a D-dimensional space? In order to reason about this, we consider the idea of **transmission**: we have this 2D dataset, with each point being a pair of coordinates, and we want to **transmit** this by using only two bits per point. This transmission will obviously be lossy. Our task is to find the best approximation in this transmission: we need a coding/decoding mechanism, where each point will be encoded/decoded. We could split the plane into 4 subsquares 00,01,10,11.  
+So, how do we guess the number *five* in a D-dimensional space? In order to reason about this, we consider the idea of **transmission**: we have this 2D dataset, with each point being a pair of coordinates, and we want to **transmit** this by using only two bits per point. This transmission will obviously be lossy. Our task is to find the best approximation in this transmission: we need a coding/decoding mechanism, where each point will be encoded/decoded. We could split the plane into 4 subsquares 00,01,10,11.  
 
-We could the partition the space into a different grid, moving the *centroid* (average of the vector/center of gravity) to the *clouds* of points. 
+We could then partition the space into a different grid, moving the *centroid* (average of the vector/center of gravity) to the *clouds* of points. 
 
 So, let's say that a user gives us the number $K$ of clusters. Given that, we can start with a random set of centroids (temporary centers), then start labeling the points of the dataset. For each one, we can find the nearest center to the point. 
 
@@ -63,13 +63,13 @@ Sometimes it's a good idea to remove outliers before computing the k-means.
 
 K-means is generally so fast that it's good to be used for data esploration.
 
-If we discretize the values, using as discretizing values the centroid of he cluster, we simplify the data thus reducing the error: w want to transform a continuous domain inot a discrete one. 
+If we discretize the values, using as discretizing values the centroid of the cluster, we simplify the data thus reducing the error: we want to transform a continuous domain into a discrete one. 
 
 K-means is the basis for vector quantisation and for choosing color palettes.
 
-It is surprisingly fast and fairly efficient. Though, it has weanesses: it is defined for spaces where the centroid can be computed, it requires the K parameter, it is very sensitive to outliers, doesn't deal with noise, and doesn't properly deal with non convex clusters.
+It is surprisingly fast and fairly efficient. Though, it has weaknesses: it is defined for spaces where the centroid can be computed, it requires the K parameter, it is very sensitive to outliers, it doesn't deal with noise, and it doesn't properly deal with non convex clusters.
 
-The evaluation of a clustering scheme is very important, but we don't have informations )it is non-supervised) about that: we need some measures.
+The evaluation of a clustering scheme is very important, but we don't have informations (it is non-supervised) about that: we need some measures.
 
 We should distinguish patterns from random apparent regularities, find the best number of clusters.
 
@@ -113,7 +113,7 @@ We can even use **supervised measures**, like a partition named **gold standard*
 
 This is also quite old, and it generates **a nested structure** of clusters, which can be **agglomerative** (bottom-up), where we start considering each point as a cluster then aggregate, or **divisive**, where we start with a single cluster which gets partitioned.
 
-The output is called a **dendogram** or a **nested cluster diagram**, which represent the same structure and can be used either for agglomerative or divisive. The first are more widely used. 
+The output is called a **dendrogram** or a **nested cluster diagram**, which represent the same structure and can be used either for agglomerative or divisive. The first are more widely used. 
 
 ## Agglomerative
 
@@ -129,11 +129,11 @@ The space and time complexity is $\mathcal{O}(N^2)$, in the worst case having $N
 
 # Density-based clustering
 
-We have two obvious solutions: a grid-based one, where we split the space by a grid, and an object-centered one, where we define the radius of a hypersphere and attach to each object the number of objects being inside that square.
+We have two obvious solutions to compute the **density**: a grid-based one, where we split the space by a grid, and an object-centered one, where we define the radius of a hypersphere and attach to each object the number of objects being inside that square.
 
 So, let's assume the second solution, which is used in **DBSCAN**.
 
-First, we need some definitions: a **border point** is on the border of the readius, while a **core point** won't. So, we define a radius and the nighbourhood of a point che $\epsilon$-hypersphere centered at that point. 
+First, we need some definitions: a **border point** will be located on the border of the radius, while a **core point** won't. So, we define a radius and as *neighbourhood* of a point the $\epsilon$-hypersphere centered at that point. 
 
 To define the direct density reachability, we define a threshold $minPoints$ and define as core a point with at least $minPoints$ in its neighbourhood, as a border otherwise. We then define that a point $p$ is directly density reachable from point $q$ iff $q$ is core and it is in the neighbourhood of $p$.
 
@@ -149,11 +149,11 @@ Decreasing these two values reduces the cluster size and increases the number of
 
 ## Model based clustering
 
-Here, we want to estimate the parameters of a statistical model to maximizr the ability of the model to explain the data. The main technique is the usage of **mixture models**, which view the data as a set of observation from a mixture of different probability distributions.
+Here, we want to estimate the parameters of a statistical model to maximize the ability of the model to explain the data. The main technique is the usage of **mixture models**, which view the data as a set of observation from a mixture of different probability distributions.
 
 ### Expectation maximization
 
-If the data can be approximated by a single distribution, the derivation of parameters is straightforard, but generally this isn't possible.
+If the data can be approximated by a single distribution, the derivation of parameters is straightforward, but generally this isn't possible.
 
 The algorithm works in this way:
 

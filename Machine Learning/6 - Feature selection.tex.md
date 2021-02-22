@@ -2,11 +2,11 @@
 
 Feature selection might enable the algorithm to train faster, reduce the complexity of a model and making it easier to interpret. 
 
-Feature seleciton might be supervised or not. For the unsupervised, there are lots of methods, like the feature transformation techiniques suchnas PCA, which could reduce the number of features.
+Feature selection might be supervised or not. For the unsupervised, there are lots of methods, like the feature transformation techiniques such as PCA, which could reduce the number of features.
 
-So, filter methods are based on general characteristics pf dthe data. The idea is to select a subset of attributes, independently from the classifying method. They measure the relevant features by their correlation with the dependent variable, while wrapper methods measure the usefulness of a subset of features by actually training a method on it.
+So, filter methods are based on general characteristics of the data. The idea is to select a subset of attributes, independently from the classifying method. They measure the relevant features by their correlation with the dependent variable, while wrapper methods measure the usefulness of a subset of features by actually training a method on it.
 
-These may failto find the best subset, while wrapper methods are generally more secure. On the other hand, wrapper methods are computationally heavier and can incur in overfitting. 
+These may fail to find the best subset, while wrapper methods are generally more secure. On the other hand, wrapper methods are computationally heavier and can incur in overfitting. 
 
 Instead of considering which subset of attributes is to be ignored it is possible to map the dataset into a new space with fewer attributes. 
 
@@ -16,7 +16,7 @@ The aim is finding a new set of dimensions that are sufficiently informative. Th
 
 ## MDS
 
-This starts from the distances among the elements of tge dataset, and it fits the projection of these into an $n$-dimensional space such that the distances among the elements are preserved. There are version for non-metric spaces too! 
+This starts from the distances among the elements of the dataset, and it fits the projection of these into an $n$-dimensional space such that the distances among the elements are preserved. There are version for non-metric spaces too! 
 
 ## Baseline estimator
 

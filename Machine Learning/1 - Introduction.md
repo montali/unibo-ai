@@ -54,7 +54,7 @@ Let's define a few terms:
 
 ![Discovery process](./res/discovery.png)
 
-This represents the discovery process. It starts from the **data sources**, for example a DBMS or a log. Then, if we want to understand what this data mean, we need to **consolidate them**: the *data warehouse* can be some tool where we collect our data. After the preprocessing, we get the **prepared data**: data which is ready for machine learning. What is machine learning? It allows us to **extract patterns** from the data. After we've extracted these **patterns**, we can derive **knowledge** from those. 
+This represents the discovery process. It starts from the **data sources**, for example a DBMS or a log. Then, if we want to understand what these data mean, we need to **consolidate them**: the *data warehouse* can be some tool where we collect our data. After the preprocessing, we get the **prepared data**: data which is ready for machine learning. What is machine learning? It allows us to **extract patterns** from the data. After we've extracted these **patterns**, we can derive **knowledge** from those. 
 
 **Data Mining** starts from user-specified objectives. The process is not straightforward, and we're looking for knowledge, expressed as patterns and models. We therefore need algorithms and IT. The last requirement is: **knowledge must be actionable**. It must allow us to do things!
 

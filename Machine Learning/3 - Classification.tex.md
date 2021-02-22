@@ -19,7 +19,7 @@ There are two _flavors_ for classification:
 
 Decision trees have a quite long story, and have been improved in several ways.
 
-A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> of an element <img src="svgs/8cd34385ed61aca950a6b06d09fb50ac.svg?invert_in_darkmode" align=middle width=7.6542015000000045pt height=14.155350000000013pt/>. If, for example, <img src="svgs/2bb55a46c94791a86fc71bcd3de61794.svg?invert_in_darkmode" align=middle width=46.906365pt height=21.18732pt/>, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
+A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element <img src="svgs/8cd34385ed61aca950a6b06d09fb50ac.svg?invert_in_darkmode" align=middle width=7.6542015000000045pt height=14.155350000000013pt/>. If, for example, <img src="svgs/2bb55a46c94791a86fc71bcd3de61794.svg?invert_in_darkmode" align=middle width=46.906365pt height=21.18732pt/>, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
 
 Given a set <img src="svgs/698628683f7bc21c83461be0d468657d.svg?invert_in_darkmode" align=middle width=8.219211pt height=14.155350000000013pt/> of elements, we'll grow a decision tree as follows:
 
@@ -34,7 +34,7 @@ So, given a census dataset, we may ask ourselves: _can we learn the wealth attri
 
 Let's first perform an **exploratory analysis**, i.e. looking at the data, maybe generating histograms...
 
-We could generate a <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075495000000004pt height=22.831379999999992pt/>-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
+We could generate a $k$-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
 
 So, how can we evaluate if a pattern is interesting? To do so, there are several methods. One of them is based on _information theory_, born thanks to the concept of entropy.
 
@@ -48,7 +48,7 @@ Of course, the already said coding works, but we could do better: there's a codi
 
 Even with 3 symbols with equal probability, this technique could save bits!
 
-In the general case, given a source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> with <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <img src="svgs/42195e7b10f34bf2d2a19a20dc2dbeac.svg?invert_in_darkmode" align=middle width=178.745655pt height=24.65792999999999pt/>. <img src="svgs/d569400f8445654a0819b16a7ad56f9c.svg?invert_in_darkmode" align=middle width=42.69408pt height=24.65759999999998pt/> is the entropy of the information source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>.
+In the general case, given a source $X$ with $V$ possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <img src="svgs/42195e7b10f34bf2d2a19a20dc2dbeac.svg?invert_in_darkmode" align=middle width=178.745655pt height=24.65792999999999pt/>. <img src="svgs/d569400f8445654a0819b16a7ad56f9c.svg?invert_in_darkmode" align=middle width=42.69408pt height=24.65759999999998pt/> is the entropy of the information source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>.
 
 ### Meaning of entropy of an information source
 
@@ -156,7 +156,7 @@ So, $\alpha$ is the probability of a wrong estimate. Increasing $N$, with consta
 
 ## Accuracy of a classifier
 
-Accuracy and error frequency are complements ($A=1-e$). Error frequency is thes um of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
+Accuracy and error frequency are complements ($A=1-e$). Error frequency is the sum of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
 
 So, why should we use other statistics? Maybe, estimating the cost of errors might need more statistics.
 
@@ -179,7 +179,7 @@ When we evaluate the quality of a classifier, we should also take into account t
 So, when we evaluate a prediction, instead of just using accuracy, we should use a metric that considers the distribution. 
 
 So, considering a confusion matrix with 3 classes, we have accuracy $\frac{\sum TP_i}{N}$, precision $\frac{TP_i}{P_i}$ and recall $\frac{TP_i}{T_i}$. There will obviously be a number of false predictions. So, let's say that the classifier $\overline{C}$ generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
-If we had a random classifier $R_{\overline{C}}$ which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of $\overline{C}$ over $R_{\overline{C}}$ is 58. We now can define $k(\overline{C})=58/118=0.492$ as the **improvement** of the classifier.
+If we had a random classifier $R_{\overline{C}}$ which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of $\overline{C}$ over $R_{\overline{C}}$ is 58. We now can define $k(\overline{C})=58/118=0.492$ as the **improvement** of the classifier wrt the improvement of the perfect classifier.
 
 This statistic evaluates the concordance between two classifications. 
 
@@ -278,7 +278,7 @@ We now consider the contribution of all the attributes of the dataset, assuming 
 
 We'll use the empirical frequency as probability.
 
-Considering a toy example, with temperature, outlook, humidity, wind, we have a terget **are we going to play or not?**
+Considering a toy example, with temperature, outlook, humidity, wind, we have a target **are we going to play or not?**
 
 So, the task is, given the features, are we going to play? We'll deal with this as a statistical problem, considering the features as **equally important** (they're independent evidence). We then obtain the likelihood of yes and no, then normalize to 1, getting $Pr(yes)=20.5\%$ and $Pr(no)=79.5\%$.
 
@@ -292,7 +292,7 @@ We can compute the probabilities for the classes, then choose the one having the
 
 The problem is that we can overcast to a 0 probability of No, which kills our formula by setting everything to 0.
 
-Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter $\alpha$ (typically $1$) let's say we have an absolute frequenci of $v_i$ in attribute $d$ over class $c$, then $V$ the number of distinct values, and the absolute frequency $af_c$ of class $c$ in the dataset. The smoothed frequency is: $s f_{d=v_{i}, c}=\frac{a f_{d=v_{i}, c}+\alpha}{a f_{c}+\alpha V}$
+Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter $\alpha$ (typically $1$) let's say we have an absolute frequency of $v_i$ in attribute $d$ over class $c$, then $V$ the number of distinct values, and the absolute frequency $af_c$ of class $c$ in the dataset. The smoothed frequency is: $s f_{d=v_{i}, c}=\frac{a f_{d=v_{i}, c}+\alpha}{a f_{c}+\alpha V}$
 
 When $\alpha=0$, the formula is unsmoothed, but higher values of $\alpha$ give more importance to the prior probabilities for the values of $d$. This means that this frequency will be smaller if we have a higher number of values. The $V$ component is basically the prior probability. So, $\alpha$ allows us to mix the prior probability with the current value. Smoothing is necessary when some frequencies are zero, and it reduces overfitting.
 
@@ -304,7 +304,7 @@ With the Naive Bayes Classifier, **they do not affect the model!** We simply don
 
 So, here we have seen how we can count for categorical attributes. What happens if we have numerical attributes? We do an additional assumption: the values have a **Gaussian distribution**.
 
-Instead of fraction of counts, we can now compute the mean and the variance of teh values of each numeric attribute per class.
+Instead of fraction of counts, we can now compute the mean and the variance of the values of each numeric attribute per class.
 
 For a given attribute and class, the distribution is supposed to be $f(x)=\frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}}$
 
@@ -332,7 +332,7 @@ The following is a pseudocode algorithm:
 
 ![Perceptron algorithm](./res/perceptron_algo.png)
 
-Each change ofweights moves the hyperplane towards the misclassified instance: $\left(w_{0}+e_{0}\right) * e_{0}+\left(w_{1}+e_{1}\right) * e_{1}+\ldots+\left(w_{D}+e_{D}\right) * e_{D}$, and the result is increased by a positive amount which is the squared value of the components: $e_0^2+\dots+e^2_D$, therefore the result will be less negative or even positive.
+Each change of weights moves the hyperplane towards the misclassified instance: $\left(w_{0}+e_{0}\right) * e_{0}+\left(w_{1}+e_{1}\right) * e_{1}+\ldots+\left(w_{D}+e_{D}\right) * e_{D}$, and the result is increased by a positive amount which is the squared value of the components: $e_0^2+\dots+e^2_D$, therefore the result will be less negative or even positive.
 
 The corrections are incremental and can interfere with previous updates, the algorithm converges if the dataset is linearly separable: this method is not so powerful 😔.
 
@@ -364,7 +364,7 @@ $\begin{array}{l}
 c_{i}\left(w_{0}+w_{1} x_{i 1}+\ldots+w_{D} x_{i D}\right)>M, \forall i=1, \ldots, N
 \end{array}$
 
-where the class of exampole $i$ is either $-1$ or $1$ and $M$ is the margin.
+where the class of example $i$ is either $-1$ or $1$ and $M$ is the margin.
 
 So, this is the first contribution: among the infinite hyperplanes, we want to find the one with the maximum margin. If a separating hyperplane does not exist, we want to find one which almost separates the classes, and disregard examples generating a very narrow margin. 
 
@@ -390,7 +390,7 @@ So, learning is generally slower than simpler methods, tuning is necessary (and 
 
 This classifier **keeps all the training data**, i.e. the model is the entire training set.
 
-The idea is that new predictions can be copmuted simply computing the similarities between the new data and the dataset. Then, it picks the K closest entries among the training set data. The main parameters are the number of neighbours to track, and the metric used to compute the distance (like the Mahalanobis distance).
+The idea is that new predictions can be computed simply computing the similarities between the new data and the dataset. Then, it picks the K closest entries among the training set data. The main parameters are the number of neighbours to track, and the metric used to compute the distance (like the Mahalanobis distance).
 
 # Neural networks
 
@@ -406,7 +406,7 @@ We have processors and weights, and we must learn the weights, through examples.
 
 This **multi-layer perceptron** has signals which are transmitted, and they're modeled as **real numbers**. The processing element is inspired to the biological system, when an input is higher than a threshold, something happens. We could linearly increase those, but there are better solutions, like using a **sigmoid** or an **arctan** or a **ReLU**.
 
-These are called **squashing functions**, which map reals into $]0,1[$. 
+The sigmoid is also called **squashing function**, mapping reals into $]0,1[$. 
 
 Why are we using non-linearities? In linearities, noise is completely transmitted $f(x_1+x_2)=f(x_1)+f(x_2)$, in particular if $x_2$ is generated by noise. In a non-linear system, in general, $f(x_1+x_2)\neq f(x_1)+f(x_2)$, and the impact of the noise is reduced.
 
@@ -468,7 +468,7 @@ The **euclidean distance** $\text { dist }=\sqrt{\sum_{d=1}^{D}\left(p_{d}-q_{d}
 
 Another, more sofisticated, distance which considers the data distribution is the **Mahalanobis distance**.
 
-It increases if, keeping the same euclidean distance, the sehment connecting the points is stretched along a direction of greater variation of data.
+It increases if, keeping the same euclidean distance, the segment connecting the points is stretched along a direction of greater variation of data.
 
 We need the **covariance matrix** of the dataset to calculate it, which is the summation of differences between the mean and the elements. 
 
@@ -487,7 +487,7 @@ If we have binary spaces instead of vector spaces, it's more common to define si
 
 ![Binary similarity](./res/binary-similarity.png)
 
-We can now defone two coefficients, the **SMC** and the **Jaccard Coefficient**, the latter being the one ignoring zero values.
+We can now define two coefficients, the **SMC** and the **Jaccard Coefficient**, the latter being the one ignoring zero values.
 
 The **cosine similarity** is usually more interested for positive values, and it is a dot product divided by the product of the norms: $\cos (p, q)=\frac{p \cdot q}{\|p\|\|q\|}$.
 

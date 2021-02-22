@@ -68,11 +68,11 @@ This algorithm has better results with lower runtime. Note that Apriori won't be
 
 ## Rule generation
 
-We have already seen that it is sufficient to know the support of the frequent itemsets. In particular, following a good strategy, we can even have some pruning. Given a frequent itemset $L$, we can find all the non-empty sybsets belonging to $L$ having a confidence higher than the threshold. If the size is $k$, there are $2^k-2$ candidate rules. How can we generate these? Generally, confidence is not anti-monotone. If we consider the rules generated from the same itemset, we can forecast the direction of the *antimonotonity*.
+We have already seen that it is sufficient to know the support of the frequent itemsets. In particular, following a good strategy, we can even have some pruning. Given a frequent itemset $L$, we can find all the non-empty subsets belonging to $L$ having a confidence higher than the threshold. If the size is $k$, there are $2^k-2$ candidate rules. How can we generate these? Generally, confidence is not anti-monotone. If we consider the rules generated from the same itemset, we can forecast the direction of the *antimonotonicity*.
 
 When we move an item from the left to the right, the numerator does not change, but the antecedent decreases, so the support will not decrease. Considering a given itemset, we can have a series of descendants. If a rule has low confidence, all of its descendants can be pruned. 
 
-In apriori, we can generate candidate rules by merging two rules sharing the same prefix. We will then prune the rule if it has low confidence. Of course, the effect of support distribution can influence the way fo working with the dataset: real datasets can have a skewed support distribution. It means that the choice of the support count to filter is not easy. So, how can we set the appropriate threshold? If it is too high, we could miss itemsets, if it is too low, we have too many itemsets. 
+In apriori, we can generate candidate rules by merging two rules sharing the same prefix. We will then prune the rule if it has low confidence. Of course, the effect of support distribution can influence the way of working with the dataset: real datasets can have a skewed support distribution. It means that the choice of the support count to filter is not easy. So, how can we set the appropriate threshold? If it is too high, we could miss itemsets, if it is too low, we have too many itemsets. 
 
 ### Multiple minimum supports
 
