@@ -39,5 +39,19 @@
             "mainClass": "HigherOrderSum",
             "args": []
         },
+        {
+            "type": "scala",
+            "name": "Run FixPoint",
+            "request": "launch",
+            "mainClass": "FixPoint",
+            "args": []
+        },
+        {
+            "type": "scala",
+            "name": "Run RationalTest",
+            "request": "launch",
+            "mainClass": "RationalTest",
+            "args": []
+        },
     ]
 }
