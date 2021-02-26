@@ -173,6 +173,12 @@ We could even redefine operators, just by calling a function with the symbol. Bu
 def + (r: Rational) = new Rational (num + r.denom + r.num * denom, denom*r.denom)
 ```
 
+### Dynamic dispatch
+
+Scala follows the **dynamic dispatch** approach: when a method is invoked, the implementation in the class of the object is considered (considering the *dynamic type* and not the *static type*).
+
+
+
 ## Lists
 
 If the array is the typical data structures in imperative programming, **lists** are the ones for functional programming.
@@ -190,3 +196,151 @@ We have two operations: `head` and `tail`, used to access the two values in the 
 We could therefore define a list `l2` as `cons(4, l1.tail)`, being equal to `[4,2,3]`.
 
 This could only be done in **immutable** lists: if we modified `l1`, `l2` would change too!
+
+## Traits
+
+Usually, interfaces are similar to *abstract classes*, but they *simply present types*: signature of methods without the definition of the method itself. If we wanted to have something in-between, in the sense that *we want interfaces but some methods are defined*, we could introduce **traits**.
+
+We are not expected to instantiate these, since they are defined as an abstract class, *without initialization parameters*.
+
+```scala
+trait Common {
+  def philosphize()
+}
+
+trait Philosophical extends Common {
+  def philosophize() = 
+  	println("I am"+toString+", therefore I am!")
+}
+
+trait Colored extends Common {
+  def philosophize() = 
+  	println("It ain't easy being "+toString)
+}
+```
+
+We can extend traits with traits!
+
+Now, we extend the concept:
+
+```scala
+class Animal {}
+
+class Frog extends Animal with Philosophical {
+  override def toString = "green"
+}
+```
+
+Note the `with` keyword. We are creating a double relation between class frog and the superclass animal (no multiple inheritance),  but we can add a list of traits! This is why it's a *rich interface*: there's code inside!
+
+Note that adding **multiple traits** might result in **unwanted behaviour**.
+
+This problem may be literally *overridden* with the keyword `override`:
+
+```scala
+trait Colored extends Common {
+  override def philosophize() = 
+  	println("It ain't easy being "+toString)
+}
+```
+
+This basically **specifies the order** for the methods coexistance.
+
+### Scalability
+
+We can even define new primitives and mechanisms that resemble native. For example, we could redefine booleans:
+
+```scala
+trait Bool {
+  def ifThenElse[T](t: => T, e: => T): T
+  def && (x: => Bool): Bool = ifThenElse(x, ff)
+  def || (x: => Bool): Bool = ifThenElse(tt, x)
+  def not: Bool = ifThenElse(ff, tt) 
+}
+object tt extends Bool {
+  def ifThenElse[T] (t: => T, e: => T): T = t }
+object ff extends Bool {
+  def ifThenElse[T] (t: => T, e: => T): T = e
+}
+```
+
+Note that when the method is evoked, the parameters are evalued only if necessary (*lazy evaluation*).
+
+**Scala** is called as such because of this: the user can expand the types as needed.
+
+## Generic Classes
+
+Besides the classname, we also have types. This can be instantiated when we want to specialize the class. 
+
+## Type bounds
+
+Before talking about these, we should indicate that what we have seen so far is something that relates with **polymorphism**, and essentially we have seen two forms: **subtyping** (the object changes its type) and **generics** (like lists, that change how they are instantiated).
+
+Now, we can introduce the interplay among them: **covariance** if we want subtyping among generics, **type bounds** can be used to impose limitations on the type variables that are used when we have generic classes. 
+
+We'll consider the function `id` that resembles an identity function for integer lists. 
+
+We decide that the type of our `id` function becomes a parameter. We say that the return can be generic, and it should be the same as the parameter for `id`: it coincides with the type of what is passed!
+
+## Covariance
+
+We'll start by defining this concept, then try to get why it is important. Imagine a parametric type thatw e denote with C[T] (T is a type variable), and we consider two concrete types that we call A and B. These are possile instances for T. So if we use A we obtain C[A], if we use B, C[B].
+
+We say that the parametric type C is **covariant** if we know that the two concrete types are in a subtyping relation, then we also impose this relation between the two instances:
+$$
+A <: B \rightarrow C[A]<:C[B]
+$$
+What we see is a sort of mathematical definition of this concept, which is a **property for parametric types**. A parametric type is covariant if whenever we instantiate the parameters with two types in subtyping relation, also the two concrete obtained types are in the same relation.
+
+**Why could this be useful?** We shall start from an example where the use of covariance could be dangerous: the *Java covariance pitfall*.
+
+```java
+// Java example that fails
+public class Arrays {
+  public static void main(String arg[]) {
+    Derived[] arr1 = new Derived[10];
+    Base[] arr2 = arr1;
+    arr2[0] = new Base();
+    Derived o = arr1[0];
+    o.g(); // This fails! It's found in Derived but not in Base
+  }
+}
+```
+
+This means, for instance, that if we consider two types (*Base* and *Derived*, where *Derived* is a subtype of *Base*), given that this specific language considers arrays as covariant, we also have that Array[Derived] can be considered a subtype of Array[Base]. Given this, we could write instructions like `Base[] arr2 = arr1`, which is *correct* from the type point of view. 
+
+This fails!
+
+Note that considering mutable data structures as covariant **could really be dangerous**.
+
+The general rule is *covariance is ok, provided that data structures are immutable, i.e. they can't be dinamically changed*.
+
+Covariance is naturally admittable, and it doesn't create the problems we have seen in Java, in Scala.
+
+This is okay: Scala lists are **immutable**!
+
+On the other hand, if we consider another Scala data structure, **vectors**, which are immutable, we can't perform modifications: while `arr2(0)= new Base` is admitted, `vect2(0) = new Base` **is not!**
+
+We'll now try to extend our list with an enriched interface. 
+
+## Variant classes
+
+We'll now talk about **covariant parametric types**: when we place `+` in front of a type variable, we say that the parametric type will be covariant. If we put `-`, it is contravariant. If no symbol is put, C is non-variant.
+
+Contrapositivity is the inverse of covariance: 
+$$
+A <: B \rightarrow C[A]>:C[B]
+$$
+Considering `Function1`, having one parameter type and one return type. Its interface has a method `apply`, which is what gets called when we call the function. The compiler takes the object representing the function, calls `apply` and passes the parameter. Why do we place the covariance decoratino in front of the return, and the contravariance in the parameter? What does it mean to have subtyping on functions?
+
+To understand this, we have to consider the way we look at subtyping when considering functions. This will reply to our question. When is a function **subtype of another function**? In other terms, when is it correct to consider `f` replacement of `g`. We can define some general rules to deal with subtyping in functions. Consider this code:
+
+```scala
+def useFunction (f: A=>B) = {
+  val x: B = f(new A())
+  x
+}
+```
+
+This function `f` is applied to an object, and after this application it is correct to place the result inside the variable `x`. If we executed `useFunction(g)`, `g` will receive an object of type A, so we want A to be compatible with $g: C => D$. Wew ant `g` to be a good replacement of `f`. So, we want `d`, the object returned by `g`, to be compatiblewith the type of the variable where this is constrained: the return type of g should be a good replacement of `B`, which is the codomain of F.
+
