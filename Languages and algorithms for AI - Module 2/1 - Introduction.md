@@ -45,7 +45,7 @@ object QuickSort {
 
 the `QuickSort` object will auto-start itself once it is part of the JVM, starting the `main()` method, which calls `quickSort()`, then print the results.
 
-The full commented example cand be found [in the examples](examples/QuickSort.scala).
+The full commented example cand be found in [1_QuickSort.scala](examples/1_QuickSort.scala).
 
 ## Scala's collection
 
@@ -55,7 +55,7 @@ They allow us to *prettify* the code, since we can delegate fucntions to these.
 
 Take a read to *An empirical comparison of several programming languages*, a paper containing the same problems solved with different languages. We can see that Scala showed an easiness and shortness of the code that led to less lines of code, written in less time.
 
-An example of usage of collections can be found [in the examples](examples/T9.scala).
+An example of usage of collections can be found in [2_T9.scala](examples/2_T9.scala).
 
 ## Multithreaded programming
 
@@ -69,7 +69,7 @@ We'll have our parallel architecture with independent nodes, that work at the sa
 
 The *Mandelbrot set* example consists of computing what is known as the *Mandelbrot set*, a set of complex numbers, being composed of a pair of real numbers in which the second one is multiplied by the imaginary unit, $i$.
 
-The Scala Mandelbrot example can be found [in the examples](examples/Mandelbrot.scala).
+The Scala Mandelbrot example can be found in [3_Mandelbrot.scala](examples/3_Mandelbrot.scala).
 
 # Spark
 
@@ -79,7 +79,7 @@ What we'll experiment will be the programming style we studied, but with some sp
 
 **RDD** stands for *Resilient Distributed Dataset*, where *Resilient* means that Spark offers some fault-prevention mechanisms.
 
-A small example of usage of Spark can be found [in the examples](examples/PageRank.scala).
+A small example of usage of Spark can be found in [4_PageRank.scala](examples/4_PageRank.scala).
 
 # Exam
 

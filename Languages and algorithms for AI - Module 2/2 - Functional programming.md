@@ -154,6 +154,8 @@ class SpanishGreeter extends Greeter {
 
 Note that we removed the `override`, since there is **no overriding** happening. Leaving it would still not cause any problems: it is **optional** indeed.
 
+Example of usage of abstract classes: [9_IntSet.scala](examples/9_IntSet.scala)
+
 We'll use classes to represent data and data structures. 
 
 We could define a `Rational` (i.e. a numerator and a denominator) data type as a class, together with some useful methods:
@@ -171,6 +173,8 @@ We could even redefine operators, just by calling a function with the symbol. Bu
 ```scala
 def + (r: Rational) = new Rational (num + r.denom + r.num * denom, denom*r.denom)
 ```
+
+Full example: [8_Rational.scala](examples/8_Rational.scala)
 
 ### Dynamic dispatch
 
@@ -245,6 +249,8 @@ trait Colored extends Common {
 
 This basically **specifies the order** for the methods coexistance.
 
+Example of usage of traits: [10_TotOrder.scala](examples/10_TotOrder.scala)
+
 ### Scalability
 
 We can even define new primitives and mechanisms that resemble native. For example, we could redefine booleans:
@@ -287,7 +293,7 @@ We'll start by defining this concept, then try to get why it is important. Imagi
 
 We say that the parametric type C is **covariant** if we know that the two concrete types are in a subtyping relation, then we also impose this relation between the two instances:
 $$
-A <: B \rightarrow C[A]<:C[B]
+A <: B \Rightarrow C[A]<:C[B]
 $$
 What we see is a sort of mathematical definition of this concept, which is a **property for parametric types**. A parametric type is covariant if whenever we instantiate the parameters with two types in subtyping relation, also the two concrete obtained types are in the same relation.
 
@@ -314,11 +320,10 @@ Note that considering mutable data structures as covariant **could really be dan
 
 The general rule is *covariance is ok, provided that data structures are immutable, i.e. they can't be dinamically changed*.
 
-Covariance is naturally admittable, and it doesn't create the problems we have seen in Java, in Scala.
-
-This is okay: Scala lists are **immutable**!
-
-On the other hand, if we consider another Scala data structure, **vectors**, which are immutable, we can't perform modifications: while `arr2(0)= new Base` is admitted, `vect2(0) = new Base` **is not!**
+Covariance is naturally admittable, and it doesn't create the problems we have seen in Java, in Scala:
+- **lists** are **immutable**, we can't perform modifications
+- **arrays** are mutable but **invariant** (not covariant)
+- **vectors** are **immutable**: while `arr2(0) = new Base` is admitted, `vect2(0) = new Base` **is not!**
 
 We'll now try to extend our list with an enriched interface. 
 
@@ -328,9 +333,28 @@ We'll now talk about **covariant parametric types**: when we place `+` in front 
 
 Contrapositivity is the inverse of covariance: 
 $$
-A <: B \rightarrow C[A]>:C[B]
+A <: B \Rightarrow C[A]>:C[B]
 $$
-Considering `Function1`, having one parameter type and one return type. Its interface has a method `apply`, which is what gets called when we call the function. The compiler takes the object representing the function, calls `apply` and passes the parameter. Why do we place the covariance decoratino in front of the return, and the contravariance in the parameter? What does it mean to have subtyping on functions?
+
+Here are some examples:
+```scala
+trait InvariantExample[T] { /*...*/ }
+trait CovariantExample[+T] { /*...*/ }
+trait ContravariantExample[-T] { /*...*/ }
+class Base { /*...*/ }
+class Derived extends Base { /*...*/ }
+
+def inv: InvariantExample[Base] = new InvariantExample[Derived]
+// ERROR! Accepts ONLY Base
+
+def inv: CovariantExample[Base] = new CovariantExample[Derived]
+// OK, accepts Base and subtypes, CovariantExample[Base] <: CovariantExample[Derived]
+
+def inv: ContravariantExample[Base] = new ContravariantExample[Derived]
+// ERROR! Accepts Base and supertypes
+```
+
+Considering `Function1`, having one parameter type and one return type. Its interface has a method `apply`, which is what gets called when we call the function. The compiler takes the object representing the function, calls `apply` and passes the parameter. Why do we place the covariance decoration in front of the return, and the contravariance in the parameter? What does it mean to have subtyping on functions?
 
 To understand this, we have to consider the way we look at subtyping when considering functions. This will reply to our question. When is a function **subtype of another function**? In other terms, when is it correct to consider `f` replacement of `g`. We can define some general rules to deal with subtyping in functions. Consider this code:
 
