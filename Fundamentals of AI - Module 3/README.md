@@ -8,3 +8,4 @@
 
 Teacher: Paolo Torroni
 
+-[Torroni's channel on MS Stream](https://web.microsoftstream.com/user/25fa84dd-19ec-45d5-9a88-fe6a904d15c4)
