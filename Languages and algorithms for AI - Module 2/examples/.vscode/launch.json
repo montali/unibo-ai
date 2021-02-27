@@ -9,6 +9,7 @@
             "name": "Run QuickSort",
             "request": "launch",
             "mainClass": "QuickSort",
+            "buildTarget": "QuickSort",
             "args": []
         },
         {
@@ -16,6 +17,7 @@
             "name": "Run T9",
             "request": "launch",
             "mainClass": "T9",
+            "buildTarget": "T9",
             "args": []
         },
         {
@@ -23,6 +25,7 @@
             "name": "Run Mandelbrot",
             "request": "launch",
             "mainClass": "Mandelbrot",
+            "buildTarget": "Mandelbrot",
             "args": []
         },
         {
@@ -30,6 +33,7 @@
             "name": "Run NewtonSQRT",
             "request": "launch",
             "mainClass": "NewtonSQRT",
+            "buildTarget": "NewtonSQRT",
             "args": []
         },
         {
@@ -37,6 +41,7 @@
             "name": "Run HigherOrderSum",
             "request": "launch",
             "mainClass": "HigherOrderSum",
+            "buildTarget": "HigherOrderSum",
             "args": []
         },
         {
@@ -44,6 +49,7 @@
             "name": "Run FixPoint",
             "request": "launch",
             "mainClass": "FixPoint",
+            "buildTarget": "FixPoint",
             "args": []
         },
         {
@@ -51,7 +57,24 @@
             "name": "Run RationalTest",
             "request": "launch",
             "mainClass": "RationalTest",
+            "buildTarget": "RationalTest",
             "args": []
         },
+        {
+            "type": "scala",
+            "name": "Run IntSetTest",
+            "request": "launch",
+            "mainClass": "IntSetTest",
+            "buildTarget": "IntSetTest",
+            "args": []
+        },
+        {
+            "type": "scala",
+            "name": "Run TotallyOrderableTest",
+            "request": "launch",
+            "mainClass": "TotallyOrderableTest",
+            "buildTarget": "TotallyOrderableTest",
+            "args": []
+        }
     ]
 }

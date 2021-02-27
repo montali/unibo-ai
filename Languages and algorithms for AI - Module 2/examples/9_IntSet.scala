@@ -11,10 +11,14 @@ abstract class IntSet {
 // Equivalent of nil
 class Empty extends IntSet {
   def isEmpty = true
+
   def contains(x: Int): Boolean = false
+
   def add(x: Int): IntSet = new NonEmpty(x, new Empty, new Empty)
+
   def union(x: IntSet): IntSet = x
-  override def tostring = "."
+
+  override def toString = "."
 }
 
 //Equivalent of cons
@@ -31,19 +35,17 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
     else if (x > elem) new NonEmpty(elem, left, right add x)
     else this
 
-  def union(x: IntSet): IntSet = {
-    throw new NotImplementedError // How could 'x union b' be implemented?
-  }
+  def union(x: IntSet): IntSet = new NonEmpty(elem, left, right union x)
 
   override def toString = "{" + left + elem + right + "}"
 }
 
 object IntSetTest {
-    def main(args:Array[String]) {
-        var set:IntSet = (((new Empty) add 3 add 2) add 4)
-        println("(Empty add 3 add 2) add 4 = "+set)
-        println("4 in ((Empty add 3 add 2) add 4) ? "+(set contains 4))
-        /*
+  def main(args: Array[String]) {
+    var set: IntSet = (((new Empty) add 3 add 2) add 4)
+    println("(Empty add 3 add 2) add 4 = " + set)
+    println("4 in ((Empty add 3 add 2) add 4) ? " + (set contains 4))
+    /*
         Empty   =>    3     =>       3      =>     3
                     /   \          /   \         /   \
                  Empty Empty      /   Empty     /     \
@@ -51,6 +53,8 @@ object IntSetTest {
                                 2  <-----------      /   \
                               /   \              Empty Empty
                            Empty Empty
-        */
-    }
+     */
+    var set2: IntSet = ((new Empty) add 5 add 6)
+    println("((Empty + 3 + 2) + 4) union (Empty + 5 + 6) = " + (set union set2))
+  }
 }

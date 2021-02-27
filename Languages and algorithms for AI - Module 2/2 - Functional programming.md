@@ -11,6 +11,14 @@ First, some basic concepts (that we actually already introduced): traditionally,
 When we assign variables, a name is evaluated by replacing it with the right hand side of its definition. The evaluation process then stops once it results in a **value**.
 
 Note that `def` and `val` differ in the sense that when you write `def` the right-hand side is not immediately evaluated. If we had a `def` instantiated with a sum, the sum wouldn't be computed at the time of instantiation. So, the environment knows that there is an expression, and the association value is not computed, though it will be computed in case the `def` will be used in a *formula*, while for now it just saves the sum as a sum. If we used `val`, the right-hand side would be immediately evaluated. Note that the every time a `def` is used in an expression, it is computed: the result is not saved.
+More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
+
+| Variable type | Lazy/Eager? | Stored? | Constant? |
+| ----- | ----- | ----- | ----- |
+| `def` | Lazy | Not stored | Yes |
+| `val` | Eager | Stored | Yes |
+| `lazy val` | Lazy | Stored | Yes |
+| `var` | Eager | Stored | No |
 
 Note that `def` will be used to define functions too:
 
@@ -59,15 +67,6 @@ def and(x:Boolean, y:Boolean) =
 def or(x:Boolean, y:Boolean) = 
 	if(x) x else y
 ```
-
-More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
-
-| Variable type | Lazy/Eager? | Stored? | Constant? |
-| ----- | ----- | ----- | ----- |
-| `def` | Lazy | Not stored | Yes |
-| `val` | Eager | Stored | Yes |
-| `lazy val` | Lazy | Stored | Yes |
-| `var` | Eager | Stored | No |
 
 An important feature of Scala is higher order functions.
 An example can be found [here](examples/6_HigherOrderSum.scala).
