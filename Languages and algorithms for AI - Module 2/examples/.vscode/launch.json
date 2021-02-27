@@ -75,6 +75,14 @@
             "mainClass": "TotallyOrderableTest",
             "buildTarget": "TotallyOrderableTest",
             "args": []
+        },
+        {
+            "type": "scala",
+            "name": "Run PatternMatchingTest",
+            "request": "launch",
+            "mainClass": "PatternMatchingTest",
+            "buildTarget": "PatternMatchingTest",
+            "args": []
         }
     ]
 }
