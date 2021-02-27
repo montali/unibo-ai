@@ -336,25 +336,12 @@ $$
 A <: B \Rightarrow C[A]>:C[B]
 $$
 
-Here are some examples:
-```scala
-trait InvariantExample[T] { /*...*/ }
-trait CovariantExample[+T] { /*...*/ }
-trait ContravariantExample[-T] { /*...*/ }
-class Base { /*...*/ }
-class Derived extends Base { /*...*/ }
+Some examples of the usage of the `+` and `-` operators can be found in [11_CovarianceTest.scala](examples/11_CovarianceTest.scala) and [12_CovariantList.scala](examples/12_CovariantList.scala).
 
-def inv: InvariantExample[Base] = new InvariantExample[Derived]
-// ERROR! Accepts ONLY Base
-
-def inv: CovariantExample[Base] = new CovariantExample[Derived]
-// OK, accepts Base and subtypes, CovariantExample[Base] <: CovariantExample[Derived]
-
-def inv: ContravariantExample[Base] = new ContravariantExample[Derived]
-// ERROR! Accepts Base and supertypes
-```
-
-Considering `Function1`, having one parameter type and one return type. Its interface has a method `apply`, which is what gets called when we call the function. The compiler takes the object representing the function, calls `apply` and passes the parameter. Why do we place the covariance decoration in front of the return, and the contravariance in the parameter? What does it mean to have subtyping on functions?
+Considering [`Function1`](https://www.scala-lang.org/api/current/scala/Function1.html), having one parameter type and one return type.
+Its interface has a method `apply`, which is what gets called when we call the function.
+The compiler takes the object representing the function, calls `apply` and passes the parameter.
+Why do we place the covariance decoration in front of the return, and the contravariance in the parameter? What does it mean to have subtyping on functions?
 
 To understand this, we have to consider the way we look at subtyping when considering functions. This will reply to our question. When is a function **subtype of another function**? In other terms, when is it correct to consider `f` replacement of `g`. We can define some general rules to deal with subtyping in functions. Consider this code:
 
@@ -365,5 +352,15 @@ def useFunction (f: A=>B) = {
 }
 ```
 
-This function `f` is applied to an object, and after this application it is correct to place the result inside the variable `x`. If we executed `useFunction(g)`, `g` will receive an object of type A, so we want A to be compatible with $g: C => D$. Wew ant `g` to be a good replacement of `f`. So, we want `d`, the object returned by `g`, to be compatiblewith the type of the variable where this is constrained: the return type of g should be a good replacement of `B`, which is the codomain of F.
+This function `f` is applied to an object, and after this application it is correct to place the result inside the variable `x`.
+If we executed `useFunction(g)`, `g` will receive an object of type `A`, so we want `A` to be compatible with `C`.
+We want `g` to be a good replacement of `f`.
+So we want `d`, the object returned by `g`, to be compatible with the type of the variable where this is constrained: the return type of `g` should be a good replacement of `B`, which is the codomain of F.
+To recap:
+$$
+f: A \Rightarrow B; \hspace{1em} g: C \Rightarrow D; \hspace{1em} f <: g \Leftrightarrow A <: C, B >: D
+$$
 
+This has two important consequences :
+- A type declared contravariant cannot appear as a return type (and cannot appear as type lower bound)
+- A type declared covariant cannot appear as a parameter type (and cannot appear as type upper bound)

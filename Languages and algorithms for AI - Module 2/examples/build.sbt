@@ -77,4 +77,6 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" 
 // To learn more about multi-project builds, head over to the official sbt
 // documentation at http://www.scala-sbt.org/documentation.html
 
-unmanagedSources / excludeFilter := "4_PageRank.scala" // The file contains known errors and must not be compiled
+// These files contains known errors and must not be compiled
+// See https://www.scala-sbt.org/1.x/docs/Howto-Customizing-Paths.html
+unmanagedSources / excludeFilter := HiddenFileFilter || "4_PageRank.scala" || "11_CovarianceTest.scala" 
