@@ -31,6 +31,11 @@ class ConsList[T](val head: T, val tail: List[T]) extends List[T] {
   def append[U >: T](e: U) = new ConsList[U](head, tail append e)
 }
 
+/**
+  * Covariance allows us to prevent using "class NilList[T] extends List[T]" and use a single object instead
+  * Since List[+T] is covariant we can use Nothing as T
+  * This way NilList is a subtype of List[Nothing], a subtype of any List[T]
+  */
 object NilList extends List[Nothing] {
   def isEmpty = true
   def head = throw new NoSuchElementException("Nil.head")
