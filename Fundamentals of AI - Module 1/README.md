@@ -10,7 +10,7 @@ Teacher: Michela Milano
 
 - [Milano's channel on MS Stream](https://web.microsoftstream.com/user/501dc13d-1074-4934-8386-df921ca87533)
 - [De Filippo's channel on MS Stream](https://web.microsoftstream.com/user/d98e4f5d-db09-4542-a943-0c02bbc12d50)
-- [Summary](summary/summary.pdf)
+- [Summary](summary/faikr1.pdf) ([source](summary/faikr1.tex))
 - [Quizlet set](https://quizlet.com/_96611i?x=1jqt&i=2knn6r)
 
 ### Part 1: Introduction

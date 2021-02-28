@@ -2,13 +2,13 @@
 
 - [Course web page for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595)
 - [Course on Virtuale](https://virtuale.unibo.it/course/view.php?id=18894)
-- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447780)
 
 ## Module 1
 Teacher: Maurizio Gabbrielli
 
+- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447780)
 - [Gabbrielli's channel on MS Stream](https://web.microsoftstream.com/user/f9f103f3-1732-4b8e-8ba9-fff748a59273)
-- [Formulary](formulary/formulary.pdf)
+- [Formulary](formulary/laai1.pdf) ([source](formulary/laai1.tex))
 
 ### Part 1: Introduction
 

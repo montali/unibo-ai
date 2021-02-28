@@ -2,11 +2,11 @@
 
 - [Course web page for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595)
 - [Course on Virtuale](https://virtuale.unibo.it/course/view.php?id=18894)
-- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447780)
 
 ## Module 2
 Teacher: Gianluigi Zavattaro
 
+- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447781)
 - [Zavattaro's channel on MS Stream](https://web.microsoftstream.com/user/50d47a1f-f659-4dd5-bdc0-c70773651011)
 
 ## Useful resources
