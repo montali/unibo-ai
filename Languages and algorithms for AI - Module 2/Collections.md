@@ -4,19 +4,21 @@ These are all immutable covariant collections:
 - [Iterable](https://www.scala-lang.org/api/current/scala/collection/immutable/Iterable.html)
 - Sets
   - [Set](https://www.scala-lang.org/api/current/scala/collection/immutable/Set.html), can be created with Set(1,3,3) which will create a default implementation (HashSet) with {1,3}
-  - [HashSet](https://www.scala-lang.org/api/current/scala/collection/immutable/HashSet.html)
+  - [HashSet](https://www.scala-lang.org/api/current/scala/collection/immutable/HashSet.html) (default Set)
   - etc
 - Maps
   - [Map](https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html)
+  - [HashMap](https://www.scala-lang.org/api/current/scala/collection/immutable/HashMap.html) (default Map)
   - etc
 - Sequences
   - [Seq](https://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html)
   - Indexed Sequences: can be accessed at acertain index
     - [IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html)
+    - [Vector](https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html) (default IndexedSeq)
     - etc
   - Linear sequences: accessible only sequentially
     - [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/immutable/LinearSeq.html)
-    - [List](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html)
+    - [List](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html) (default LinearSeq)
       - Empty list: [Nil](https://www.scala-lang.org/api/current/scala/collection/immutable/Nil$.html)
       - `::` add the element to the beginning 
       - `++` concat (Returns a new list containing the elements from the left hand operand followed by the elements from the right hand operand.)
@@ -38,4 +40,4 @@ These are all immutable covariant collections:
         - es: `def maxLength(strings: List[String]) = (strings foldLeft 0)((len:Int, str:String) => len.max(str.length))`
       - [reduceRight()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#reduceRight[B%3E:A](op:(A,B)=%3EB):B) for right associative operations
       - [foldRight()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#foldRight[B](z:B)(op:(A,B)=%3EB):B)
-    - etc
+    - [Queue](https://www.scala-lang.org/api/current/scala/collection/immutable/Queue.html)
