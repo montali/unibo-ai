@@ -1,0 +1,41 @@
+These are all immutable covariant collections:
+
+- [Traversable](https://www.scala-lang.org/api/current/scala/collection/immutable/Traversable.html)
+- [Iterable](https://www.scala-lang.org/api/current/scala/collection/immutable/Iterable.html)
+- Sets
+  - [Set](https://www.scala-lang.org/api/current/scala/collection/immutable/Set.html), can be created with Set(1,3,3) which will create a default implementation (HashSet) with {1,3}
+  - [HashSet](https://www.scala-lang.org/api/current/scala/collection/immutable/HashSet.html)
+  - etc
+- Maps
+  - [Map](https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html)
+  - etc
+- Sequences
+  - [Seq](https://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html)
+  - Indexed Sequences: can be accessed at acertain index
+    - [IndexedSeq](https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html)
+    - etc
+  - Linear sequences: accessible only sequentially
+    - [LinearSeq](https://www.scala-lang.org/api/current/scala/collection/immutable/LinearSeq.html)
+    - [List](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html)
+      - Empty list: [Nil](https://www.scala-lang.org/api/current/scala/collection/immutable/Nil$.html)
+      - `::` add the element to the beginning 
+      - `++` concat (Returns a new list containing the elements from the left hand operand followed by the elements from the right hand operand.)
+      - `+:` prepend
+      - `++:` prependAll
+      - `:+` append
+      - `:++` appendAll
+      - [map()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#map[B](f:A=%3EB):List[B]) (es: `def scaleList(xs: List[Double], factor: Double) = xs map (_ * factor))` where `(_ * factor)`=`(x => x * factor)`
+      - [filter()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#filter(p:A=%3EBoolean):List[A])
+      - [filterNot()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#filterNot(p:A=%3EBoolean):List[A])
+      - [partition()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#partition(p:A=%3EBoolean):(List[A],List[A]))
+      - [takeWhile()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#takeWhile(p:A=%3EBoolean):List[A])
+      - [dropWhile()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#dropWhile(p:A=%3EBoolean):C)
+      - [span()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#span(p:A=%3EBoolean):(List[A],List[A]))
+      - [reduceLeft()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#reduceLeft[B%3E:A](op:(B,A)=%3EB):B) for left associative operations
+        - es: `def sum(xs: List[Int]) = (0 :: xs) reduceLeft (_ + _)`) where `( _+_ )`=`((x, y) => x + y)`
+      - [foldLeft()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#foldLeft[B](z:B)(op:(B,A)=%3EB):B)
+        - es: `def sum(xs: List[Int]) = (xs foldLeft 0) (_ + _)`
+        - es: `def maxLength(strings: List[String]) = (strings foldLeft 0)((len:Int, str:String) => len.max(str.length))`
+      - [reduceRight()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#reduceRight[B%3E:A](op:(A,B)=%3EB):B) for right associative operations
+      - [foldRight()](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#foldRight[B](z:B)(op:(A,B)=%3EB):B)
+    - etc
