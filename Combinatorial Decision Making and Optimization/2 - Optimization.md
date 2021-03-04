@@ -134,13 +134,91 @@ with $\lambda>0$.
 
 The case of $\le$ is somewhat different: the constraint is not a *real constraint* anymore. We can move along the gradient without hitting the borders of the constraint hyperplane. If we set the lagrangian multiplier to 0, I can represent the condition by means of the same formula of before, knowing that in order to be valid, I must have null Lagrangian multipliers.
 
+When we're at the global optimum, the gradient of the objective function is 0, but *again*, the solution of the relation can be made valid, because we can't still equalize the gradient to $\lambda \nabla g$. 
 
+So, putting it all together, for $\geq$ constraints, we have $\nabla f = \lambda \nabla g$ with $\lambda>0$, and if we reverse the case ($\leq$) and an unfeasbiel optimal global solution, we'd like to move parallel (so $\nabla f=\lambda \nabla g$), we reverse the signs and check for optimality through negative $\lambda$s.
 
+In case of constraint $>0$ the check for feasibility is $\lambda>0$.
 
+We finally reach the **complementary slack condition**.
 
+## Recap
 
+Putting together all of the said conditions, for a general optimization problem, we get to the **KKT conditions**. They were proposed by *Karush, Kuhn, Tucker*. We have a generic non-linear constrained optimization problem with a function $f(x)$ to minimize/maximize, and we're subject to a set of equality constraints $h_i(x)=0$ and a set of inequality constraints $g_j(x)\ge0$.
 
+We can solve this problem by removing the constraints (obtaining an unconstrained problem), then putting the corresponding penalties into the objective function, ending up with a new, unconstrained, objective function, the **lagrangian function**, obtained with the original objective function, minus a sum of the equality penalties, and the inequality penalties, multiplied by their lagrangian multipliers. 
+$$
+\mathcal{L}(x)=f(x)-\sum_{i \in E} \mu_{i} h_{i}(x)-\sum_{j \in I} \lambda_{j} g_{j}(x)
+$$
+We then differentiate and equate to 0 to optimize:
+$$
+\nabla \mathcal{L}=\nabla f-\sum_{i \in E} \mu_{i} \nabla h_{i}(x)-\sum_{j \in I} \lambda_{j} \nabla g_{j}(x)=0
+$$
+These conditions are **necessary conditions**, they are **not always sufficient**. To be so, $f(x)$ and $g_j(x)$ should be continuously differentiable and convex, and $h_i(x)$ linear. If this is not the case, we'll have to verify the constraints manually.
 
+There are equivalent ways of representing these KKT conditions.
+
+We can use these for linear programs in standard form, where the KKT conditions become:
+$$
+\begin{array}{l}
+c-\mu A-\lambda =0\\
+A x=b \\
+x \geq 0 \\
+\lambda \geq 0 \\
+\lambda \cdot x=0
+\end{array}
+$$
+The last one is the complementary slackness condition, making things non-linear.
+
+To find the optimum, we make use of the condition that requires the gradient of the lagrangian to be equal to 0:
+$$
+\nabla f-\mu \nabla h-\lambda \nabla g=0
+$$
+
+$$
+\mathcal{L}(x, \mu, \lambda)=f(x)-\mu h(x)-\lambda g(x)
+$$
+
+This allows us to find a system of equations/inequalities, that when solved returns us the lagrangian multipliers together with the values that optimize it.
+
+For example, we could be interested in optimising $f(x,y) = 2x_1^2+x_2^2$ with the constraint $x_1+x_2=1$.
+
+In order to optimize this, we must obtain the lagrangian, which has the objective function and the constraint, multiplied by the lagrangian multiplier:
+$$
+\min \mathcal{L}(\mathbf{x}, \mu)=2 x_{1}^{2}+x_{2}^{2} -\mu\left(x_{1}+x_{2}-1\right)
+$$
+What if the Lagrangian is not differentiable? We shall need other optimization algorithms! The best known is **sugradient optimization**, which is *out of this course's scope*.
+
+# Support Vector Machine
+
+SVM is a linear classifier that allows us to separate blue points from green points. Nice. That's what we've done with gradient descent (logistic classifier). Usually, this last one gets super near to some points. SVM solves this: it maximizes the margin from the points, so that if we assume that points are samples from a universe, it is more generic. The separating hyperplane is determined by the coefficients $(w,b)$:
+$$
+f\left(\boldsymbol{x}_{\boldsymbol{i}}\right)=w_{1} x_{i 1}+\cdots+w_{n} x_{i n}+b
+$$
+Then, the classes depend on the sign of $f(w,b)$.
+
+This problem could be solved by means of **Lagrangian multipliers**! We introduce one multiplier per constraint, then use the KKT condition and try to optimise it:
+$$
+\begin{array}{l}
+\frac{\partial \mathcal{L}(\mathbf{w}, b, \boldsymbol{\Lambda})}{\partial \mathbf{w}}=\mathbf{w}-\sum_{i=1}^{l} \lambda_{i} y_{i} \mathbf{x}_{i}=0 \\
+\frac{\partial \mathcal{L}(\mathbf{w}, b, \boldsymbol{\Lambda})}{\partial b}=\sum_{i=1}^{l} \lambda_{i} y_{i}=0
+\end{array}
+$$
+differentiating wrt the weight and to the bias. 
+
+So, we can optimize the linear combination of the points to separate to get the optimal hyperplane.
+
+The vector of $x$ is quadratic, which is unfortunate, but we can move some things to make $w$ explicit and get:
+$$
+\sum_{i=1}^{l} \lambda_{i}-\frac{1}{2} \sum_{i, j=1}^{l} \lambda_{i} \lambda_{j} y_{i} y_{j} \mathbf{x}_{i} \mathbf{x}_{j}
+$$
+that we want to maximize. This is then subject to $\lambda_i>0$ and $\sum_{i=1}^{l} \lambda_{i} y_{i}=0$.
+
+Using the lagrangian function and keeping the constraints we're left with this problem. The classifier is then simply given by computation of the sign of the separating function that optimizes the above said equation:
+$$
+f(\mathbf{x})=\operatorname{sign}\left(\sum_{i=1}^{l} y_{i} \lambda_{i}^{*}\left(\mathbf{x} \cdot \mathbf{x}_{i}\right)+b^{*}\right)
+$$
+All the terms having $\lambda=0$ do not affect the sign! After optimising, and obtaining the optimal lagrangian multipliers, we can check which constraints we can get rid of, meaning that some points **do not affect the classification**! Most of the constraints are inactive! There's only a small subset of the sample points which are active. The *important* points are named **support vector**, and the other ones are irrelevant because they are not touched by the defining lines.
 
 
 
