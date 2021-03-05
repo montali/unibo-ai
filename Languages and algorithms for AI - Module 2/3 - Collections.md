@@ -137,3 +137,66 @@ def product(xs: List[Int]) = (xs foldLeft 1) (_ * _)
 
 Note that these two parameters can be passed separately: instead of doing `f(a,b)`, we use `f(a)(b)`. We can also explicitly indicate only some parameters, like `f(a)` and getting as a return value a *new version* of the function `f` that will receive `b`: `f2(b)` with `def f2=f(a)`.
 
+## Scala vectors
+
+From an high-level point of view we can consider vectors as arrays: we can directly access cells by their index. Besides operators like *append*, we have other operators that allow us to change vectors (that are **immutable**, so we're actually creating a new vector!). For example, `v.updated(i,x)` generates a copy of `v` in which cell `i` has now value `x`. It does not change the previous vector. This seems a rather problematic operation: if we have a very big vector, and change just one element, we're throwing out lots of memory. To cope with this problem of costs, the idea is using a different approach: we create a new vector with `updated`, . Imagine that `v` is a *tree of pointers*, suppose that the element in position `i` is down the tree, we should just change the pointer in position `i`! If we change this pointer we're creating a mutable data structure, and this **doesn't happen in the standard libraries vector**. What we want to do is trying to make the **minimal copying possible**, so that we keep all the pointers except `i`. We will also need a father for these pointers, obtained by copy-pasting the father of the subtree, simply changing one pointer instead of the other ones. 
+
+## Ranges
+
+Ranges are another simple kind of sequence, representing evenly spaced integers. They have 3 operators, `to` (inclusive), `until` (exclusive), `by` (step value).
+
+```scala
+6 to 1 by -2
+val r: Range = 1 until 5
+```
+
+All the things we have seen are rather different, but they're all implementation of the same trait `Seq`,  which includes many higher order functions that we can use on these data structures!
+
+There are operations that are specific for sequences, like `zip` and `unzip`, generating sequences of pairs.
+
+## For expressions
+
+Imagine we wanted to compute the cartesian product on two vectors, and check some properties on the pairs: we want the sum to be a prime number. We could generate a map and then filter it through the property, but this isn't the best solution. We have a more clear syntax available: the **for**.
+
+```scala
+for {
+  i <- 1 to 10
+  j <- 1 to i
+  if isPrime(i+j)
+} yield (i,j)
+```
+
+There are two types of elements in this block: **generators** and **filters**. 
+
+We could express **queries** on collections, maybe using two generators to iterate on a collection:
+
+```scala
+for {
+  b <- books,
+  a <- b.authors
+  if a startsWith "Bird,"
+} yield b.title
+```
+
+The interesting difference from python is that you can place user defined data structures into the generators, not only ranges etc...
+
+We can use for expressions to extract data. Imagine we had a collection `c` and a generator `x<-c` and a yield expression `e` that computes those values that will populate the result. So, what should this particular `for` execute? It shpould consider all the values inside `c`, apply `e` to each element, and place each result inside `R`. What is actually done by the language is a map, obtained as `c map(x=>e)`, where the map will compute the result of `e`.
+
+Therefore, the two following snippets are equal:
+
+```scala
+for {
+  x <- c
+} yield e
+
+c map(x->e)
+```
+
+Imagine we had two generators considering collection1 and collection2. We use `x1` for `c1`, `x2` for `c2`. We'll then need an expression `e` that takes `x1,x2` as args. 
+
+## Sets
+
+Sets can contain things of various types, we can create them using this syntax: `val fruit=Set("apple", "banana")`. We have the possibility of applying filters, check of it is empty... The interest thing to say is that sets do not have duplicates: if a transformation generates a value that is already in the set (for example, we divide an element by 2), it disappears! We could use sets to **solve the n-queens problem**.
+
+
+
