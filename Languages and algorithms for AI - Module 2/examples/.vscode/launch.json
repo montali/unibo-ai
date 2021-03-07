@@ -54,7 +54,7 @@
         },
         {
             "type": "scala",
-            "name": "Run RationalTest",
+            "name": "Run Rational Test",
             "request": "launch",
             "mainClass": "RationalTest",
             "buildTarget": "RationalTest",
@@ -62,7 +62,7 @@
         },
         {
             "type": "scala",
-            "name": "Run IntSetTest",
+            "name": "Run Int Set Test",
             "request": "launch",
             "mainClass": "IntSetTest",
             "buildTarget": "IntSetTest",
@@ -70,7 +70,7 @@
         },
         {
             "type": "scala",
-            "name": "Run TotallyOrderableTest",
+            "name": "Run Totally Orderable Test",
             "request": "launch",
             "mainClass": "TotallyOrderableTest",
             "buildTarget": "TotallyOrderableTest",
@@ -78,10 +78,18 @@
         },
         {
             "type": "scala",
-            "name": "Run PatternMatchingTest",
+            "name": "Run Pattern Matching Test",
             "request": "launch",
             "mainClass": "PatternMatchingTest",
             "buildTarget": "PatternMatchingTest",
+            "args": []
+        },
+        {
+            "type": "scala",
+            "name": "Run N Queens",
+            "request": "launch",
+            "mainClass": "N_Queens",
+            "buildTarget": "N_Queens",
             "args": []
         }
     ]

@@ -4,6 +4,8 @@ These are all immutable covariant collections:
 - [Iterable](https://www.scala-lang.org/api/current/scala/collection/immutable/Iterable.html)
 - Sets
   - [Set](https://www.scala-lang.org/api/current/scala/collection/immutable/Set.html), can be created with Set(1,3,3) which will create a default implementation (HashSet) with {1,3}
+    - `+` incl
+    - `++` concat
   - [HashSet](https://www.scala-lang.org/api/current/scala/collection/immutable/HashSet.html) (default Set)
   - etc
 - Maps
