@@ -1,4 +1,6 @@
-These are all immutable covariant collections:
+# Scala collections
+
+These are all immutable covariant collections from the package `scala.collection.immutable`:
 
 - ~~[Traversable](https://www.scala-lang.org/api/2.12.0/scala/collection/Traversable.html)~~ ([deprecated](https://docs.scala-lang.org/overviews/core/collections-migration-213.html))
 - [Iterable](https://www.scala-lang.org/api/current/scala/collection/immutable/Iterable.html)
@@ -10,6 +12,8 @@ These are all immutable covariant collections:
   - etc
 - Maps
   - [Map](https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html)
+    - `_1` key
+    - `_2` value
   - [HashMap](https://www.scala-lang.org/api/current/scala/collection/immutable/HashMap.html) (default Map)
   - etc
 - Sequences
@@ -20,6 +24,7 @@ These are all immutable covariant collections:
       - `:+` append
       - `:++` appendAll
       - `exists()`
+      - [`groupBy()`](https://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html#groupBy[K](f:A=%3EK):scala.collection.immutable.Map[K,C]) partitions this immutable sequence into a map of immutable sequences according to some discriminator function.
       - [`forall()`](https://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html#forall(p:A=%3EBoolean):Boolean) tests whether a predicate holds for all elements 
       - [`zip()`](https://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html#zip[B](that:scala.collection.IterableOnce[B]):CC[(A@scala.annotation.unchecked.uncheckedVariance,B)]) returns a sequence formed from this immutable sequence and another iterable collection by combining corresponding elements in pairs
       - `unzip()`
@@ -55,3 +60,8 @@ These are all immutable covariant collections:
       - [`reduceRight()`](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#reduceRight[B%3E:A](op:(A,B)=%3EB):B) for right associative operations
       - [`foldRight()`](https://www.scala-lang.org/api/current/scala/collection/immutable/List.html#foldRight[B](z:B)(op:(A,B)=%3EB):B)
     - [Queue](https://www.scala-lang.org/api/current/scala/collection/immutable/Queue.html)
+
+# Relevant classes
+
+- [scala.Some](https://www.scala-lang.org/api/current/scala/Some.html)
+- [scala.Option](https://www.scala-lang.org/api/current/scala/Option.html)
