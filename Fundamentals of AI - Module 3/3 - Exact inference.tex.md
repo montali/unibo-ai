@@ -57,3 +57,13 @@ Another important type of query is the **value of information**: imagine we have
 Other types of inference are causal or inter causal reasoning.
 
 A final type of inference (not on the slides) is **map query**, available in bayesian network professional tools, which will tell you what is the most probable value of a condition variable given the evidence. *What is the configuration of values that maximises the probability.*
+
+Inference by enumeration is a slightly intelligent way to sum out variables from the joint without actually constructing the explicit representation. 
+
+## Irrelevant variables
+
+The idea is the following: *do I always have to consider all the hidden variables*? No!
+
+Consider the query $P(\text { John Calls } \mid \text { Burglary }=\text { true })$.
+
+The variables that are not in the ancestor tree (the tree of all the ancestors). Ancestors of who? The ancestors of the query variables and the evidence variables. First thing you should do when you have a graph, you should mark what query variables and evidence variables you're consideering. Everything else **can be discarded**.
