@@ -178,7 +178,7 @@ for {
 } yield b.title
 ```
 
-The interesting difference from python is that you can place user defined data structures into the generators, not only ranges etc...
+The interesting difference from python is that you can place user defined data structures into the generators (provided that they expose `map()`, `flatMap()` and `withFilter()`), not only ranges etc...
 
 We can use for expressions to extract data. Imagine we had a collection `c` and a generator `x<-c` and a yield expression `e` that computes those values that will populate the result. So, what should this particular `for` execute? It shpould consider all the values inside `c`, apply `e` to each element, and place each result inside `R`. What is actually done by the language is a map, obtained as `c map(x=>e)`, where the map will compute the result of `e`.
 
