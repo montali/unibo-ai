@@ -6,7 +6,7 @@ The methods we'll present today were developed a while ago. We start from **Newt
 
 It tries to find value $x_0$ in the domain, where $f(x_0)=0$.
 
-If we wanted to perform optimization (minimum/maximum), it assumes the non-linear function, and tries to find the root solution, starting somewhere sufficiently close to this root we're looking for, compute the derivativ eof the function in that particular point, and move in the direction of decreasing/increasing.
+If we wanted to perform optimization (minimum/maximum), it assumes the non-linear function, and tries to find the root solution, starting somewhere sufficiently close to this root we're looking for, compute the derivative of the function in that particular point, and move in the direction of decreasing/increasing.
 
 The equation of the tangent at $x_0$ is:
 $$
