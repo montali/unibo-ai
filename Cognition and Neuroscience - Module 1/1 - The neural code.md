@@ -46,5 +46,7 @@ The good news is that, so far, we've been focusing on a single neuron, and lucki
 
 So, summarizing out, information processing is carried out through elefctrochemical properties of neurons, and the basic building block of information transmission is the **action potential**. 
 
+One aspect to enphasize is going to the core dimension of the brain, and what are its basic units that allow information processing: the neurons. 
 
+Information processing (the way in which out brain is capable of sending/receiving info) is due to the neurons that have specific properties of passing informations to one another, and the basic block is called **action potential**. 
 
