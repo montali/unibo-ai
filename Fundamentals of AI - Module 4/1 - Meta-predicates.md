@@ -1,0 +1,67 @@
+# Meta-predicates
+
+One of the things that make prolog great is that predicates and terms have the same syntactical structure: we could exchange and exploit them in different roles!
+
+This is  afeature that was available from the beginning, and it has been exploited in a great number of applications that did reasoning. Why? It was possible to represent Knowledge bases as **rules**, using them as the program or as data. We could therefore create programs with these to do different tasks. The same feature has been achieved in modern programming languages only recently.
+
+This idea of having programs passed as parameters is interesting: think about lambdas in python!
+
+The first predicate we're interested in is `call(T)`, having the effect that the term `T` is considered as an atom (a predicate) and prolog evaluates it. We could obviously mix this up with other things. The meaning is *take `X` as a variable that probably has been bound to a program, and try to prove such a goal*.
+
+Another one is the `fail`: each evaluation of this **fails**. This forces the program to look for alternatives. This is also used to implement negation as failure, i.e. the predicate `not`: `not(P)`is true if `P` is not a consequence:
+
+```prolog
+not(P):- call(P), !, fail.
+not(P).
+```
+
+`setof` and `bagof`return sets/bags, we can query them with a conjunction of parameters or a parameter only. It basically returns those variables that verify the goal in a set. We're asking the set for which the **query is true**. The `findall` returns the terms that satisfy the goal, **without repetitions**. `findall(X, father(X,Y), S)` is equivalent to `setof(X, Y^father(X,Y), S)`.
+
+Terms and programs have the same syntactic structure, but prolog supports reflection: it can explore its source code itself. Suppose we have a prolog program:
+
+```
+h.
+h :- b1,b2,...,bn.
+```
+
+They correspond to the terms:
+
+```
+(h, true)
+(h, ','(b1, ','(b2, ','( ...','( bn-1, bn) ...)))
+```
+
+The predicate `clause(Head, Body)` allows us to check if there exists such a clause `(Head, Body)`. Note that `Head` must be non-numeric, and `Body` can be a variable or a term.
+
+Remember that everything starting with a capital or an underscore is a variable.
+
+# Meta-interpreters
+
+As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs. We'll talk about this class of programs we use as input, **meta-interpreters**. They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a langugage `L` is defined as an interpreter for L, but written in Prolog. 
+
+Even though we could write Prolog interpreters in all the languages (e.g. Python, Java, C...), we couldn't write a **Prolog interpreter in Prolog**. 
+
+The starting point is the **vanilla meta-interpreter**, i.e. defineing a predicate `solve` that takes a goal as input and returns true iff the goal is provable using the current KB. the solution is the following:
+
+```
+solve(true) :- !.
+solve( (A,B) ) :- !, solve(A), solve(B).
+solve(A) :- clause(A,B), solve(B).
+```
+
+If we query the goal with true, the program is true. Otherwise, we could invoke clause with `(A,B)` as args, 
+
+If you look at it, it represents the behaviour of the prolog interpreter: if we have a conjunction, the leftmost part is solved first, then the remaining part is. `clause` returns the possible conjunctions of `A` and `B`.
+
+An objection might be *ok, this does nothing, why would we want to do this?* This would be right: it is just the starting point for constructing many other different meta-interpreters, changing its behaviour.
+
+We could for example invert the order of selection, obtaining a **right-most interpretation**:
+
+```
+solve(true) :- !.
+solve( (A,B) ) :- !, solve(B), solve(A).
+solve(A) :- clause(A,B), solve(B).
+```
+
+The `!` in the second rule avoids loops.
+
