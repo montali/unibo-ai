@@ -44,6 +44,8 @@ else {
 
 Now, what is the expected return? Is it a set? If we didn't add the `toSet`, we'd get an indexed sequence and not a set. Note that by choosing a set, we have guaranteed protection from **duplicates**!
 
+The full example can be found in [2_T9.scala](examples/2_T9.scala).
+
 # MapReduce
 
 Originally a Google project, now defines a tipology of big data elaboration model.
