@@ -13,10 +13,16 @@ Files are grouped by course and module in their respective folders. Typical stru
 
 ### Installation
 
-With `python` 2.7 or superior and `pip` installed run this command:
+With `python` 2.7 or superior and `pip` installed run this command...
 
-```
+```bash
 sudo pip install readme2tex
+```
+
+...or...
+
+```bat
+python -m pip install readme2tex
 ```
 
 Full installation instructions for `readme2tex` can be found [here](https://github.com/leegao/readme2tex#installation).
@@ -25,8 +31,8 @@ Full installation instructions for `readme2tex` can be found [here](https://gith
 
 With `readme2tex` installed run:
 
-```
-python3 -m readme2tex --nocdn --readme path_to_input.tex.md --output  path_to_output.md
+```bash
+python -m readme2tex --nocdn --readme path_to_input.tex.md --output  path_to_output.md
 ```
 
 Alternatevily, to compile all files in the project run the [`compile_tex_md.bat`](compile_tex_md.bat) script from Windows or the [`compile_tex_md.sh`](compile_tex_md.sh) script from Linux.

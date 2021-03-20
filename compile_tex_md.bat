@@ -10,7 +10,7 @@ for /F "usebackq delims=" %%F in (`dir . /b/s ^| find ".tex.md"`) do (
     SET "dest=!src:.tex.md=.md!"
     echo "!dir!" "!src!" "!dest!"
     cd "!dir!"
-    python3 -m readme2tex --readme "!src!" --nocdn --output "!dest!"
+    python -m readme2tex --readme "!src!" --nocdn --output "!dest!"
     ENDLOCAL
 )
 ENDLOCAL

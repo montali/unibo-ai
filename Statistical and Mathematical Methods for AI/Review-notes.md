@@ -20,24 +20,24 @@ Generally speaking, 4 types of errors can happen during the previously cited pro
 - **Truncation errors**: an infinite procedure gets **truncated** to a finite one, causing loss of informations;
 - **Inherent errors**: the finite representation of data might lead to loss of informations.
 
-## Measuring error
+### Measuring error
 
 We can talk about **absolute error** and **relative error**, the latter being the first one divided by the real value:
 
 - **Absolute error**: <img src="svgs/98d8410703d5a79d12a93e7726ce2b25.svg?invert_in_darkmode" align=middle width=81.209865pt height=22.46574pt/>
 - **Relative error**: <img src="svgs/da0fc63cdd1f48dd120e844cf3d73d35.svg?invert_in_darkmode" align=middle width=69.830805pt height=28.424219999999995pt/>, obviously stating that <img src="svgs/c831bfaf6e49a680a4f1250d2dcd6d3f.svg?invert_in_darkmode" align=middle width=39.53185500000001pt height=22.831379999999992pt/>
 
-## Accuracy and precision
+### Accuracy and precision
 
 **Precision** does not measure error: it simply expresses the number of digits we're using. **Accuracy** does: it is the number of **correct** significant digits. One might ask: **what is a significant digit?** The number <img src="svgs/d0e77e0ae0c927639bbf59b3dd1c524b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=21.95721pt/> is said to approximate <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=14.155350000000013pt/> to <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> significant digits if <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> is the **largest non-negative** integer for which <img src="svgs/a8597e9b7f58c1a38e482d33571b2098.svg?invert_in_darkmode" align=middle width=98.48173499999999pt height=34.281719999999986pt/>.
 
-## Data error and computational error
+### Data error and computational error
 
 In a computational problem, we can define the **total error** as <img src="svgs/bf78575119f4c27fd0de3d6ddc142359.svg?invert_in_darkmode" align=middle width=84.08697000000001pt height=31.50708000000001pt/>, where <img src="svgs/c41f490710f05d3d7b527a61b284ef00.svg?invert_in_darkmode" align=middle width=11.758230000000003pt height=31.50708000000001pt/> is the approximated function, while <img src="svgs/f84e86b97e20e45cc17d297dc794b3e8.svg?invert_in_darkmode" align=middle width=9.395100000000005pt height=22.831379999999992pt/> is the approximated input: it is pretty obvious that the error depends on both the function approximation and the data one. The error inherent to the function one is called **computational error** <img src="svgs/efa4295436c149c1dbde725d48655605.svg?invert_in_darkmode" align=middle width=84.086805pt height=31.50708000000001pt/>, the one inherent to the data is called **propagated data error** <img src="svgs/4b2045f21d7317e34c0a4e46dea9b60a.svg?invert_in_darkmode" align=middle width=84.08697000000001pt height=24.65759999999998pt/>.
 
 We can further divide the computational error into the **truncation error** and the **rounding error**. The first one states the difference between the true result and the one produced by given algorithm using **exact arithmetic** (due to approximations such as truncating infinite series), the latter states the difference between the result produced by given algorithm using exact arithmetic and result produced by the same algorithm using **limited precision** arithmetic (due to inexact representation of real numbers). 
 
-## Sensivity and conditioning
+### Sensivity and conditioning
 
 **Sensitivity** and **conditioning** are concerned with propagated data error. **Conditioning** is just a way to quantitatively measure sensitivity. A problem is **sensitive** (or **ill-conditioned**) if the relative change in the solution can be much larger than the one in the input data. In other words, a problem is sensitive when, if we change the input by a small quantity, the result changes a lot.
 
@@ -47,15 +47,15 @@ The condition number is expressed as <img src="svgs/e317d4ef2fe33d5421afe31448f0
 
 Given an integer <img src="svgs/2e15dd312a6a8979845225e707722553.svg?invert_in_darkmode" align=middle width=40.302405pt height=22.831379999999992pt/> a real number <img src="svgs/c831bfaf6e49a680a4f1250d2dcd6d3f.svg?invert_in_darkmode" align=middle width=39.53185500000001pt height=22.831379999999992pt/> can be expressed in a unique way as <img src="svgs/38930313ca396f93676c514673537933.svg?invert_in_darkmode" align=middle width=252.99235499999998pt height=26.76201000000001pt/>, where <img src="svgs/9da246aababfb069d71ed489a6fb485e.svg?invert_in_darkmode" align=middle width=154.15537500000002pt height=26.76201000000001pt/> is called **mantissa** <img src="svgs/c1af73a7f18e65d681c0f149e3bbb8ce.svg?invert_in_darkmode" align=middle width=91.26348pt height=27.775769999999994pt/>, and <img src="svgs/afe6fc8ae2245c9133fda046afda6180.svg?invert_in_darkmode" align=middle width=16.942035000000004pt height=22.831379999999992pt/> is the **exponential part**. The **normalized scientific representation** is the one starting with 0: <img src="svgs/376c8f263bd0a1cfb16899629845e0f7.svg?invert_in_darkmode" align=middle width=148.10086500000003pt height=24.65759999999998pt/>, the **mixed representation** has leading zeros.
 
-## Floating point systems
+### Floating point systems
 
 We can therefore define a system of floating point numbers <img src="svgs/4eea8cf647d3dd27deea645edcad2081.svg?invert_in_darkmode" align=middle width=88.45534500000001pt height=24.65759999999998pt/>, where the parameters define the **base** <img src="svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.165650000000005pt height=22.831379999999992pt/> , the **precision** <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/>, and the exponent range <img src="svgs/d71369fd4630ca9ce95b2c4db8960a33.svg?invert_in_darkmode" align=middle width=40.641645000000004pt height=24.65759999999998pt/>. The system is **normalized** when it has no leading zeros: <img src="svgs/e0fec874e861bbf6bd95ae5bdd8df9e3.svg?invert_in_darkmode" align=middle width=46.06734pt height=22.831379999999992pt/>. Why bother to do so? The representation of each number is **unique**, we don't waste digits and the leading bit doesn't have to be stored (binary-lly speaking).
 
-### Properties of floating point systems
+#### Properties of floating point systems
 
 A floating point number system is **finite** and **discrete**. The total number of normalized floating point numbers is given by <img src="svgs/27c7240a60b85d2886098bd47f317805.svg?invert_in_darkmode" align=middle width=205.960755pt height=26.76201000000001pt/>. The **smallest positive normalized** number, aka the **UnderFlow Level** is <img src="svgs/36fda4016eff3e1731562da57620d6b3.svg?invert_in_darkmode" align=middle width=78.158685pt height=27.656969999999987pt/>, while the largest number, aka the **OverFlow Level** is <img src="svgs/622a8011486e58eab93e4d00a5e8cf96.svg?invert_in_darkmode" align=middle width=164.09695499999998pt height=27.656969999999987pt/>. Floating point numbers are equally spaced only between successive powers of <img src="svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.165650000000005pt height=22.831379999999992pt/>: **not all real numbers are representable**, just the **machine numbers**, i.e. elements of <img src="svgs/4eea8cf647d3dd27deea645edcad2081.svg?invert_in_darkmode" align=middle width=88.45534500000001pt height=24.65759999999998pt/>.
 
-## Rounding rules
+### Rounding rules
 
 Since not all real numbers are representable, we have to find a way of approximating them to a floating point number <img src="svgs/e6d0263a97a594d025aae07a2798c208.svg?invert_in_darkmode" align=middle width=70.76487pt height=24.65759999999998pt/>. Usually, two strategies are used: **chop**, which truncates the number after the <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/>-st digit, and **round to nearest** (aka *round to even*), using the floating point number whose last stored digit is even in case of a tie. **Round to nearest is the most accurate**: to state so, we define the accuracy characterized by *unit roundoff*, denoted by <img src="svgs/f03b6d41ffe5cc356176afeab3f2680e.svg?invert_in_darkmode" align=middle width=39.03834pt height=14.155350000000013pt/>. The first rounding rule has a <img src="svgs/1703c0b1f11080da989fad73a383de3c.svg?invert_in_darkmode" align=middle width=93.73584pt height=26.76201000000001pt/>, while the second one <img src="svgs/e14b1820bf9d06df18899511038029e2.svg?invert_in_darkmode" align=middle width=104.23347pt height=27.775769999999994pt/>. The difference is pretty easily spottable: <img src="svgs/47d54de4e337a06266c0e1d22c9b417b.svg?invert_in_darkmode" align=middle width=6.552644999999998pt height=27.775769999999994pt/>. We even have an alternative definition for <img src="svgs/f03b6d41ffe5cc356176afeab3f2680e.svg?invert_in_darkmode" align=middle width=39.03834pt height=14.155350000000013pt/>, which is the smallest <img src="svgs/7ccca27b5ccc533a2dd72dc6fa28ed84.svg?invert_in_darkmode" align=middle width=6.672451500000003pt height=14.155350000000013pt/> such that <img src="svgs/9ec029ef57e67a76c54a1d3d15c97e0d.svg?invert_in_darkmode" align=middle width=92.950935pt height=24.65759999999998pt/>.
 
@@ -63,19 +63,19 @@ We know that the maximum relative error in representing a real number x is alway
 
 Remember: **do not confuse <img src="svgs/f03b6d41ffe5cc356176afeab3f2680e.svg?invert_in_darkmode" align=middle width=39.03834pt height=14.155350000000013pt/> with UFL**, the first one is decided by the precision <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/> of the mantissa, the second one by the minimum exponent <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.187330000000003pt height=22.46574pt/>. Therefore, <img src="svgs/3954f67dfa4b417326be68386c393c29.svg?invert_in_darkmode" align=middle width=187.926255pt height=22.46574pt/>.
 
-### Subnormals and gradual underflow
+#### Subnormals and gradual underflow
 
 You can easily imagine how normalization causes a gap around zero: to solve this, we can allow leading zeros just when the exponent is at its minimum value. We have filled in the gap with **additional subnormal/denormalized floating point numbers**. These extend the range of representable magnitudes, without increasing the precision. Augmented systems, therefore, exhibit **gradual underflow**.
 
 IEEE has introduced some exceptional values, like <img src="svgs/d8fbc05883bc9ebbcf639b4cdf6bb85f.svg?invert_in_darkmode" align=middle width=64.24621499999999pt height=20.09139000000001pt/> and <img src="svgs/1f31616e14bdba2ef27b7f858f60401f.svg?invert_in_darkmode" align=middle width=25.890315pt height=20.09139000000001pt/>, which stands for *Not a Number*.
 
-## Floating point arithmetic
+### Floating point arithmetic
 
 Results of floating point arithmetic operations might differ from the real ones: in **addition and subtraction**, the shifting of mantissa to match the exponents might cause loss of digits, in **multiplication** the product might contain up to <img src="svgs/b03d2c90e8d8e2b659ff5a34285a73c2.svg?invert_in_darkmode" align=middle width=14.155350000000004pt height=21.18732pt/> digits, in **division** the quotient might contain more than <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/> digits. Real results may also fail to be representable because the exponent <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270625000000004pt height=14.155350000000013pt/> is beyond available range. Keep in mind that **overflow is worse than underflow**: ultra small numbers can be rounded to 0, ultra big ones are not <img src="svgs/f7a0f24dc1f54ce82fecccbbf48fca93.svg?invert_in_darkmode" align=middle width=16.438455000000005pt height=14.155350000000013pt/>.
 
 Ideally, we want floating point operations to produce correctly rounded results: <img src="svgs/7725b68af0182eba6d3d16999de98c64.svg?invert_in_darkmode" align=middle width=168.06355499999998pt height=24.65759999999998pt/>. Computers satisfying IEEE standards achieve this ideal, as long as <img src="svgs/ec42c40fec0c601f7e47e78a2589360c.svg?invert_in_darkmode" align=middle width=45.241845pt height=14.155350000000013pt/> is within the range of the floating point system.
 
-### Cancellation
+#### Cancellation
 
 **Cancellation** happens when we subtract two <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/>-digit numbers having same sign and similar magnitudes, yielding results with fewer than <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936155500000004pt height=20.222069999999988pt/> digits: leading digits of the two numbers cancel (their difference is <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>).
 
