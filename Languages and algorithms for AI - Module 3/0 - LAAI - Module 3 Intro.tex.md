@@ -24,10 +24,10 @@ A computational task can have 0..N sovivng processes. A task with no solving pro
 
 For example, two $n$-digits numbers $a$ and $b$ can be multiplied ($a*b$) in (at least) two ways.
 The first method ("repeated addition") by summing $a$ $b$ times ($a+a+...+a$), which for each sum requires $n$ steps, hence the total cost is proportional to $n*b$ steps.
-The second method ("grid method") is the classic method we learnt at elementary school and has a cost proportional to $n*n$.
-Notice that $b$ can be exponential in $n$ (i.e. at most $10^n-1$).
-The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between $n*n$ and $10^n-1$. 
-For example, supposing $n=100$ and $b=(100^100-1)*100$ (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
+The second method ("grid method") is the classic method we learnt at elementary school and has a cost proportional to $n*n$ steps.
+Notice that $b$ can be exponential in $n$ ($b \in [0, 10^n-1]$).
+The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between $n*n$ and $n*(10^n-1)$. 
+For example, supposing $n=100$ and $b=100^{100}-1$ (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
 
 Computational processes can be classified as **P** (Polinomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
 
@@ -49,7 +49,7 @@ Mathematical concepts needed for the course:
 - We will use 2 as canonical base for logarithms (i.e. $\log(x) = \log_2(x)$)
 - String $S^n$ over the alphabet $S$ with length $n$
   - Empty string ($\varepsilon = S^0$)
-  - Set of all string over $S$ ($S^* = \bigcup_{n=0}^\infty$) 
+  - Set of all string over $S$ ($S^* = \bigcup_{n=0}^\infty S^n$) 
   - Concatenation $xy$ of $x$ and $y$
   - Concatenation $x^k$ of $x$ with itself $k$ times
   - Length $\lvert x \rvert$ of a string $x$
