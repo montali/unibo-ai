@@ -2,12 +2,12 @@
 
 - [Course web site for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446566)
 - [Course on Virtuale](https://virtuale.unibo.it/course/view.php?id=18810#section-1)
-- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446566/orariolezioni#447771)
 
 ## Module 1
 
 Teacher: Michela Milano
 
+- [Course Timetable from Sep 21, 2020 to Dec 22, 2020](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446566/orariolezioni#447771)
 - [Milano's channel on MS Stream](https://web.microsoftstream.com/user/501dc13d-1074-4934-8386-df921ca87533)
 - [De Filippo's channel on MS Stream](https://web.microsoftstream.com/user/d98e4f5d-db09-4542-a943-0c02bbc12d50)
 - [Summary](summary/faikr1.pdf) ([source](summary/faikr1.tex))

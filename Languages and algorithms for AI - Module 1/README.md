@@ -6,7 +6,7 @@
 ## Module 1
 Teacher: Maurizio Gabbrielli
 
-- [Course timetable](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447780)
+- [Course Timetable from Oct 16, 2020 to Dec 21, 2020](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447780)
 - [Gabbrielli's channel on MS Stream](https://web.microsoftstream.com/user/f9f103f3-1732-4b8e-8ba9-fff748a59273)
 - [Formulary](formulary/laai1.pdf) ([source](formulary/laai1.tex))
 
