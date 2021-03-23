@@ -10,6 +10,12 @@ We'll use it to understand how we can use rules to represent things. This lesson
 
 We'll start with some known concepts about Prolog.
 
+We'll talk about knowledge bases: we want to build decision systems based on knowledge. The topic is therefore the introduction to the reasoning on knowledge using **rules**.
+
+Why *rules?* It was quite evident, since the 1970s, that after some cognitive studies it emerged that humans use **rules**. These come useful instead of using long descriptions: they are a good way of sharing informations.
+
+Another funny saying is that rules can be chained, they allow you to organize knowledge in term of layers, composed by many rules, that we can then merge to achieve a complex system. 
+
 ## Prolog
 
 The SWIsh online IDE is suggested.
