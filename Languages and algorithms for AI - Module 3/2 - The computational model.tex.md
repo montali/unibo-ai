@@ -71,7 +71,7 @@ How robust is our definition? There are many details that are arbitrary. We have
 
 What keeps our definition so simple is that describing it is just describing the transition function $\delta$: the states are finitely many, the symbols are finite, the tapes too. So, the description is nothing more than the description of this subset. 
 
-We can state that there exists a **Universal Turing Machine** (UTM) $\mathcal{U}$ such that it halts with an additional overhead which is logarithmic (hence it can be used to simulate all TM). More formally, $\forall x, \alpha \in \{0,1\}^*$ (where $\alpha$ represents the TM $\mathcal{M}_{\alpha}$):
+We can state that there exists a **Universal Turing Machine** (UTM) $\mathcal{U}$, a TM which can generate all the TMs from their description,halting with just an additional logaritmic overhead (hence it can be used to efficiently simulate all TMs). More formally, $\forall x, \alpha \in \{0,1\}^*$ (where $\alpha$ represents the TM $\mathcal{M}_{\alpha}$):
 * $\mathcal{U}(x,\alpha) = \mathcal{M}_{\alpha}(x)$
 * $\mathcal{M}_{\alpha}(x)$ halts within $T$ steps $\Rightarrow \mathcal{U}(x,\alpha)$ halts within $cT\log(T)$ steps (where $c$ depends only on $\mathcal{M}_{\alpha}$, not on $x$)
 
