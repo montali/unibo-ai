@@ -19,3 +19,11 @@ Teacher: Vincenzo Romei
 
 - Lecture slides
 - Scientific articles
+
+### Content
+
+- [0 - Course Intro](0%20-%20Course%20Intro.md)
+- [1 - The neural code](1%20-%20The%20neural%20code.md)
+- [2 - Synaptic transmission](2%20-%20Synaptic%20transmission.md)
+- [3 - TMS](3%20-%20TMS.md)
+- [4 - Vision perception](4%20-%20Vision%20perception.md)
