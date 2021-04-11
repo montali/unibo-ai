@@ -75,3 +75,20 @@ We can state that there exists a **Universal Turing Machine** (UTM) $\mathcal{U}
 * $\mathcal{U}(x,\alpha) = \mathcal{M}_{\alpha}(x)$
 * $\mathcal{M}_{\alpha}(x)$ halts within $T$ steps $\Rightarrow \mathcal{U}(x,\alpha)$ halts within $cT\log(T)$ steps (where $c$ depends only on $\mathcal{M}_{\alpha}$, not on $x$)
 
+We can even state that there exists a function $uc$ that is not computable by any TM: the proof is constructive. Before being able to return 0, the following function has to wait until this process finishes. We'd want to wait that it is over, and that is not possible!
+$$
+u c(\alpha)=\left\{\begin{array}{ll}
+0 & \text { if } \mathcal{M}_{\alpha}(\alpha)=1 \\
+1 & \text { otherwise }
+\end{array}\right.
+$$
+If this was computable, there would exist a TM able to compute this for every $\alpha$. This is a contradiction: it's like saying factorial of 3 is equal to 6 if and only if factorial of 3 is 7. Only one can be true! Why do we have this if and only if chain? If it returns 1, we must be on the *otherwise* branch. So how do we change branch? If $M$ is different from 1 it must be 0, there is no other way. $M$ is equal to $uc$, and on the one hand we used the second definition, while on the other hand we used the other equation. We can't go from a statement to the other! Why did we manage to prove this? There's a mechanism here called *diagonalization*: we see it as $\alpha$ is used twice, as input and as output.
+$$
+u c(\llcorner\mathcal{M}\lrcorner)=1 \Leftrightarrow \mathcal{M}(\llcorner\mathcal{M}\lrcorner) \neq 1 \Leftrightarrow u c(\llcorner\mathcal{M}\lrcorner)=0
+$$
+ This is the root of the problem. The incompleteness theorem we studied at the beginning relies on this too. This allows for negative results both in logic and CS. 
+
+A *diophantine equation* is a polynomial equality with integer coefficients and finitely many unknowns. 
+
+We want a language to be semantic, i.e. whenever an encoding of a turing machine is in the language and there exists a TM which computes the same function as $M$, also the encoding of that TM is in that language. 
+
