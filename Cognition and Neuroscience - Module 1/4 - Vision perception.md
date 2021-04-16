@@ -20,4 +20,14 @@ Continuous EEG recordings are online ot the TMS, and we're interested in knowing
 
 The amplitutde of alpha is very important: if there's a reduction, we'll have a clear predisposition to excitability in the visual cortex, i.e. more likely to perceive information. If there's less, there's a sort of inhibition, we're less likely to perceive incoming information. The result is the subject might well use alpha activity information as a gate towards perceived informations, i.e. opening/closing a gate for incoming informations to regulate the quantity of perceived infos. 
 
- 
+Another concept to denote is that we have two service systems that are somehow converging, but we can dissociate them. What we think we're seeing, and what we actually see. We might believe in something that is not there. These two dimensions of alpha oscillations can be dissociated to providee evidence of these two different mechanisms. The previously presented model is the one in which we have the capacity to optimize our response depending on our capacity to represent the environment. Our model will therefore be dissociated with the actual thing. Imagine an AI system that has *forging what is going to happen next* as a goal, this knowledge shaping will become crucial.
+
+If these two mechanisms do not work well together, we'll incur in problems!
+
+As we cannot really tell which site is gonna be necessary when the stimulus will be presented, we have two possibilities: *low cortical excitability* (the subject is more *conservative*, i.e. *probably the stimulus ain't gonna be there*), or *high cortical excitability*.
+
+Alpha speed accounts for the spatio-temporal resolution of the visual system and predicts objective accuracy. Faster alpha oscillations will lead to higher sampling resolution.
+
+## Correlation is not causation
+
+We'd like to draw a causal link between perception and sensation. 

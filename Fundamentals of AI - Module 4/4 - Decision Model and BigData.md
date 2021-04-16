@@ -38,6 +38,20 @@ Rules that can keep some sort of *state*, like *if something happened in the las
 
 Event Calculus in Prolog is not safe. There were a couple of solutions to overcome the deductive nature of the original formulation. Though, the computational cost is so high that when you're dealing with lots of events, it isn't sustainable.
 
+# Reactive event calculus and Drools
+
+We have a scenario with a set of data which is continuously collected (on-site, possibly) and elaborated.
+
+We are therefore receiving a stream of events, which we'll have to deal with it with runtime performances (i.e. fast). The PROLOG implementations are not suitable for this usecase. First of all, we'll always have to separate clearly what events are from state properties (do we need those?). This is something that is related to understanding the domain, needing a domain expert. This is not an easy task actually.
+
+A classical problem is that domain experts usually describe the terms of the system in terms of events themeselves. A fluent might be affected by several events: think about a room and a light on its roof, we can have a simple situation with one switch, or a more complex one with multiple switches. 
+
+We'll then define the rule, and instead of raising up a fluent as a consequence, we implement one additional layer: the idea is *for any of these events, define the rule and the consequence will be a special UpEvent, one for each fluent.* These rules can now combine a number of conditions. 
+
+This allows us to perform **meta-reasoning**. When possible, we'll want to remove rules: drools has a great support for events, and there's some reasoning that we'll need: while events are automatically discarded, fluents are not!
+
+
+
 
 
 
