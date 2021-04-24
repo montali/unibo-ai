@@ -65,6 +65,8 @@ Example of multiplication:
 ;Result: 15
 ```
 
+In Lisp `NIL` represents false and `T` represents true.
+
 The function `quote` or its equivalent notation `'` suspends the evaluation of its argument:
 ```lisp
 (quote (a b c))
@@ -82,6 +84,8 @@ foo
 ;Result: 5
 ```
 
+### Defining functions
+
 Functions can be defined with the `defun` keyword:
 ```lisp
 (defun FUN-NAME (PAR1 PAR2 ... PARm)
@@ -90,20 +94,145 @@ Functions can be defined with the `defun` keyword:
     ...
     (EXPRn))
 ```
-Examples:
+Functions always return the value of the last expression (`EXPRn`). It's not possible to return more values with base language (we will see a way to do it but it will require more advanced constructs).
+
+Examples of function definition:
+
+Square of a number:
 ```lisp
 (defun square (X) (* X X))
+
 (square 21)
 ;Result: 441
 ```
 
+Recursive factorial with `if`:
 ```lisp
 (defun factorial(n)
     (if (<= n 1)
         1
         (* n (factorial (- n 1)))))
 
-(factorial(3))
+(factorial 3)
 ;Result: 6
 ```
+
+### Conditionals
+The `cond` special form contains a sequence of pairs
+(Condiction Expression).
+```lisp
+(cond (<p1> <e1>)
+    (<p2> <e2>)
+    (<p3> <e3>)
+    ...
+    (<pn> <en>))
+```
+Pairs are evaluated in sequence. When the first condition succeeds (`pi`) the corresponding expression is evaluated (`ei`) and `cond` returns its value. If none of the conditions are true `cond` returns `NIL`.
+This is in some way similar to the `switch` in imperative languages (except, obviously, this is declarative).
+Examples:
+
+Absolute value:
+```lisp
+(defun absnum (X)
+    (cond ((> X 0) X)
+        ((= X 0) 0) 
+        ((< X 0) (-  X))))
+
+(absnum -6)
+;Result: 6
+```
+
+Recursive factorial with `cond`:
+```lisp
+(defun fact (N)
+    (cond ((eq N 0) 1)
+        (T 
+        (* N (fact (- N 1))))))
+
+(fact 3)
+;Result: 6
+```
+
+Recursive Fibonacci sequence:
+```lisp
+(defun fib (N)
+    (cond ((eq N 0) 0)
+        ((eq N 1) 1)
+        (T (+ (fib (-  N 1)) (fib (-  N 2))))))
+
+(fib 7)
+;Result: 13
+```
+The function `(= A B)` works only with numbers.
+The function `(eq A B)` returns `T` in `A` and `B` are the same, `NIL` otherwise.
+
+### Data structures
+Being a functional language, Lisp represents **data structures** with lists and functions which create and access them:
+
+- `cons` creates the list
+- `car` accesses the first element of the list (head)
+- `cdr` accesses the rest of the list (tail)
+
+The notation `(a . b)` indicates a cons cell. A cons cell is not the same thing as a list, it's a cell that represents an element of a list including a value and the pointer to the rest of the list.
+
+`(a)` = `(a . NIL)`
+
+`(a b)` = `(a . (b . NIL))`
+
+Examples:
+
+Single element list:
+```lisp
+(cons a NIL)
+;Result: (a)
+```
+
+Two element list:
+```lisp
+(cons a (cons b NIL))
+;Result: (a b)
+```
+
+Two element cons cell:
+```lisp
+(cons 'a 'b)
+;Result: (a.b)
+```
+
+Access the head 
+```lisp
+(car (cons 'a 'b))
+;Result: a
+```
+
+Access the tail:
+```lisp
+(cdr (cons 'a 'b))
+;Result: b
+```
+
+Assignment of a list to a symbol:
+```lisp
+(setq mylist (cons 'a (cons 'b (cons 'c ()))))
+mylist
+;Result: (a b c)
+```
+
+Nested `car` and `cdr` can be shrunk:
+
+`cXr (cYr (... (cZr 'l)...))` = `cXY...Zr 'l`
+
+Example:
+```lisp
+(car (cdr (car (cdr '((1 2) (3 4))))))
+;Result: 4
+```
+```lisp
+(cadadr '((1 2) (3 4)))
+;Result: 4
+```
+
+The function `(and A B)` returns `T` if both `A` and `B` are different from `NIL`, `NIL` otherwise.
+
+The function `(atom A)` returns `T` if `A` is an atom (number, symbol, `NIL`), `NIL` otherwise.
 
