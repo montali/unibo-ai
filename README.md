@@ -18,8 +18,8 @@ Notes monorepo for the UniBO Artificial Intelligence MSc. Don't count on me sinc
 - [Machine Learning](Machine%20Learning)
 - [Deep Learning](Deep%20Learning)
 - Cognition and Neuroscience
-  - [Model 1](Cognition%20and%20Neuroscience%20-%20Module%201/README.md)
-  - [Model 2](Cognition%20and%20Neuroscience%20-%20Module%202/README.md)
+  - [Module 1](Cognition%20and%20Neuroscience%20-%20Module%201/README.md)
+  - [Module 2](Cognition%20and%20Neuroscience%20-%20Module%202/README.md)
 - [Combinatorial Decision Making and Optimization](Combinatorial%20Decision%20Making%20and%20Optimization)
 
 ## Useful links
