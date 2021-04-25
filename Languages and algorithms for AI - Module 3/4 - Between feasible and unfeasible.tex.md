@@ -41,14 +41,14 @@ So, M can be said **verifier** for $\mathcal{L}$. The class NP does not have a n
 
 A **theorem** on which we will spend some time is the following: NP is one example of a class which is between P and EXP:
 $$
-\mathbf{P} \subseteq \mathbf{N P} \subseteq \mathbf{E X P}
+\mathbf{P} \subseteq \mathbf{N P} \subseteq \mathbf{E X P} \subset \text{Computable problems}
 $$
 
-Examples of $\mathbf{N P}$ languages include *Maximum Independent Set*, *Subset Sum*, *Composite Numbers* (actually in $\mathbf{P}$), *Factoring*, *Decisional Linear Programming* (actually in $\mathbf{P}$), *Decisional 0/1 Linear Programming*.
+Examples of **NP** languages include *Maximum Independent Set*, *Subset Sum*, *Composite Numbers* (actually in **P**), *Factoring*, *Decisional Linear Programming* (actually in **P**), *Decisional 0/1 Linear Programming*.
 
 ### Original definition of NP
 
-The class $\mathbf{N P}$ can also be defined using a variant of Turing machines, called the NonDeterministic Turing Machines or NDTM (this is the original definition and is the reason for the $\mathbf{N}$ in $\mathbf{N P}$: non-deterministic).
+The class **NP** can also be defined using a variant of Turing machines, called the NonDeterministic Turing Machines or NDTM (this is the original definition and is the reason for the **N** in **NP**: non-deterministic).
 A NDTM has and additional state $q_{accept}$ and two transition functions $\delta_0$ and $\delta_1$ instead of one and at each step one of them is chosen non-deterministically (currently only theoretical, not implementable).
 
 We say that a NDTM $\mathcal{M}$ accepts an input $x\in\{0,1\}^*$ iff a possible evolution of $\mathcal{M}$ with input $x$ which reaches $q_{accept}$.
@@ -61,3 +61,37 @@ $$
 \mathbf{N P} = \cup_{c\in\mathbb{N}} \mathbf{NDTIME}(n^c)
 $$
 
+## NP-hardness and NP-completeness
+
+The language $\mathcal{L}$ is said to be **polynomial-time reducible** to another language $\mathcal{H}$ (**$\mathcal{L} \le_p \mathcal{H}$**) iff there is a poly-time computable function $f: \{0,1\}^* \to \{0,1\}^*$ such that $x \in \mathcal{L} \iff f(x) \in \mathcal{H}$.
+$\le_p$ is a pre-order (reflexive and transitive).
+
+For classes **P** or above it and $\mathcal{L} \le_p \mathcal{H}$, then $\mathcal{H}$ is at least as difficult as $\mathcal{L}$. 
+
+A language $\mathcal{H} \subseteq \{0,1\}^*$ is said to be:
+- **NP-hard** if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy (it could be un-computable, **NP**-complete or outside **NP**).
+- **NP-complete** if $\mathcal{H} \in \mathbf{N P}$ is **NP**-hard. Note that **NP**-hardness does not imply **NP**-completeness as a **NP**-hard language may be un-computable or outside **NP**.
+
+Note that:
+- $\mathcal{L} \in \mathbf{P}$ is **NP**-hard $\Rightarrow \mathbf{P}=\mathbf{N P}$.
+- $\mathcal{L} \in \mathbf{P}$ is **NP**-hard $\iff \mathbf{P}=\mathbf{N P}$.
+
+No such language has been found and $\mathbf{P}=\mathbf{N P}$ has not yet been proven (famous **P** vs **NP** problem).
+
+![Venn diagram of P and NP](res/p-np.png)
+
+Proving that a problem is **NP**-complete proves that the problem is not so hard (being in NP), but not so easy either (unless P = NP).
+
+If we want to prove $\mathcal{L}$ to be **NP**-complete we have to prove two statements:
+- $\mathcal{L}$ is **NP** (see above)
+- $\mathcal{H} \le_p \mathcal{L}$ for any other language $\mathcal{H} \in \mathbf{N P}$. Since $\le_p$  is transitive, we can simply prove that, $\mathcal{J} \le_p \mathcal{L}$ where $\mathcal{J}$ is a language already known as **NP**-complete.
+
+### The Cook-Levin Theorem
+
+A **kCNF** (**k-Conjunctive Normal Form**) is a propositional formula which is a conjunction of disjunctions ("clauses") which contain at most $k \in \mathbb{N}$ literals.
+  
+The following languages are **NP**-complete:
+- $SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable CNF}\}$
+- $3SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable 3CNF}\}$
+
+This is a relevant proof of existence of **NP**-complete problems.

@@ -34,13 +34,13 @@ We want M to return 1 when fed with the pair <img src="svgs/7392a8cd69b275fa1798
 So, M can be said **verifier** for <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/>. The class NP does not have a natural **counterpart**. It is a class of languages, and it's important for the definition that <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> is a language. Otherwise, it's not so easy to think about it as a generalization.
 
 A **theorem** on which we will spend some time is the following: NP is one example of a class which is between P and EXP:
-<p align="center"><img src="svgs/6b7046b818dc387e6f0cc14d5a121c54.svg?invert_in_darkmode" align=middle width=124.10881394999998pt height=13.513684799999998pt/></p>
+<p align="center"><img src="svgs/5f43d76d96a6b371f577cae4d3ca9561.svg?invert_in_darkmode" align=middle width=304.1547597pt height=14.611878599999999pt/></p>
 
-Examples of <img src="svgs/243c22a26babfbd16110b02968605063.svg?invert_in_darkmode" align=middle width=27.716759399999994pt height=22.55708729999998pt/> languages include *Maximum Independent Set*, *Subset Sum*, *Composite Numbers* (actually in <img src="svgs/384591906555413c452c93e493b2d4ec.svg?invert_in_darkmode" align=middle width=12.92230829999999pt height=22.55708729999998pt/>), *Factoring*, *Decisional Linear Programming* (actually in <img src="svgs/384591906555413c452c93e493b2d4ec.svg?invert_in_darkmode" align=middle width=12.92230829999999pt height=22.55708729999998pt/>), *Decisional 0/1 Linear Programming*.
+Examples of **NP** languages include *Maximum Independent Set*, *Subset Sum*, *Composite Numbers* (actually in **P**), *Factoring*, *Decisional Linear Programming* (actually in **P**), *Decisional 0/1 Linear Programming*.
 
 ### Original definition of NP
 
-The class <img src="svgs/243c22a26babfbd16110b02968605063.svg?invert_in_darkmode" align=middle width=27.716759399999994pt height=22.55708729999998pt/> can also be defined using a variant of Turing machines, called the NonDeterministic Turing Machines or NDTM (this is the original definition and is the reason for the <img src="svgs/bccab73005d96290c8ef588703533a21.svg?invert_in_darkmode" align=middle width=14.794451099999991pt height=22.55708729999998pt/> in <img src="svgs/243c22a26babfbd16110b02968605063.svg?invert_in_darkmode" align=middle width=27.716759399999994pt height=22.55708729999998pt/>: non-deterministic).
+The class **NP** can also be defined using a variant of Turing machines, called the NonDeterministic Turing Machines or NDTM (this is the original definition and is the reason for the **N** in **NP**: non-deterministic).
 A NDTM has and additional state <img src="svgs/c127078f8a1d831780e5ff20527ebc97.svg?invert_in_darkmode" align=middle width=44.197187099999994pt height=14.15524440000002pt/> and two transition functions <img src="svgs/154a8763eb0cadfcb320a4fe139b6ec2.svg?invert_in_darkmode" align=middle width=13.858486949999989pt height=22.831056599999986pt/> and <img src="svgs/05c0545df5a118015e87a57e968327bf.svg?invert_in_darkmode" align=middle width=13.858486949999989pt height=22.831056599999986pt/> instead of one and at each step one of them is chosen non-deterministically (currently only theoretical, not implementable).
 
 We say that a NDTM <img src="svgs/b5eaea000e06d5cf2e882f8fdbc71e36.svg?invert_in_darkmode" align=middle width=19.740822749999992pt height=22.465723500000017pt/> accepts an input <img src="svgs/d3017d4becb3ab5e77fa9fe6a279ed7c.svg?invert_in_darkmode" align=middle width=76.40404199999999pt height=24.65753399999998pt/> iff a possible evolution of <img src="svgs/b5eaea000e06d5cf2e882f8fdbc71e36.svg?invert_in_darkmode" align=middle width=19.740822749999992pt height=22.465723500000017pt/> with input <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/> which reaches <img src="svgs/c127078f8a1d831780e5ff20527ebc97.svg?invert_in_darkmode" align=middle width=44.197187099999994pt height=14.15524440000002pt/>.
@@ -51,3 +51,37 @@ For every <img src="svgs/17726fa8b5401d1429efa4fd9faad060.svg?invert_in_darkmode
 
 <p align="center"><img src="svgs/a66c344b35e850f296d19c6c14ef4985.svg?invert_in_darkmode" align=middle width=193.78437044999998pt height=16.438356pt/></p>
 
+## NP-hardness and NP-completeness
+
+The language <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> is said to be **polynomial-time reducible** to another language <img src="svgs/8209c0f8b3c5233ea2e20dae55588c43.svg?invert_in_darkmode" align=middle width=14.041179899999989pt height=22.465723500000017pt/> (**<img src="svgs/2d69fa47366657f0914364490b5e4d99.svg?invert_in_darkmode" align=middle width=54.89512874999999pt height=22.465723500000017pt/>**) iff there is a poly-time computable function <img src="svgs/77ea3409d3c031126c48f9b526391c43.svg?invert_in_darkmode" align=middle width=143.74415879999998pt height=24.65753399999998pt/> such that <img src="svgs/23609a2799541f2ef2d51f25fb12d4cb.svg?invert_in_darkmode" align=middle width=155.35576319999998pt height=24.65753399999998pt/>.
+<img src="svgs/ec0291fa3db83f00fa7927122924d935.svg?invert_in_darkmode" align=middle width=19.56191159999999pt height=20.908638300000003pt/> is a pre-order (reflexive and transitive).
+
+For classes **P** or above it and <img src="svgs/2d69fa47366657f0914364490b5e4d99.svg?invert_in_darkmode" align=middle width=54.89512874999999pt height=22.465723500000017pt/>, then <img src="svgs/8209c0f8b3c5233ea2e20dae55588c43.svg?invert_in_darkmode" align=middle width=14.041179899999989pt height=22.465723500000017pt/> is at least as difficult as <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/>. 
+
+A language <img src="svgs/3a965f05dff06a55fe4ba6bdaf0d1aae.svg?invert_in_darkmode" align=middle width=82.87670324999998pt height=24.65753399999998pt/> is said to be:
+- **NP-hard** if <img src="svgs/824e228fc68a0deecccc60222ebd7153.svg?invert_in_darkmode" align=middle width=130.47929234999998pt height=22.831056599999986pt/>. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy (it could be un-computable, **NP**-complete or outside **NP**).
+- **NP-complete** if <img src="svgs/18e61ca7af57709a425157bb703d8c88.svg?invert_in_darkmode" align=middle width=61.84905539999999pt height=22.55708729999998pt/> is **NP**-hard. Note that **NP**-hardness does not imply **NP**-completeness as a **NP**-hard language may be un-computable or outside **NP**.
+
+Note that:
+- <img src="svgs/a85b3a23cd1b786139824ba981dbf605.svg?invert_in_darkmode" align=middle width=44.35138949999999pt height=22.55708729999998pt/> is **NP**-hard <img src="svgs/68bf0daed9e28ab0d5a9cba1d27c3863.svg?invert_in_darkmode" align=middle width=83.56119915pt height=22.55708729999998pt/>.
+- <img src="svgs/a85b3a23cd1b786139824ba981dbf605.svg?invert_in_darkmode" align=middle width=44.35138949999999pt height=22.55708729999998pt/> is **NP**-hard <img src="svgs/b76492a2d67002f71be342b015b34d03.svg?invert_in_darkmode" align=middle width=101.82604079999999pt height=22.55708729999998pt/>.
+
+No such language has been found and <img src="svgs/03c6d1a0e85a425a91b17393616670d6.svg?invert_in_darkmode" align=middle width=62.556697499999984pt height=22.55708729999998pt/> has not yet been proven (famous **P** vs **NP** problem).
+
+![Venn diagram of P and NP](res/p-np.png)
+
+Proving that a problem is **NP**-complete proves that the problem is not so hard (being in NP), but not so easy either (unless P = NP).
+
+If we want to prove <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> to be **NP**-complete we have to prove two statements:
+- <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> is **NP** (see above)
+- <img src="svgs/f5e97a4b79e688b564ee9a52624f72d3.svg?invert_in_darkmode" align=middle width=54.895107299999985pt height=22.465723500000017pt/> for any other language <img src="svgs/18e61ca7af57709a425157bb703d8c88.svg?invert_in_darkmode" align=middle width=61.84905539999999pt height=22.55708729999998pt/>. Since <img src="svgs/ec0291fa3db83f00fa7927122924d935.svg?invert_in_darkmode" align=middle width=19.56191159999999pt height=20.908638300000003pt/>  is transitive, we can simply prove that, <img src="svgs/ec2e298ee13fa363ab9ebff85920b637.svg?invert_in_darkmode" align=middle width=55.03203254999999pt height=22.465723500000017pt/> where <img src="svgs/8cc0a6e490c5b777ac8dd9629bb06051.svg?invert_in_darkmode" align=middle width=14.17810184999999pt height=22.465723500000017pt/> is a language already known as **NP**-complete.
+
+### The Cook-Levin Theorem
+
+A **kCNF** (**k-Conjunctive Normal Form**) is a propositional formula which is a conjunction of disjunctions ("clauses") which contain at most <img src="svgs/091a3af356c1abf7e80434e9d0049f52.svg?invert_in_darkmode" align=middle width=41.03867954999999pt height=22.831056599999986pt/> literals.
+  
+The following languages are **NP**-complete:
+- <img src="svgs/7a0fdd099bac2c3c4a93595fc894e257.svg?invert_in_darkmode" align=middle width=265.10874885pt height=24.65753399999998pt/>
+- <img src="svgs/c6deb0fd567b2bbae3787e0978d4c40d.svg?invert_in_darkmode" align=middle width=281.54716095pt height=24.65753399999998pt/>
+
+This is a relevant proof of existence of **NP**-complete problems.
