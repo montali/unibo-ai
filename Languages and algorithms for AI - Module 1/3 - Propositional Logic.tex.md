@@ -194,7 +194,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
   $$
   This gets us a **corollary too**: the set of theorems coincide with the set of tautologies.
 
-  The theorem is derived in two parts, the **soundness** (correctness), which says that if you can perform a derivation, then $\Gamma \vdash \varphi \rightarrow \Gamma \vDash \varphi$. The inverse is provable too: $ \Gamma \vDash \varphi\rightarrow\Gamma \vdash \varphi $. 
+  The theorem is derived in two parts, the **soundness** (correctness), which says that if you can perform a derivation, then $\Gamma \vdash \varphi \rightarrow \Gamma \vDash \varphi$. The inverse is provable too: $\Gamma \vDash \varphi\rightarrow\Gamma \vdash \varphi$. 
 
   If a set of formulas $\Gamma$ is inconsistent (i.e. you can derive false), then you can divide it into two parts $\Gamma \cup \neg\varphi$ and $\Gamma \cup \varphi$...
 

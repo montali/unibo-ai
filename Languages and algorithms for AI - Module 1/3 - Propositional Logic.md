@@ -176,7 +176,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
   <p align="center"><img src="svgs/ccd8cbb06632a69a984d0753f4169897.svg?invert_in_darkmode" align=middle width=105.98124074999998pt height=14.611878599999999pt/></p>
   This gets us a **corollary too**: the set of theorems coincide with the set of tautologies.
 
-  The theorem is derived in two parts, the **soundness** (correctness), which says that if you can perform a derivation, then <img src="svgs/d977a3b05f22573feceb3d445ba75299.svg?invert_in_darkmode" align=middle width=105.98124239999999pt height=22.831056599999986pt/>. The inverse is provable too: <img src="svgs/6a0e5bb4be20e3dde7abbd55b2db5e3f.svg?invert_in_darkmode" align=middle width=105.98124239999999pt height=22.831056599999986pt/>. 
+  The theorem is derived in two parts, the **soundness** (correctness), which says that if you can perform a derivation, then <img src="svgs/d977a3b05f22573feceb3d445ba75299.svg?invert_in_darkmode" align=middle width=105.98124239999999pt height=22.831056599999986pt/>. The inverse is provable too: <img src="svgs/0bb70d0370fa798404eb919a94785025.svg?invert_in_darkmode" align=middle width=105.98124239999999pt height=22.831056599999986pt/>. 
 
   If a set of formulas <img src="svgs/b2af456716f3117a91da7afe70758041.svg?invert_in_darkmode" align=middle width=10.274003849999989pt height=22.465723500000017pt/> is inconsistent (i.e. you can derive false), then you can divide it into two parts <img src="svgs/f3a26a8545f8b6780d9c3b62b61733fd.svg?invert_in_darkmode" align=middle width=50.25107669999999pt height=22.465723500000017pt/> and <img src="svgs/2cbce50dee7704503243016eb402064b.svg?invert_in_darkmode" align=middle width=39.29213474999999pt height=22.465723500000017pt/>...
 
