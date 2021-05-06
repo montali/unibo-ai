@@ -1,0 +1,8 @@
+Attention cannot increase the resolution of the retina, but it can increase the spatial selectivity of single neurons. The experiment that showed this needs two stimulae: in all the experiments we saw so far, there only was one stimula in the receptive field and one outside. Now there's two. First, what happens when two stimulae are in the receptive field? 
+
+This is a situation of ambiguity: the cell cannot resolve whether it's a line, a cell... The information is ambigue. Indeed, what we get is an **average**, which is ambiguous: we can always make neurons respond, but they can't communicate to other neurons whether a single bar or two were presented. This is an example of competition: attention is just resolving the competition between multiple stimulae. Our attention resolves the competition: the two stimulae want to capture attention. This is before attention: when we don't have any attention, we don't see well. Attention is able to resolve the competition between these stimulae. The experiment done by Moran&Desimone tried to present two stimulae inside the receptive field, one good and one bad. They are both inside, and the receptive field is the pink area in the example image. 
+
+Now, what we do with attention is that the animal is cued with attention: one of the stimula is relevant to the action. The animal is told to do the task with the stimulus on the left or the one on the right. 
+
+A very simple mechanism is used: the stimulae are presented with a small gap in time, and the first presented is the important one. The animal has to decide which is the orientation of the bar.
+
