@@ -16,3 +16,4 @@ Teacher: Federico Chesani
 * [1 - Meta-predicates](1%20-%20Meta-predicates.md)
 * [2 - Probabilistic programming](2%20-%20Probabilistic%20programming.md)
 * [3 - Rules reasoning](3%20-%20Rules%20reasoning.md)
+* [4 - Decision Model and BigData](4%20-%20Decision%20Model%20and%20BigData.md)
