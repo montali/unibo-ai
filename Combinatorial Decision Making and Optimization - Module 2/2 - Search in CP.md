@@ -54,7 +54,8 @@ In heuristic search, constraints are handled pretty bad: they don't have propaga
 
 A solution would therefore be defining a rather large neighourhood, but plug in CP to explore this neighobourhood. So, how do we define a large neighbourhood? The way we do this is so general that we can apply it to every problem. We have an initial solution, we define a neighbourhood by fixing some variables to values of this solution, and we relax the remaining to be assigned. Somehow we are saying *ok, I have a solution, another solution will share some values with this one*. At the same time, the fact that we're assigning values, initiates propagation! We end up with a neighbourhood that is pretty easy for CP to explore. 
 
+### A cumulative scheduling problem
 
+In this problem, temporal constraints are precedence constraints. The arrows represent precedence: the first has to finish before the start of the next one. 
 
-
-
+We basically have n jobs to be performed in order, having different durations, and m dedicate machines that can operate a single task at a time: we have a disjunctive constraint being that the machine cannot process two tasks at a time.
