@@ -24,7 +24,7 @@ We don't consider tasks as functions on finite inputs, we just consider an infin
 
 Someone may ask *Well, if we consider a function that maps bitmap images, this has nothing to do with strings!* The point is that strings are a very peculiar discrete set, but they are flexbile enough to be able to represent many other data! When we say that we always assume the task to be given as a function, we're saying that the problem consists in mapping an element of A into an element of B.
 
- The encoding of anly element $x$ of $A$ as a string is often indicated as \_x_.
+ The encoding of any element $x$ of $A$ as a string is often indicated as \_x_.
 
 Suppose that the strings in $S^*$ are composed of elements of $S=\{a,b,c\}$. Now, $a$ can be encoded as $00$, $b$ becomes $01$ and $c$ becomes $10$.
 

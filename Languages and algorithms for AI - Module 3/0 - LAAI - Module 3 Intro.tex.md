@@ -20,7 +20,7 @@ The theoretical notion of computation existed before (and keeps influencing) mon
 
 **Computational process**: A sequence of actions capable of solving a computational task. In the Theory of Computation is taken to be an algorithm (a finite description of a series of elementary computation steps, where the way the next step is determined must be deterministic).
 
-A computational task can have 0..N sovivng processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
+A computational task can have 0..N solving processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
 
 For example, two $n$-digits numbers $a$ and $b$ can be multiplied ($a*b$) in (at least) two ways.
 The first method ("repeated addition") by summing $a$ $b$ times ($a+a+...+a$), which for each sum requires $n$ steps, hence the total cost is proportional to $n*b$ steps.

@@ -1,0 +1,68 @@
+\documentclass[]{article}
+\usepackage[a4paper, portrait, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\setlength\parindent{0pt}
+
+%opening
+\title{Summary \\ \large Languages and Algorithms for Artificial Intelligence - Module 3}
+\author{Daniele Santini}
+
+\begin{document}
+
+%\maketitle
+
+\section{Computational theory}
+
+\textbf{Computational task}: A problem that needs to be solved.
+
+\textbf{Computational process}: A sequence of actions capable of solving a computational task. In the Theory of Computation is taken to be an algorithm (a finite description of a series of elementary computation steps, where the way the next step is determined must be deterministic).
+
+A computational task can have 0..N solving processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
+
+\section{Turing Machine}
+
+Turing Machine (TM) $\mathcal{M} = (\Gamma,Q,\delta)$ with $k$ tapes ($k-1$ of them R/W).
+
+\textbf{Alphabet} $\Gamma = \{\Box, \rhd, 0, 1, \dots\}$, a finite set of symbols that can be found in the tapes.
+
+Finite set of \textbf{states} $Q = \{Q_{init},Q_{halt},\dots\}$.
+
+\textbf{Transition function} $\delta: Q \times \Gamma^k \to Q \times \Gamma^{k-1} \times \{L,S,R\}$.
+
+\
+
+\textbf{Universal Turing Machine} (UTM) $\mathcal{U}$: $\forall x, \alpha \in \{0,1\}^*$ (where $\alpha$ represents the TM $\mathcal{M}_{\alpha}$):
+\begin{itemize}
+	\item $\mathcal{U}(x,\alpha) = \mathcal{M}_{\alpha}(x)$
+	\item $\mathcal{M}_{\alpha}(x)$ halts within $T$ steps $\Rightarrow \mathcal{U}(x,\alpha)$ halts within $cT\log(T)$ steps ($c$ depends only on $\mathcal{M}_{\alpha}$, not on $x$)
+\end{itemize}
+
+\
+
+Given $f:\{0,1\}^* \to \{0,1\}^*$ and $T:\mathbb{N} \to \mathbb{N}$, these are equivalent:
+\begin{itemize}
+	\item $f$ is \textbf{computable in time $T$}.
+	\item A TM $\mathcal{M}$ computes $f$ in time $T$.
+	\item $\mathcal{M}$ returns $f(x)$ on input $x$ in a number of steps smaller or equal to $T(|x|) \forall x \in \{0,1\}^*$.
+\end{itemize}
+
+A \textbf{language} $\mathcal{L}_{f} \subseteq\{0,1\}^{*}$ is decidable in time $T$ if and only if $f$ is computable in time $T$.
+
+A function $T:\mathbb{N} \to \mathbb{N}$ is \textbf{time-constructible} if the function itself can be computed on a Turing machine (i.e. $\forall x \in \{0,1\}^*$ $x \to \lfloor T(|x|) \rfloor$ is computable).
+
+\section{Polynomial time computable problems}
+
+TODO
+
+\section{Exponential time computable problems}
+
+TODO
+
+\section{Between feasible and unfeasible}
+
+TODO
+
+\end{document}
