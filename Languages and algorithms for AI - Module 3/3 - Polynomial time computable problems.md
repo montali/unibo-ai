@@ -32,6 +32,7 @@ Now, how do we actually prove if a task is in P or FP? In most cases, we'll be a
 ## EXP
 
 There is one last thing: a class bigger than <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/>, <img src="svgs/91523558357e27055dc14ed672b20165.svg?invert_in_darkmode" align=middle width=40.82761979999999pt height=22.465723500000017pt/>. This is a superset of <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/> and contains all decision problems which are solvable in exponential time by a deterministic Touring Machine.
+
 As _P_ has a similar class for non-determinstic TM, _NP_, also _EXP_ has a class like that: _NEXP_, which contains all decision problems which are solvable in exponential time by a nondeterminstic Touring Machine.
 
 #
