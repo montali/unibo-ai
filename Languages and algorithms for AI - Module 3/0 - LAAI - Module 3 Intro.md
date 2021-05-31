@@ -12,7 +12,7 @@ The theoretical notion of computation existed before (and keeps influencing) mon
 
 **Computability theory**: Computability = is a certain task computable (i.e. solvable by a computer)?
 
-**Computational complexity theory**: Efficency = is a certain task solvable in a reasonable amount of time or space (i.e. working memory)? If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
+**Computational complexity theory**: Efficency = is a certain task solvable in a reasonable amount of time and space (i.e. working memory)? If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
 
 ## Modelling computation
 
@@ -20,7 +20,7 @@ The theoretical notion of computation existed before (and keeps influencing) mon
 
 **Computational process**: A sequence of actions capable of solving a computational task. In the Theory of Computation is taken to be an algorithm (a finite description of a series of elementary computation steps, where the way the next step is determined must be deterministic).
 
-A computational task can have 0..N sovivng processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
+A computational task can have 0..N solving processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
 
 For example, two <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/>-digits numbers <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/> and <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> can be multiplied (<img src="svgs/aa9ac28882b306b4e881fbaacbafc4b7.svg?invert_in_darkmode" align=middle width=31.268917349999988pt height=22.831056599999986pt/>) in (at least) two ways.
 The first method ("repeated addition") by summing <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/> <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/> times (<img src="svgs/3049d386c04588a0fd49fc94ff49362d.svg?invert_in_darkmode" align=middle width=100.03970789999998pt height=19.1781018pt/>), which for each sum requires <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/> steps, hence the total cost is proportional to <img src="svgs/458e8b6dad5a69d223deeaf241ce1f43.svg?invert_in_darkmode" align=middle width=32.44663949999999pt height=22.831056599999986pt/> steps.
@@ -29,10 +29,10 @@ Notice that <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmo
 The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between <img src="svgs/f4afc77016e004d110eee6a7001a7a87.svg?invert_in_darkmode" align=middle width=35.25871964999999pt height=15.296829900000011pt/> and <img src="svgs/c77bd97048dbe2638b94e266d9e64d1c.svg?invert_in_darkmode" align=middle width=91.87403444999998pt height=24.65753399999998pt/>. 
 For example, supposing <img src="svgs/60956056c8ac4a0bb767ef199f98b76b.svg?invert_in_darkmode" align=middle width=56.442135749999984pt height=21.18721440000001pt/> and <img src="svgs/a938957de7ebf1ed5afe74305dc62c33.svg?invert_in_darkmode" align=middle width=102.41999955pt height=26.76175259999998pt/> (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
 
-Computational processes can be classified as **P** (Polinomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
+Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
 
 Proving tasks not solvable by processes beyond a certain level of efficency is very rarely possible.
-We can, however, interrelate different task to compare their compllexity.
+We can, however, interrelate different tasks to compare their complexity.
 
 ## Mathematical preliminaries
 
