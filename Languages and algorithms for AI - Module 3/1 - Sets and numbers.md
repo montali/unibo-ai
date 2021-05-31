@@ -36,5 +36,7 @@ Asymptotic notation is not about a function or the other, rather about the kind 
 
 So, showing that two functions <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> and <img src="svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/> are comparable, is made by studying the limit of the ratio <img src="svgs/f869e40b6a66cf16557a28095139cb6c.svg?invert_in_darkmode" align=middle width=26.099919449999998pt height=33.20539859999999pt/> for <img src="svgs/219ed870532672193ea4f5955e8b4de4.svg?invert_in_darkmode" align=middle width=51.87587954999999pt height=14.15524440000002pt/> and proving that it is constant. 
 
+#
+[Previous section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/0%20-%20LAAI%20-%20Module%203%20Intro.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/2%20-%20The%20computational%20model.md)
 
 
