@@ -16,3 +16,4 @@ Teacher: Ugo Dal Lago
 * [2 - The computational model](2%20-%20The%20computational%20model.md)
 * [3 - Polynomial time computable problems](3%20-%20Polynomial%20time%20computable%20problems.md)
 * [4 - Between feasible and unfeasible](4%20-%20Between%20feasible%20and%20unfeasible.md)
+* [5 - ML and theory of computation](5%20-%20ML%20and%20theory%20of%20computation.tex.md) - Only non compiled version
