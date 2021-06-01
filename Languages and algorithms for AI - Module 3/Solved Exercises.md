@@ -81,3 +81,43 @@ To which class does **THREECLIQUE** belong?
 
 ### Solution - TODO
 
+# Question Examples from Virtuale 20/21 - WIP
+
+Let _f, g_ be the functions defined as ![f(n)=2^nn^2](https://latex.codecogs.com/svg.latex?f%28n%29%3D2%5Enn%5E2) and ![g(n) = n2^n](https://latex.codecogs.com/svg.latex?g%28n%29%20%3D%20n2%5En).  
+Select one or more.
+- [ ] ![f\in\Omega(g)](https://latex.codecogs.com/svg.latex?f%5Cin%5COmega%28g%29)
+- [ ] ![f\in O(g)](https://latex.codecogs.com/svg.latex?f%5Cin%20O%28g%29)
+- [x] ![f\in\Theta(g)](https://latex.codecogs.com/svg.latex?f%5Cin%5CTheta%20%28g%29)
+
+- - - 
+In Turing Machines:  
+Select one or more.
+ - [ ] The presence of many tapes can make the class **P** different
+ - [x] What can be computed in exponential time is different from what can be computed in polynomial time
+ - [x] The presence of many tapes can make the class **DTIME(_n_)** different
+ - [ ] The class **EXP** can be equal to **P**
+
+- - -
+The problem **3SAT** is:  
+Select one or more.
+ - [x] Such that **INDSET** can be reduced to it
+ - [x] **NP**-hard
+ - [x] In the class **EXP**
+ - [ ] Computable in polynomial time
+
+- - -
+Suppose a language **_L_** is both in **NP** and in **EXP**. Then  
+Select one or more.
+ - [ ] **EXP** and **NP** are necessarly equal.
+ - [x] **_L_** can even be **NP**-complete.
+ - [x] **NP** and **EXP** are maybe different.
+ - [ ] **_L_** cannot be in **P**.
+
+- - -
+The notion of PAC-learnable concept class:  
+Select one or more.
+ - [x] Needs to hold for every distribution D on the instance class.
+ - [x] Does not make any reference to the time complexity of the learning algorithm.
+ - [ ] Requires the output concept to have probability of error ε, in all cases.
+ - [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
+
