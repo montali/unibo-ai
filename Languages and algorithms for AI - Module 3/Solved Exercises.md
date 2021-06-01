@@ -81,7 +81,7 @@ To which class does **THREECLIQUE** belong?
 
 ### Solution - TODO
 
-# Question Examples from Virtuale 20/21 - WIP
+# Question Examples from Virtuale 20/21
 
 Let _f, g_ be the functions defined as ![f(n)=2^nn^2](https://latex.codecogs.com/svg.latex?f%28n%29%3D2%5Enn%5E2) and ![g(n) = n2^n](https://latex.codecogs.com/svg.latex?g%28n%29%20%3D%20n2%5En).  
 Select one or more.
