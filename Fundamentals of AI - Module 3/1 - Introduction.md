@@ -9,7 +9,7 @@ This module is composed by 10 hours of lecture in 5 lectures.
 - Basic probability notation: Probabilistic notations already studied in Statistical and Matematical Methods, Logical connectives
 - Inference using full joint distributions: Take decisions basing on the modeled world
 - Independence: Construct complex models of the world in an abstract way (more compact than probabilistic notation)
-- Bayesian network representation: Another way of mdeling the world
+- Bayesian network representation: Another way of modeling the world
 - Constructing Bayesian networks
 - Exact and approximate inference: Thought process based on baesyan networks 
 - Simple case studies
