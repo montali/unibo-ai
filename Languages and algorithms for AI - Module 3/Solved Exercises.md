@@ -1,3 +1,7 @@
+# Exercise Book
+
+[Exercises proposed and solved by professors](exercise_book.pdf)
+
 # Problem Examples from Virtuale 20/21 - WIP
 
 Solutions provided are not _official_ solutions by professor, but are made by me. So be careful.
