@@ -22,9 +22,9 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (q2, 0) → (q2, 0, R)  
 (q1, □) → (q3, □, L)  
 (q2, □) → (q3, □, L)  
-(q3, 0) → (q3, 0, L)
-(q3, 1) → (q3, 1, L)
-(q3, ▷) → (qhalt, ▷, S)
+(q3, 0) → (q3, 0, L)  
+(q3, 1) → (q3, 1, L)  
+(q3, ▷) → (qhalt, ▷, S)  
 
 If the TM reaches the ending state qhalt, then the string is accepted, otherwise, when the TM reaches a state where δ is not defined, the string is rejected.
 
