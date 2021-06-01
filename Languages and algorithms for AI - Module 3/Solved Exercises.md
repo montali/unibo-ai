@@ -1,4 +1,6 @@
-# Problem Examples from virtuale 20/21 - WIP
+# Problem Examples from Virtuale 20/21 - WIP
+
+Solutions provided are not _official_ solutions by professor, but are made by me. So be careful.
 
 ## Problem 1
 
@@ -10,9 +12,25 @@ Study the complexity of TM you have defined.
 
 ### Solution
 
-The alphabet Γ can be defined as {▷,□, 0, 1}, while the set of states Q is
-{qinit, qs, qr}. The transition function is specified as follows:
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
+{qinit, q1, q2, q3, qhalt}. The transition function is specified as follows:
 
+(qinit, ▷) → (q1, ▷, S)  
+(q1, ▷) → (q1, ▷, R)  
+(q1, 0) → (q2, 0, R)  
+(q1, 1) → (q1, 1, R)  
+(q2, 0) → (q2, 0, R)  
+(q1, □) → (q3, □, L)  
+(q2, □) → (q3, □, L)  
+(q3, 0) → (q3, 0, L)
+(q3, 1) → (q3, 1, L)
+(q3, ▷) → (qhalt, ▷, S)
+
+If the TM reaches the ending state qhalt, then the string is accepted, otherwise, when the TM reaches a state where δ is not defined, the string is rejected.
+
+Note that there are no transitions for the configuration (q2, 1), which corresponds to substring 01 detected.
+
+When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string. 
 
 ## Problem 2
 
