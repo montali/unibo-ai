@@ -36,7 +36,7 @@ There is one last thing: a class bigger than <img src="svgs/df5a289587a2f0247a5b
 As _P_ has a similar class for non-determinstic TM, _NP_, also _EXP_ has a class like that: _NEXP_, which contains all decision problems which are solvable in exponential time by a nondeterminstic Touring Machine.
 
 #
-[Previous section](https://github.com/montali/unibo-ai/edit/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/2%20-%20The%20computational%20model.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/4%20-%20Between%20feasible%20and%20unfeasible.md)
+[Previous section](2%20-%20The%20computational%20model.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/4%20-%20Between%20feasible%20and%20unfeasible.md)
 
 
 
