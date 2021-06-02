@@ -121,3 +121,53 @@ Select one or more.
  - [ ] Requires the output concept to have probability of error ε, in all cases.
  - [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
 
+# Problems from Exam 06/26/2020 - WIP
+
+## Problem 1
+
+Give a TM to decide _**L**_= set of strings for which if 01 is present, then is followed by all 0s.
+
+### Solution
+
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, q1, q2, qhalt}. The transition function δ is specifies as follows:
+
+(qinit, ▷) → (q1, ▷, S)  
+(q1, ▷) → (q1, ▷, R)  
+(q1, 0) → (q2, 0, R)  
+(q1, 1) → (q1, 1, R)  
+(q2, 0) → (q2, 0, R)  
+(q2, 1) → (q3, 1, R)  
+(q3, 0) → (q3, 0, R)  
+(q1, □) → (q4, □, L)  
+(q2, □) → (q4, □, L)  
+(q3, □) → (q4, □, L)  
+(q4, 0) → (q4, 0, L)  
+(q4, 1) → (q4, 1, L)  
+(q4, ▷) → (qhalt, ▷, S)  
+
+If the TM reaches the ending state qhalt, then the string is accepted, otherwise, when the TM reaches a state where δ is not defined, the string is rejected.
+
+States explanantion:
+  - **qinit**: it is just the initial state. The TM immediately passes to q1.
+  - **q1**: the TM read the string charachter by charachter. If it read 0, it passes to q2.
+  - **q2**: as q1, but a 0 has been detected yet, so reading a 1 will mean that 01 is detected and the TM will pass to q3.
+  - **q3**: 01 detected, so the TM only reads 0s, indeed there are no transitions for the configuration (q3, 1).
+  - **q4**: This state is reached when the TM reads a blank charachter, meaning that the string is finished and has to be accepted. It just reset the head at the start of the tape, before passing to qhalt, which is the final state.
+
+When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string. 
+
+## Problem 2
+
+Prove that the problem is in **NP**: check if a number is the sum of powers of 3 by giving a TM or pseudocode.
+(Asked to the professor, he said that 3^0 is not allowed as the problem would be trivial).
+
+### Solution - TODO
+
+We start defining a pseudocode:
+
+```
+def f(n):
+  
+```
+
+
