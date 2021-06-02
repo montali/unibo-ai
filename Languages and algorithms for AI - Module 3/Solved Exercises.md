@@ -183,7 +183,7 @@ This formulation of the problem (which is indeed a reformulation by a student) i
 
 However, I've found similar exercises with the original formulations of the professor, which are more clear. The problem asks to establish which is the complexity of establishing if an algorithm (which is given in input with some binary codification) belongs to PP.
 
-This can be achieved comparing (in linear time) it with all the algorithms of the book (which are constants), so of course is a **P** problem.
+This can be achieved comparing (in linear time) it with all the algorithms of the book (which are a constants number), so of course is a **P** problem.
 
 
 
