@@ -121,7 +121,7 @@ Select one or more.
  - [ ] Requires the output concept to have probability of error ε, in all cases.
  - [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
 
-# Problems from Exam 06/26/2020 - WIP
+# Problems from Exam 06/26/2020
 
 ## Problem 1
 
@@ -161,13 +161,33 @@ When the TM read □ (i.e. the input string is finished), it goes to the state q
 Prove that the problem is in **NP**: check if a number is the sum of powers of 3 by giving a TM or pseudocode.
 (Asked to the professor, he said that 3^0 is not allowed as the problem would be trivial).
 
-### Solution - TODO
+### Solution
 
-We start defining a pseudocode:
-
+We at first notice that a number can be expressed as a sum between power of 3 (3 to thw ower of 0 excluded) iff it is divisible by 3.
+Since we have to show that the problem is in **NP** we can describe a non-deterministic algorithm. So our algorithm can just pick a random number non-determinstically, multiply it by 3 and check if it is equal to the input number n.
+The multiplication and the comparison between two numbers can be of course executed in polynomial time.
+The pseudocode is the following:
 ```
 def f(n):
-  
+  assign non-determinstically a number greater than 0 to k
+  k = k * 3
+  return k == n
 ```
+
+## Problem 3
+
+PP is the set of theorems expressed in the Principia Matematica, published by Bertrand Russel in 1909-13. Do they fall in a complexity class? Motivate
+
+### Solution
+This formulation of the problem (which is indeed a reformulation by a student) is actually a bit tricky and it would require to know all the algorithm of the book to establish to which subset of **NEXP** the algorithms belong (**NEXP** is a set enough big to make us quite sure that all the algorithms in that book belong to it).
+
+However, I've found similar exercises with the original formulations of the professor, which are more clear. The problem asks to establish which is the complexity of establishing if an algorithm (which is given in input with some binary codification) belongs to PP.
+
+This can be achieved comparing (in linear time) it with all the algorithms of the book (which are constants), so of course is a **P** problem.
+
+
+
+
+
 
 
