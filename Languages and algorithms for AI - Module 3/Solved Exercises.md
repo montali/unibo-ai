@@ -79,7 +79,23 @@ We studied the problem **CLIQUE**.
 You are required to classify the subset **THREECLIQUE** of **CLIQUE** consisting of all the pairs **(_G_,3)**.
 To which class does **THREECLIQUE** belong? 
 
-### Solution - TODO
+### Solution
+
+**THREECLIQUE** is a way simpler problem than **CLIQUE**. In fact we can solve it with the algorithm described by this simple pseudocode:
+
+```
+def threeclique(V, E):
+  for u in V:
+    for v in V - {u}:
+      for w in V - {u, v}:
+        if (u,v), (v,w) and (u,w) belongs to E:
+          return true
+  return false
+```
+
+Checking if an edge belongs to the set of edges of the graph can be done by simpling comparing it with alle the m edges of the graph, which can be done in polynomial time.
+This operation is inside a triple nested ```for```, so it will be done a very big number of times, but still polynomial. SO the problem belongs to the **P** class.
+
 
 # Question Examples from Virtuale 20/21
 
