@@ -1,6 +1,7 @@
 # Exercise Book
 
-[Exercises proposed and solved by professors](exercise_book.pdf)
+- [Exercises proposed and solved by professors](exercise_book.pdf)
+  - [Solution to exercise 2.4 of the file](http://turingmachinesimulator.com/shared/wyluauetfs)
 
 # Problem Examples from Virtuale 20/21 - WIP
 
