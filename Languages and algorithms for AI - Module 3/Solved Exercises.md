@@ -42,7 +42,61 @@ If we choose to use reverse encoding the problem is quite simple. With a single 
 (q0, □) → (q1, 1, L)  
 (q1, 0) → (q1, 0, L)  
 (q1, 1) → (q1, 1, L)  
-(q1, ▷) → (qhalt, ▷, S)  
+(q1, ▷) → (qhalt, ▷, S)
+
+## Turing Machines
+
+### Exercise 1
+Write a TM which computes the sum of two binary numbers _a,b >= 0_.
+
+**Solution:** TODO, it is fucking long.
+
+### Exercise 2
+Write a TM for palindromes, i.e. a TM that accepts a binary string _w_ iff _w_ is a palindrome.
+
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, q0, q0a, q0b, q1, q1a, q1b, qhalt}. The transition function δ is specified as follows:
+
+(qinit, ▷) → (q0, ▷, R)  
+(qa, 0) → (q0, ▷, R)  
+(qa, 1) → (q1, ▷, R)  
+(qa, □) → (qhalt, □, S)  
+// 0 is read  
+(q0, 0/1) → (q0, 0/1, R)  
+(q0, □) → (q0a, □, L)  
+(q0a, 0) → (q0b, □, L)  
+(q0b, 0/1) → (q0b, 0\1, L)  
+(q0b, ▷) → (qa, ▷, R)  
+// 1 is read  
+(q1, 0/1) → (q1, 0/1, R)  
+(q1, □) → (q1a, □, L)  
+(q1a, 1) → (q1b, □, L)  
+(q1b, 0/1) → (q1b, 0\1, L)  
+(q1b, ▷) → (qa, ▷, R)  
+
+This is not exactly the same proposed by professor, but I think it should work.
+
+### Exercise 3
+
+Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
+
+This was proposed as a homework problem, so there is no solution showed in class.
+
+**Solution:**
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, qb, q0, q1, qhalt}. The transition function δ is specified as follows:
+
+(qinit, ▷) → (qa, □, R)  
+(qa, 0) → (q0, ▷, R)  
+(qa, 1) → (q1, ▷, R)  
+(qa, ▷) → (qa, ▷, R)  
+(qa, □) → (qhalt, □, S)  
+(q0, 0) → (q0, 0, R)  
+(q0, 1) → (qb, ▷, L)  
+(q0, ▷) → (q0, ▷, R)  
+(q1, 0) → (qb, ▷, L)  
+(q1, 1) → (q1, 1, R)  
+(q1, ▷) → (q1, ▷, R)  
+(qb, 0/1/▷) → (qb, 0/1/▷, L)  
+(qb, □) → (qa, □, R)  
 
 # Problem Examples from Virtuale 20/21 - WIP
 
