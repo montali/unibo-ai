@@ -12,6 +12,7 @@
 Prove the uncompatibility of the halting problem, namely the fact that the function <img src="https://render.githubusercontent.com/render/math?math=halt(\alpha, x)"> defined by cases:
  - equal to 1 if <img src="https://render.githubusercontent.com/render/math?math=M_\alpha(x)"> terminates
  - equal to 0 otherwise
+
 is uncomputable.
 
 **Solutions:**
