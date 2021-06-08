@@ -3,6 +3,46 @@
 - [Exercises proposed and solved by professors](exercise_book.pdf)
   - [Solution to exercise 2.4 of the file](http://turingmachinesimulator.com/shared/vbwvbqjngd)
 
+# Exercises proposed during lessons of the Accademic Year 2020/21 - WIP
+
+## Computational Model
+
+### Exercise 1
+
+Prove the uncompatibility of the halting problem, namely the fact that the function <img src="https://render.githubusercontent.com/render/math?math=halt(\alpha, x)"> defined by cases:
+ - equal to 1 if <img src="https://render.githubusercontent.com/render/math?math=M_\alpha(x)"> terminates
+ - equal to 0 otherwise
+is uncomputable.
+
+**Solutions:**
+We show that from an hypotetical machine computing _halt_, calling it _Mhalt_, we can get another TM, call _Muc_, which computes the _uc_, and we know it cannot exist (_uc_ is by definition a function not computable by any TM).
+
+Let us construct _Muc_ out of _Mhalt_:
+ - on input _α Muc_ proceeds by calling _Mhalt_ on input _(α, α)_ and:
+    - in case _Mhalt_ returns 0 (meaning that _Mα(α)_ diverges), _Muc_ outputs 1
+    - otherwiswe, i.e. in the case in which _Mhalt_ returns 1 (meaning that _Mα(α)_ converges), _Muc_ knows that it can safely call U (the universal TM) on _(α, α)_ and that U will terminate its execution on that input (because what U does with input _(α, α)_ is to simulate the execution of _Mα(α)_), returning an output _b_. Now:
+      - if _b=1_ then _Muc_ returns 0
+      - if _b=0_ then _Muc_ returns 1
+  - _Muc_ as we have just defined it is indeed a TM computing _uc_, but since we know that _uc_ is uncomutable, there is a contraddiction and _halt_ itself is uncomputable.
+
+### Exercise 2
+Show that the function _inc_: N -> N such that _inc(n) = n+1_ can be computed in linear time by giving an explicit construction of a TM.
+
+**Solution:**
+At first we have to encode natural numbers as binary strings. We have two possibility:
+  - traditional encoding: (e.g. 12 = 1100)
+  - reverse encoding: (e.g. 12 = 0011)
+
+If we choose to use reverse encoding the problem is quite simple. With a single tape TM we will need to pass through the whole input string from left to right only once, meaning in linear time. The transiction function will look as follows:
+
+(qinit, ▷) → (q0, ▷, R)  
+(q0, 0) → (q1, 1, L)  
+(q0, 1) → (q0, 0, R)  
+(q0, □) → (q1, 1, L)  
+(q1, 0) → (q1, 0, L)  
+(q1, 1) → (q1, 1, L)  
+(q1, ▷) → (qhalt, ▷, S)  
+
 # Problem Examples from Virtuale 20/21 - WIP
 
 Solutions provided are not _official_ solutions by professor, but are made by me. So be careful.
