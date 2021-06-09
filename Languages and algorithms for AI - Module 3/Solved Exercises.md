@@ -138,6 +138,10 @@ Note that there are no transitions for the configuration (q2, 1), which correspo
 
 When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string. 
 
+It follows a JFLAP implementation. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I've made some changes to manage the different starting position of the head.
+
+![image](https://user-images.githubusercontent.com/31796254/121328990-17756d80-c915-11eb-87fa-c8e993c55c85.png)
+
 ## Problem 2
 
 You are required to prove that the following function _**f**_ is in **FP**. To do that, you can give a TMs or define some pseudocode.
