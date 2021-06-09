@@ -12,7 +12,8 @@ This model has the peculiar feature that each instance (finite set of instructio
 Actually, in the model we can observe this by proving that there exists the universal Turing Machine, a particular instance of this which simulates all the other machines.
 This does nothing less than taking in input a pair of strings <img src="svgs/d23d97bba5b8b6cd5a3b42d24a735d35.svg?invert_in_darkmode" align=middle width=40.06280189999999pt height=24.65753399999998pt/>, and simulating the input of the machine of index <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> with the input <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/>. This is basically an interpreter: it takes a program and an input and produces an output!
 
-Actually, the simulation is quite efficient: if the original machine works in time <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936097749999991pt height=20.221802699999984pt/>, then the universal machine takes a time which is slightly more, just with a logarithmic overhead. The functions which can be computed by Turing mMchines do not completely saturate the space of all functions: they are infinitely many, some of them are intrinsically uncomputable. 
+Actually, the simulation is quite efficient: if the original machine works in time <img src="svgs/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode" align=middle width=5.936097749999991pt height=20.221802699999984pt/>, then the universal machine takes a time which is slightly more, just with a logarithmic overhead.
+The functions which can be computed by Turing Machines do not completely saturate the space of all functions: they are infinitely many, some of them are intrinsically uncomputable. 
 
 ## The model, formally
 
@@ -48,7 +49,7 @@ Now, there is one thing to say: when the first parameter is <img src="svgs/d8746
 <p align="center"><img src="svgs/4ba859eb030d2a2cb4f02daeadaea3b9.svg?invert_in_darkmode" align=middle width=383.47549515pt height=16.438356pt/></p>
 meaning that the machine stays in this position.
 
-The turing machine can be referred as <img src="svgs/733e23cc17dc1982d8f582c9b3008985.svg?invert_in_darkmode" align=middle width=100.25315354999998pt height=24.65753399999998pt/>.
+The Turing Machine can be referred as <img src="svgs/733e23cc17dc1982d8f582c9b3008985.svg?invert_in_darkmode" align=middle width=100.25315354999998pt height=24.65753399999998pt/>.
 
 Now, the current state of the machine is not just the current state <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/>, but the **configuration**, composed of <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/>, the contents of the <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075367949999992pt height=22.831056599999986pt/> tapes, and the position of the <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075367949999992pt height=22.831056599999986pt/> heads! One such configuration will be indicated as <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=22.465723500000017pt/>.
 
@@ -69,7 +70,9 @@ Then, we can finally say that a **language** <img src="svgs/030a95852438e9a9a99e
 
 A function <img src="svgs/17726fa8b5401d1429efa4fd9faad060.svg?invert_in_darkmode" align=middle width=74.90269049999998pt height=22.648391699999998pt/> is **time-constructible** if the function itself can be computed on a Turing Machine (i.e. <img src="svgs/8d6cf5fa5a662cc93e0a9cdb1c3c0029.svg?invert_in_darkmode" align=middle width=85.53648839999998pt height=24.65753399999998pt/> <img src="svgs/c98b21c77c765ccc40a78b2c09de2c87.svg?invert_in_darkmode" align=middle width=92.77967984999998pt height=24.65753399999998pt/> is computable). 
 
-How robust is our definition? There are many details that are arbitrary. We have chosen this not because it's the best, but because it's okay. For example, rather than having an alphabet for the tapes we may restrict it to the minimal, or restrict the number of tapes, or make the tapes infinite in both directions, etc. However it can be proved that these more restrictive notions of TM simulate the more general one, with polynomial overhead, so they are equivalent.
+How robust is our definition? There are many details that are arbitrary.
+We have chosen this not because it's the best, but because it's okay. For example, rather than having an alphabet for the tapes we may restrict it to the minimal, or restrict the number of tapes, or make the tapes infinite in both directions, etc.
+However it can be proved that these more restrictive notions of TM simulate the more general one, with polynomial overhead, so they are equivalent.
 
 What keeps our definition so simple is that describing it is just describing the transition function <img src="svgs/38f1e2a089e53d5c990a82f284948953.svg?invert_in_darkmode" align=middle width=7.928075099999989pt height=22.831056599999986pt/>: the states are finitely many, the symbols are finite, the tapes too. So, the description is nothing more than the description of this subset. 
 
@@ -89,4 +92,4 @@ A *diophantine equation* is a polynomial equality with integer coefficients and 
 We want a language to be semantic, i.e. whenever an encoding of a Turing Machine is in the language and there exists a TM which computes the same function as <img src="svgs/fb97d38bcc19230b0acd442e17db879c.svg?invert_in_darkmode" align=middle width=17.73973739999999pt height=22.465723500000017pt/>, also the encoding of that TM is in that language. 
 
 #
-[Previous section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/1%20-%20Sets%20and%20numbers.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/3%20-%20Polynomial%20time%20computable%20problems.md)
+[Previous section](1%20-%20Sets%20and%20numbers.md) · [Next section](3%20-%20Polynomial%20time%20computable%20problems.md)
