@@ -13,7 +13,7 @@ Syntax:
 - An infinite set of functional symbols of all arities.
 - An infinite set of predicates symbols of all arities.
 - Connectives: $\land, \lor, \rightarrow, \neg$
-- Quantifiers: $\forall, \exist$
+- Quantifiers: $\forall, \exists$
 
 ### Description Logic (*DL*)
 
@@ -32,11 +32,11 @@ The syntax is composed by
     - Conjunction $\sqcap$
     - Disjunction $\sqcup$
     - Negation $\neg$, applicable only to atomic concepts
-  - Restricted quantifiers: $\exist, \forall$
+  - Restricted quantifiers: $\exists, \forall$
   - Universal and bottom concepts ($\top,\bot$)
   - Value restriction
     - Universal restriction $\forall R.C$
-    - Existential restriction $\exist R.C$
+    - Existential restriction $\exists R.C$
   - Concept subsumption ($\sqsubset, \sqsubseteq, \sqsupset, \sqsupseteq$)
   - Concept equivalence ($\equiv$)
 

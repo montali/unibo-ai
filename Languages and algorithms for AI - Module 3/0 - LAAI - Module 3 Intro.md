@@ -8,11 +8,12 @@ Suppose we wanted to write a python program multiplying two integers, without us
 
 Provides a precise definition of the computable and many results about it.
 Born in the 20th century, it has evolved into a fully fledged scientific field.
-The theoretical notion of computation existed before (and keeps influencing) mondern electronic computers. 
+The theoretical notion of computation existed before (and keeps influencing) modern electronic computers. 
 
 **Computability theory**: Computability = is a certain task computable (i.e. solvable by a computer)?
 
-**Computational complexity theory**: Efficency = is a certain task solvable in a reasonable amount of time and space (i.e. working memory)? If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
+**Computational complexity theory**: Efficiency = is a certain task solvable in a reasonable amount of time and space (i.e. working memory)?
+If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
 
 ## Modelling computation
 
@@ -31,7 +32,7 @@ For example, supposing <img src="svgs/60956056c8ac4a0bb767ef199f98b76b.svg?inver
 
 Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
 
-Proving tasks not solvable by processes beyond a certain level of efficency is very rarely possible.
+Proving tasks not solvable by processes beyond a certain level of efficiency is very rarely possible.
 We can, however, interrelate different tasks to compare their complexity.
 
 ## Mathematical preliminaries
@@ -55,4 +56,4 @@ Mathematical concepts needed for the course:
   - Length <img src="svgs/cd8f6d1a08b2e1ed11a4305d3f6caab3.svg?invert_in_darkmode" align=middle width=18.52743584999999pt height=24.65753399999998pt/> of a string <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/>
 
 #
-[Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/1%20-%20Sets%20and%20numbers.md)
+[Next section](1%20-%20Sets%20and%20numbers.md)
