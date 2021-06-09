@@ -83,7 +83,7 @@ This is not exactly the same proposed by professor, but I've tested it with [JFL
 
 Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
 
-This was proposed as a homework problem, so there is no solution showed in class.
+This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 **Solution:**
 The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, qb, q0, q1, qhalt}. The transition function δ is specified as follows:
@@ -101,6 +101,9 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (q1, ▷) → (q1, ▷, R)  
 (qb, 0/1/▷) → (qb, 0/1/▷, L)  
 (qb, □) → (qa, □, R)  
+
+![image](https://user-images.githubusercontent.com/31796254/121327435-ba2cec80-c913-11eb-9865-52f90058d014.png)
+
 
 # Problem Examples from Virtuale 20/21 - WIP
 
