@@ -55,26 +55,29 @@ Write a TM which computes the sum of two binary numbers _a,b >= 0_.
 ### Exercise 2
 Write a TM for palindromes, i.e. a TM that accepts a binary string _w_ iff _w_ is a palindrome.
 
-The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, q0, q0a, q0b, q1, q1a, q1b, qhalt}. The transition function δ is specified as follows:
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, q0, q0a, q1, q1a, qb, qhalt}. The transition function δ is specified as follows:
 
-(qinit, ▷) → (q0, ▷, R)  
+(qinit, ▷) → (qa, ▷, R)  
 (qa, 0) → (q0, ▷, R)  
 (qa, 1) → (q1, ▷, R)  
 (qa, □) → (qhalt, □, S)  
 // 0 is read  
 (q0, 0/1) → (q0, 0/1, R)  
 (q0, □) → (q0a, □, L)  
-(q0a, 0) → (q0b, □, L)  
-(q0b, 0/1) → (q0b, 0\1, L)  
-(q0b, ▷) → (qa, ▷, R)  
+(q0a, 0) → (qb, □, L)   
+(q0a, ▷) → (qa, ▷, R)  
 // 1 is read  
 (q1, 0/1) → (q1, 0/1, R)  
 (q1, □) → (q1a, □, L)  
-(q1a, 1) → (q1b, □, L)  
-(q1b, 0/1) → (q1b, 0\1, L)  
-(q1b, ▷) → (qa, ▷, R)  
+(q1a, 1) → (qb, □, L)  
+(q1a, ▷) → (qa, ▷, R)  
+//
+(qb, 0/1) → (qb, 0\1, L)  
+(qb, ▷) → (qa, ▷, R)  
 
-This is not exactly the same proposed by professor, but I think it should work.
+This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+
+![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
 
 ### Exercise 3
 
