@@ -25,20 +25,21 @@ A DL knowledge base is composed by a ***TBox*** (a set of "schema" axioms) and a
 
 It does not support disjunction and provides limited forms of negation and existential quantifier only.
 The syntax is composed by
-  - Atomic concepts
-  - Roles (relationships)
-  - Individuals (nominals)
-  - Boolean operators
-    - Conjunction $\sqcap$
-    - Disjunction $\sqcup$
-    - Negation $\neg$, applicable only to atomic concepts
-  - Restricted quantifiers: <img src="svgs/b4c5b626a225ce855a9e41a4287d3cc5.svg?invert_in_darkmode" align=middle width=25.57077929999999pt height=22.831056599999986pt/>
-  - Universal and bottom concepts (<img src="svgs/b37a16d4b12caeff164d04ba28599132.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=22.831056599999986pt/>)
-  - Value restriction
-    - Universal restriction $\forall R.C$
-    - Existential restriction $\exists R.C$
-  - Concept subsumption (<img src="svgs/425e4da138ab8b67e31ea86f4f9a6c1e.svg?invert_in_darkmode" align=middle width=73.05938309999999pt height=20.908638300000003pt/>)
-  - Concept equivalence (<img src="svgs/ebf45b23c8b2fe7cb8bf20cb8bbd565d.svg?invert_in_darkmode" align=middle width=12.785434199999989pt height=15.24650820000002pt/>)
+
+- Atomic concepts
+- Roles (relationships)
+- Individuals (nominals)
+- Boolean operators
+  - Conjunction <img src="svgs/134e7ad74c723bdf3141c457e55a5e35.svg?invert_in_darkmode" align=middle width=10.95894029999999pt height=18.264896099999987pt/>
+  - Disjunction <img src="svgs/2cfa3b62e25c55e1f2b62ff472d5fd09.svg?invert_in_darkmode" align=middle width=10.95894029999999pt height=18.264896099999987pt/>
+  - Negation <img src="svgs/23bf728170c10d0449b90561f827623a.svg?invert_in_darkmode" align=middle width=10.95894029999999pt height=14.15524440000002pt/>, applicable only to atomic concepts
+- Restricted quantifiers: <img src="svgs/b4c5b626a225ce855a9e41a4287d3cc5.svg?invert_in_darkmode" align=middle width=25.57077929999999pt height=22.831056599999986pt/>
+- Universal and bottom concepts (<img src="svgs/b37a16d4b12caeff164d04ba28599132.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=22.831056599999986pt/>)
+- Value restriction
+  - Universal restriction <img src="svgs/0b93210f16164ffe472977e912f17b2a.svg?invert_in_darkmode" align=middle width=39.231785999999985pt height=22.831056599999986pt/>
+  - Existential restriction <img src="svgs/fdcbe66a0740c16f07076e237ac8972d.svg?invert_in_darkmode" align=middle width=39.231785999999985pt height=22.831056599999986pt/>
+- Concept subsumption (<img src="svgs/425e4da138ab8b67e31ea86f4f9a6c1e.svg?invert_in_darkmode" align=middle width=73.05938309999999pt height=20.908638300000003pt/>)
+- Concept equivalence (<img src="svgs/ebf45b23c8b2fe7cb8bf20cb8bbd565d.svg?invert_in_darkmode" align=middle width=12.785434199999989pt height=15.24650820000002pt/>)
 
 ##### AL extensions
 

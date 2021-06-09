@@ -25,20 +25,21 @@ A DL knowledge base is composed by a ***TBox*** (a set of "schema" axioms) and a
 
 It does not support disjunction and provides limited forms of negation and existential quantifier only.
 The syntax is composed by
-  - Atomic concepts
-  - Roles (relationships)
-  - Individuals (nominals)
-  - Boolean operators
-    - Conjunction $\sqcap$
-    - Disjunction $\sqcup$
-    - Negation $\neg$, applicable only to atomic concepts
-  - Restricted quantifiers: $\exists, \forall$
-  - Universal and bottom concepts ($\top,\bot$)
-  - Value restriction
-    - Universal restriction $\forall R.C$
-    - Existential restriction $\exists R.C$
-  - Concept subsumption ($\sqsubset, \sqsubseteq, \sqsupset, \sqsupseteq$)
-  - Concept equivalence ($\equiv$)
+
+- Atomic concepts
+- Roles (relationships)
+- Individuals (nominals)
+- Boolean operators
+  - Conjunction $\sqcap$
+  - Disjunction $\sqcup$
+  - Negation $\neg$, applicable only to atomic concepts
+- Restricted quantifiers: $\exists, \forall$
+- Universal and bottom concepts ($\top,\bot$)
+- Value restriction
+  - Universal restriction $\forall R.C$
+  - Existential restriction $\exists R.C$
+- Concept subsumption ($\sqsubset, \sqsubseteq, \sqsupset, \sqsupseteq$)
+- Concept equivalence ($\equiv$)
 
 ##### AL extensions
 
