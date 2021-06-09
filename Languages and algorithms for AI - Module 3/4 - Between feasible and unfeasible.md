@@ -12,6 +12,7 @@ Is there anything interesting in this *grey land* of problems which are known no
 The first concept is the **dicotomy between creating and verifying**.
 Very often, the language we'd like to classify can be written as follows:
 <p align="center"><img src="svgs/4e7c4bca127939c72aa1398a2ec77374.svg?invert_in_darkmode" align=middle width=333.2067189pt height=29.58934275pt/></p>
+
 The language <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> is the language of all strings for which there exists a certificate y such that <img src="svgs/7392a8cd69b275fa1798ef94c839d2e0.svg?invert_in_darkmode" align=middle width=38.135511149999985pt height=24.65753399999998pt/>, seen as a pair, lies in a set of pairs of <img src="svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.32879834999999pt height=22.465723500000017pt/>.
 If we want to conclude that <img src="svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.39498779999999pt height=14.15524440000002pt/> is in <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/>, we characterize it by another language A (which is a set of pairs of strings), using a certificate <img src="svgs/deceeaf6940a8c7a5a02373728002b0f.svg?invert_in_darkmode" align=middle width=8.649225749999989pt height=14.15524440000002pt/> (which exists).
 The other crucial part is <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/>, which is a polynomial function.
@@ -29,6 +30,7 @@ There is a dicotomy between crafting a solution for the problem, and checking a 
 
 And that's it. The complexity class **NP** can be defined as the set of all languages L for which there exists a polynomial <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> and a polynomial time TM <img src="svgs/fb97d38bcc19230b0acd442e17db879c.svg?invert_in_darkmode" align=middle width=17.73973739999999pt height=22.465723500000017pt/> such that
 <p align="center"><img src="svgs/56ff8c1d882de45f8a37ccc92b855c9b.svg?invert_in_darkmode" align=middle width=366.306105pt height=29.58934275pt/></p>
+
 We want M to return 1 when fed with the pair <img src="svgs/7392a8cd69b275fa1798ef94c839d2e0.svg?invert_in_darkmode" align=middle width=38.135511149999985pt height=24.65753399999998pt/>. NP is the class of languages for which **checking certificates** can be checked in polynomial time. This doesn't mean that we can find a solution in polynomial time, rather check certificates. 
 
 So, M can be said **verifier** for <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/>. The class NP does not have a natural **counterpart**. It is a class of languages, and it's important for the definition that <img src="svgs/47291815667dfe5994c54805102e144b.svg?invert_in_darkmode" align=middle width=11.337943649999989pt height=22.465723500000017pt/> is a language. Otherwise, it's not so easy to think about it as a generalization.
@@ -85,3 +87,6 @@ The following languages are **NP**-complete:
 - <img src="svgs/c6deb0fd567b2bbae3787e0978d4c40d.svg?invert_in_darkmode" align=middle width=281.54716095pt height=24.65753399999998pt/>
 
 This is a relevant proof of existence of **NP**-complete problems.
+
+#
+[Previous section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/3%20-%20Polynomial%20time%20computable%20problems.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/5%20-%20ML%20and%20theory%20of%20computation.md)

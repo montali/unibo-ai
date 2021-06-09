@@ -18,6 +18,7 @@ There are downsides too. One of these is that it is based on worst cases: the de
 
 We'd like to classify functions instead of languages. A function is in the class <img src="svgs/1c77ec476d0ffc061124a21e00d449ae.svg?invert_in_darkmode" align=middle width=78.14734124999998pt height=22.465723500000017pt/> if there is a TM computing <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> in time proportional to <img src="svgs/cc4152a1ba8a0ec113e9f2062a489b7d.svg?invert_in_darkmode" align=middle width=34.54162139999999pt height=24.65753399999998pt/> for some constant <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.11380504999999pt height=14.15524440000002pt/>. 
 <p align="center"><img src="svgs/b9a145d3cc1682e57e3987faa1147e8f.svg?invert_in_darkmode" align=middle width=181.34142015pt height=39.0630438pt/></p>
+
 Obviously, if we have a characteristic function <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> for a language which is in <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/>, <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> will be in <img src="svgs/83e7c965e79585945f597a03a99a0f43.svg?invert_in_darkmode" align=middle width=25.69069799999999pt height=22.465723500000017pt/>.
 
 We can turn functions into languages (the inverse is obvious - is it?) in some canonical ways. 
@@ -30,7 +31,12 @@ Now, how do we actually prove if a task is in P or FP? In most cases, we'll be a
 
 ## EXP
 
-There is one last thing: a class bigger than <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/>, <img src="svgs/91523558357e27055dc14ed672b20165.svg?invert_in_darkmode" align=middle width=40.82761979999999pt height=22.465723500000017pt/>. This is a superset.
+There is one last thing: a class bigger than <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/>, <img src="svgs/91523558357e27055dc14ed672b20165.svg?invert_in_darkmode" align=middle width=40.82761979999999pt height=22.465723500000017pt/>. This is a superset of <img src="svgs/df5a289587a2f0247a5b97c1e8ac58ca.svg?invert_in_darkmode" align=middle width=12.83677559999999pt height=22.465723500000017pt/> and contains all decision problems which are solvable in exponential time by a deterministic Touring Machine.
+
+As _P_ has a similar class for non-determinstic TM, _NP_, also _EXP_ has a class like that: _NEXP_, which contains all decision problems which are solvable in exponential time by a nondeterminstic Touring Machine.
+
+#
+[Previous section](2%20-%20The%20computational%20model.md) · [Next section](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/4%20-%20Between%20feasible%20and%20unfeasible.md)
 
 
 
