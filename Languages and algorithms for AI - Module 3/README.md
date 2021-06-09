@@ -18,3 +18,8 @@ Teacher: Ugo Dal Lago
 * [4 - Between feasible and unfeasible](4%20-%20Between%20feasible%20and%20unfeasible.md)
 * [5 - ML and theory of computation](5%20-%20ML%20and%20theory%20of%20computation.md)
 * [**Solved exercises**](Solved%20Exercises.md)
+
+### Resources
+ - TM simulators:
+   - [JFLAP](http://www.jflap.org/) - GUI based
+   - [turingmachinesimulator.com](https://turingmachinesimulator.com/shared/zjisqsfwgm) - No download needed, text based
