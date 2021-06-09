@@ -40,10 +40,11 @@ The syntax is composed by
   - Concept subsumption (<img src="svgs/425e4da138ab8b67e31ea86f4f9a6c1e.svg?invert_in_darkmode" align=middle width=73.05938309999999pt height=20.908638300000003pt/>)
   - Concept equivalence (<img src="svgs/ebf45b23c8b2fe7cb8bf20cb8bbd565d.svg?invert_in_darkmode" align=middle width=12.785434199999989pt height=15.24650820000002pt/>)
 
-##### Attributive Language with Complements (*ALC*)
-AL extension where, unlike AL, the complement of any concept is allowed, not only the complement of atomic concepts.
+##### AL extensions
 
-##### Attributive Language with Number restrictions (*ALN*)
-AL extension where it is possible to use qualified number restrictions.
+- Attributive Language with Complements (***ALC***): AL extension where, unlike AL, the complement of any concept is allowed (e.g. <img src="svgs/d184cf6de77c954877a47f3cc17341e2.svg?invert_in_darkmode" align=middle width=172.08909794999997pt height=24.65753399999998pt/> ), not only the complement of atomic concepts.
+- Attributive Language with role Hierarchy (***ALH***): AL extension where it is possible to have role hierarchy (e.g. <img src="svgs/bedfb6c564d5211692298539902d1c50.svg?invert_in_darkmode" align=middle width=175.79928794999998pt height=22.831056599999986pt/> ).
+- Attributive Language with Inverse roles (***ALI***): AL extension where it is possible to use qualified number restrictions (e.g. <img src="svgs/cc9f5d5fba7b996cdc9223e0852fba14.svg?invert_in_darkmode" align=middle width=194.70088934999998pt height=24.65753399999998pt/> ).
+- Attributive Language with Number restrictions (***ALN***): AL extension where it is possible to use qualified number restrictions (e.g. <img src="svgs/eeab7c292febcd99f3d4e292b80e73f6.svg?invert_in_darkmode" align=middle width=110.61089159999999pt height=22.831056599999986pt/> ).
 
 Extensions can be combined, for example creating ***ALCN***, but each extension increases computational cost.
