@@ -50,7 +50,7 @@ If we choose to use reverse encoding the problem is quite simple. With a single 
 ### Exercise 1
 Write a TM which computes the sum of two binary numbers _a,b >= 0_.
 
-**Solution:** TODO, it is fucking long.
+[**Solution**](https://turingmachinesimulator.com/shared/zjisqsfwgm)
 
 ### Exercise 2
 Write a TM for palindromes, i.e. a TM that accepts a binary string _w_ iff _w_ is a palindrome.
