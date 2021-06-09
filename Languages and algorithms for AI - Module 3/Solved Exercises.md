@@ -2,6 +2,7 @@
 
 - [Exercises proposed and solved by professors](exercise_book.pdf)
   - [Solution to exercise 2.4 of the file](http://turingmachinesimulator.com/shared/vbwvbqjngd)
+- [Binary addition on TM](http://turingmachinesimulator.com/shared/zjisqsfwgm)
 
 # Exercises proposed during lessons of the Accademic Year 2020/21 - WIP
 
