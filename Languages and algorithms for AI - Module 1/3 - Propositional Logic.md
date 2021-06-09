@@ -50,7 +50,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   Once we have the meaning of the symbols, we can use truth tables to evaluate the truth value of a formula:
 
-  ![Truth table](file:///Users/simone/UniBO/unibo-ai/Languages%20and%20Algorithms%20for%20AI/res/truth_table.png?lastModify=1604312935)
+  ![Truth table](./res/truth_table.png?lastModify=1604312935)
 
   ## Model
 
@@ -66,7 +66,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   For example, we prove the *deMorgan's Law*:
 
-  ![de Morgan's Law](file:///Users/simone/UniBO/unibo-ai/Languages%20and%20Algorithms%20for%20AI/res/deMorgans_law.png?lastModify=1604312935)
+  ![de Morgan's Law](./res/deMorgans_law.png?lastModify=1604312935)
 
   An **unsatisfiable** formula is always false, under any interpretation.
 
@@ -94,7 +94,7 @@ The third definition (100% precise) defines by induction: we have three rules, w
 
   With **logical equivalence** we mean that two formulas  and  are said so iff the truth values of  and  are the same every under interpretation of them. We can list some useful equivalence rules:
 
-  ![Equivalence rules](file:///Users/simone/UniBO/unibo-ai/Languages%20and%20Algorithms%20for%20AI/res/equivalence.png?lastModify=1604312935)
+  ![Equivalence rules](./res/equivalence.png?lastModify=1604312935)
 
   ## Standard forms
 
