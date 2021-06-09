@@ -6,10 +6,10 @@ When we make decisions we must keep a belief state and generate a contingency pl
 This module is composed by 10 hours of lecture in 5 lectures.
 
 ### Topics
-- Basic probability notation: Probabilistic notations already studied in Statistical and Matematical Methods, Logical connectives
+- Basic probability notation: Probabilistic notations already studied in Statistical and Mathematical Methods, Logical connectives
 - Inference using full joint distributions: Take decisions basing on the modeled world
 - Independence: Construct complex models of the world in an abstract way (more compact than probabilistic notation)
-- Bayesian network representation: Another way of mdeling the world
+- Bayesian network representation: Another way of modeling the world
 - Constructing Bayesian networks
 - Exact and approximate inference: Thought process based on baesyan networks 
 - Simple case studies
@@ -22,7 +22,7 @@ This module is composed by 10 hours of lecture in 5 lectures.
 ### Exams
 Grades on an 8-point scale (to be summed with mod 2 and 4 and averaged with mod 1). Grades don't expire.
 
-Two alterantives:
+Two alternatives:
 - Written exam
   - Questions and exercises, 4 dates a year (jun, jul, sep, jan)
   - slide 5 contains example case studies similar to questions in the exam
@@ -52,7 +52,9 @@ Probabilistic assertions summarize uncertainty. Probabilities relate proposition
 
 Decision theory: In order to make decisions under uncertainty you need a way to model the uncertainty ("Probability theory") and a set of preferences basing on which you can obtain an "utility function" which quantifies how much I like a certain outcome ("Utility theory").
 
-For example suppose $A_n$ means that leaving home $n$ minutes before the flight starts will mean I don't lose the flight. Suppose $P(A_{25}) = 0.04$, $P(A_{120}) = 0.95$, $P(A_{1440}) = 0.9999$, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will havo to sleep in the airport, how desirable is that? We have to strike a balance.
+For example suppose $A_n$ means that leaving home $n$ minutes before the flight starts will mean I don't lose the flight.
+Suppose $P(A_{25}) = 0.04$, $P(A_{120}) = 0.95$, $P(A_{1440}) = 0.9999$, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will have to sleep in the airport, how desirable is that?
+We have to strike a balance.
 
 ### Basic probability notation
 Consider the assertions about possible worlds.
@@ -72,7 +74,7 @@ A **random variable** is a function from sample points to some range, (e.g. real
 
 P induces a **probability distribution** for any random variable $X$: $P(X = x_i)=\sum_{\omega:X(\omega)=x_i}P(\omega)$
 
-A probabilistic **proposition** can be described as thedisjunction of events where a logic proposition of is true.
+A probabilistic **proposition** can be described as the disjunction of events where a logic proposition of is true.
 
 The syntax of propositions varies basing on the type of random variable. Some examples:
 - **Propositional** or **Boolean** random variables: *Cavity=true*
@@ -99,7 +101,7 @@ So, one reason for things to get complicated are continuous values. Another one,
 
 We'll need something that gives us as much information as a joint probability distribution, but **more compact**! 
 
-In the examples seen so far, we considered probabilities that we can call **prior**. Most commonly, we know something about the world, and we're in a position to betterm estimate the probability of events: for example, we may state the probability of the weather being sunny, given that it's 30 outside.
+In the examples seen so far, we considered probabilities that we can call **prior**. Most commonly, we know something about the world, and we're in a position to better estimate the probability of events: for example, we may state the probability of the weather being sunny, given that it's 30 outside.
 
 The **conditional probability** (aka *posterior*) tells us the probability of an event, given another one:
 

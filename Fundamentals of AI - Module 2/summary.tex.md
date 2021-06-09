@@ -12,8 +12,8 @@ Syntax:
 - An infinite set of variables.
 - An infinite set of functional symbols of all arities.
 - An infinite set of predicates symbols of all arities.
-- Connectives: <img src="svgs/f4ac2a9bfb464ea0f19dccc459ef546c.svg?invert_in_darkmode" align=middle width=71.23287434999999pt height=18.264896099999987pt/>
-- Quantifiers: <img src="svgs/dd5a306ea87fdaba80241664291610e9.svg?invert_in_darkmode" align=middle width=13.69867124999999pt height=22.831056599999986pt/>
+- Connectives: $\land, \lor, \rightarrow, \neg$
+- Quantifiers: $\forall, \exist$
 
 ### Description Logic (*DL*)
 
@@ -32,13 +32,13 @@ The syntax is composed by
     - Conjunction $\sqcap$
     - Disjunction $\sqcup$
     - Negation $\neg$, applicable only to atomic concepts
-  - Restricted quantifiers: <img src="svgs/80a5381071d5003f3e79a3024f29e2c3.svg?invert_in_darkmode" align=middle width=16.43833124999999pt height=22.831056599999986pt/>
-  - Universal and bottom concepts (<img src="svgs/b37a16d4b12caeff164d04ba28599132.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=22.831056599999986pt/>)
+  - Restricted quantifiers: $\exist, \forall$
+  - Universal and bottom concepts ($\top,\bot$)
   - Value restriction
     - Universal restriction $\forall R.C$
     - Existential restriction $\exist R.C$
-  - Concept subsumption (<img src="svgs/425e4da138ab8b67e31ea86f4f9a6c1e.svg?invert_in_darkmode" align=middle width=73.05938309999999pt height=20.908638300000003pt/>)
-  - Concept equivalence (<img src="svgs/ebf45b23c8b2fe7cb8bf20cb8bbd565d.svg?invert_in_darkmode" align=middle width=12.785434199999989pt height=15.24650820000002pt/>)
+  - Concept subsumption ($\sqsubset, \sqsubseteq, \sqsupset, \sqsupseteq$)
+  - Concept equivalence ($\equiv$)
 
 ##### Attributive Language with Complements (*ALC*)
 AL extension where, unlike AL, the complement of any concept is allowed, not only the complement of atomic concepts.

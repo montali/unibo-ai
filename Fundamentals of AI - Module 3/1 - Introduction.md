@@ -6,7 +6,7 @@ When we make decisions we must keep a belief state and generate a contingency pl
 This module is composed by 10 hours of lecture in 5 lectures.
 
 ### Topics
-- Basic probability notation: Probabilistic notations already studied in Statistical and Matematical Methods, Logical connectives
+- Basic probability notation: Probabilistic notations already studied in Statistical and Mathematical Methods, Logical connectives
 - Inference using full joint distributions: Take decisions basing on the modeled world
 - Independence: Construct complex models of the world in an abstract way (more compact than probabilistic notation)
 - Bayesian network representation: Another way of modeling the world
@@ -22,7 +22,7 @@ This module is composed by 10 hours of lecture in 5 lectures.
 ### Exams
 Grades on an 8-point scale (to be summed with mod 2 and 4 and averaged with mod 1). Grades don't expire.
 
-Two alterantives:
+Two alternatives:
 - Written exam
   - Questions and exercises, 4 dates a year (jun, jul, sep, jan)
   - slide 5 contains example case studies similar to questions in the exam
@@ -52,7 +52,9 @@ Probabilistic assertions summarize uncertainty. Probabilities relate proposition
 
 Decision theory: In order to make decisions under uncertainty you need a way to model the uncertainty ("Probability theory") and a set of preferences basing on which you can obtain an "utility function" which quantifies how much I like a certain outcome ("Utility theory").
 
-For example suppose <img src="svgs/51ea793aad42e760f5acf5135930081a.svg?invert_in_darkmode" align=middle width=20.45482229999999pt height=22.465723500000017pt/> means that leaving home <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/> minutes before the flight starts will mean I don't lose the flight. Suppose <img src="svgs/c631f303ec13bde1dd6a5fc8a1bfffde.svg?invert_in_darkmode" align=middle width=103.01948909999999pt height=24.65753399999998pt/>, <img src="svgs/c3801c10df64e11e995bb3b0c074f606.svg?invert_in_darkmode" align=middle width=109.57203014999999pt height=24.65753399999998pt/>, <img src="svgs/aedcb68669c26d6a0a39dd2dda964491.svg?invert_in_darkmode" align=middle width=132.56299155pt height=24.65753399999998pt/>, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will havo to sleep in the airport, how desirable is that? We have to strike a balance.
+For example suppose <img src="svgs/51ea793aad42e760f5acf5135930081a.svg?invert_in_darkmode" align=middle width=20.45482229999999pt height=22.465723500000017pt/> means that leaving home <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/> minutes before the flight starts will mean I don't lose the flight.
+Suppose <img src="svgs/c631f303ec13bde1dd6a5fc8a1bfffde.svg?invert_in_darkmode" align=middle width=103.01948909999999pt height=24.65753399999998pt/>, <img src="svgs/c3801c10df64e11e995bb3b0c074f606.svg?invert_in_darkmode" align=middle width=109.57203014999999pt height=24.65753399999998pt/>, <img src="svgs/aedcb68669c26d6a0a39dd2dda964491.svg?invert_in_darkmode" align=middle width=132.56299155pt height=24.65753399999998pt/>, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will have to sleep in the airport, how desirable is that?
+We have to strike a balance.
 
 ### Basic probability notation
 Consider the assertions about possible worlds.
@@ -72,7 +74,7 @@ A **random variable** is a function from sample points to some range, (e.g. real
 
 P induces a **probability distribution** for any random variable <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/>: <img src="svgs/9925fec5670d19a45884a9b5bd4694dd.svg?invert_in_darkmode" align=middle width=222.40284989999998pt height=24.657735299999988pt/>
 
-A probabilistic **proposition** can be described as thedisjunction of events where a logic proposition of is true.
+A probabilistic **proposition** can be described as the disjunction of events where a logic proposition of is true.
 
 The syntax of propositions varies basing on the type of random variable. Some examples:
 - **Propositional** or **Boolean** random variables: *Cavity=true*
@@ -97,7 +99,7 @@ So, one reason for things to get complicated are continuous values. Another one,
 
 We'll need something that gives us as much information as a joint probability distribution, but **more compact**! 
 
-In the examples seen so far, we considered probabilities that we can call **prior**. Most commonly, we know something about the world, and we're in a position to betterm estimate the probability of events: for example, we may state the probability of the weather being sunny, given that it's 30 outside.
+In the examples seen so far, we considered probabilities that we can call **prior**. Most commonly, we know something about the world, and we're in a position to better estimate the probability of events: for example, we may state the probability of the weather being sunny, given that it's 30 outside.
 
 The **conditional probability** (aka *posterior*) tells us the probability of an event, given another one:
 
