@@ -71,7 +71,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (q1, □) → (q1a, □, L)  
 (q1a, 1) → (qb, □, L)  
 (q1a, ▷) → (qa, ▷, R)  
-//
+//  
 (qb, 0/1) → (qb, 0\1, L)  
 (qb, ▷) → (qa, ▷, R)  
 
