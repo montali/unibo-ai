@@ -39,3 +39,9 @@ Indeed we have another definition for problems that are both **NP** and **NP-har
 This scheme from Wikipedia clarify the situation in both the cases **P = NP** and **P ≠ NP**, that we remind is an open question. 
 
 ![scheme](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/800px-P_np_np-complete_np-hard.svg.png)
+
+# Rice's Theorem
+The Rice Theorem is one of the most interestaing theorems studied in the course. It states that all **non-trivial**, semantic properties of a program are undecidable.
+We say that a property is trivial when either all or none of the programs have that property.
+
+It is interesting because it identifies a set of pragmatic things which are uncomputable.
