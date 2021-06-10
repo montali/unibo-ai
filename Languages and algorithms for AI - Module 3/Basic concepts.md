@@ -1,6 +1,6 @@
 This is a recap file I will update with the most basic concepts required for the course and for the exam when they come to mind.
 
-This not pretend to be a full recap, but could still be useful as a first approach to the subject or to quickly check main concepts befor the exam.
+This not pretend to be a full recap, but could still be useful as a first approach to the subject or to quickly check main concepts before the exam.
 
 # P, NP, EXP, NEXP
 
