@@ -104,6 +104,23 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 
 ![image](https://user-images.githubusercontent.com/31796254/121327435-ba2cec80-c913-11eb-9865-52f90058d014.png)
 
+## Undecidability
+
+Determine which ones of the following problems are decidable:
+ 1. P = {_n_ | _L(n)_ infinite}
+ 2. P = {_n_ | PALINDROME _L(n)_}
+ 3. P = {_n_ | M has exaxtly 5 states}
+ 4. P = {_n_ | _L(n)_ = Ø}
+ 5. P = Ø
+
+### 1.
+**Claim**: P is undecidable.
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if L is the language containing all the strings longer than _n_, then _L(n)_ is infinite, so it belongs to P.
+    2. ∃_n_ | _n_ ∉ P: if _L(n)_ = Ø (which can be decided with a TM which rejects every input), then |_L(n)_| = 1, so _L(n)_ is not infinite, and so it not belongs to P.
+ 2. P is **extensional**: Assume _L(n)_ = _L(m)_ and _n_ ∈ P. We have to show that also _m_ ∈ P. Since _n_ ∈ P iff |_L(n)_| = ∞, and considering that _L(n)_ = _L(m)_ ⇒ |_L(n)_| = |_L(m)_|, then |_L(m)_| = ∞ ⇒ _m_ ∈ P. QED.
 
 # Problem Examples from Virtuale 20/21 - WIP
 
