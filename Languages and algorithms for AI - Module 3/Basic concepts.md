@@ -41,7 +41,12 @@ This scheme from Wikipedia clarify the situation in both the cases **P = NP** an
 ![scheme](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/800px-P_np_np-complete_np-hard.svg.png)
 
 # Rice's Theorem
-The Rice Theorem is one of the most interestaing theorems studied in the course. It states that all **non-trivial**, semantic properties of a program are undecidable.
-We say that a property is trivial when either all or none of the programs have that property.
+The Rice Theorem is one of the most interestaing theorems studied in the course. It states that all **non-trivial**, **extensional** properties of a program are undecidable.
 
-It is interesting because it identifies a set of pragmatic things which are uncomputable.
+We say that a property is trivial when either all or none of the programs have that property (obviously, a property is non-trivial when it is not trivial).
+
+We say that a property P is extensional when, if m has the property P and m and n have the same input-output function, then also n has the property P.
+
+
+
+It is interesting because it identifies a set of pragmatic things which are undecidable.
