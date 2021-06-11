@@ -107,10 +107,10 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 ## Undecidability
 
 Determine which ones of the following problems are decidable:
- 1. P = {_n_ | _L(n)_ infinite}
- 2. P = {_n_ | PALINDROME _L(n)_}
- 3. P = {_n_ | M has exaxtly 5 states}
- 4. P = {_n_ | _L(n)_ = Ø}
+ 1. P = {_M_ | _L(M)_ infinite}
+ 2. P = {_M_ | PALINDROME ⊆ _L(M)_}
+ 3. P = {_M_ | _M_ has exactly 5 states}
+ 4. P = {_M_ | _L(M)_ = Ø}
  5. P = Ø
 
 ### 1.
@@ -118,9 +118,40 @@ Determine which ones of the following problems are decidable:
 
 **Proof**: By Rice's Theorem:
  1. P is **non-trivial**: 
-    1. P ≠ Ø: if L is the language containing all the strings longer than _n_, then _L(n)_ is infinite, so it belongs to P.
-    2. ∃_n_ | _n_ ∉ P: if _L(n)_ = Ø (which can be decided with a TM which rejects every input), then |_L(n)_| = 1, so _L(n)_ is not infinite, and so it not belongs to P.
- 2. P is **extensional**: Assume _L(n)_ = _L(m)_ and _n_ ∈ P. We have to show that also _m_ ∈ P. Since _n_ ∈ P iff |_L(n)_| = ∞, and considering that _L(n)_ = _L(m)_ ⇒ |_L(n)_| = |_L(m)_|, then |_L(m)_| = ∞ ⇒ _m_ ∈ P. QED.
+    1. P ≠ Ø: if _M_ is a TM that accepts every string, then _L(M)_ is infinite, so it belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _L(M)_ = Ø (so _M_ is a TM which rejects every input), then |_L(M)_| = 1, so _L(M)_ is not infinite, and so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff |_L(M)_| = ∞, and considering that _L(M)_ = _L(N)_ ⇒ |_L(M)_| = |_L(N)_|, then |_L(N)_| = ∞ ⇒ _N_ ∈ P. QED.
+
+
+### 2.
+**Claim**: P is undecidable.
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if _M_ is the TM acceppting every string, then  PALINDROME ⊆ _L(M)_, and so _M_ belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _L(M)_ = {01} (which can be easily decided with a TM _M_), then _L(M)_ not contains PALINDROME, so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff PALINDROME ⊆ _L(M)_ , we know that PALINDROME ⊆ _L(M)_ = _L(N)_, so PALINDROME ⊆ _L(N)_, then _N_ ∈ P. QED.
+
+### 3.
+**Claim**: P is decidable.
+
+**Proof**: Trying to apply Rice's Theorem we can easily see that P is non-trivial, but **is not extensional**.
+To demonstrate that it is decidable we have to design a TM that decides P. Decided a binary encoding for a TM, our TM take in input a string _w_ and it checks that _w_ is a valid encoding. If _w_ is invalid then it is rejected. Otherwise _w_ is acceppted iff it encodes a TM with exactly 5 states.
+
+### 4.
+**Claim**: P is undecidable
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if _M_ is the TM rejecting every string, then _L(M)_ = Ø, and so _M_ belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _M_ is the TM acceppting every binary string, then _L(M)_ = {0,1}* ≠ Ø, so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff _L(M)_ = Ø, we know that Ø = _L(M)_ = _L(N)_, so _L(N)_ = Ø, then _N_ ∈ P. QED.
+
+### 5.
+**Claim**: P is decidable
+
+**Proof**: Trying to apply Rice's Theorem instantly fails because **P is trivial**. Indeed P = Ø by definition.
+To show that P is decidable we have to design a TM that decides P and such a TM is the TM rejecting every input string.
 
 # Problem Examples from Virtuale 20/21 - WIP
 
