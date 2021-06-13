@@ -79,6 +79,7 @@ This is not exactly the same proposed by professor, but I've tested it with [JFL
 
 ![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
 
+
 ### Exercise 3
 
 Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
@@ -103,6 +104,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (qb, □) → (qa, □, R)  
 
 ![image](https://user-images.githubusercontent.com/31796254/121327435-ba2cec80-c913-11eb-9865-52f90058d014.png)
+[Another solution](http://turingmachinesimulator.com/shared/zxbtwcdkil)
 
 ## Undecidability
 
