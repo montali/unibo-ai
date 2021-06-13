@@ -100,7 +100,8 @@ NP completeness is a stronger assumption: we also want the problem to be in $NP$
 
 IF we were to describe NP complete problems, it **would not be a subset of NP**, but just have an intersection. If a problem is NP-Hard, translating any string to $\mathcal{L}$ is feasible.
 
-The first interesting example of an NP-complete problem is **simulating a Turing Machine**. We introduce TMSAT, a language composed of quadruples, where the first component is a turing machine, hte second its input, the third a string of length $N$ which value doesn't matter, and the fourth be a string of length $t$. We are interested in those quadruples such that there exists a certificate such that the machine alpha outputs 1 on an input which is computed from $x$ but also from $u$. We are kind of checking if the TM indexed by $\alpha$ outputs 1 on the right input, **within a time bound**. If there weren't any bounds, the problem would be quite complicated, close to the halting problem. We therefore explictly state that we want the machine to halt in $t$ steps. It's clear that we are doing something that is _hard_: we are encoding all TM. This is not so useful, as it can't prove other problems to be NP complete.
+The first interesting example of an NP-complete problem is **simulating a Turing Machine**. We introduce TMSAT, a language composed of quadruples, where the first component is a turing machine, hte second its input, the third a string of length $N$ which value doesn't matter, and the fourth be a string of length $t$. We are interested in those quadruples such that there exists a certificate such that the machine alpha outputs 1 on an input which is computed from $x$ but also from $u$. We are kind of checking if the TM indexed by $\alpha$ outputs 1 on the right input, **within a time bound**.
+If there weren't any bounds, the problem would be quite complicated, close to the halting problem. We therefore explicitly state that we want the machine to halt in $t$ steps. It's clear that we are doing something that is _hard_: we are encoding all TM. This is not so useful, as it can't prove other problems to be NP complete.
 
 ## Cook Levin theorem
 
@@ -110,13 +111,16 @@ The machine $\mathcal{M}$ tests certificates. Then, we define a polynomial time 
 
 Suppose we're studying a language L, and we're convinced that the underlying problem is hard. How could we prove this? Proving that L is in EXP could be easy, but this doesn't tell us anything about the difficulty of L: knowing that L is in EXP doesn't mean much. We could prove that L is in NP, but again this doesn't mean much. The way to proceed is trying to prove that L is NP-complete. The NP-complete problems are at least **as hard as problems in NP**.
 
-We then have to prove two statements: that L is in NP (tipically easy) and that any other language in NP can be reduced to L. We could prove this directly, but it is quite difficult. We more often prefer proving that a certain language I, which is already known to be NP-complete (for example SAT) is smaller or equal to L. If you do so, that is fine: the relation $\le_p$ is transitive, meaning that you can go through I.
+We then have to prove two statements: that L is in NP (typically easy) and that any other language in NP can be reduced to L.
+We could prove this directly, but it is quite difficult. We more often prefer proving that a certain language I, which is already known to be NP-complete (for example SAT) is smaller or equal to L. If you do so, that is fine: the relation $\le_p$ is transitive, meaning that you can go through I.
 
 ## Proving a problem hard
 
-There's this language $\mathcal{L}$ that we want to prove is hard. We could try to prove that it is in P, but it won't be that helpful: probably it itsn't, as it might be easy if so. We might try to prove it to be in EXP. This, though, doesn't correspond to its hardness. The fact that there's an exponential algorithm doesn't mean much: a really efficient algorithm might not be the only one, as there might be efficient ones. This way, we could always use a stupid algorithm to prove a problem hard. Finally, we may prove that $\mathcal{L}$ is NP-complete: this way we can prove that the problem is not so hard (being in NP) but not so easy either.
+There's this language $\mathcal{L}$ that we want to prove is hard. We could try to prove that it is in P, but it won't be that helpful: probably it isn't, as it might be easy if so.
+We might try to prove it to be in EXP. This, though, doesn't correspond to its hardness. The fact that there's an exponential algorithm doesn't mean much: a really efficient algorithm might not be the only one, as there might be efficient ones. This way, we could always use a stupid algorithm to prove a problem hard. Finally, we may prove that $\mathcal{L}$ is NP-complete: this way we can prove that the problem is not so hard (being in NP) but not so easy either.
 
-So, how do we do that? We have to prove two statements, the first one being that $\mathcal{L}$ is in NP (as we know, this means we need to find a polynomial P and a TM working in polynomial time such that the problem is solved by it). The second step is trying to prove that any other language $\mathcal{H}$ in NP is lower or equal than $\mathcal{L}$. We therefore have to find a _third_ language between $\mathcal{H}$ and $\mathcal{L}$ which can itself be reduced to $\mathcal{L}$ we can conclude that any languge can: the relation is transitive.
+So, how do we do that? We have to prove two statements, the first one being that $\mathcal{L}$ is in NP (as we know, this means we need to find a polynomial P and a TM working in polynomial time such that the problem is solved by it). The second step is trying to prove that any other language $\mathcal{H}$ in NP is lower or equal than $\mathcal{L}$.
+We therefore have to find a _third_ language between $\mathcal{H}$ and $\mathcal{L}$ which can itself be reduced to $\mathcal{L}$ we can conclude that any language can: the relation is transitive.
 
 Of course, if the problem is NP-hard we can always find that language. This is more about creativity than computing. Coming up with the right problem and the right reduction might be difficult. That's why we're rarely asked to solve these problems in exams, and when we are, the problem $\mathcal{I}$ is suggested.
 
@@ -126,7 +130,8 @@ Even the _subset sum problem_ is NP-complete. The problem is trivial in NP (the 
 
 This turns into the graph of NP-complete: we can start by stipulating that a pair of NP-complete problems, then go on with the others. For example, we know SAT to be NP-complete, then we can go to 3SAT, then we can go from SAT to INDSET and ILP. To reach SUBSETSUM, we go through OL3SET. This graph is giant: lots of problems are known to be NP-complete!
 
-We would be happy if in some way we could solve these problems efficiently, even though they are NP-complete. Is the hope completely lost? Actually no! We know that no polynomial time for $\mathcal{L}$ is available, because P would be equal to NP then. Once we have a problem $\mathcal{L}$ which is NP-complete, and i nparticular is NP, we can try to reduce the problem to SAT, and since it is NP-complete we can always do it. Of course, this reduction can always be done, and it allows us to map strings in $\mathcal{L}$ to strings in SAT. There are tools that solve SAT problems, called **SAT solvers** which take in input a CNF and decide if it's solvable. There are lots of problems in which SAT solvers work real well.
+We would be happy if in some way we could solve these problems efficiently, even though they are NP-complete. Is the hope completely lost? Actually no! We know that no polynomial time for $\mathcal{L}$ is available, because P would be equal to NP then. Once we have a problem $\mathcal{L}$ which is NP-complete, and in particular is NP, we can try to reduce the problem to SAT, and since it is NP-complete we can always do it.
+Of course, this reduction can always be done, and it allows us to map strings in $\mathcal{L}$ to strings in SAT. There are tools that solve SAT problems, called **SAT solvers** which take in input a CNF and decide if it's solvable. There are lots of problems in which SAT solvers work real well.
 
 ## NP-hardness and NP-completeness
 
@@ -166,3 +171,6 @@ The following languages are **NP**-complete:
 - $3SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable 3CNF}\}$
 
 This is a relevant proof of existence of **NP**-complete problems.
+
+#
+[Previous section](3%20-%20Polynomial%20time%20computable%20problems.md) · [Next section](5%20-%20ML%20and%20theory%20of%20computation.md)
