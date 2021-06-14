@@ -41,11 +41,17 @@ This scheme from Wikipedia clarify the situation in both the cases **P = NP** an
 ![scheme](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/800px-P_np_np-complete_np-hard.svg.png)
 
 # Rice's Theorem
-The Rice Theorem is one of the most interestaing theorems studied in the course. It states that all **non-trivial**, **extensional** properties of a program are undecidable.
+The Rice Theorem is one of the most interestaing theorems studied in the course. It states that all **non-trivial**, **extensional** properties of a program (a Touring Machine) are undecidable.
 
 We say that a property is trivial when either all or none of the programs have that property (obviously, a property is non-trivial when it is not trivial).
 
-We say that a property P is extensional when, if m has the property P and m and n have the same input-output function, then also n has the property P.
+We say that a property P is extensional when, if M has the property P and M and M have the same input-output function (_M(w) = N(w)_ for every _w_), then also N has the property P.
+
+So, to demonstrate that a property P is undecidable we have to:
+ 1. Show that _P_ is non-trivial. This is accomplished by (both the steps are needed):
+   1. demonstrating that P ≠ Ø. To do this is sufficient to describe a TM _M_ with the property _P_
+   2. finding a TM _M_ which has not the property P
+ 2. Show that _P_ is extensional: Assume _L(M) = L(N)_ and _M_ ∈ _P_. Then demonstrate that _N_ ∈ _P_.
 
 
 
