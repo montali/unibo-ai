@@ -18,7 +18,7 @@ This is a very popular area of AI, many companies are contributing to the advanc
 
 Another example of good CP was made by Ocado Retail Ltd, a company in the online groceries business with over 15k employees. The company decided to Covid-test every employee, every week. Scheduling these tests is kinda hard: no manual solution was found.
 
-The data science team developed a CP-based solutino, which was succesfully used to schedule up to 3500 employees across 4 sites. 
+The data science team developed a CP-based solution, which was succesfully used to schedule up to 3500 employees across 4 sites. 
 
 CP is a declarative programming paradigm for stating and solving combinatorial optimization problems. For example, in the covid19 use case, we had *availability constraints* (employee must be at work, tester must be available, testing room too...), *frequency constraints* (one test per week), *operational constraints* (each employee tested in their shift, test eterogeneously across locations...).
 

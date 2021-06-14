@@ -1,6 +1,6 @@
 # 2 - Search in CP
 
-We'll now see how we can imporve how we can improve our search performance. The aim is having a **good model** and a **good search**. We know we have a constraint solver that enumerates the possible combinations by a systematic backtracking tree search.
+We'll now see how we can improve our search performance. The aim is having a **good model** and a **good search**. We know we have a constraint solver that enumerates the possible combinations by a systematic backtracking tree search.
 
 The nodes represent variables, and the branches represent decisions on those variables. This is sometimes called **labeling**, i.e. assigning a single value to a node. We create a branch, and add a unary constraint to that branch!
 
@@ -28,7 +28,7 @@ All these heuristics are pretty simple and cheap to calculate, but they can make
 
 If we change the solver parameters, it looks like the instance is sometimes easy, sometimes difficult. If we use the right heuristic, the problem is easy to solve. The problem is we don't always know which heuristic is the best one! Why is this happening? Why don't all the heuristics work equally? They sometimes make mistakes and end up in infeasible subproblems! This may take a lot of time to backtrack from. 
 
-The observation here is that when you have a problem having differnet instances, and we're checking the runtime of the instances. The distribution of these has a long tail: some exceptionally hard instances change the mean. Heuristics make mistakes, so the idea is trying to add a randomized parameter in search. We introduce random decisions in our search: since the heuristic is sometimes wrong, we don't always listen to it!
+The observation here is that you have a problem having different instances, and we're checking the runtime of the instances. The distribution of these has a long tail: some exceptionally hard instances change the average. Heuristics make mistakes, so the idea is trying to add a randomized parameter in search. We introduce random decisions in our search: since the heuristic is sometimes wrong, we don't always listen to it!
 
 This idea has been tested in a variety of contexts, and surprisingly it performs rather well. For instance, we can pick some variables or values randomly, or break ties randomly (there might be more than one variable having the same heuristic value, we have to pick one).
 
