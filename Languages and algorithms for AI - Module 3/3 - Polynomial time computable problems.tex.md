@@ -12,7 +12,8 @@ So, why are we considering this class? One of the reasons lies in the *Church-Tu
 
 Why polynomials? First of all, $P$ is robust: they seem to be the smallest çlass of bounds which make $P$ robust. Then, exponents are often quite small: we could object to the fact that they can be arbitrarily big. We may be right, but usually we get quadratic/cubic bounds. Finally, we can well say that the class $P$ is closed under various operations on programs, in particular composition and bounded loops. Suppose that you have one problem which can be spelled out as the composition of 2 different problems, like solving the problem of multiplying two numbers by iterating additions. As a result, it is pretty easy to prove that a problem is in the class: it suffices to give an algorithm and prove that it solves in polynomial time.
 
-There are downsides too. One of these is that it is based on worst cases: the definition of $P$ says that there must be one signle polynomial and one TM such that for every input... If for example, a problem requires linear time in most of the cases and exponential time in just one case, we cannot conclude that the problem is in $P$. This is a quite big problem. There are then alternative computational problems giving birth to other classes, like BPP or BQP. Finally, not all problems can be expressed as decision problems but just as functions. 
+There are downsides too. One of these is that it is based on worst cases: the definition of $P$ says that there must be one single polynomial and one TM such that for every input... If for example, a problem requires linear time in most of the cases and exponential time in just one case, we cannot conclude that the problem is in $P$.
+This is a quite big problem. There are then alternative computational problems giving birth to other classes, like BPP or BQP. Finally, not all problems can be expressed as decision problems but just as functions. 
 
 ## FP class
 
@@ -20,6 +21,7 @@ We'd like to classify functions instead of languages. A function is in the class
 $$
 \mathbf{F P}=\bigcup_{c \geq 1} \mathbf{F D T I M E}\left(n^{c}\right)
 $$
+
 Obviously, if we have a characteristic function $f$ for a language which is in $P$, $f$ will be in $FP$.
 
 We can turn functions into languages (the inverse is obvious - is it?) in some canonical ways. 
@@ -32,7 +34,12 @@ Now, how do we actually prove if a task is in P or FP? In most cases, we'll be a
 
 ## EXP
 
-There is one last thing: a class bigger than $P$, $EXP$. This is a superset.
+There is one last thing: a class bigger than $P$, $EXP$. This is a superset of $P$ and contains all decision problems which are solvable in exponential time by a deterministic Touring Machine.
+
+As _P_ has a similar class for non-deterministic TM, _NP_, also _EXP_ has a class like that: _NEXP_, which contains all decision problems which are solvable in exponential time by a non-determinstic Touring Machine.
+
+#
+[Previous section](2%20-%20The%20computational%20model.md) · [Next section](4%20-%20Between%20feasible%20and%20unfeasible.md)
 
 
 

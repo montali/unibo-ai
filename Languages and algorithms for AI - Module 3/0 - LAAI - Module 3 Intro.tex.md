@@ -8,11 +8,12 @@ Suppose we wanted to write a python program multiplying two integers, without us
 
 Provides a precise definition of the computable and many results about it.
 Born in the 20th century, it has evolved into a fully fledged scientific field.
-The theoretical notion of computation existed before (and keeps influencing) mondern electronic computers. 
+The theoretical notion of computation existed before (and keeps influencing) modern electronic computers. 
 
 **Computability theory**: Computability = is a certain task computable (i.e. solvable by a computer)?
 
-**Computational complexity theory**: Efficency = is a certain task solvable in a reasonable amount of time or space (i.e. working memory)? If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
+**Computational complexity theory**: Efficiency = is a certain task solvable in a reasonable amount of time and space (i.e. working memory)?
+If not, the task may be theoretically computable but pratically uncomputable because of the time or space it requires. This will be the subject of this course.
 
 ## Modelling computation
 
@@ -20,7 +21,7 @@ The theoretical notion of computation existed before (and keeps influencing) mon
 
 **Computational process**: A sequence of actions capable of solving a computational task. In the Theory of Computation is taken to be an algorithm (a finite description of a series of elementary computation steps, where the way the next step is determined must be deterministic).
 
-A computational task can have 0..N sovivng processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
+A computational task can have 0..N solving processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
 
 For example, two $n$-digits numbers $a$ and $b$ can be multiplied ($a*b$) in (at least) two ways.
 The first method ("repeated addition") by summing $a$ $b$ times ($a+a+...+a$), which for each sum requires $n$ steps, hence the total cost is proportional to $n*b$ steps.
@@ -29,10 +30,10 @@ Notice that $b$ can be exponential in $n$ ($b \in [0, 10^n-1]$).
 The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between $n*n$ and $n*(10^n-1)$. 
 For example, supposing $n=100$ and $b=100^{100}-1$ (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
 
-Computational processes can be classified as **P** (Polinomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
+Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
 
-Proving tasks not solvable by processes beyond a certain level of efficency is very rarely possible.
-We can, however, interrelate different task to compare their compllexity.
+Proving tasks not solvable by processes beyond a certain level of efficiency is very rarely possible.
+We can, however, interrelate different tasks to compare their complexity.
 
 ## Mathematical preliminaries
 
@@ -53,3 +54,6 @@ Mathematical concepts needed for the course:
   - Concatenation $xy$ of $x$ and $y$
   - Concatenation $x^k$ of $x$ with itself $k$ times
   - Length $\lvert x \rvert$ of a string $x$
+
+#
+[Next section](1%20-%20Sets%20and%20numbers.md)

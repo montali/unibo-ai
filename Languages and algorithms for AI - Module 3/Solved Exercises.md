@@ -2,6 +2,7 @@
 
 - [Exercises proposed and solved by professors](exercise_book.pdf)
   - [Solution to exercise 2.4 of the file](http://turingmachinesimulator.com/shared/vbwvbqjngd)
+- [Binary addition on TM](http://turingmachinesimulator.com/shared/zjisqsfwgm)
 
 # Exercises proposed during lessons of the Accademic Year 2020/21 - WIP
 
@@ -49,37 +50,41 @@ If we choose to use reverse encoding the problem is quite simple. With a single 
 ### Exercise 1
 Write a TM which computes the sum of two binary numbers _a,b >= 0_.
 
-**Solution:** TODO, it is fucking long.
+[**Solution**](https://turingmachinesimulator.com/shared/zjisqsfwgm)
 
 ### Exercise 2
 Write a TM for palindromes, i.e. a TM that accepts a binary string _w_ iff _w_ is a palindrome.
 
-The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, q0, q0a, q0b, q1, q1a, q1b, qhalt}. The transition function δ is specified as follows:
+The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, q0, q0a, q1, q1a, qb, qhalt}. The transition function δ is specified as follows:
 
-(qinit, ▷) → (q0, ▷, R)  
+(qinit, ▷) → (qa, ▷, R)  
 (qa, 0) → (q0, ▷, R)  
 (qa, 1) → (q1, ▷, R)  
 (qa, □) → (qhalt, □, S)  
 // 0 is read  
 (q0, 0/1) → (q0, 0/1, R)  
 (q0, □) → (q0a, □, L)  
-(q0a, 0) → (q0b, □, L)  
-(q0b, 0/1) → (q0b, 0\1, L)  
-(q0b, ▷) → (qa, ▷, R)  
+(q0a, 0) → (qb, □, L)   
+(q0a, ▷) → (qa, ▷, R)  
 // 1 is read  
 (q1, 0/1) → (q1, 0/1, R)  
 (q1, □) → (q1a, □, L)  
-(q1a, 1) → (q1b, □, L)  
-(q1b, 0/1) → (q1b, 0\1, L)  
-(q1b, ▷) → (qa, ▷, R)  
+(q1a, 1) → (qb, □, L)  
+(q1a, ▷) → (qa, ▷, R)  
+//  
+(qb, 0/1) → (qb, 0\1, L)  
+(qb, ▷) → (qa, ▷, R)  
 
-This is not exactly the same proposed by professor, but I think it should work.
+This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+
+![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
+
 
 ### Exercise 3
 
 Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
 
-This was proposed as a homework problem, so there is no solution showed in class.
+This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 **Solution:**
 The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, qb, q0, q1, qhalt}. The transition function δ is specified as follows:
@@ -97,6 +102,58 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (q1, ▷) → (q1, ▷, R)  
 (qb, 0/1/▷) → (qb, 0/1/▷, L)  
 (qb, □) → (qa, □, R)  
+
+![image](https://user-images.githubusercontent.com/31796254/121327435-ba2cec80-c913-11eb-9865-52f90058d014.png)
+[Another solution](http://turingmachinesimulator.com/shared/zxbtwcdkil)
+
+## Undecidability
+
+Determine which ones of the following problems are decidable:
+ 1. P = {_M_ | _L(M)_ infinite}
+ 2. P = {_M_ | PALINDROME ⊆ _L(M)_}
+ 3. P = {_M_ | _M_ has exactly 5 states}
+ 4. P = {_M_ | _L(M)_ = Ø}
+ 5. P = Ø
+
+### 1.
+**Claim**: P is undecidable.
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if _M_ is a TM that accepts every string, then _L(M)_ is infinite, so it belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _L(M)_ = Ø (so _M_ is a TM which rejects every input), then |_L(M)_| = 1, so _L(M)_ is not infinite, and so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff |_L(M)_| = ∞, and considering that _L(M)_ = _L(N)_ ⇒ |_L(M)_| = |_L(N)_|, then |_L(N)_| = ∞ ⇒ _N_ ∈ P. QED.
+
+
+### 2.
+**Claim**: P is undecidable.
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if _M_ is the TM acceppting every string, then  PALINDROME ⊆ _L(M)_, and so _M_ belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _L(M)_ = {01} (which can be easily decided with a TM _M_), then _L(M)_ not contains PALINDROME, so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff PALINDROME ⊆ _L(M)_ , we know that PALINDROME ⊆ _L(M)_ = _L(N)_, so PALINDROME ⊆ _L(N)_, then _N_ ∈ P. QED.
+
+### 3.
+**Claim**: P is decidable.
+
+**Proof**: Trying to apply Rice's Theorem we can easily see that P is non-trivial, but **is not extensional**.
+To demonstrate that it is decidable we have to design a TM that decides P. Decided a binary encoding for a TM, our TM take in input a string _w_ and it checks that _w_ is a valid encoding. If _w_ is invalid then it is rejected. Otherwise _w_ is acceppted iff it encodes a TM with exactly 5 states.
+
+### 4.
+**Claim**: P is undecidable
+
+**Proof**: By Rice's Theorem:
+ 1. P is **non-trivial**: 
+    1. P ≠ Ø: if _M_ is the TM rejecting every string, then _L(M)_ = Ø, and so _M_ belongs to P.
+    2. ∃ _M_ | _M_ ∉ P: if _M_ is the TM acceppting every binary string, then _L(M)_ = {0,1}* ≠ Ø, so _M_ not belongs to P.
+ 2. P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff _L(M)_ = Ø, we know that Ø = _L(M)_ = _L(N)_, so _L(N)_ = Ø, then _N_ ∈ P. QED.
+
+### 5.
+**Claim**: P is decidable
+
+**Proof**: Trying to apply Rice's Theorem instantly fails because **P is trivial**. Indeed P = Ø by definition.
+To show that P is decidable we have to design a TM that decides P and such a TM is the TM rejecting every input string.
 
 # Problem Examples from Virtuale 20/21 - WIP
 
@@ -130,6 +187,10 @@ If the TM reaches the ending state qhalt, then the string is accepted, otherwise
 Note that there are no transitions for the configuration (q2, 1), which corresponds to substring 01 detected.
 
 When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string. 
+
+It follows a JFLAP implementation. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I've made some changes to manage the different starting position of the head.
+
+![image](https://user-images.githubusercontent.com/31796254/121328990-17756d80-c915-11eb-87fa-c8e993c55c85.png)
 
 ## Problem 2
 

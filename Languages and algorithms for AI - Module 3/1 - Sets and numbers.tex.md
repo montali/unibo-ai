@@ -12,7 +12,7 @@ In this course, since we're dealing with computation, we might deal with finite 
 
 ### Strings
 
-If we fix a finite set, thinking about it as an alphabet, we can form strings over this alphabet as finite or possibly empty tuples. This can als be taken as an alphabet of binary digits. The set of all the strings over a certain alphabet having $n$ length is indicated as $S^n$, for example $S^0$ is the set of empty strings. 
+If we fix a finite set, thinking about it as an alphabet, we can form strings over this alphabet as finite or possibly empty tuples. This can also be taken as an alphabet of binary digits. The set of all the strings over a certain alphabet having $n$ length is indicated as $S^n$, for example $S^0$ is the set of empty strings. 
 
 The concatenation of two strings $x$ and $y$ is $xy$. The concatenation by itself is indicated as $x^k$. Therefore, strings form a *monoid* (concept of algebra). Note that the neutral element is epsilon. The length is a natural number, indicated as $|x|$.
 
@@ -24,17 +24,22 @@ We don't consider tasks as functions on finite inputs, we just consider an infin
 
 Someone may ask *Well, if we consider a function that maps bitmap images, this has nothing to do with strings!* The point is that strings are a very peculiar discrete set, but they are flexbile enough to be able to represent many other data! When we say that we always assume the task to be given as a function, we're saying that the problem consists in mapping an element of A into an element of B.
 
- The encoding of anly element $x$ of $A$ as a string is often indicated as \_x_.
+ The encoding of any element $x$ of $A$ as a string is often indicated as \_x_.
 
 Suppose that the strings in $S^*$ are composed of elements of $S=\{a,b,c\}$. Now, $a$ can be encoded as $00$, $b$ becomes $01$ and $c$ becomes $10$.
 
 Now, what happens if we start to construct more complex domains, like couples of strings? For example,  
 
-Another interesting class of functions is the one in which the length of the strings is exactly one: **boolean functions**. These are also known as *characterstic functions*, and they are related to decision problem because for example, in these we'll want to decide whether a string is good/bad, part of a set/not...
+Another interesting class of functions is the one in which the length of the strings is exactly one: **boolean functions**.
+These are also known as *characteristic functions*, and they are related to decision problems because, for example, in these we'll want to decide whether a string is good/bad, part of a set/not...
 
-Asymptotic notation is not about a function or the other, rather about the kind of functions we take as limits on the amount of resources we want to devote to solving a particular problem. We are now concerned with functions dedicated to natural numbers, considering another function $g$ and we want tocompare these as per their rate of growth. We'd like to be able to say if $f$ grows faster than $g$, asyntothically speaking. If a function $f$ is $\theta$ of $g$, it grows (asynthotically speaking) in the same way.
+Asymptotic notation is not about a function or the other, rather about the kind of functions we take as limits on the amount of resources we want to devote to solving a particular problem. We are now concerned with functions dedicated to natural numbers.
+Let's consider another function $g$, we want to compare them as per their rate of growth. We'd like to be able to say if $f$ grows faster than $g$, asymptotically speaking.
+If a function $f$ is $\theta$ of $g$, it grows (asymptotically speaking) in the same way.
 
-So, studying the relation between two functions $f$ and $g$ is made by studying the limit of the ratio $\frac{f(n)}{g(n)}$ for $n\rightarrow\infty$ and proving that it is constant. 
+So, showing that two functions $f$ and $g$ are comparable, is made by studying the limit of the ratio $\frac{f(n)}{g(n)}$ for $n\rightarrow\infty$ and proving that it is constant. 
 
+#
+[Previous section](0%20-%20LAAI%20-%20Module%203%20Intro.md) · [Next section](2%20-%20The%20computational%20model.md)
 
 
