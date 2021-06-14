@@ -155,6 +155,38 @@ To demonstrate that it is decidable we have to design a TM that decides P. Decid
 **Proof**: Trying to apply Rice's Theorem instantly fails because **P is trivial**. Indeed P = Ø by definition.
 To show that P is decidable we have to design a TM that decides P and such a TM is the TM rejecting every input string.
 
+## Polynomial Time Computable Problems
+
+### Exercise 1
+Prove that the function _minmax_ which given a list of natural numbers {_a1_, _a2_, ..., _an_} returns both the minimun and the maximum between _a1_, _a2_, ..., _an_ in in **FP**
+
+**Solutions:**
+We can describe the solution of this problem with a pseudocode:
+
+```
+input: (a1, a2, ..., an) appropiately encoded
+output: (min, max)
+
+min = a1			# 1 instruction
+max = a1			# 1 instruction
+for i <- 2 to n:		# For loop executed O(n) times. it contains at most 4 instructions
+	if ai < min:
+		min = ai
+	if ai > max:
+		max = ai
+return (min, max)		# 1 instruction
+```
+
+ - The total number of executed instructions is _2 + 4*O(n) + 1 = O(n)_.
+ - The size of the intermediate results can be bound as follows:
+ 	- min and max, being elements of the input list, are of course smaller or equal to the lenght of the input
+ 	- i, going to 2 to n, is of course smaller or equal to the input.
+ - Each intruction executed by the algorithm takes polynomial time. Indeed, we have:
+ 	- assignements
+ 	- comparison between natural numbers of polynomial lenght.
+ 
+ Altogether, this means that the described alogrithm works in polynomial time, and this mean that the function _minmax_ belongs to **FP**.
+
 # Problem Examples from Virtuale 20/21 - WIP
 
 Solutions provided are not _official_ solutions by professor, but are made by me. So be careful.
