@@ -49,8 +49,8 @@ We say that a property P is extensional when, if M has the property P and M and 
 
 So, to demonstrate that a property P is undecidable we have to:
  1. Show that _P_ is non-trivial. This is accomplished by (both the steps are needed):
-   1. demonstrating that P ≠ Ø. To do this is sufficient to describe a TM _M_ with the property _P_
-   2. finding a TM _M_ which has not the property P
+     1. demonstrating that P ≠ Ø. To do this is sufficient to describe a TM _M_ with the property _P_
+     2. finding a TM _M_ which has not the property P
  2. Show that _P_ is extensional: Assume _L(M) = L(N)_ and _M_ ∈ _P_. Then demonstrate that _N_ ∈ _P_.
 
 
