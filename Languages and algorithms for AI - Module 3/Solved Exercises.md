@@ -299,7 +299,69 @@ This can be achieved comparing (in linear time) it with all the algorithms of th
 
 
 
+# Problems from the exercise book
 
+## The computational model
+
+### Exercise 2.1
+
+[This Turing Machine right here.](http://turingmachinesimulator.com/shared/cacvifsuib)
+
+### Exercise 2.2
+
+[This Turing Machine right here.](http://turingmachinesimulator.com/shared/gomvaerezb)
+
+### Exercise 2.4
+
+[Two-taped solution](http://turingmachinesimulator.com/shared/zphovjeoro)
+
+## Polynomial time computable problems
+
+### Exercise 3.1
+
+We are basically psudo-coding a linear search. The first thing we'll have to do is encoding the input as binary strings. This is pretty straightforward: we can introduce a separator `#` that separates the elements of the list, and finally, the query.
+
+The list would therefore be encoded as follows:
+
+$l_1\#l_2\# ...\#l_n\#q$
+
+Now, we know that the saving of a given natural number requires $roundToNextInt(l_i)$ bits, and our encoding will be the following: `0=00,1=11,#=01`. This means that every *normal* bit will require twice the space, and we will have $n$ separators occupying 2 bits each. 
+
+We can now introduce the pseudocode solving the problem:
+
+```
+def linsearch(List[Int] l, int query) {
+	i = 0
+	while i<|l| {
+		if (l[i] == query) {
+			return i
+		}
+	}
+	return -1
+}
+```
+
+Now, the analysis of the code. We know that the first instruction is $O(1)$. The `while` loop, then, is executed **at most** $|l|$ times, and contains three (the while check, the if, the return) constant instructions. The final instruction is still constant.
+
+This means that, finally:
+$$
+O(1)+O(n)O(3)+O(1) = O(n)
+$$
+The intermediate results are clearly bounded: the list will never exceed its original size (nor get modified) and i is an int.
+
+Since $n$ is clearly polynomial, we have proven the presence in $FP$.
+
+A TM could simulate this code by simply having the same input we cited before, as $l_1\#...\#l_n\#q$, scrolling to the end of the TM, copying the query to another tape, then searching for the element while saving the index in a third tape (incremented at every separator).
+
+## Between the feasible and unfeasible
+
+### Exercise 4.1
+
+We know that a language is in NP when:
+$$
+\mathcal{L} = \{x\in \{0,1\}^* | \exist y \in \{0,1\}^{p(|x|)}.(x,y)=1\}
+$$
+Therefore, we can introduce a TM $\mathcal{M}_a$ that verifies the language $\mathcal{L}_1$ and a TM $\mathcal{M}_b$ that verifies $\mathcal{L}_2$. Now, if we introduce a third TM that, given a triple $(x,y_1,y_2)$ emulates the first one on $(x,y_1)$ and the second one on $(x,y_2)$, ultimately returning $1$ if and only if both the emulations do so.
 
 
 

@@ -143,7 +143,7 @@ A language $\mathcal{H} \subseteq \{0,1\}^*$ is said to be:
 Note that:
 
 - $\mathcal{L} \in \mathbf{P}$ is **NP**-hard $\Rightarrow \mathbf{P}=\mathbf{N P}$.
-- $\mathcal{L} \in \mathbf{P}$ is **NP**-hard $\iff \mathbf{P}=\mathbf{N P}$.
+- $\mathcal{L} \in \mathbf{P}$ is **NP**-complete $\iff \mathbf{P}=\mathbf{N P}$.
 
 No such language has been found and $\mathbf{P}=\mathbf{N P}$ has not yet been proven (famous **P** vs **NP** problem).
 
