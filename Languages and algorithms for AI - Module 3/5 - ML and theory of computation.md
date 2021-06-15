@@ -34,4 +34,4 @@ Learning conjunctions of literals is possible: if your target concept is a conju
 
 #
 
-[Previous section](4%20-%20Between%20feasible%20and%20unfeasible.md) · [Solved exercises](Solved%20Exercises.md)
+[Previous section](4%20-%20Between%20feasible%20and%20unfeasible.md) · [Next Section](6%20-%20Computational%20Learning%20Theory.md) · [Solved exercises](Solved%20Exercises.md)
