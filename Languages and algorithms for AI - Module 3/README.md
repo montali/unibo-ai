@@ -19,6 +19,7 @@ Teacher: Ugo Dal Lago
 * [5 - ML and theory of computation](5%20-%20ML%20and%20theory%20of%20computation.md)
 * [Basic concepts](Basic%20concepts.md)
 * [**Solved exercises**](Solved%20Exercises.md)
+* [Flashcards to learn theory](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/Anki%20flashcards.apkg)
 
 ### Resources
  - TM simulators:
