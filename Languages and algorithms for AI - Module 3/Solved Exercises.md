@@ -1,10 +1,22 @@
-# Exercise Book
+#### Table of Content
+ - [Exercises proposed during lessons of the Accademic Year 2020/21](#lessons2021)
+   + [Computational Model](#computational_model)
+   + [Touring Machines](#tm)
+   + [Undecidability](#undecidability)
+   + [Polynomial Time Computable Problems](#fp)
+ - [Problem Examples from Virtuale 20/21](#virtuale2021)
+ - [Question Examples from Virtuale 20/21](#virtuale2021_questions)
+ - [Problems from Exam 06/26/2020](#exam_2020_06_26)
+ - [Exercise Book](#book)  - Some rendering problem are present at the moment
+   + [Computational Model](#book_computational_model)
+   + [Polynomial Time Computable Problems](#book_poly)
+   + [Between the Feasible and Unfeasible](#book_feasible)
 
-- [Exercises proposed and solved by professors](exercise_book.pdf)
-  - [Solution to exercise 2.4 of the file](http://turingmachinesimulator.com/shared/vbwvbqjngd)
-- [Binary addition on TM](http://turingmachinesimulator.com/shared/zjisqsfwgm)
+<a name="lessons2021"/>
 
-# Exercises proposed during lessons of the Accademic Year 2020/21 - WIP
+# Exercises proposed during lessons of the Accademic Year 2020/21
+
+<a name="computational_model"/>
 
 ## Computational Model
 
@@ -48,6 +60,8 @@ If we choose to use reverse encoding the problem is quite simple. With a single 
 (q1, 0) → (q1, 0, L)  
 (q1, 1) → (q1, 1, L)  
 (q1, ▷) → (qhalt, ▷, S)
+
+<a name="tm"/>
 
 ## Turing Machines
 
@@ -111,6 +125,8 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 ![image](https://user-images.githubusercontent.com/31796254/121327435-ba2cec80-c913-11eb-9865-52f90058d014.png)
 [Another solution](http://turingmachinesimulator.com/shared/zxbtwcdkil)
 
+<a name="undecidability"/>
+
 ## Undecidability
 
 Determine which ones of the following problems are decidable:
@@ -168,6 +184,8 @@ To demonstrate that it is decidable we have to design a TM that decides P. Decid
 **Proof**: Trying to apply Rice's Theorem instantly fails because **P is trivial**. Indeed P = Ø by definition.
 To show that P is decidable we have to design a TM that decides P and such a TM is the TM rejecting every input string.
 
+<a name="fp"/>
+
 ## Polynomial Time Computable Problems
 
 ### Exercise 1
@@ -201,7 +219,9 @@ return (min, max)		# 1 instruction
 
 Altogether, this means that the described alogrithm works in polynomial time, and this mean that the function _minmax_ belongs to **FP**.
 
-# Problem Examples from Virtuale 20/21 - WIP
+<a name="virtuale2021"/>
+
+# Problem Examples from Virtuale 20/21
 
 Solutions provided are not _official_ solutions by professor, but are made by me. So be careful.
 
@@ -299,6 +319,8 @@ def threeclique(V, E):
 Checking if an edge belongs to the set of edges of the graph can be done by simpling comparing it with alle the m edges of the graph, which can be done in polynomial time.
 This operation is inside a triple nested `for`, so it will be done a very big number of times, but still polynomial. SO the problem belongs to the **P** class.
 
+<a name="virtuale2021_questions"/>
+
 # Question Examples from Virtuale 20/21
 
 Let _f, g_ be the functions defined as ![f(n)=2^nn^2](https://latex.codecogs.com/svg.latex?f%28n%29%3D2%5Enn%5E2) and ![g(n) = n2^n](https://latex.codecogs.com/svg.latex?g%28n%29%20%3D%20n2%5En).  
@@ -347,6 +369,8 @@ Select one or more.
 - [x] Does not make any reference to the time complexity of the learning algorithm.
 - [ ] Requires the output concept to have probability of error ε, in all cases.
 - [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
+
+<a name="exam_2020_06_26"/>
 
 # Problems from Exam 06/26/2020
 
@@ -415,23 +439,24 @@ However, I've found similar exercises with the original formulations of the prof
 
 This can be achieved comparing (in linear time) it with all the algorithms of the book (which are a constants number), so of course is a **P** problem.
 
-# Problems from the exercise book
+<a name="book"/>
 
-## The computational model
+# Exercise Book
+[PDF](exercise_book.pdf) containing exercises and some solutions by the professors.  
+Solutions made by us of the exercises of the PDF follow. 
 
-### Exercise 2.1
+<a name="book_computational_model"/>
 
-[This Turing Machine right here.](http://turingmachinesimulator.com/shared/cacvifsuib)
+## Computational Model
 
-### Exercise 2.2
+ - [2.1](http://turingmachinesimulator.com/shared/cacvifsuib)
+ - [2.2](http://turingmachinesimulator.com/shared/gomvaerezb)
+ - [2.4](http://turingmachinesimulator.com/shared/vbwvbqjngd)
+   + [Solution with 2 tapes](http://turingmachinesimulator.com/shared/zphovjeoro) 
 
-[This Turing Machine right here.](http://turingmachinesimulator.com/shared/gomvaerezb)
+<a name="book_poly"/>
 
-### Exercise 2.4
-
-[Two-taped solution](http://turingmachinesimulator.com/shared/zphovjeoro)
-
-## Polynomial time computable problems
+## Polynomial Time Computable Problems
 
 ### Exercise 3.1
 
@@ -468,7 +493,9 @@ Since <img style="transform: translateY(0.1em)background: white" src="https://re
 
 A TM could simulate this code by simply having the same input we cited before, as <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=l_1\#...\#l_n\#q">, scrolling to the end of the TM, copying the query to another tape, then searching for the element while saving the index in a third tape (incremented at every separator).
 
-## Between the feasible and unfeasible
+<a name="book_feasible"/>
+
+## Between the Feasible and Unfeasible
 
 ### Exercise 4.1
 
@@ -477,3 +504,4 @@ We know that a language is in NP when:
 \mathcal{L} = \{x\in \{0,1\}^\* | \exist y \in \{0,1\}^{p(|x|)}.(x,y)=1\}
 <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=">
 Therefore, we can introduce a TM <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{M}_a"> that verifies the language <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{L}_1"> and a TM <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{M}_b"> that verifies <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{L}_2">. Now, if we introduce a third TM that, given a triple <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_1,y_2)"> emulates the first one on <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_1)"> and the second one on <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_2)">, ultimately returning <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=1"> if and only if both the emulations do so.
+
