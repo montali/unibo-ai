@@ -17,6 +17,7 @@ Teacher: Ugo Dal Lago
 * [3 - Polynomial time computable problems](3%20-%20Polynomial%20time%20computable%20problems.md)
 * [4 - Between feasible and unfeasible](4%20-%20Between%20feasible%20and%20unfeasible.md)
 * [5 - ML and theory of computation](5%20-%20ML%20and%20theory%20of%20computation.md)
+* [6 - Computational Learning Theory](6%20-%20Computational%20Learning%20Theory.md)
 * [Basic concepts](Basic%20concepts.md)
 * [**Solved exercises**](Solved%20Exercises.md)
 * [Flashcards to learn theory](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/Anki%20flashcards.apkg)
