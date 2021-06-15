@@ -5,12 +5,12 @@
    + [Undecidability](#undecidability)
    + [Polynomial Time Computable Problems](#fp)
  - [Problem Examples from Virtuale 20/21](#virtuale2021)
- - [Question Examples from Virtuale 20/21](#virtuale2021_questions)
  - [Problems from Exam 06/26/2020](#exam_2020_06_26)
  - [Exercise Book](#book)  - Some rendering problem are present at the moment
    + [Computational Model](#book_computational_model)
    + [Polynomial Time Computable Problems](#book_poly)
    + [Between the Feasible and Unfeasible](#book_feasible)
+ - [Flashcards to learn theory](https://github.com/montali/unibo-ai/blob/master/Languages%20and%20algorithms%20for%20AI%20-%20Module%203/Anki%20flashcards.apkg)
 
 <a name="lessons2021"/>
 
@@ -318,57 +318,6 @@ def threeclique(V, E):
 
 Checking if an edge belongs to the set of edges of the graph can be done by simpling comparing it with alle the m edges of the graph, which can be done in polynomial time.
 This operation is inside a triple nested `for`, so it will be done a very big number of times, but still polynomial. SO the problem belongs to the **P** class.
-
-<a name="virtuale2021_questions"/>
-
-# Question Examples from Virtuale 20/21
-
-Let _f, g_ be the functions defined as ![f(n)=2^nn^2](https://latex.codecogs.com/svg.latex?f%28n%29%3D2%5Enn%5E2) and ![g(n) = n2^n](https://latex.codecogs.com/svg.latex?g%28n%29%20%3D%20n2%5En).  
-Select one or more.
-
-- [x] ![f\in\Omega(g)](https://latex.codecogs.com/svg.latex?f%5Cin%5COmega%28g%29)
-- [ ] ![f\in O(g)](https://latex.codecogs.com/svg.latex?f%5Cin%20O%28g%29)
-- [ ] ![f\in\Theta(g)](https://latex.codecogs.com/svg.latex?f%5Cin%5CTheta%20%28g%29)
-
----
-
-In Turing Machines:  
-Select one or more.
-
-- [ ] The presence of many tapes can make the class **P** different
-- [x] What can be computed in exponential time is different from what can be computed in polynomial time
-- [x] The presence of many tapes can make the class **DTIME(_n_)** different
-- [ ] The class **EXP** can be equal to **P**
-
----
-
-The problem **3SAT** is:  
-Select one or more.
-
-- [x] Such that **INDSET** can be reduced to it
-- [x] **NP**-hard
-- [x] In the class **EXP**
-- [ ] Computable in polynomial time
-
----
-
-Suppose a language **_L_** is both in **NP** and in **EXP**. Then  
-Select one or more.
-
-- [ ] **EXP** and **NP** are necessarly equal.
-- [x] **_L_** can even be **NP**-complete.
-- [x] **NP** and **EXP** are maybe different.
-- [ ] **_L_** cannot be in **P**.
-
----
-
-The notion of PAC-learnable concept class:  
-Select one or more.
-
-- [x] Needs to hold for every distribution D on the instance class.
-- [x] Does not make any reference to the time complexity of the learning algorithm.
-- [ ] Requires the output concept to have probability of error ε, in all cases.
-- [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
 
 <a name="exam_2020_06_26"/>
 
