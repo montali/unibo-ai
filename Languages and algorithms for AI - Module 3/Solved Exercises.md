@@ -16,6 +16,9 @@
 
 # Exercises proposed during lessons of the Accademic Year 2020/21
 
+- [2020-04-16 recording](https://web.microsoftstream.com/video/8349be7b-e725-4659-b8f6-1b573d413090?list=user&userId=81f9b4d0-f39e-4c4a-b627-27312bc73156)
+- [2020-04-09 recording](https://web.microsoftstream.com/video/4d794858-9eea-4e83-bdde-26cab82f21a1?list=user&userId=81f9b4d0-f39e-4c4a-b627-27312bc73156)
+
 <a name="computational_model"/>
 
 ## Computational Model
