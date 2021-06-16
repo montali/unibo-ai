@@ -146,7 +146,7 @@ and updating it according to (_s_, _b_) when _b_ = 1. (When _b_ = 0 data are dis
  - _h_ is updated to: _x1 ∧ ¬x2_
 
 #### Theorem:
-_The representation of a boolean conjunction of literal is efficiently PAC learnable._
+> _The representation of a boolean conjunction of literal is efficiently PAC learnable._
 
 <a name="DNF"/>
 
@@ -161,7 +161,7 @@ We can imagine it as the _dual_ of 3CNFs.
 It is a more general class of conjunctions of literals, but still not universal.
 
 #### Theorem:
-_If_ **RP ≠ NP**_, then the representation class of 3-term DNF formulas is **not** efficiently PAC learnable_
+> _If_ **RP ≠ NP**_, then the representation class of 3-term DNF formulas is **not** efficiently PAC learnable_
 
 <a name="end"/>
 
