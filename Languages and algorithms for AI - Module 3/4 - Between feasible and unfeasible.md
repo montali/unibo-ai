@@ -138,7 +138,7 @@ A language <img src="svgs/3a965f05dff06a55fe4ba6bdaf0d1aae.svg?invert_in_darkmod
 Note that:
 
 - <img src="svgs/a85b3a23cd1b786139824ba981dbf605.svg?invert_in_darkmode" align=middle width=44.35138949999999pt height=22.55708729999998pt/> is **NP**-hard <img src="svgs/68bf0daed9e28ab0d5a9cba1d27c3863.svg?invert_in_darkmode" align=middle width=83.56119915pt height=22.55708729999998pt/>.
-- <img src="svgs/a85b3a23cd1b786139824ba981dbf605.svg?invert_in_darkmode" align=middle width=44.35138949999999pt height=22.55708729999998pt/> is **NP**-hard <img src="svgs/b76492a2d67002f71be342b015b34d03.svg?invert_in_darkmode" align=middle width=101.82604079999999pt height=22.55708729999998pt/>.
+- <img src="svgs/a85b3a23cd1b786139824ba981dbf605.svg?invert_in_darkmode" align=middle width=44.35138949999999pt height=22.55708729999998pt/> is **NP**-complete <img src="svgs/b76492a2d67002f71be342b015b34d03.svg?invert_in_darkmode" align=middle width=101.82604079999999pt height=22.55708729999998pt/>.
 
 No such language has been found and <img src="svgs/03c6d1a0e85a425a91b17393616670d6.svg?invert_in_darkmode" align=middle width=62.556697499999984pt height=22.55708729999998pt/> has not yet been proven (famous **P** vs **NP** problem).
 

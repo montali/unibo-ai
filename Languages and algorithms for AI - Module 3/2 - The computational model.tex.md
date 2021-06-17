@@ -41,7 +41,7 @@ We can now define a **Turing Machine** TM working on $k$ tapes, described as a t
 
 * A finite set of **states** $Q$ (including a designated initial state $Q_{init}$ and a designated final state $Q_{halt}$)
 
-* A **transition function**, what really matters, i.e. the actual program. this models how the machine reacts to input and produces outputs. Nothing more than a function taking the current state (element of $Q$), a vector of length k from gamma (i.e. the symbols the machine reads form the tapes), and produces an output containing the next state (element of $Q$), then the symbols it puts into the $k-1$ R/W tapes (work tapes and output tapes), then a vector of length $k$ made with an alphabet composed of $L$ (move the corresponding head to left), $S$ (let the head $i$ stay in place), $R$ (move the head to right). This can be expressed formally as:
+* A **transition function**, what really matters, i.e. the actual program. this models how the machine reacts to input and produces outputs. Nothing more than a function taking the current state (element of $Q$), a vector of length k (the symbols the machine reads form the tapes) from the alphabet $\Gamma$, and produces an output containing the next state (element of $Q$), then the symbols it puts into the $k-1$ R/W tapes (work tapes and output tapes), then a vector of length $k$ made with an alphabet composed of $L$ (move the corresponding head to left), $S$ (let the head $i$ stay in place), $R$ (move the head to right). This can be expressed formally as:
 $$
 \delta: Q \times \Gamma^k \to Q \times \Gamma^{k-1} \times \{L,S,R\}
 $$
