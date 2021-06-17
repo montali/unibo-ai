@@ -22,10 +22,10 @@ We show that from an hypotetical machine computing _halt_, calling it _Mhalt_, w
 Let us construct _Muc_ out of _Mhalt_:
  - on input _α Muc_ proceeds by calling _Mhalt_ on input _(α, α)_ and:
     - in case _Mhalt_ returns 0 (meaning that _Mα(α)_ diverges), _Muc_ outputs 1
-    - otherwiswe, i.e. in the case in which _Mhalt_ returns 1 (meaning that _Mα(α)_ converges), _Muc_ knows that it can safely call U (the universal TM) on _(α, α)_ and that U will terminate its execution on that input (because what U does with input _(α, α)_ is to simulate the execution of _Mα(α)_), returning an output _b_. Now:
+    - otherwise, i.e. in the case in which _Mhalt_ returns 1 (meaning that _Mα(α)_ converges), _Muc_ knows that it can safely call U (the universal TM) on _(α, α)_ and that U will terminate its execution on that input (because what U does with input _(α, α)_ is to simulate the execution of _Mα(α)_), returning an output _b_. Now:
       - if _b=1_ then _Muc_ returns 0
       - if _b=0_ then _Muc_ returns 1
-  - _Muc_ as we have just defined it is indeed a TM computing _uc_, but since we know that _uc_ is uncomutable, there is a contraddiction and _halt_ itself is uncomputable.
+  - _Muc_ as we have just defined it is indeed a TM computing _uc_, but since we know that _uc_ is uncomputable, there is a contradiction and _halt_ itself is uncomputable.
 
 ### Exercise 2
 Show that the function _inc_: N -> N such that _inc(n) = n+1_ can be computed in linear time by giving an explicit construction of a TM.
@@ -75,7 +75,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (qb, 0/1) → (qb, 0\1, L)  
 (qb, ▷) → (qa, ▷, R)  
 
-This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 ![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
 
@@ -84,7 +84,7 @@ This is not exactly the same proposed by professor, but I've tested it with [JFL
 
 Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
 
-This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 **Solution:**
 The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, qb, q0, q1, qhalt}. The transition function δ is specified as follows:

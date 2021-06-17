@@ -39,10 +39,10 @@ Let us construct _Muc_ out of _Mhalt_:
 
 - on input _α Muc_ proceeds by calling _Mhalt_ on input _(α, α)_ and:
   - in case _Mhalt_ returns 0 (meaning that _Mα(α)_ diverges), _Muc_ outputs 1
-  - otherwiswe, i.e. in the case in which _Mhalt_ returns 1 (meaning that _Mα(α)_ converges), _Muc_ knows that it can safely call U (the universal TM) on _(α, α)_ and that U will terminate its execution on that input (because what U does with input _(α, α)_ is to simulate the execution of _Mα(α)_), returning an output _b_. Now:
+  - otherwise, i.e. in the case in which _Mhalt_ returns 1 (meaning that _Mα(α)_ converges), _Muc_ knows that it can safely call U (the universal TM) on _(α, α)_ and that U will terminate its execution on that input (because what U does with input _(α, α)_ is to simulate the execution of _Mα(α)_), returning an output _b_. Now:
     - if _b=1_ then _Muc_ returns 0
     - if _b=0_ then _Muc_ returns 1
-- _Muc_ as we have just defined it is indeed a TM computing _uc_, but since we know that _uc_ is uncomutable, there is a contraddiction and _halt_ itself is uncomputable.
+- _Muc_ as we have just defined it is indeed a TM computing _uc_, but since we know that _uc_ is uncomputable, there is a contradiction and _halt_ itself is uncomputable.
 
 ### Exercise 2
 
@@ -98,7 +98,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (qb, 0/1) → (qb, 0\1, L)  
 (qb, ▷) → (qa, ▷, R)
 
-This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 ![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
 
@@ -106,7 +106,7 @@ This is not exactly the same proposed by professor, but I've tested it with [JFL
 
 Write a TM that accept a binary string _w_ iff the number of 0s in _w_ is equal to the number of 1s in _w_.
 
-This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+This was proposed as a homework problem, so there is no solution showed in class, but I've tested mine with [JFLAP](http://www.jflap.org/) and it works. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting character ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 **Solution:**
 The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is {qinit, qa, qb, q0, q1, qhalt}. The transition function δ is specified as follows:
@@ -257,7 +257,7 @@ Note that there are no transitions for the configuration (q2, 1), which correspo
 
 When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string.
 
-It follows a JFLAP implementation. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first charachter of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I've made some changes to manage the different starting position of the head.
+It follows a JFLAP implementation. As usual, keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting character ▷, but it is fully surrounded with □. So I've made some changes to manage the different starting position of the head.
 
 ![image](https://user-images.githubusercontent.com/31796254/121328990-17756d80-c915-11eb-87fa-c8e993c55c85.png)
 
@@ -353,10 +353,10 @@ If the TM reaches the ending state qhalt, then the string is accepted, otherwise
 States explanantion:
 
 - **qinit**: it is just the initial state. The TM immediately passes to q1.
-- **q1**: the TM read the string charachter by charachter. If it read 0, it passes to q2.
+- **q1**: the TM read the string character by character. If it read 0, it passes to q2.
 - **q2**: as q1, but a 0 has been detected yet, so reading a 1 will mean that 01 is detected and the TM will pass to q3.
 - **q3**: 01 detected, so the TM only reads 0s, indeed there are no transitions for the configuration (q3, 1).
-- **q4**: This state is reached when the TM reads a blank charachter, meaning that the string is finished and has to be accepted. It just reset the head at the start of the tape, before passing to qhalt, which is the final state.
+- **q4**: This state is reached when the TM reads a blank character, meaning that the string is finished and has to be accepted. It just reset the head at the start of the tape, before passing to qhalt, which is the final state.
 
 When the TM read □ (i.e. the input string is finished), it goes to the state q3, in which it simply goes back to the starting position (the cell with ▷) and then it passes to the state qhalt, terminating and accepting the string.
 
