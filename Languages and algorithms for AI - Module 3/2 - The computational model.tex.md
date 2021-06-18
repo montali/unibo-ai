@@ -61,13 +61,13 @@ Given the input $x \in \{0,1\}^*$, in the initial configuration $\mathcal{I}_x$ 
 
 TMs are an interesting strategy of showing that a function is computable. The point is that computing it in another way is still a good proof. So, why are we obsessed with these fucking Turing Machines? We cannot get negative results with these! The border between what can be done and what can't be done is exactly what we are searching for.
 
-We usually ask the TM to compute things in a bounded amount of steps: $T$ is a bound, not in the strict sense, rather in a function sense.
+We usually ask the TM to compute things in a bounded amount of steps: $T$ is bound, not in the strict sense, rather in a function sense.
 If we say that a function  is computed in time $T$, we insist on $T$ to be a function: it would be non-sense to require the computational time to be fixed for different inputs.
-The time bound is dependent on the length on the input! What matters about the input is its length: **if an input is longer, we'll allow the machine to take a longer time.**
+The time boundary is dependent on the length on the input! What matters about the input is its length: **if an input is longer, we'll allow the machine to take a longer time.**
 
 Given $f:\{0,1\}^* \to \{0,1\}^*$ and $T:\mathbb{N} \to \mathbb{N}$, these are equivalent:
 * $f$ is **computable** in time $T$.
-* A TM $\mathcal{M}$ computes $f$ in time $T$.
+* It exists a TM $\mathcal{M}$ that computes $f$ in time $T$.
 * $\mathcal{M}$ returns $f(x)$ on input $x$ in a number of steps smaller or equal to $T(|x|) \forall x \in \{0,1\}^*$. 
 
 Then, we can finally say that a **language** $\mathcal{L}_{f} \subseteq\{0,1\}^{*}$ is decidable in time $T$ if and only if $f$ is computable in time $T$.

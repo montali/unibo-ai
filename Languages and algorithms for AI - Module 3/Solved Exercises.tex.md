@@ -368,13 +368,13 @@ Prove that the problem is in **NP**: check if a number is the sum of powers of 3
 
 ### Solution
 
-We at first notice that a number can be expressed as a sum between power of 3 (3 to thw ower of 0 excluded) iff it is divisible by 3.
-Since we have to show that the problem is in **NP** we can describe a non-deterministic algorithm. So our algorithm can just pick a random number non-determinstically, multiply it by 3 and check if it is equal to the input number n.
+We at first notice that a number can be expressed as a sum between power of 3 (3 to the power of 0 excluded) iff it is divisible by 3.
+Since we have to show that the problem is in **NP** we can describe a non-deterministic algorithm. So our algorithm can just pick a random number non-deterministically, multiply it by 3 and check if it is equal to the input number n.
 The multiplication and the comparison between two numbers can be of course executed in polynomial time.
 The pseudocode is the following:
 ```
 def f(n):
-  assign non-determinstically a number greater than 0 to k
+  assign non-deterministically a number greater than 0 to k
   k = k * 3
   return k == n
 ```
