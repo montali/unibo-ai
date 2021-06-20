@@ -1,10 +1,10 @@
 # Knowledge representation
 
-The idea here is using knowledge to solve problems. What is this knowledge we're talking about? We can talk about **declarative knowledge** and **imperative knowledge**. We can describre a problem using both of them. 
+The idea here is using knowledge to solve problems. What is this knowledge we're talking about? We can talk about **declarative knowledge** and **imperative knowledge**. We can describe a problem using both of them. 
 
 KR is the area if AI concerned with how **knowledge can be represented symbolically** and manipulated in an automated way by reasoning programs.
 
-We therefore have a language (symbolic representation) and the concept of  **knolwedge base**, i.e. a set of sentences (**clauses**) encoded in a given KR language that describe a given domain/problem, a subset of the world.
+We therefore have a language (symbolic representation) and the concept of  **knowledge base**, i.e. a set of sentences (**clauses**) encoded in a given KR language that describe a given domain/problem, a subset of the world.
 
 The semantics are usually related to a notion of **truth**. When we write a sentence we have an idea of what we are writing: this is linked to **semantics**, i.e. the meaning of clauses. When talking about Prolog, the sentences have a formal semantic, but we can even talk about *informal semantics*. Most of the tools we use today have **formal semantics** though.
 
@@ -12,7 +12,7 @@ Another important concept is the **expressive power**, which is not trivial: if 
 
 When you think about KR, sometimes, some authors speak about *knowledge level*, i.e. the top level of languages, where we only describe knowledge using some kind of symbolic language. Its syntax is quite common. 
 
-AI languages like Prolog have an active interpreter, are dynamic languages (think about meta-programming, and the fact that we have to dynamically check the type of things). Another important point is the support of **symbols** and **terms** as first class objects, meaning that you have a category of the language that allows these. This is true both for LISP and PROLOG. The last property (only holding for these languages) is the fact that the data are equivalent to programs, giving us a high-level of flexibility (meta-interpreters!). This means that we can trasform code as we transform data!
+AI languages like Prolog have an active interpreter, are dynamic languages (think about meta-programming, and the fact that we have to dynamically check the type of things). Another important point is the support of **symbols** and **terms** as first class objects, meaning that you have a category of the language that allows these. This is true both for LISP and PROLOG. The last property (only holding for these languages) is the fact that the data are equivalent to programs, giving us a high-level of flexibility (meta-interpreters!). This means that we can transform code as we transform data!
 
 Just a low percentage of programmers use these languages. *This is a problem.* (no?)
 
@@ -43,7 +43,7 @@ What are the most important? **Soundness** first of all, i.e. if what we put in 
 
 There are then other properties concerning the goal, first of all **decidability**, i.e. the fact that we'll reach or not a conclusion. Finally, **efficiency**.
 
-There's an important tradeoff concerning **efficiency** and the **capacity of representing things**. These two sides basically represent *what we knoe can be represented as comprehensibly as possible* and *what we know can be reasoned as effectively as possible*. 
+There's an important tradeoff concerning **efficiency** and the **capacity of representing things**. These two sides basically represent *what we know can be represented as comprehensibly as possible* and *what we know can be reasoned as effectively as possible*. 
 
 
 

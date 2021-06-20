@@ -32,7 +32,7 @@ p :- print('Awesome!')
 
 or maybe, with a variable:
 
-```
+```prolog
 p(Message) :- print(Message)
 ```
 
@@ -49,10 +49,10 @@ We have two stacks, the **execution stack** and the **backtracking stack** (open
 Then, we know that prolog respects the definition order of clauses. 
 
 CUT makes the choices that the program took **non-backtrackable**. The evaluation of cut always succeeds.
-$$
-\mathbf{p}:-\mathbf{q}_{1}, \quad \mathbf{q}_{2}, \ldots, \quad \mathbf{q}_{i}, \quad !, \mathbf{q}_{i+1}, \quad \mathbf{q}_{i+2}, \ldots, \quad \mathbf{q}_{n}
-$$
-If the evaluation of the goals after the cut, the whole $p$ fails. Even if there are alternatives for $p$, they would have been removed by the cut.
+```prolog
+p :- q_1, q_2, ..., q_i, !, q_i+1, q_i+2, ..., q_n
+```
+If the evaluation of the goals after the cut, the whole `p` fails. Even if there are alternatives for `p`, they would have been removed by the cut.
 
 The cut therefore removes branches of the SLD resolution. The cut allows us to achieve mutual exclusion between two clauses. 
 
