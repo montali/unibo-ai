@@ -1,4 +1,4 @@
-#  
+# Rules reasoning
 
 Today, we'd like to answer a question: we know risk factors about people, and we want to get how probable it is that they will fall. We can use LPAD to compute the probability of risk!
 
