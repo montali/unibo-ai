@@ -12,17 +12,29 @@ This idea of having programs passed as parameters is interesting: think about la
 The first predicate we're interested in is `call(T)`, having the effect that the term `T` is considered as an atom (a predicate) and prolog evaluates it. We could obviously mix this up with other things. The meaning is *take `X` as a variable that probably has been bound to a program, and try to prove such a goal*.
 
 ### `fail`
-Another one is the `fail`: each evaluation of this **fails**. This forces the program to look for alternatives.
+Another one is the `fail`: each evaluation of this **fails**. This forces the program to look for alternatives. `fail` can be used for many things:
 
-### `not(P)`
-This is also used to implement negation as failure, i.e. the predicate `not`: `not(P)` is true if `P` is not a consequence:
-
+#### `not(P)`
+`fail` can be used for ezample to implement negation:
 ```prolog
 not(P):- call(P), !, fail.
 not(P).
 ```
+The predicate `not`: `not(P)` is true if `P` is not a consequence.
 
-This behaviour is already available as `\+(P)`.
+This behaviour is already available with the built-in predicate `\+(P)`, which is also faster, since relies on many optimizations.
+
+#### Default behaviour vs exceptions
+It's a common case in a knowledge base to have a default behaviour and some exceptions to it. For example all birds fly, but some exceptions, as the penguin and the ostrich. This can be implemented with a combination of `cut` and `fail`
+
+```prolog
+% Exceptions
+fly(X) :- penguin(X), !, fail.
+fly(X) :- ostrich(X), !, fail.
+
+% Default behaviour
+fly(X) :- bird(X).
+```
 
 ### `setof(X,P,S)` and `bagof(X,P,L)`
 `setof(X,P,S)` returns the set (ideally without repetitions, some intepreters ignore this and leave repetitions) of instances `X` that satisfy `P`. 
