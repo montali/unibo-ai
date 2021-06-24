@@ -52,9 +52,19 @@ CUT makes the choices that the program took **non-backtrackable**. The evaluatio
 ```prolog
 p :- q_1, q_2, ..., q_i, !, q_i+1, q_i+2, ..., q_n
 ```
-If the evaluation of the goals after the cut, the whole `p` fails. Even if there are alternatives for `p`, they would have been removed by the cut.
+If the evaluation of `q_i+1, q_i+2, ..., q_n` , the whole `p` fails. Even if there are alternatives for `p`, they would have been removed by the cut.
 
-The cut therefore removes branches of the SLD resolution. The cut allows us to achieve mutual exclusion between two clauses. 
+The cut therefore removes branches of the SLD resolution. The cut allows us to achieve mutual exclusion between two clauses.
+
+One famous use of the cut is to achieve mututal exclusion between two clauses. Indeed, the expression
+```
+if a(.) then b else c
+```
+can be written as:
+```prolog
+p(x) :- a(X), !, b.
+p(X) :- c.
+```
 
 ### Close world assumption
 
