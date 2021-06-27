@@ -14,6 +14,7 @@ Oral with three open questions (2 for mod 1 and 1 for mod 2) in 60 minutes (up t
 Teacher: Vincenzo Romei
 
 - [Romei's channel on MS Stream](https://web.microsoftstream.com/user/d8939ea9-6cdf-43f8-aa66-8a3d377121cc)
+- [Section on Virtuale](https://virtuale.unibo.it/course/view.php?id=19436#section-1)
 
 ### Material
 
