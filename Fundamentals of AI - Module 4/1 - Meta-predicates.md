@@ -1,8 +1,10 @@
 # Meta-predicates
 
+[Recording](https://web.microsoftstream.com/video/b6be2a31-03da-4341-a7c5-f5b6e94de852)
+
 One of the things that make prolog great is that predicates and terms have the same syntactical structure: we could exchange and exploit them in different roles!
 
-This is  afeature that was available from the beginning, and it has been exploited in a great number of applications that did reasoning. Why? It was possible to represent Knowledge bases as **rules**, using them as the program or as data. We could therefore create programs with these to do different tasks. The same feature has been achieved in modern programming languages only recently.
+This is  a feature that was available from the beginning, and it has been exploited in a great number of applications that did reasoning. Why? It was possible to represent Knowledge bases as **rules**, using them as the program or as data. We could therefore create programs with these to do different tasks. The same feature has been achieved in modern programming languages only recently.
 
 This idea of having programs passed as parameters is interesting: think about lambdas in python!
 
@@ -103,6 +105,8 @@ The predicate `clause(Head, Body)` allows us to check if there exists such a cla
 Remember that everything starting with a capital or an underscore is a variable.
 
 # Meta-interpreters
+
+[Recording](https://web.microsoftstream.com/video/9ae90012-d375-4c8e-a65c-f724d8e165dd)
 
 As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs. We'll talk about this class of programs we use as input, **meta-interpreters**. They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a langugage `L` is defined as an interpreter for L, but written in Prolog. 
 

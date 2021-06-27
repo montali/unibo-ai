@@ -1,5 +1,7 @@
 # Decision Model and Notation
 
+[Recording](https://web.microsoftstream.com/video/b3d6ede0-9467-4e55-b7c2-e063d7aa662c)
+
 A decision can be modeled as an iterative process. We describe the decision, its requirements, its identification...
 
 Problem is that in 2016 the object modeling group came out with a standard *The Standard Decision Model and Notation* and there are a huge number of firms supporting it.
@@ -35,6 +37,8 @@ There are two ways to *expire* events: explicit and implicit expiration. The fir
 Allen's logic is a logic about **intervals**: the idea is that the msot general possible operator of the `after` operator is that the difference between the starts of two events should be between an interval. There are some operators defined by Allen, like `before`, `meets`, `met-by`, `overlaps`...
 
 ### State
+
+[Recording](https://web.microsoftstream.com/video/8a5c5b7e-f1a3-440b-a73a-04daa268d4d1)
 
 Rules that can keep some sort of *state*, like *if something happened in the last 10 minutes* can't really exists. Real systems, though, can usually represent the notion of state. How do we do this in Drools? The solution was proposed in 1986 in a famous paper, *Even Calculus Framework* (a good similar paper is by Shanamanah), which was kind of complex. The notion of *fluents*, i.e. properties for which the truthness value is able to change over time, is used for this. The system is described by a **complete set of fluents**. Another characteristic that is nice about this is that of meta-events: the fact that the state is changing is an event itself. We have some predicates that allow us to express fluents, like `HoldsAt` or `Happens`.
 
