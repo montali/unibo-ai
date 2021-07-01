@@ -178,3 +178,23 @@ This can be written in a shorter form introducing a bit of syntactic sugar: the 
 (defmacro if (p e1 e2)
     `(cond) (,p ,e1) (T ,e2))
 ```
+
+## FOL in LISP
+
+Lisp is a good (?) choice to implement a First Order Logic reasoning engine. Elements of FOL can be implemented as suggested:
+
+ - Logic variables: Lisp symbols `?x`, `?y`, `?z` and so on.
+ - Constans, predicates, functions: Lisp symbols not preceeded by ?.
+ - Terms: `(function t1 ... tm)`
+ - Atomic formulas: `(predicate t1 ... tm)`
+ - and, or, implication not:
+   * `(AND F1 F2)`
+   * `(OR F1 F2)`
+   * `(=> F1 F2)`
+   * `(NOT F)`
+ - ∀ and ∃:
+   * `(FORALL (X) F)`
+   * `(EXISTS (F) F)`
+
+Unification and dereferencing can be implemented as functions, and then a FOL reasoning engine can be entirely built in Lisp.
+Very esoteric but complete and working code about this can be found on prof. Gaspari's slides.
