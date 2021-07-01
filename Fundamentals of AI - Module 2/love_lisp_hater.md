@@ -5,7 +5,7 @@ LISP is a functional language, this means that programs are expressed as a set o
 It is also a very old language (50s for Lisp, and 80s for Common Lisp), this means that programs are expressed as a set of weird syntax and apparently useless parenthesis.  
 So I hate it.  
 But you don't have to.  
-And this is why don't.
+And this is why you don't.
 
 ## Syntax
 
