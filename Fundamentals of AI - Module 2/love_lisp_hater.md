@@ -1,14 +1,18 @@
 # Why you should love LISP - written by an hater
 
 LISP is a functional language, this means that programs are expressed as a set of function definitions and the execution is expressed as a set of function evaluations.
+It is also a very old language (50s for Lisp, and 80s for Common Lisp), this means that programs are expressed as a set of weird syntax and apparently useless parenthesis.  
+So I hate it.  
+But you don't have to.  
+And this is why don't.
 
 ## Syntax
 
 ### Hello World!
 
-`*` It is the sbcl prompt.
+`*` is the sbcl prompt.
 
-`quote()` (that can also be used in its short form `'`) suspend evaluation for its arguement. So `* 'foo` will print "foo" instead of evaluate `foo` as a function. Now we have enough knowedge to write an HelloWorld program:
+`quote()` (that can also be used in its short form `'`) suspends evaluation for its arguement. So `* 'foo` will print "foo" instead of evaluate `foo` as a function. Now we have enough knowedge to write an Hello World program:
 
 ```LISP
 * quote(Hello World!)
