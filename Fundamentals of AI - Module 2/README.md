@@ -20,5 +20,6 @@ Tutor: Andrea Galassi
 
 - [01 - Introduction](01%20-%20Introduction.md)
 - [02 - Lisp](02%20-%20Lisp.md)
+  - [Why you should love Lisp - written by an hater](love_lisp_hater.md)
 - ...
 - [Summary](summary.md)
