@@ -92,7 +92,7 @@ Remember that everything starting with a capital or an underscore is a variable.
 
 # Meta-interpreters
 
-As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs. We'll talk about this class of programs we use as input, **meta-interpreters**. They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a langugage `L` is defined as an interpreter for L, but written in Prolog. 
+As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs. We'll talk about this class of programs we use as input, **meta-interpreters**. They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a language `L` is defined as an interpreter for L, but written in Prolog. 
 
 Even though we could write Prolog interpreters in all the languages (e.g. Python, Java, C...), we couldn't write a **Prolog interpreter in Prolog**. 
 
