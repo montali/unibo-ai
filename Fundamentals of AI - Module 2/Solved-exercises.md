@@ -4,7 +4,7 @@ _Build a knowledge base in which the following knowledge is represented: Father,
 
 ### First Order Logic
 
-<!-- $$
+$$
 parent(Fabrizio, Simone)\\
 parent(Rossella, Simone)\\
 woman(Rossella)\\
@@ -20,13 +20,12 @@ sibling(X,Y) \wedge woman(X) \rightarrow sister(X,Y)\\
 (uncle(X,Z) \vee aunt(X,Z)) \wedge man(Z) \rightarrow nephew(Z,X)\\
 mother(X,A) \wedge mother(X,B) \wedge mother(X,C) \wedge (A\neq B\neq C)\wedge \\ man(A)\wedge man(B) \wedge man(C) \rightarrow mother_3(X)\\
 father(X,A) \wedge father(X,B) \wedge (A\neq B)\wedge woman(A)\wedge woman(B) \rightarrow father_2(X)\\
-$$ -->
+$$
 
-<div align="center"><img style="background: white;" src="../svg/vlxsRH1O9U.svg"></div>
 
 ### ALC
 
-<!-- $$
+$$
 Father \equiv Parent \sqcap Man\\
 Son \equiv (Man \sqcap\exist hasParent.Person)\\
 Daughter \equiv (Woman \sqcap\exist hasParent.Person)\\
@@ -40,9 +39,7 @@ Niece \equiv (Woman \sqcap\exist Parent.Sibling)\\
 Nephew \equiv (Man \sqcap\exist Parent.Sibling)\\
 Mother_3 \equiv (Woman \sqcap\ge 3 Son)\\
 Father_2 \equiv (Man \sqcap \le 2 Daughter)
-$$ -->
-
-<div align="center"><img style="background: white;" src="../svg/YC12c8NyKV.svg"></div>
+$$
 
 ## Exercise 2
 
@@ -50,7 +47,7 @@ _Build a knowledge base in which the following knowledge is represented: All hum
 
 ### First Order Logic
 
-<!-- $$
+$$
 human(X) \rightarrow mammal(X)\\
 mammal(X)\rightarrow warmblooded(X)\\
 dog(X) \rightarrow mammal(X)\\
@@ -58,13 +55,11 @@ own(X,Y) \rightarrow human(X), animal(Y)\\
 \exist X.(animal(X) \wedge \neg warmblooded(X))\\
 mammal(X) \rightarrow animal(X)\\
 own(X,Y) \rightarrow human(X)\wedge \neg human(Y)
-$$ -->
-
-<div align="center"><img style="background: white;" src="../svg/aIzQqCiAQY.svg"></div>
+$$
 
 ### ALC
 
-<!-- $$
+$$
 Human \sqsubseteq Mammal \\
 Mammal \sqsubseteq WarmBlooded\\
 Dog \sqsubseteq Mammal\\
@@ -72,10 +67,7 @@ AnimalOwner \equiv Human \sqcap \exist owns.Animal\\
 ColdBloodedAnimal \equiv Animal \sqcap \neg WarmBlooded\\
 Mammal \sqsubseteq Animal\\
 (Human \sqcap \exist owns.Human).\perp
-$$ -->
-
-<div align="center"><img style="background: white;" src="../svg/dxa5oiWDhb.svg"></div>
-
+$$
 ## Exercise 3
 
 ### First Order Logic
