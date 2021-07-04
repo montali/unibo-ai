@@ -75,3 +75,60 @@ Mammal \sqsubseteq Animal\\
 $$ -->
 
 <div align="center"><img style="background: white;" src="../svg/dxa5oiWDhb.svg"></div>
+
+## Exercise 3
+
+### First Order Logic
+
+$student(X) \rightarrow smart(X)$
+
+$\exists X.student(X)$
+
+$\exists X.(student(X) \wedge smart(X))$
+
+$\forall X\exists Y.(student(X) \wedge student(Y) \wedge loves(X,Y))$
+
+$\forall X \exists Y . (student(X) \wedge student(Y) \wedge loves(X,Y)\wedge X\neq Y)$
+
+$\exists X.(\forall Y.student(X) \wedge student(Y)\wedge loves(Y,X))$
+
+$student(mark)$
+
+$student(paul)$
+
+$takes(mark, analysis) \leftrightarrow \neg takes(mark, geometry)$
+
+$\neg takes(mark, analysis) \leftrightarrow takes(mark, geometry)$
+
+$takes(paul, analysis) \wedge takes(paul, geometry)$
+
+$\neg takes(mark, analysis)$
+
+$\forall Y.(student(Y) \rightarrow \neg loves(Y, paul))$
+
+### ALC
+
+$Student \sqsubseteq Smart$
+
+$SmartStudent \equiv Student \sqcap Smart$
+
+$(Student \sqcap \exists loves.Student)\equiv Student$
+
+Sentence 5 is not encodable in ALC (I think)
+
+$Student \sqcap \forall loves.Student $
+
+$Mark \sqsubseteq Student$
+
+$Paul \sqsubseteq Student$
+
+$Mark \sqsubseteq ((\exists takes.GeometryExam \sqcap \neg \exists takes.AnalysisExam) \sqcup$
+
+$ (\exists takes.AnalysisExam \sqcap \neg \exists takes.GeometryExam))$
+
+$Paul \sqsubseteq (\exist takes.GeometryExam \sqcap \exist takes.AnalysisExam)$
+
+$Mark \sqsubseteq \neg \exists takes.AnalysisExam$
+
+$(Student \sqcap \exist loves.Paul).\perp$
+
