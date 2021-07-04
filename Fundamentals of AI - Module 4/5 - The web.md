@@ -1,5 +1,7 @@
 # The web
 
+[Recording](https://web.microsoftstream.com/video/37c32bcf-dcb7-4d72-9137-a11542d1ceaa)
+
 XML files are a great tool, with built-in grammar definitions and no presentation information. It is not human readable, especially in high cardinality. It's a costly and expensive standard, but it's nice. We'll use it to represent knowledge, according to standard W3C, encoding the possible smallest bit of information: triples in which we have subject, predicate and object. 
 
 In PROLOG we'd call these predicate with arity 2. 

@@ -1,5 +1,7 @@
 # Fundamentals of AI - Module 4
 
+[Recording](https://web.microsoftstream.com/video/fb6fe034-df9a-48cb-a2bf-13c7574fa4ac)
+
 This part of the course is mainly devoted to a part of the *classical AI* (not related to ML) regarding reasoning using **rules**. Why rules? It's a form of reasoning that is common between humans.
 
 What is curious is that after the explosion of ML/Deep Learning, currently ruled based approach (for knowledge representation) are widely used to provide *explanations*. Neural networks are not explainable at all, for example, while a model based on rules provides an easy way of explaining these.
@@ -32,7 +34,7 @@ p :- print('Awesome!')
 
 or maybe, with a variable:
 
-```
+```prolog
 p(Message) :- print(Message)
 ```
 
@@ -49,12 +51,18 @@ We have two stacks, the **execution stack** and the **backtracking stack** (open
 Then, we know that prolog respects the definition order of clauses. 
 
 CUT makes the choices that the program took **non-backtrackable**. The evaluation of cut always succeeds.
-$$
-\mathbf{p}:-\mathbf{q}_{1}, \quad \mathbf{q}_{2}, \ldots, \quad \mathbf{q}_{i}, \quad !, \mathbf{q}_{i+1}, \quad \mathbf{q}_{i+2}, \ldots, \quad \mathbf{q}_{n}
-$$
-If the evaluation of the goals after the cut, the whole $p$ fails. Even if there are alternatives for $p$, they would have been removed by the cut.
+```prolog
+p :- q_1, q_2, ..., q_i, !, q_i+1, q_i+2, ..., q_n
+```
+If the evaluation of `q_i+1, q_i+2, ..., q_n` fails, the whole `p` fails: even if there are alternatives for `p`, they have been removed by the cut.
 
-The cut therefore removes branches of the SLD resolution. The cut allows us to achieve mutual exclusion between two clauses. 
+The cut therefore removes branches of the SLD resolution. The cut allows us to achieve mutual exclusion between two clauses.
+
+One famous use of the cut is to achieve mututal exclusion between two clauses. Indeed, the expression `if a(X) then b else c` can be written as:
+```prolog
+p(x) :- a(X), !, b.
+p(X) :- c.
+```
 
 ### Close world assumption
 
@@ -62,11 +70,25 @@ Basically, this means that everything that is not stated is false. For example, 
 
 ### SLDNF
 
-Once we have variables in our goal, SLDNF is not safe anymore. Prolog implements the negation as failure, so prolog tries to prove not A to prove A.
+SLDNF is an extension of SLD to support negation. SLDNF is used in Prolog to implement the Negation as Failure.
 
-When we write `~capital(X)` it translates to "Does an X exist such that it doesn't satisfy capital?".
+Once we have variables in our goal, SLDNF is not safe anymore, hence Prolog implementation is not completely correct. Prolog implements the negation as failure, so prolog tries to prove not A to prove A.
 
-Instead, in SLDNF, we are looking for a different formula: we wrote something intended "dows an X exist for which that is true".
+
+Take for example:
+```prolog
+capital(rome).
+chief_town(bologna).
+city(X) :- capital(X).
+city(X) :- chief_town(X).
+
+?- ~capital(X), city(X).
+```
+When we write `~capital(X)` it translates to "Does an X exist such that it doesn't satisfy capital?". We are searching for a city that is not capital, and `bologna` satisfies this query. However Prolog checks out the first sentence (`capital(rome).`), sees that it does not satisfy `~capital(X)` and fails.
+
+Hence, in Prolog we should apply negation only to ground facts.
+
+Instead, in SLDNF, we are looking for a different formula: we wrote something intended "does an X exist for which that is true".
 
 ### Iterations
 

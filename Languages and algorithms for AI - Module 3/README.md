@@ -9,6 +9,7 @@ Teacher: Ugo Dal Lago
 - [Course Timetable from Mar 16, 2021 to Jun 04, 2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446595/orariolezioni#447782)
 - [Dal Lago's channel on MS Stream](https://web.microsoftstream.com/user/81f9b4d0-f39e-4c4a-b627-27312bc73156)
 - [Dal Lago's website](http://www.cs.unibo.it/~dallago/)
+- [Dal Lago online exam info](http://www.cs.unibo.it/~dallago/onlineexams.html)
 
 ### Content
 * [0 - LAAI - Module 3 Intro](0%20-%20LAAI%20-%20Module%203%20Intro.md)

@@ -16,7 +16,9 @@ This example only talks about rectangles. Let's now try to make the whole thing 
 
 The first important concept is that of an **instance space**, i.e. a space from which we draw data. In this case, we draw data from the bidimensional cartesian plane. **Concepts** are subsets of X. What is more important is a **concept class**, a collection of concepts, namely a subset of the set of all subsets of X. Among all possible properties, we are interested in some of them. A concept class kind of restricts our attention to those concepts which are interesting. Then, among the elements of the concept there's one called **target concept** which is what the learner wants to build a classifier for. Note that this is not known to the learner, which wants to understand it by examples.
 
-This is not just about the data anymore, rather the confidence, the accuracy and EX(c,D), considerable as an _oracle_, which the algorithm can use to **produce labeled data** without knowing $c$ and $D$. The algorithm queries the _oracle_, in this way we can model the fact than in this point of view the algorithm A is asked to **guarantee** a certain error parameter and confidence parameter, and based on that it queries the oracle a certain amount of times. Why is that? We want the algorithm to be error-aware. If we couldn't query it as many times as we'd like, our algorithm would guarantee just a certain maximum level of accuracy/confidence, and these two parameters would be bounded by the number of examples we have. That's why we don't take the data as input, rather an _oracle_ that can be queried as many times as needed.
+This is not just about the data anymore, rather the confidence, the accuracy and EX(c,D), considerable as an _oracle_, which the algorithm can use to **produce labeled data** without knowing $c$ and $D$.
+The algorithm queries the _oracle_, in this way we can model the fact than in this point of view the algorithm A is asked to **guarantee** a certain error parameter and confidence parameter, and based on that it queries the oracle a certain amount of times. Why is that? We want the algorithm to be error-aware.
+If we couldn't query it as many times as we'd like, our algorithm would guarantee just a certain maximum level of accuracy/confidence, and these two parameters would be bounded by the number of examples we have. That's why we don't take the data as input, rather an _oracle_ that can be queried as many times as needed.
 
 The error of any $h$ output of the algorithm is defined as the probability that for any $x$ drawn from any distribution, the output is different from the actual target concept.
 
@@ -35,4 +37,5 @@ Boolean vectors can be of arbitrary length, but if you fix the $n$ and you just 
 Learning conjunctions of literals is possible: if your target concept is a conjunction of literals, the learning algorithm can just take in input data (boolean vectors) and $b$ telling it whether the $s$ is part of the concept, i.e. it satisfies the conjunction of literals $c$. Then, the internal state just becomes a conjunction of states, starting from a conjunction in which all literals are mentioned in the negated AND non-negated form, then as soon as the data comes, the state is updated.
 
 #
-[Previous section](4%20-%20Between%20feasible%20and%20unfeasible.md) · [Solved exercises](Solved%20Exercises.md)
+
+[Previous section](4%20-%20Between%20feasible%20and%20unfeasible.md) · [Next Section](6%20-%20Computational%20Learning%20Theory.md) · [Solved exercises](Solved%20Exercises.md)

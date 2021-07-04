@@ -1,5 +1,7 @@
 # Project specifications
 
+[Description](https://github.com/montali/unibo-ai/blob/master/Combinatorial%20Decision%20Making%20and%20Optimization%20-%20Module%202/CDMO_Project_2021.pdf)
+
 This is an interesting application of a very common problem, which we'll have to **model** and **solve**. The general idea is that we model and use it with CP, then SAT and/or SMT. 
 
 We get extra points if we do SAT and SMT both. SAT is more efficient then SMT, as it doesn't have to find the CNF. 

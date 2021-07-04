@@ -18,9 +18,9 @@ To accept a string you have to define a final state (the professor uses the name
 
 **P**, **NP**, **EXP** and **NEXP** are complexity classes used to classify decision problems.
 You can imagine them as sets of of decision problems for which the problem instances can be proved to have a "yes" answer in a bounded time on a particular kind of Touring Machine:
- - **P**: polynomial time on a deterministic TM
+ - **P**: polynomial time on a deterministic TM <!--$\left(\bigcup\limits_{c \ge 1} DTIME(n^c)\right)$-->
  - **NP** polynomial time on a **non**-deterministic TM
- - **EXP**: exponential time on a deterministic TM
+ - **EXP**: exponential time on a deterministic TM <!--$\left(\bigcup\limits_{c \ge 1} DTIME\left(2^{n^c}\right)\right)$-->
  - **NEXP**: exponetial time on a **non**-deterministic TM
 
 These sets are linked together by the following relationship:
