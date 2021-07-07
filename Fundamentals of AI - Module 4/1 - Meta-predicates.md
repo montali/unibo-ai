@@ -52,7 +52,7 @@ We can query sets/lists with a conjunction of parameters or a parameter only.
 It basically returns those variables that verify the goal in a set.
 We're asking the set for which the **query is true**.
 
-Exmple:
+Example:
 
 ```prolog
 p(1).
@@ -120,13 +120,15 @@ Remember that everything starting with a capital or an underscore is a variable.
 
 [Recording](https://web.microsoftstream.com/video/9ae90012-d375-4c8e-a65c-f724d8e165dd)
 
-As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs. We'll talk about this class of programs we use as input, **meta-interpreters**. They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a langugage `L` is defined as an interpreter for L, but written in Prolog.
+As we said, a term can be interpreted as a program or as a predicate. The idea behind meta-interpreters is that inputs are not simple data but programs.
+We'll talk about this class of programs we use as input, **meta-interpreters**.
+They are not passed at all, but they allow us to do rapid prototyping. In Prolog a meta-interpreter for a language `L` is defined as an interpreter for L, but written in Prolog.
 
 Even though we could write Prolog interpreters in all the languages (e.g. Python, Java, C...), we couldn't write a **Prolog interpreter in Prolog**.
 
 ### Vanilla meta-interpreter
 
-The starting point is the **vanilla meta-interpreter**, i.e. defineing a predicate `solve` that takes a goal as input and returns true iff the goal is provable using the current KB. the solution is the following:
+The starting point is the **vanilla meta-interpreter**, i.e. defining a predicate `solve` that takes a goal as input and returns true iff the goal is provable using the current KB. the solution is the following:
 
 ```prolog
 solve(true) :- !.
@@ -140,7 +142,7 @@ If you look at it, it represents the behaviour of the prolog interpreter: if we 
 
 An objection might be _ok, this does nothing, why would we want to do this?_ This would be right: it is just the starting point for constructing many other different meta-interpreters, changing its behaviour.
 
-### Rright-most interpreter
+### Right-most interpreter
 
 We could for example invert the order of selection, obtaining a **right-most interpretation**:
 
