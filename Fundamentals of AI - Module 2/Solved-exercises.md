@@ -32,8 +32,6 @@ $?-\exist X.(might\_transmit\_virus(simmy, X))$
 
 ### ALC
 
-$$
-
 ## FAI2 - 07/07/2020
 
 ### First Order Logic
@@ -46,9 +44,9 @@ $\forall X.bike(X) \rightarrow wheels(X,2) \wedge powered(X, human)$
 
 $\forall X.ebike(X) \leftrightarrow bike(X) \wedge powered(X, engine)$
 
-$\forall(Y).Drives(X, Y) \wedge car(Y) \rightarrow HasLicense(X,B) \wedge adult(X)$
+$\forall(X,Y).Drives(X, Y) \wedge car(Y) \rightarrow HasLicense(X,B) \wedge adult(X)$
 
-$\forall(X).Drives(X, Y) \wedge bus(Y) \rightarrow HasLicense(X,C) \wedge adult(X)$
+$\forall(X,Y).Drives(X, Y) \wedge bus(Y) \rightarrow HasLicense(X,C) \wedge adult(X)$
 
 $\forall X.HasLicense(X,C) \rightarrow HasLicense(X,B)$
 
@@ -133,7 +131,6 @@ $q(x) \leftarrow isComposedOf(querymolecule, x)$
 _Build a knowledge base in which the following knowledge is represented: Father, Mother, GrandMother, GrandFather, Aunt, Uncle, Niece, Nephew, Mother of at least 3 sons, Father of at most 2 Daugthers._
 
 ### First Order Logic
-
 $$
 parent(Fabrizio, Simone)\\
 parent(Rossella, Simone)\\
@@ -152,9 +149,7 @@ mother(X,A) \wedge mother(X,B) \wedge mother(X,C) \wedge (A\neq B\neq C)\wedge \
 father(X,A) \wedge father(X,B) \wedge (A\neq B)\wedge woman(A)\wedge woman(B) \rightarrow father_2(X)\\
 $$
 
-
 ### ALC
-
 $$
 Father \equiv Parent \sqcap Man\\
 Son \equiv (Man \sqcap\exist hasParent.Person)\\
@@ -170,13 +165,11 @@ Nephew \equiv (Man \sqcap\exist Parent.Sibling)\\
 Mother_3 \equiv (Woman \sqcap\ge 3 Son)\\
 Father_2 \equiv (Man \sqcap \le 2 Daughter)
 $$
-
 ## Exercise 2
 
 _Build a knowledge base in which the following knowledge is represented: All humans are mammals; all mammals are warm blooded. All dogs are mammals. Humans own animals. There are animals that are not warm blooded. All mammals are animals. A human cannot own another human._
 
 ### First Order Logic
-
 $$
 human(X) \rightarrow mammal(X)\\
 mammal(X)\rightarrow warmblooded(X)\\
@@ -186,9 +179,7 @@ own(X,Y) \rightarrow human(X), animal(Y)\\
 mammal(X) \rightarrow animal(X)\\
 own(X,Y) \rightarrow human(X)\wedge \neg human(Y)
 $$
-
 ### ALC
-
 $$
 Human \sqsubseteq Mammal \\
 Mammal \sqsubseteq WarmBlooded\\

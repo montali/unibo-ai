@@ -72,7 +72,7 @@ Basically, this means that everything that is not stated is false. For example, 
 
 SLDNF is an extension of SLD to support negation. SLDNF is used in Prolog to implement the Negation as Failure.
 
-Once we have variables in our goal, SLDNF is not safe anymore, hence Prolog implementation is not completely correct. Prolog implements the negation as failure, so prolog tries to prove not A to prove A.
+Once we have variables in our goal, SLDNF is not safe anymore, hence Prolog implementation is not completely correct. Prolog implements the negation as failure, so prolog tries to prove A to prove not A, and if it fails the negation is true.
 
 
 Take for example:
