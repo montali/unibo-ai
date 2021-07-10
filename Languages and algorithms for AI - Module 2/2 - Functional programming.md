@@ -14,9 +14,9 @@ When we assign variables, a name is evaluated by replacing it with the right han
 Note that `def` and `val` differ in the sense that when you write `def` the right-hand side is not immediately evaluated. If we had a `def` instantiated with a sum, the sum wouldn't be computed at the time of instantiation. So, the environment knows that there is an expression, and the association value is not computed, though it will be computed in case the `def` will be used in a *formula*, while for now it just saves the sum as a sum. If we used `val`, the right-hand side would be immediately evaluated. Note that the every time a `def` is used in an expression, it is computed: the result is not saved.
 More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
 
-| Variable type | Lazy(call-by-name) or Eager(call-by-value)? | Stored(evaluated on call)? | Constant? |
+| Variable type | Lazy(call-by-name) or Eager(call-by-value)? | Stored? | Constant? |
 | ----- | ----- | ----- | ----- |
-| `def` | Lazy | Not stored | Yes |
+| `def` | Lazy | Not stored (evaluated on call) | Yes |
 | `val` | Eager | Stored | Yes |
 | `lazy val` | Lazy | Stored | Yes |
 | `var` | Eager | Stored | No |
