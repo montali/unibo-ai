@@ -66,7 +66,7 @@ object Mandelbrot {
         var z = new Complex(0, 0)
         // Create the complex number for the current position in the image
         var c = new Complex(x, y)
-        // Genzerate the z
+        // Generate the z
         // Equivalent to for(i=0; z.abs < 2 && i < level; i++) { z = z * z + c}
         // z.abs < 2 => Test for convergence
         // i < level => Test for max depth
@@ -94,7 +94,7 @@ object Mandelbrot {
     run(4000, 50)
     val durationMs = (System.nanoTime() - t1) / 1e9d
     println(durationMs + " s")
-    // During lesson on professr's dual core computer serial using n=1000 took 5995ms while parallel took 4812ms
+    // During lesson on professor's dual core computer serial using n=1000 took 5995ms while parallel took 4812ms
     // On my exa-core using n=4000 took 46703ms while parallel took 45943ms
   }
 }

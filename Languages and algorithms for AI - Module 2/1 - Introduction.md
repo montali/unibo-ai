@@ -2,14 +2,14 @@
 
 This module deals with **programming languages** following a style that combines traditional approaches: 
 
-- **Functional programming**, with *higher order functions*, meaning you do not separate functions from data, functinos that depend no something that is only known at runtime, becoming entities that can be manipulated
+- **Functional programming**, with *higher order functions*, meaning you do not separate functions from data, functions that depend no something that is only known at runtime, becoming entities that can be manipulated
 - **Object-oriented programming**, with generic classes
 
-These two concepts are merged into an approach that we'll study in this module? Why will we? This style is adopted in modern platforms for large dataset manipulation, like *Apache Spark*, a ML library.
+These two concepts are merged into an approach that we'll study in this module? Why will we? This style is adopted in modern platforms for large dataset manipulation, like *Apache Spark*.
 
-So, why do we need this prgorgamming style for manipulating large datasets? Considering traditional programming, we are not interested in using the programming style we're going to presetn. But we may get problems when manipulating large amounts of data. This new style will make it easier to scale problems when we re-organize and distribute the data, and it will help us distribute and coordinate the process. In some cases this programmin style is said **scalable**, simply because you can use the same approach to design a single-node application or a many-nodes application.
+So, why do we need this programming style for manipulating large datasets? Considering traditional programming, we are not interested in using the programming style we're going to present. But we may get problems when manipulating large amounts of data. This new style will make it easier to scale problems when we re-organize and distribute the data, and it will help us distribute and coordinate the process. In some cases this programming style is said **scalable**, simply because you can use the same approach to design a single-node application or a many-nodes application.
 
-How is this possible? This is made possible by those distributed platforms, like *Spark*. This is diferernt from container orchestration in the sense that in that we replicate the same container, while in Scala the processes are not equal to each other, working on different data which has been split.
+How is this possible? This is made possible by those distributed platforms, like *Spark*. This is different from container orchestration in the sense that in that we replicate the same container, while in Scala the processes are not equal to each other, working on different data which has been split.
 
 The scalability we mentioned in Scala is vertical scalability, while the container one is *horizontal*.
 
@@ -45,13 +45,13 @@ object QuickSort {
 
 the `QuickSort` object will auto-start itself once it is part of the JVM, starting the `main()` method, which calls `quickSort()`, then print the results.
 
-The full commented example cand be found in [1_QuickSort.scala](examples/1_QuickSort.scala).
+The full commented example can be found in [1_QuickSort.scala](examples/1_QuickSort.scala).
 
 ## Scala's collection
 
-Scala offers some data structures, provided by the standard libraries, called **collections**. These are equiped with useful higher-order functions, which we'll use often when exploiting the possibilities of the standard collections.
+Scala offers some data structures, provided by the standard libraries, called **collections**. These are equipped with useful higher-order functions, which we'll use often when exploiting the possibilities of the standard collections.
 
-They allow us to *prettify* the code, since we can delegate fucntions to these.
+They allow us to *prettify* the code, since we can delegate functions to these.
 
 Take a read to *An empirical comparison of several programming languages*, a paper containing the same problems solved with different languages. We can see that Scala showed an easiness and shortness of the code that led to less lines of code, written in less time.
 
@@ -65,15 +65,15 @@ This obviously improves the performances of our programs.
 
 We can consider the possibility to have several collaborating threads (independent executions), performing work parallelly. They *collaborate* in the sense that they sync, avoiding thread locks and threats.
 
-We'll have our parallel architecture with independent nodes, that work at the same time in order to ocmplete the manipulation behind the higher order function. If we take advantage of the parallel architecture our same program will be executed in this parallel way. We won't use the stanard lubrary collections, but the ones from the *parallel library*. We can cast the collections to this type.
+We'll have our parallel architecture with independent nodes, that work at the same time in order to complete the manipulation behind the higher order function. If we take advantage of the parallel architecture our same program will be executed in this parallel way. We won't use the standard library collections, but the ones from the *parallel library*. We can cast the collections to this type.
 
 The *Mandelbrot set* example consists of computing what is known as the *Mandelbrot set*, a set of complex numbers, being composed of a pair of real numbers in which the second one is multiplied by the imaginary unit, $i$.
 
 The Scala Mandelbrot example can be found in [3_Mandelbrot.scala](examples/3_Mandelbrot.scala).
 
-# Spark
+# Apache Spark
 
-Spark is the platform we'll use to speriment Scala large-scale data processing. We need to move from a single computing node to a distributed context. 
+Spark is the platform we'll use to experiment Scala large-scale data processing. We need to move from a single computing node to a distributed context. 
 
 What we'll experiment will be the programming style we studied, but with some specific features related to Spark that we'll need to study in order to adapt the programming style in the distributed setting.
 

@@ -1,5 +1,6 @@
 /*
-This file has some compilation errors, it can be used for information but not to be run.
+This scala program requires Apache Spark and has some compilation errors
+It can be used for information but not to be run.
 Also, it's evaluation is currently disabled in build.sbt.
 */
 

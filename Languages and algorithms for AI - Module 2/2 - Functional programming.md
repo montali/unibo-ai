@@ -1,8 +1,9 @@
 # Functional programming
 
-Functional programming is a programming style that is grwoing in popularity because it allows us to work on small, medium and big quantities of data without having to do much changes. The same program can be executed locally or on distributed systems. 
+Functional programming is a programming style that is growing in popularity because it allows us to work on small, medium and big quantities of data without having to do much changes. The same program can be executed locally or on distributed systems. 
 
-First, some basic concepts (that we actually already introduced): traditionally, functional programming is based on **expressions**, so we typicallly write an expression, evaluate it, and print the result. This is known as REPL (*Read-Eval-Print-Loop*). This characterizes the style we previously mentioned. Obviously, the most important is the evaluation. How are the expressions we write evaluated? There are simple rules that are followed, these are the rules for standard operator expressions:
+First, some basic concepts (that we actually already introduced): traditionally, functional programming is based on **expressions**, so we typically write an expression, evaluate it, and print the result. This is known as REPL (*Read-Eval-Print-Loop*).
+This characterizes the style we previously mentioned. Obviously, the most important is the evaluation. How are the expressions we write evaluated? There are simple rules that are followed, these are the rules for standard operator expressions:
 
 - We evaluate the single operands that are passed to the operator, once all the parameters (from left to right) have been evaluated,
 - we evaluate the operands,
@@ -13,7 +14,7 @@ When we assign variables, a name is evaluated by replacing it with the right han
 Note that `def` and `val` differ in the sense that when you write `def` the right-hand side is not immediately evaluated. If we had a `def` instantiated with a sum, the sum wouldn't be computed at the time of instantiation. So, the environment knows that there is an expression, and the association value is not computed, though it will be computed in case the `def` will be used in a *formula*, while for now it just saves the sum as a sum. If we used `val`, the right-hand side would be immediately evaluated. Note that the every time a `def` is used in an expression, it is computed: the result is not saved.
 More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
 
-| Variable type | Lazy/Eager? | Stored? | Constant? |
+| Variable type | Lazy(call-by-name) or Eager(call-by-value)? | Stored(evaluated on call)? | Constant? |
 | ----- | ----- | ----- | ----- |
 | `def` | Lazy | Not stored | Yes |
 | `val` | Eager | Stored | Yes |

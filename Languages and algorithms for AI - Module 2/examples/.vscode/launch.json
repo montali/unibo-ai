@@ -6,90 +6,90 @@
     "configurations": [
         {
             "type": "scala",
-            "name": "Run QuickSort",
+            "name": "Run QuickSort (1)",
             "request": "launch",
             "mainClass": "QuickSort",
-            "buildTarget": "QuickSort",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run T9",
+            "name": "Run T9 (2)",
             "request": "launch",
             "mainClass": "T9",
-            "buildTarget": "T9",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run Mandelbrot",
+            "name": "Run Mandelbrot (3)",
             "request": "launch",
             "mainClass": "Mandelbrot",
-            "buildTarget": "Mandelbrot",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run NewtonSQRT",
+            "name": "Run NewtonSQRT (5)",
             "request": "launch",
             "mainClass": "NewtonSQRT",
-            "buildTarget": "NewtonSQRT",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run HigherOrderSum",
+            "name": "Run HigherOrderSum (6)",
             "request": "launch",
             "mainClass": "HigherOrderSum",
-            "buildTarget": "HigherOrderSum",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run FixPoint",
+            "name": "Run FixPoint (7)",
             "request": "launch",
             "mainClass": "FixPoint",
-            "buildTarget": "FixPoint",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run Rational Test",
+            "name": "Run Rational Test (8)",
             "request": "launch",
             "mainClass": "RationalTest",
-            "buildTarget": "RationalTest",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run Int Set Test",
+            "name": "Run Int Set Test (9)",
             "request": "launch",
             "mainClass": "IntSetTest",
-            "buildTarget": "IntSetTest",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run Totally Orderable Test",
+            "name": "Run Totally Orderable Test (10)",
             "request": "launch",
             "mainClass": "TotallyOrderableTest",
-            "buildTarget": "TotallyOrderableTest",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run Pattern Matching Test",
+            "name": "Run Pattern Matching Test (13)",
             "request": "launch",
             "mainClass": "PatternMatchingTest",
-            "buildTarget": "PatternMatchingTest",
+            "buildTarget": "examples",
             "args": []
         },
         {
             "type": "scala",
-            "name": "Run N Queens",
+            "name": "Run N Queens (14)",
             "request": "launch",
             "mainClass": "N_Queens",
-            "buildTarget": "N_Queens",
+            "buildTarget": "examples",
             "args": []
         }
     ]

@@ -1,5 +1,5 @@
 object QuickSort {
-  // Original WRONG comment create an array of random 10000 random ints
+  // Original WRONG comment: create an array of random 10000 random ints
   // Correct: create an array of random 1000 random ints in [0, 100000[
   val r = scala.util.Random
   val randomArray = (for (i <- 1 to 1000) yield r.nextInt(100000)).toArray
@@ -14,7 +14,7 @@ object QuickSort {
   // the quicksort recursive algorithm
   def quickSort(xs: Array[Int]): Array[Int] = {
     if (xs.length <= 1) { // Empty array or array with single element
-      xs // Reteturn the array itself
+      xs // Return the array itself
     } else { // Array with more than one element
       val pivot = xs(xs.length / 2)
       Array.concat(
