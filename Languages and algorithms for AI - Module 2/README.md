@@ -17,6 +17,7 @@ Teacher: Gianluigi Zavattaro
 
 ### Useful resources
 
+- [Scala examples](examples/)
 - [**Solved exercises**](Solved%20Exercises.md)
 - [**Scala Tutorial**](https://github.com/montali/scala)
 - [Scala download page](https://www.scala-lang.org/download/)

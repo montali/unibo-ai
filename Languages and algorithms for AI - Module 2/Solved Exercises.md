@@ -20,17 +20,18 @@ val z:A = new B(5,3)
 
 println(z.m2)
 ```
+Describe whether it is correct or not and in the positive case indicate what is printed. Justify your answer.
 
 **Solution:**
-No, it isn't correct. Even if is possible to assign to a variable of type ```A``` an istance of its subclass ```B```,
-then it will not possible to access to ```m2``` without casting ```z``` to ```B```.
-If the print is replaced with ```println(z.asInstanceOf[B].m2)``` the output will be 2.
+No, it isn't correct. Even if is possible to assign to a variable of type `A` an instance of its subclass `B`,
+then it will not possible to access to `m2` without casting `z` to `B`.
+If the print is replaced with `println(z.asInstanceOf[B].m2)` the output will be 2.
 
 ### 2
 Describe by words and by means of an example the foldRight higher order function
 
 **Solution:**
-```foldRight``` can be invocated on a list of objects of type T passing it an object of type T and a function (T,T) => T. It will pass the element of the list and the result of the previous application to the function passed as arguement. The value passed as arguement will be passed to the function when the list is over.
+`foldRight` can be invocated on a list of objects of type T passing it an object of type T and a function (T,T) => T. It will pass the element of the list and the result of the previous application to the function passed as argument. The value passed as argument will be passed to the function when the list is over.
 Example:
 ```scala
 List(1, 3, 7).foldRight(5)(_ - _) == (1 - (3 - (7 - 5))) == 0
@@ -45,8 +46,8 @@ def mystery2(l: List[String]) =
  Justify your answer
 
 **Solution:**
-This function compute the sum of the lenghts of the strings in the list ```l``` passed as arguement. Indeed it maps each string to its length. Then it append a 0 to the List obtained with the mapping, in order to avoid exceptions with list with only one elements.
-At the end, it sums all the elements in the list with the ```reduce``` higher order function.
+This function compute the sum of the lengths of the strings in the list `l` passed as argument. Indeed it maps each string to its length. Then it prepends a 0 to the List obtained with the mapping, in order to avoid exceptions with list with only one element.
+At the end, it sums all the elements in the list with the `reduce` higher order function.
 
 ### 4
 What is the type and the result of the evaluation of the following expression:
@@ -58,8 +59,8 @@ for {
 } yield (j,k)
 ```
 **Solution:**
-The type returned by a ```for yield``` expression is determined by the type of the first collection in the for body. In this case we have a ```Set```, which is a trait, so the returned type will be one of its implementations.
-In particular, when the returned object has 5 or more elements, its type will be ```HashSet```. In our case ```HashSet[(Int, Int)]```.
+The type returned by a `for` `yield` expression is determined by the type of the first collection in the for body. In this case we have a `Set`, which is a trait, so the returned type will be one of its implementations.
+In particular, when the returned object has 5 or more elements, its type will be `HashSet`. In our case `HashSet[(Int, Int)]`.
 So the returned object, keeping in mind that sets have no order and repeated elements, will be:
 ```scala
 HashSet((1,2), (2,2), (1,3), (2,3), (3,3), (3,2))
@@ -154,7 +155,7 @@ def mystery3(l:List[Int]):Int =
 Write an equivalent tail recursive function.
 
 **Solution:**
-Recalling that in a tail recursive function the recursive call must be the last thing evaluated by the function, we write this formulation of the function ```mystery3```:
+Recalling that in a tail recursive function the recursive call must be the last thing evaluated and returned by the function, we write this formulation of the function ```mystery3```:
 ```scala
 def mystery3(l: List[Int]): Int = {
   def r(m: Int, l: List[Int]) =
@@ -265,7 +266,7 @@ It prints 4, because, even if ```z``` is of type ```A```, the object assigned is
 Describe by words and by means of an example the ```groupBy``` higher-order function.
 
 **Solution:**
-```groupBy``` is called on a collection of ```T``` and takes as arguement a function ```T => S```. It groups all the elements of the collection by the results of the passed function and returns them as a ```Map``` object.
+```groupBy``` is called on a collection of ```T``` and takes as argument a function ```T => S```. It groups all the elements of the collection by the results of the passed function and returns them as a ```Map``` object.
 Example:
 ```scala
 List("abc", "def", "gh", "ijkl", "mnop", "q").groupBy(x => x.length) ==

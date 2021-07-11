@@ -14,12 +14,12 @@ When we assign variables, a name is evaluated by replacing it with the right han
 Note that `def` and `val` differ in the sense that when you write `def` the right-hand side is not immediately evaluated. If we had a `def` instantiated with a sum, the sum wouldn't be computed at the time of instantiation. So, the environment knows that there is an expression, and the association value is not computed, though it will be computed in case the `def` will be used in a *formula*, while for now it just saves the sum as a sum. If we used `val`, the right-hand side would be immediately evaluated. Note that the every time a `def` is used in an expression, it is computed: the result is not saved.
 More info on variable types can be found [here](https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html). To recap:
 
-| Variable type | Lazy(call-by-name) or Eager(call-by-value)? | Stored? | Constant? |
+| Function definition | Constant? | Stored? | Lazy(call-by-name) or Eager(call-by-value)? |
 | ----- | ----- | ----- | ----- |
-| `def` | Lazy | Not stored (evaluated on call) | Yes |
-| `val` | Eager | Stored | Yes |
-| `lazy val` | Lazy | Stored | Yes |
-| `var` | Eager | Stored | No |
+| `def` | :heavy_check_mark: | :x: (evaluated on call) | Lazy |
+| `lazy val` | :heavy_check_mark: | :heavy_check_mark: | Lazy |
+| `val` | :heavy_check_mark: | :heavy_check_mark: | Eager |
+| `var` | :x: | :heavy_check_mark: | Eager |
 
 Note that `def` will be used to define functions too:
 
