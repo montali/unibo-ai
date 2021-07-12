@@ -1,22 +1,31 @@
+// A <: B <=> A subtype of B
+// A :> B <=> A >: B <=> A supertype of B <=> B <: A
+
 /**
- * T is invariant
- * U = T => InvariantExample[U] = InvariantExample[T]
+ * Scala: [T] <=> Invariant with respect to T <=> Java: <T>
+ * 
+ * U = V => InvariantExample[U] = InvariantExample[V]
+ * Variables of type InvariantExample[W] accept only instances of InvariantExample[W] 
  */
 class InvariantExample[T](x: T) {
     def get: T = return x
 }
 
 /**
- * T is covariant
- * U <: T => InvariantExample[U] <: InvariantExample[T]
+ * Scala: [+T] <=> Covariant with respect to T <=> Java: <? extends T>
+ * 
+ * U <: V => CovariantExample[U] <: CovariantExample[V]
+ * Variables of type CovariantExample[V] accept only instances of CovariantExample[U] with U <: V (U is V or subtype of V)
  */
 class CovariantExample[+T](x: T) {
     def get: T = return x
 }
 
 /**
- * T is contravariant
- * U <: T => InvariantExample[U] >: InvariantExample[T]
+ * Scala: [-T] <=> Contravariant with respect to T <=> Java: <? super T>
+ * 
+ * U <: V => ContravariantExample[U] :> ContravariantExample[V]
+ * Variables of type ContravariantExample[V] accept only instances of ContravariantExample[U] with U :> V (U is V or supertype of W)
  */
 class ContravariantExample[-T](x: T) {
     def get: T = return x
@@ -35,7 +44,7 @@ object CovarianceTest {
   def main(args: Array[String]) {
     def inv: InvariantExample[Base] = new InvariantExample[Derived](new Derived)
     /*
-    ERROR! Accepts ONLY Base
+    ERROR! InvariantExample[Base] accepts ONLY Base
     Error thrown by the compiler:
         type mismatch;
           found   : InvariantExample[Derived]
@@ -45,11 +54,11 @@ object CovarianceTest {
      */
 
     def cov: CovariantExample[Base] = new CovariantExample[Derived](new Derived)
-    // OK, accepts Base and subtypes, CovariantExample[Base] <: CovariantExample[Derived]
+    // OK, CovariantExample[Base] accepts Base and subtypes, CovariantExample[Base] <: CovariantExample[Derived]
 
     def con: ContravariantExample[Base] = new ContravariantExample[Derived](new Derived)
     /*
-    ERROR! Accepts Base and its supertypes
+    ERROR! ContravariantExample[Base] accepts Base and its supertypes
     Error thrown by the compiler:
       type mismatch;
         found   : ContravariantExample[Derived]

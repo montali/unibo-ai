@@ -139,7 +139,7 @@ Justify your answer.
 The expression is evaluated in the following way:
 ```scala
 List(5,1,3) map (x => x+mystery(_+1, x+1)) ==
-List(5,1,3) map (x => x + x+1+1+1) ==
+List(5,1,3) map (x => x + ((x+1)+1)+1 ==
 List(5,1,3) map (x => x + x + 3) ==
 List(13, 5, 9)
 ```
