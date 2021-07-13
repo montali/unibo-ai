@@ -369,7 +369,3 @@ $$
 This has two important consequences :
 - A type declared contravariant cannot appear as a return type (and cannot appear as type lower bound)
 - A type declared covariant cannot appear as a parameter type (and cannot appear as type upper bound)
-
-## Pattern matching
-
-Pattern matching examples can be found in [13_PatternMatchingTest.scala](examples/13_PatternMatchingTest.scala).

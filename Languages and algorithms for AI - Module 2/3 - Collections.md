@@ -52,6 +52,8 @@ def merge(xs: List[Int], ys: List[Int]): List[Int] = (xs, ys) match {
 
 If we know that both lists are non-empty, we match the more complex pattern.
 
+Pattern matching examples can be found in [13_PatternMatching.scala](examples/13_PatternMatching.scala).
+
 ## Higher order list functions
 
 We now start talking about functions that we can use on these collections to perform some standard elaboration on the data inside the collection. Let's start with some examples. 

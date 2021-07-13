@@ -220,9 +220,9 @@ def mystery2(l:List[Int]) = {
 Justify your answer.
 
 **Solution:**
-The function ```mystery2``` returns the length of the longer sequence of equal elements in the list ```l```. If ```l``` is empty, ```mystery2``` returns 0.
-Indeed, the function ```f(l)``` returns ```List(0)``` when ```l``` is empty, otherwise it replace the first sequence of equal elements with its length and then it is recursively reapplied on the rest of the list, obtaining a result list which contains the lengths of all the sequences of equal numbers in ```l```.
-Then ```mystery2``` returns the max of such list.
+The function `mystery2` returns the length of the longer sequence of equal elements in the list `l`. If `l` is empty, `mystery2` returns 0.
+Indeed, the function `f(l)` returns `List(0)` when `l` is empty, otherwise it replace the first sequence of equal elements with its length and then it is recursively reapplied on the rest of the list, obtaining a result list which contains the lengths of all the sequences of equal numbers in `l`.
+Then `mystery2` returns the max of such list.
 Example:
 ```scala
 mistery2(List(1,1,1,5,5,2,8,8) ==
@@ -240,7 +240,7 @@ val x2: Array[String] = Array[Nothing]()
 Justify your answer.
 
 **Solution:**
-The first declaration is correct, but the second one is incorrect. ```Array[T]``` is a mutable object, so it not should accept covariance, indeed it is invariant in type ```T```.
+The first declaration is correct, but the second one is incorrect. `Array[T]` is a mutable object, so it shouldn't accept covariance, indeed it is invariant in type `T`.
 
 ### 4
 Consider the following excerpt of code:
@@ -260,13 +260,13 @@ println (z.get)
 What is printed? Justify your answer.
 
 **Solution:**
-It prints 4, because, even if ```z``` is of type ```A```, the object assigned is of type ```B```, so the ```get``` method of class ```A``` is overridden by the ```get``` method of the subclass ```B```.
+It prints 4, because, even if `z` is of type `A`, the object assigned is of type `B`, so the `get` method of class `A` is overridden by the `get` method of the subclass `B`.
 
 ### 5
-Describe by words and by means of an example the ```groupBy``` higher-order function.
+Describe by words and by means of an example the `groupBy` higher-order function.
 
 **Solution:**
-```groupBy``` is called on a collection of ```T``` and takes as argument a function ```T => S```. It groups all the elements of the collection by the results of the passed function and returns them as a ```Map``` object.
+`groupBy` is called on a collection of `T` and takes as argument a function `T => S`. It groups all the elements of the collection by the results of the passed function and returns them as a `Map` object.
 Example:
 ```scala
 List("abc", "def", "gh", "ijkl", "mnop", "q").groupBy(x => x.length) ==
