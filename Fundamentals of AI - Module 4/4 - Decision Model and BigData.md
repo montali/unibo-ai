@@ -34,7 +34,8 @@ As soon as we understand that we can relate events with respect to their time of
 
 There are two ways to *expire* events: explicit and implicit expiration. The first one is the default mechanism to guarantee that our mechanism is not killed, while the second one is a performance improvement.
 
-Allen's logic is a logic about **intervals**: the idea is that the msot general possible operator of the `after` operator is that the difference between the starts of two events should be between an interval. There are some operators defined by Allen, like `before`, `meets`, `met-by`, `overlaps`...
+Allen's logic is a logic about **intervals**: the idea is that the most general possible operator of the `after` operator is that the difference between the starts of two events should be between an interval.
+There are some operators defined by Allen, like `before`, `meets`, `met-by`, `overlaps`...
 
 ### State
 
