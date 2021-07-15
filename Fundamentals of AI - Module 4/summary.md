@@ -11,7 +11,7 @@ On the other hand, backward reasoning starts from a goal and checks if the goal 
 
 #### Cut
 
-The **cut (`;`)** doesn't have any logical meaning or declarative semantics.
+The **cut (`!`)** doesn't have any logical meaning or declarative semantics.
 It makes the choices that the program took non-backtrackable and is used to make permanent all choices made on the line.
 ```prolog
 p :- q_1, q_2, ..., q_i, !, q_i+1, q_i+2, ..., q_n
@@ -79,7 +79,7 @@ Typical approaches are based on automata (e.g. regex), trees o logic rules.
 
 ### Drools
 
-Framework composed by Drools Expert (Production Rule System engine), Drools Expert (Event Processing engine) and other modules for tasks such as planning.
+Framework composed by Drools Expert (Production Rules engine), Drools Expert (Event Processing engine) and other modules for tasks such as planning.
 Based on Java.
 Rule syntax:
 
