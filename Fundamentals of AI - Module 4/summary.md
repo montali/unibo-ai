@@ -47,7 +47,19 @@ Once we have variables in our goal, SLDNF is not safe anymore, hence Prolog impl
 
 ### LPAD
 
-TODO
+Similar to prolog, but each rule has a probability distribution over its head:
+```prolog
+sneezing(X):0.7 ; null:0.3 :- flu(X).
+sneezing(X):0.8 ; null:0.2 :- hay_fever(X).
+flu(bob).
+hay_fever(bob).
+
+
+?- sneezing(bob)
+```
+To calculate the probability of the queried condition, all possible worlds must be created.
+Each world is obtained selecting a truth value for each fo the probability statements. The probability of all the chosen values are then multiplied and the result gives the world's probability.
+The probability of the queried condition is the sum of the probabilities of the worlds where the condition is met.
 
 ## Production rule systems
 
