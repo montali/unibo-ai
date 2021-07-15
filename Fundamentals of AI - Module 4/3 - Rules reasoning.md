@@ -17,7 +17,7 @@ The working memory is crucial to Production Rules systems, containing the set of
 [Recording](https://web.microsoftstream.com/video/d76299a6-2de1-40f1-81e8-389042bf7ab7)
 
 The RETE algorithm was proposed in 1992, it is a quite old paper but it is proved to be the fastest algorithm for the general problem of production rules. The basic idea behind it is avoiding the iteration over facts by storing, for each pattern, the facts that the pattern matches with.
-Not all the premises have been matched yet, but we keep track of these patterns. We have two types of these patterns: the ones testing intra-elements features (test on the new fact on data inside the new fact), while inter-elements features put the condition between different pacts/patterns.
+Not all the premises have been matched yet, but we keep track of these patterns. We have two types of these patterns: the ones testing intra-elements features (test on the new fact or on data inside the new fact), while inter-elements features put the condition between different facts/patterns.
 The intra elements are saved in what are called alpha networks, their outcomes in alpha-memories, while inter-elements are in beta-networks, with outputs in beta-memories.
 
 Suppose we have a rule "*When a Professor* `P` *with name* `N` *and age >30, when a course* `C` *with subject "AI" and teacher* `N` *THEN do something*", every time I put it into my alpha network, we insert a new professor `P`, with name `N`, suppose that the secretary adds a new course AI by the professor, in the alpha memory we'll have a new AI course.

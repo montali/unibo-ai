@@ -22,3 +22,4 @@ Teacher: Federico Chesani
 * [4 - Decision Model and BigData](4%20-%20Decision%20Model%20and%20BigData.md)
 * [5 - The web](5%20-%20The%20web.md)
 * [6 - Knowledge representation](6%20-%20Knowledge%20representation.md)
+* [Summary](summary.md)
