@@ -61,13 +61,13 @@ We can explain this issue by means of Signal Decision Theory (SDT).
 We have a different probability of perceiving a stimulus and not perceiving it. They are two gaussians functions and as we can see from the picture above they overlap in some regions.
 Those regions where the gaussians overlap represents when the partecipant is not sure about having perceived the stimulus.
 The brain builds an internal representation of the perceived stimulus.
-The **discriminative index <img src="svgs/868389164b1f8dc28cc4d7fbb181099b.svg?invert_in_darkmode" align=middle width=12.345925349999991pt height=24.7161288pt/>**, defined as <img src="svgs/fb294c24bb16fdef85fc0c9586b86cbf.svg?invert_in_darkmode" align=middle width=101.22534014999998pt height=29.894848500000013pt/> is an estimate of the strength of the signal. The higher the value the more the curve are separated. 
+The **discriminative index** <!-- $\mathbf{d'}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\nHZWRLQUFB.svg">, defined as <!-- $d' = \frac{separation}{spread}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\465jHEDYVv.svg"> is an estimate of the strength of the signal. The higher the value the more the curve are separated. 
 The **response criterion** rule how conservative the subject is going to be in perceiving a stimulus. It basically set, on the graph, the point from which impulses will be perceived.
 Shifting the internal criterion towards the left means perceiving lots of stimulus, even non existing ones, on the other hand shifting on the right means perceiving very little stimulus, only when the subject is completely sure the stimulus is there.
 Initial studies on stimulus perception have never taken into account the existance of false positives, which occurs when the discriminative index is low.
 
 But does alpha power play a role in this distribution settings? Does it shift our propension to perceive a stimulus instead of not perceiving it?
-In 2016 Samaha et al. found that the response criterion, and not <img src="svgs/868389164b1f8dc28cc4d7fbb181099b.svg?invert_in_darkmode" align=middle width=12.345925349999991pt height=24.7161288pt/>, were affected by alpha waves, while the discriminative index was exactly the same.
+In 2016 Samaha et al. found that the response criterion, and not <!-- $d'$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\0Yw8lPmA6H.svg">, were affected by alpha waves, while the discriminative index was exactly the same.
 The subject adopted a more conservative criterion when alpha power was high.
 This study completely changed how alpha waves should be interpreted.
 Indipendently of the content of the stimulus neurons are going to fire or not fire only in function of the internal rappresentation of the signal and the response criterion. It's not matter of being suited or not to perceive a stimulus.

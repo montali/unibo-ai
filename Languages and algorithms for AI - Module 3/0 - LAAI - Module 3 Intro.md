@@ -30,7 +30,7 @@ Notice that <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmo
 The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between <img src="svgs/f4afc77016e004d110eee6a7001a7a87.svg?invert_in_darkmode" align=middle width=35.25871964999999pt height=15.296829900000011pt/> and <img src="svgs/c77bd97048dbe2638b94e266d9e64d1c.svg?invert_in_darkmode" align=middle width=91.87403444999998pt height=24.65753399999998pt/>. 
 For example, supposing <img src="svgs/60956056c8ac4a0bb767ef199f98b76b.svg?invert_in_darkmode" align=middle width=56.442135749999984pt height=21.18721440000001pt/> and <img src="svgs/a938957de7ebf1ed5afe74305dc62c33.svg?invert_in_darkmode" align=middle width=102.41999955pt height=26.76175259999998pt/> (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
 
-Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
+Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard**, **EXP** (pratically uncomputable).
 
 Proving tasks not solvable by processes beyond a certain level of efficiency is very rarely possible.
 We can, however, interrelate different tasks to compare their complexity.

@@ -30,7 +30,7 @@ Notice that $b$ can be exponential in $n$ ($b \in [0, 10^n-1]$).
 The repeated addition is potentially way slower than the grid method because there is a huge (exponential) difference between $n*n$ and $n*(10^n-1)$. 
 For example, supposing $n=100$ and $b=100^{100}-1$ (the worst case scenario) and that each step requires a millisecond, the grid method would require a second while the repeated addition 10^80 years.
 
-Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard** (pratically uncomputable).
+Computational processes can be classified as **P** (Polynomial time, efficient), **NP** (Nondeterministic Polynomial time), **NP-complete**, **NP-hard**, **EXP** (pratically uncomputable).
 
 Proving tasks not solvable by processes beyond a certain level of efficiency is very rarely possible.
 We can, however, interrelate different tasks to compare their complexity.
