@@ -45,7 +45,7 @@ The Rice Theorem is one of the most interesting theorems studied in the course. 
 
 We say that a property is trivial when either all or none of the programs have that property (obviously, a property is non-trivial when it is not trivial).
 
-We say that a property P is extensional when, if M has the property P and M and M have the same input-output function (_M(w) = N(w)_ for every _w_), then also N has the property P.
+We say that a property P is extensional when, if M has the property P and M and N have the same input-output function (_M(w) = N(w)_ for every _w_), then also N has the property P.
 
 So, to demonstrate that a property P is undecidable we have to:
  1. Show that _P_ is non-trivial. This is accomplished by (both the steps are needed):
