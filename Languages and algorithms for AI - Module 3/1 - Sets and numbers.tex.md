@@ -33,9 +33,15 @@ Now, what happens if we start to construct more complex domains, like couples of
 Another interesting class of functions is the one in which the length of the strings is exactly one: **boolean functions**.
 These are also known as *characteristic functions*, and they are related to decision problems because, for example, in these we'll want to decide whether a string is good/bad, part of a set/not...
 
-Asymptotic notation is not about a function or the other, rather about the kind of functions we take as limits on the amount of resources we want to devote to solving a particular problem. We are now concerned with functions dedicated to natural numbers.
-Let's consider another function $g$, we want to compare them as per their rate of growth. We'd like to be able to say if $f$ grows faster than $g$, asymptotically speaking.
-If a function $f$ is $\theta$ of $g$, it grows (asymptotically speaking) in the same way.
+### Asymptotic notation
+
+Asymptotic notation allows to compare the rate of growth of two functions, for example a function and a functions we take a limits on the amount of resources we want to devote to solving a particular problem.
+We are now concerned with functions dedicated to natural numbers.
+
+Let's consider two function $f:\mathbb{N}\to\mathbb{N}$ and $g:\mathbb{N}\to\mathbb{N}$, we want to compare them as per their rate of growth. We'd like to be able to say if $f$ grows faster than $g$, asymptotically speaking:
+- $f$ is $\mathbf{O(g)}$ if it grows asymptotically less or as  much as $g$ ($\exists c \in \mathbb{R}^+ : f(n) \le c * g(n)$ for sufficiently large $n$);
+- $f$ is $\mathbf{\Omega(g)}$ if it grows asymptotically more or as much as $g$ ($\exists c \in \mathbb{R}^+ : f(n) \ge c * g(n)$ for sufficiently large $n$).
+- $f$ is $\mathbf{\theta(g)}$ if it grows asymptotically in the same way ($f$ is both $O(g)$ and $\Omega(g)$).
 
 So, showing that two functions $f$ and $g$ are comparable, is made by studying the limit of the ratio $\frac{f(n)}{g(n)}$ for $n\rightarrow\infty$ and proving that it is constant. 
 

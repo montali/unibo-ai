@@ -20,7 +20,7 @@ $$
 \mathcal{L}=\left\{x \in\{0,1\}^{*} \mid \exists y \in\{0,1\}^{p(|x|)} .(x, y) \in \mathcal{A}\right\}
 $$
 
-The language $\mathcal{L}$ is the language of all strings for which there exists a certificate y such that $(x,y)$, seen as a pair, lies in a set of pairs of $A$.
+The language $\mathcal{L}$ is the language of all strings for which there exists a **certificate y** such that $(x,y)$, seen as a pair, lies in a set of pairs of $A$.
 If we want to conclude that $x$ is in $\mathcal{L}$, we characterize it by another language A (which is a set of pairs of strings), using a certificate $y$ (which exists).
 The other crucial part is $p$, which is a polynomial function.
 The certificate which certifies the presence of $x$ in $\mathcal{L}$ must be sufficiently.
