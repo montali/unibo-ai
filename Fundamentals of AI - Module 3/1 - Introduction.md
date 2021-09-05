@@ -52,8 +52,8 @@ Probabilistic assertions summarize uncertainty. Probabilities relate proposition
 
 Decision theory: In order to make decisions under uncertainty you need a way to model the uncertainty ("Probability theory") and a set of preferences basing on which you can obtain an "utility function" which quantifies how much I like a certain outcome ("Utility theory").
 
-For example suppose <img src="svgs/51ea793aad42e760f5acf5135930081a.svg?invert_in_darkmode" align=middle width=20.45482229999999pt height=22.465723500000017pt/> means that leaving home <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.86687624999999pt height=14.15524440000002pt/> minutes before the flight starts will mean I don't lose the flight.
-Suppose <img src="svgs/c631f303ec13bde1dd6a5fc8a1bfffde.svg?invert_in_darkmode" align=middle width=103.01948909999999pt height=24.65753399999998pt/>, <img src="svgs/c3801c10df64e11e995bb3b0c074f606.svg?invert_in_darkmode" align=middle width=109.57203014999999pt height=24.65753399999998pt/>, <img src="svgs/aedcb68669c26d6a0a39dd2dda964491.svg?invert_in_darkmode" align=middle width=132.56299155pt height=24.65753399999998pt/>, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will have to sleep in the airport, how desirable is that?
+For example suppose <!-- $A_n$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\QP6EP7dNZU.svg"> means that leaving home <!-- $n$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\gYsLymlSu3.svg"> minutes before the flight starts will mean I don't lose the flight.
+Suppose <!-- $P(A_{25}) = 0.04$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\c6BwY8hWoZ.svg">, <!-- $P(A_{120}) = 0.95$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\cbUzJl1LmH.svg">, <!-- $P(A_{1440}) = 0.9999$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\QPB216ReNm.svg">, leaving home 1440 minutes before will mean that we are almost certain not to lose the flight but we will have to sleep in the airport, how desirable is that?
 We have to strike a balance.
 
 ### Basic probability notation
@@ -61,24 +61,24 @@ Consider the assertions about possible worlds.
 **Logical assertions** say which worlds are ruled out.
 **Probabilistic assertions** say how probable they are.
 
-The set of all possible worlds is called the **sample space**, denoted <img src="svgs/9432d83304c1eb0dcb05f092d30a767f.svg?invert_in_darkmode" align=middle width=11.87217899999999pt height=22.465723500000017pt/>.
+The set of all possible worlds is called the **sample space**, denoted <!-- $\Omega$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8e8IizOIbC.svg">.
 
-Any subset <img src="svgs/2ec0879462895df61085e74108970f69.svg?invert_in_darkmode" align=middle width=44.29211489999999pt height=22.465723500000017pt/> is an **event**.
+Any subset <!-- $A \in \Omega$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\B8RLaSHDvu.svg"> is an **event**.
 
-Any element <img src="svgs/3d85ac6329aa8e5e211a66725e102a98.svg?invert_in_darkmode" align=middle width=42.78522269999999pt height=22.465723500000017pt/> is called a **sample point**/**possible world**/**atomic event**.
+Any element <!-- $\omega \in \Omega$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\vv624dciKv.svg"> is called a **sample point**/**possible world**/**atomic event**.
 
 A **probability space** or **probability model** is a sample space with an
-assignment <img src="svgs/e62710bed731756b5ebe883cb3b56aac.svg?invert_in_darkmode" align=middle width=36.444110999999985pt height=24.65753399999998pt/> for every <img src="svgs/3d85ac6329aa8e5e211a66725e102a98.svg?invert_in_darkmode" align=middle width=42.78522269999999pt height=22.465723500000017pt/> such that <img src="svgs/bd9be5b332320797ae1afdb4f0a871f6.svg?invert_in_darkmode" align=middle width=96.71779095pt height=24.65753399999998pt/> and <img src="svgs/f9965c692a3c010477c2c1f445a8d1a8.svg?invert_in_darkmode" align=middle width=70.5660978pt height=24.657735299999988pt/>.
+assignment <!-- $P(\omega)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\dQZsOYcrkz.svg"> for every <!-- $\omega \in \Omega$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\BNN09vTN1j.svg"> such that <!-- $0 \le P(\omega) \le 1$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\Kv4Er3170g.svg"> and <!-- $\sum_{\omega}\omega = 1$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\oMfpP6MCf4.svg">.
 
 A **random variable** is a function from sample points to some range, (e.g. reals or Booleans).
 
-P induces a **probability distribution** for any random variable <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908688849999992pt height=22.465723500000017pt/>: <img src="svgs/9925fec5670d19a45884a9b5bd4694dd.svg?invert_in_darkmode" align=middle width=222.40284989999998pt height=24.657735299999988pt/>
+P induces a **probability distribution** for any random variable <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\zwcHZwuZFQ.svg">: <!-- $P(X = x_i)=\sum_{\omega:X(\omega)=x_i}P(\omega)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\bREYthKUkw.svg">
 
 A probabilistic **proposition** can be described as the disjunction of events where a logic proposition of is true.
 
 The syntax of propositions varies basing on the type of random variable. Some examples:
 - **Propositional** or **Boolean** random variables: *Cavity=true*
-- **Discrete** random variables (finite or infinite): Weather <img src="svgs/c973c3602a8d89e113316aeb53b8b6b0.svg?invert_in_darkmode" align=middle width=23.74424909999999pt height=24.65753399999998pt/>sunny,rain,cloudy<img src="svgs/3b95a53f17b42854b8a9aadfd2e09e98.svg?invert_in_darkmode" align=middle width=8.219209349999991pt height=24.65753399999998pt/>, *Weather=rain*
+- **Discrete** random variables (finite or infinite): Weather <!-- $\in\{$sunny,rain,cloudy$\}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\paJ1gXA41l.svg">, *Weather=rain*
 - **Continuous** random variables (bounded or unbounded): *Temp=21,6*; *Temp<22,0*
 
 The **Joint Probability Distribution** for a set of random variables gives the probability of every atomic event on those variables (i.e., every sample point).
@@ -94,8 +94,14 @@ or the **Gaussian (Normal) Distribution**.
 These distributions differ in the probabilities given to discrete RVs. 
 
 The probability for a discrete value is always between 0 and 1, and the sum of distributions must be 1. In the case of continuous values, we can't sum them! Therefore, we **integrate** obtaining the PDF:
-<p align="center"><img src="svgs/b153b5e71b600e2134a918696a287ebe.svg?invert_in_darkmode" align=middle width=132.09715365pt height=40.2286731pt/></p>
-So, one reason for things to get complicated are continuous values. Another one, is the fact that IRL you don't have 2 values but many of them! The number of events grows exponentially (<img src="svgs/f8f25e4580c418a51dc556db0d8d2b93.svg?invert_in_darkmode" align=middle width=16.34523329999999pt height=21.839370299999988pt/>).
+
+<!-- $$
+\int_{\operatorname{Val}(X)} p(x) d x=1
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\k7woHOCyeu.svg"></div>
+
+So, one reason for things to get complicated are continuous values. Another one, is the fact that IRL you don't have 2 values but many of them! The number of events grows exponentially (<!-- $2^n$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\wp7pv0CRVZ.svg">).
 
 We'll need something that gives us as much information as a joint probability distribution, but **more compact**! 
 
@@ -103,55 +109,113 @@ In the examples seen so far, we considered probabilities that we can call **prio
 
 The **conditional probability** (aka *posterior*) tells us the probability of an event, given another one:
 
-![Conditional probability](/Users/simone/UniBO/unibo-ai/Fundamentals of AI - Module 3/res/conditional.png)
+![Conditional probability](res/conditional.png)
 
-Note that *tootache* is **all we know**! If the dentist collected evidence for *tootache **and** cavity*, the probability of cavity becomes 100%. The less specific belief is still true, but it is not always useful. It may happen that new evidence is still irrelevant to the problem: this happens when the RVs are **independent**. We can use this notion of independence to *reduce our scope* to a more restricted set of RVs.![New evidence and independence](./res/new_evidence.png)
+Note that *tootache* is **all we know**! If the dentist collected evidence for *tootache **and** cavity*, the probability of cavity becomes 100%. The less specific belief is still true, but it is not always useful. It may happen that new evidence is still irrelevant to the problem: this happens when the RVs are **independent**. We can use this notion of independence to *reduce our scope* to a more restricted set of RVs.
+
+![New evidence and independence](./res/new_evidence.png)
 
 We can also write expressions that denote conditional probabilities in a more compact way by using **capital letters**: when something starts with a capital, it is true.
 
 We're now talking about a distribution, not an event, and we have a bold **P**, denoting the whole distribution, *the whole table*. 
 
 Conditional probability can be formally defined using this formula:
-<p align="center"><img src="svgs/b13b585e36793ab4df7c35026f677e35.svg?invert_in_darkmode" align=middle width=223.92001994999998pt height=38.83491479999999pt/></p>
-It basically is the ratio between the joint probability of <img src="svgs/44bc9d542a92714cac84e01cbbb7fd61.svg?invert_in_darkmode" align=middle width=8.68915409999999pt height=14.15524440000002pt/> and <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/>, over the probability of <img src="svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.054796099999991pt height=22.831056599999986pt/>.![Conditional probabilities in whole distributions](./res/conditional_whole_distrib.png)
 
-The probabilities **chain rule** says that the joint probability of the probabilities <img src="svgs/03cce5c7708a8d16e4b6e70e79dbc521.svg?invert_in_darkmode" align=middle width=71.04842414999999pt height=22.465723500000017pt/>, is the product of the probabilities <img src="svgs/7462e2dd47a84a2e41972b4d64cc641b.svg?invert_in_darkmode" align=middle width=114.31908344999998pt height=24.65753399999998pt/> and <img src="svgs/8c4284d323dc6e6615985bde8d0a0099.svg?invert_in_darkmode" align=middle width=141.45199695pt height=24.65753399999998pt/>,  which can be further expanded: we'll repeat this until we have the probabilities of one single value, given everything else.
-<p align="center"><img src="svgs/409ca6cdfe55bd9bab37442ef089a604.svg?invert_in_darkmode" align=middle width=913.02883155pt height=120.6782676pt/></p>
+<!-- $$
+P(a \mid b)=\frac{P(a \wedge b)}{P(b)} \text { if } P(b) \neq 0
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\fcGYGm1MNZ.svg"></div>
+
+It basically is the ratio between the joint probability of <!-- $a$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8Vn8uctTMk.svg"> and <!-- $b$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\NibMNBEbHN.svg">, over the probability of <!-- $b$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\wDlbW3BM1L.svg">.
+
+![Conditional probabilities in whole distributions](./res/conditional_whole_distrib.png)
+
+The probabilities **chain rule** says that the joint probability of the probabilities <!-- $X_1,...,X_n$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\H6mOmlJRIi.svg">, is the product of the probabilities <!-- $P(X_1,...,X_{n-1})$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\P50850mgE6.svg"> and <!-- $P(X_n|X_1,...,X_{n-1})$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\EcH20nRrte.svg">,  which can be further expanded: we'll repeat this until we have the probabilities of one single value, given everything else.
+
+<!-- $$
+\begin{aligned}
+&\mathbf{P}\left(X_{1}, \ldots, X_{n}\right) \\
+=&\mathbf{P}\left(X_{1}, \ldots, X_{n-1}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
+=&\mathbf{P}\left(X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n-1} \mid X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
+=&\cdots \\
+=&\prod_{i=1}^{n} \mathbf{P}\left(X_{i} \mid X_{1}, \ldots, X_{i-1}\right)
+\end{aligned}
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\SEoai3MMcT.svg"></div>
+
 We'll see this formulation many times.
 
 ## Inference using full joint distributions
 
 We'll now try to extract informations from full joint distributions. 
 
-Starting from the joint distribution we see here, with binary RVs having probabilities, we think of a proposition as all the atomic events in which the proposition is true. We can compute the probability of <img src="svgs/f50853d41be7d55874e952eb0d80c53e.svg?invert_in_darkmode" align=middle width=9.794543549999991pt height=22.831056599999986pt/> by summing the probability of the events in which <img src="svgs/f50853d41be7d55874e952eb0d80c53e.svg?invert_in_darkmode" align=middle width=9.794543549999991pt height=22.831056599999986pt/> is true.
+Starting from the joint distribution we see here, with binary RVs having probabilities, we think of a proposition as all the atomic events in which the proposition is true. We can compute the probability of <!-- $\phi$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\jTwYlDdNSO.svg"> by summing the probability of the events in which <!-- $\phi$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\u7BaVeGTGq.svg"> is true.
 
 ![Tootache probs](./res/tootache.png)
 
-With <img src="svgs/3af88d03f62ae297e9026ef94c354094.svg?invert_in_darkmode" align=middle width=27.146075549999992pt height=22.831056599999986pt/> *tootache*:
-<p align="center"><img src="svgs/a57b736708188275a80ffc92155c46e4.svg?invert_in_darkmode" align=middle width=381.78661619999997pt height=16.438356pt/></p>
-We could even consider <img src="svgs/3af88d03f62ae297e9026ef94c354094.svg?invert_in_darkmode" align=middle width=27.146075549999992pt height=22.831056599999986pt/> *tootache or cavity*:
-<p align="center"><img src="svgs/b26a33915d5dded45144c7b1a28c4fee.svg?invert_in_darkmode" align=middle width=577.2203976pt height=36.164383199999996pt/></p>
+With <!-- $\phi=$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\CEGt97DCCz.svg"> *tootache*:
+
+<!-- $$
+P(\text { toothache })=0.108+0.012+0.016+0.064=0.2
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\OnKTd22bkJ.svg"></div>
+
+We could even consider <!-- $\phi=$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\YqNyoXdnTA.svg"> *tootache or cavity*:
+
+<!-- $$
+\begin{array}{l}
+P(\text { toothache })=0.108+0.012+0.016+0.064=0.2 \\
+P(\text { cavity } \vee \text { toothache })=0.108+0.012+0.072+0.008+0.016+0.064=0.28
+\end{array}
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\p4nhBIBG1X.svg"></div>
+
 and also conditional probabilities
-<p align="center"><img src="svgs/e2d988edf5b3569fd194808ada694f8b.svg?invert_in_darkmode" align=middle width=355.67925855pt height=46.074327749999995pt/></p>
+
+<!-- $$
+\begin{array}{c}
+P(\neg \text { cavity } \mid \text { toothache })=\frac{P(\neg \text { cavity } \wedge \text { toothache })}{P(\text { toothache })} \\
+=\frac{0.016+0.064}{0.108+0.012+0.016+0.064}=0.4
+\end{array}
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\WUfOd8VQdv.svg"></div>
+
 This is called **inference by enumeration**: we enumerate all the events and calculate probabilities. This is possible for small problems only, otherwise it becomes pretty complicated.
 
-Let's think about this last expression for a while: we have the probability of not having cavity given a tootache. We don't consider this as the probability itself, but as the way of getting to the distribution <img src="svgs/089f96df3802c0605ccba5947541ed1c.svg?invert_in_darkmode" align=middle width=141.43063274999997pt height=24.65753399999998pt/>.
+Let's think about this last expression for a while: we have the probability of not having cavity given a tootache. We don't consider this as the probability itself, but as the way of getting to the distribution <!-- $\textbf{P}(Cavity|tootache)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\cZIBcZqodr.svg">.
 
-We now have the Random Variable <img src="svgs/dca4133d4b456d6b18a3f668490174f0.svg?invert_in_darkmode" align=middle width=50.42018189999999pt height=22.465723500000017pt/>, which represents the distribution. This is simply a compact way of expressing the probabilities <img src="svgs/0d3e5c601b07952c83137f303ea125c5.svg?invert_in_darkmode" align=middle width=138.27392534999998pt height=24.65753399999998pt/> and <img src="svgs/7c7e93aa3fb4f336840a0c90ecff5c93.svg?invert_in_darkmode" align=middle width=185.43962084999998pt height=24.65753399999998pt/>. It's a **vector**!
+We now have the Random Variable <!-- $Cavity$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\0nxn3tiINb.svg">, which represents the distribution. This is simply a compact way of expressing the probabilities <!-- $P(cavity, tootache)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\FUh8U6LE9o.svg"> and <!-- $P(\neg \text { cavity } \mid \text { toothache })$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\af96X5o7gN.svg">. It's a **vector**!
 
 From the point of the distribution, we get that the denominator is just a normalization constant over the distribution: it's always gonna get normalized to the same values!
 
 So another, even more compact way of expressing this is:
-<p align="center"><img src="svgs/3269295e4d552b0bedf447fd1a06ac71.svg?invert_in_darkmode" align=middle width=371.30735895pt height=16.438356pt/></p>
-with <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> being a normalization constant we don't care about. Let's say in the end we get 2 values in our vector, and they don't sum to 1: we normalize it to make it so, and we're done!
 
-When we're summing over a row or column, we are **marginalizing** or **summing out**: <img src="svgs/21f27d86587a5cd5c5bdc43f817ea4a4.svg?invert_in_darkmode" align=middle width=171.87790619999998pt height=24.65753399999998pt/>.
+<!-- $$
+\mathrm{P}(\text { Cavity } \mid \text { toothache })=\alpha \mathrm{P}(\text { Cavity, toothache })
+$$ --> 
 
-When we're considering evidence (a conditional probability, then), we're performing **reduction**, since we're considering the possible worlds that agree with the evidence: <img src="svgs/24d3128a17e913c080ad6232d01f91d8.svg?invert_in_darkmode" align=middle width=391.19288835pt height=24.65753399999998pt/>.
+<div align="center"><img style="background: white;" src="..\svg\FHusAvazZk.svg"></div>
 
-This is general what we can tell from the specific example. A **probability query** is something in the form *the probability distribution of some RV given some evidence*. There is one or more query variables, and one or more evidence variables. In order to answer this query, we consider the other variables (the hidden variables <img src="svgs/4e3e2ee5648e950a5f30f25e4d17b39f.svg?invert_in_darkmode" align=middle width=14.794451099999991pt height=22.55708729999998pt/> that don't appear in the expression), and in order to compute the probability of <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.19638649999999pt height=22.465723500000017pt/> given the evidence, we apply the expression we've seen earlier, and in order to compute the joint probability of Y given the E evidence, we sum over the hidden variables (for all the values), and end up with the distribution.
-<p align="center"><img src="svgs/404fc15a27306d1d4a79c903fc2b2262.svg?invert_in_darkmode" align=middle width=427.46579699999995pt height=37.03214955pt/></p>
-This is **inference by enumeration**: we enumerate the possible worlds, and we sum the values. If there are not many, we can do that. This method has some obvious problems, two having to do with the **complexity** (time and space), the last one being how do we find the numbers for <img src="svgs/1d32e1b09db4b9b39346f04b20114c1b.svg?invert_in_darkmode" align=middle width=43.28476019999999pt height=24.65753399999998pt/> entries. We'll need a more compact method. That's what we're going to see next.
+with <!-- $\alpha$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\MDZzPMezv2.svg"> being a normalization constant we don't care about. Let's say in the end we get 2 values in our vector, and they don't sum to 1: we normalize it to make it so, and we're done!
+
+When we're summing over a row or column, we are **marginalizing** or **summing out**: <!-- $P(\text { Weather }=\text { sunny })$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\aXA2OkqwkS.svg">.
+
+When we're considering evidence (a conditional probability, then), we're performing **reduction**, since we're considering the possible worlds that agree with the evidence: <!-- $\text { Weather }=\text { sunny: } P(\text { Cavity } \mid \text { Weather }=\text { sunny })$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\dLRcjWLF9B.svg">.
+
+This is general what we can tell from the specific example. A **probability query** is something in the form *the probability distribution of some RV given some evidence*. There is one or more query variables, and one or more evidence variables. In order to answer this query, we consider the other variables (the hidden variables <!-- $\textbf{H}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\QfThQg4bAM.svg"> that don't appear in the expression), and in order to compute the probability of <!-- $Y$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\X1xvemXyV0.svg"> given the evidence, we apply the expression we've seen earlier, and in order to compute the joint probability of Y given the E evidence, we sum over the hidden variables (for all the values), and end up with the distribution.
+
+<!-- $$
+\mathbf{P}(\mathbf{Y} \mid \mathbf{E}=\mathbf{e})=\alpha \mathbf{P}(\mathbf{Y}, \mathbf{E}=\mathbf{e})=\alpha \sum_{\mathbf{h}} \mathbf{P}(\mathbf{Y}, \mathbf{E}=\mathbf{e}, \mathbf{H}=\mathbf{h})
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\svg\CYfGYBtwfm.svg"></div>
+
+This is **inference by enumeration**: we enumerate the possible worlds, and we sum the values. If there are not many, we can do that. This method has some obvious problems, two having to do with the **complexity** (time and space), the last one being how do we find the numbers for <!-- $O(d^n)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\TXTloExvMx.svg"> entries. We'll need a more compact method. That's what we're going to see next.
 
 
 
