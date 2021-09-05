@@ -14,8 +14,62 @@
 
 %\maketitle
 
-\section{Basic probability notation}
+\section{Basic probability}
 
-TODO
+\subsubsection{Inference by enumeration}
+$$
+P(\text { Effect } \mid \text { Cause })=\frac{P(\text { Effect } \wedge \text { Cause })}{P(\text { Cause })}=\alpha P(\text { Effect }, \text { Cause })
+$$
+
+$\alpha$ = Normalization constant
+
+\subsubsection{Bayes theorem}
+$$
+P(\text { Cause } | \text { Effect })=\frac{P(\text { Effect } | \text { Cause }) P( \text{ Cause })}{P(\text { Effect })}=\alpha P(\text { Effect } | \text { Cause }) P( \text{ Cause })
+$$
+
+\section{Bayesian Networks}
+
+\subsection{Flow of probabilistic infuence}
+
+\begin{itemize}
+	\item $X$ \textbf{direct cause} of $Y$: $X \rightarrow Y$
+	\item $X$ \textbf{direct effect} of $Y$: $X \leftarrow Y$
+	\item \textbf{Causal trail} from $X$ to $Y$: $X \rightarrow Z \rightarrow Y$
+	\item \textbf{Evidential trail} from $X$ to $Y$: $X \leftarrow Z \leftarrow Y$
+	\item \textbf{Common cause}: $X \leftarrow Z \rightarrow Y$
+	\item \textbf{Common effect}: $X \rightarrow Z \leftarrow Y$
+\end{itemize}
+
+\subsubsection{Active trail}
+
+Let $Z$ be a subset of observed variables.
+The trail $X_{i-1} \leftrightharpoons X_i \leftrightharpoons X_{i+1}$ is active given $Z$ if
+\begin{itemize}
+	\item $\forall X_{i-1} \rightarrow Xi \leftarrow X_{i+1}$, $X_i$ or one of its descendants are in $Z$
+	\item No other node along the trail is in $Z$
+\end{itemize}
+
+\subsubsection{Direct separation}
+
+To determine if $P \models (X \perp Y | Z)$ ($X$ and $Y$ are independent given $Z$):
+
+\begin{enumerate}
+	\item Traverse the graph bottom-up marking all nodes in $Z$ or having descendants in given $Z$
+	\item Traverse the graph from $X$ to $Y$ , stopping if we get to a blocked node*
+	\item If we can't reach $Y$, then $X$ and $Y$ are independent
+\end{enumerate}
+
+*A node is blocked if either the middle of an unmarked v-structure, or in $Z$, but not both
+
+\subsection{Reasoning Patterns}
+
+\begin{itemize}
+	\item \textbf{Causal} (or predictive) reasoning: $P(\text{Descendant} | \text{Ancestor})$
+	\item \textbf{Evidential} (or explanatory) reasoning: $P(\text{Ancestor} | \text{Descendant})$
+	\item \textbf{Intercausal} reasoning (or explaining away): $P(Y|X)$ where $X$ is connected to $Y$ via an active trail which passes through a common cause and/or a common effect
+\end{itemize}
+
+
 
 \end{document}

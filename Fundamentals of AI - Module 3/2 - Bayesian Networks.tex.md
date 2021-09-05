@@ -63,8 +63,13 @@ This allows us to compute problems like the one that follows:
 
 Now, lets's consider $\mathrm{P}(\text { Cavity } \mid \text { toothache } \wedge \text { catch })$. If we also consider what we knew, i.e. that toothache is independent of catch, given cavity. Then, wecan say that this can be expressed as the product of two probabilities:
 
-$P(Cavity|toothache $$\wedge$$ catch $)
-$=(\alpha) \mathbf{P}($ toothache $\wedge$ catch $\mid$ Cavity $) \mathbf{P}($ Cavity $)$ $=\alpha \mathbf{P}($ toothache $\mid$ Cavity $) \mathbf{P}($ catch $\mid$ Cavity $) \mathbf{P}($ Cavity $)$
+$$
+\begin{aligned}
+&P(\text{Cavity}|\text{toothache} \wedge \text{catch} ) \\
+=&\alpha \mathbf{P}( \text{toothache} \wedge \text{catch} \mid \text{Cavity} ) \mathbf{P}( \text{Cavity} ) \\
+=&\alpha \mathbf{P}( \text{toothache} \mid \text{Cavity} ) \mathbf{P}( \text{catch} \mid \text{Cavity} ) \mathbf{P}( \text{Cavity} )
+\end{aligned}
+$$
 
 We lastly hae to mention one classifier that we've already seen: the *Naive Bayes classifier*. These are quite efficient. This can be formalized as follows:
 $$

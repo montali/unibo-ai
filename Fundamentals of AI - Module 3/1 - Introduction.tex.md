@@ -94,9 +94,11 @@ or the **Gaussian (Normal) Distribution**.
 These distributions differ in the probabilities given to discrete RVs. 
 
 The probability for a discrete value is always between 0 and 1, and the sum of distributions must be 1. In the case of continuous values, we can't sum them! Therefore, we **integrate** obtaining the PDF:
+
 $$
 \int_{\operatorname{Val}(X)} p(x) d x=1
 $$
+
 So, one reason for things to get complicated are continuous values. Another one, is the fact that IRL you don't have 2 values but many of them! The number of events grows exponentially ($2^n$).
 
 We'll need something that gives us as much information as a joint probability distribution, but **more compact**! 
@@ -120,14 +122,17 @@ $$
 It basically is the ratio between the joint probability of $a$ and $b$, over the probability of $b$.![Conditional probabilities in whole distributions](./res/conditional_whole_distrib.png)
 
 The probabilities **chain rule** says that the joint probability of the probabilities $X_1,...,X_n$, is the product of the probabilities $P(X_1,...,X_{n-1})$ and $P(X_n|X_1,...,X_{n-1})$,  which can be further expanded: we'll repeat this until we have the probabilities of one single value, given everything else.
+
 $$
 \begin{aligned}
-\mathbf{P}\left(X_{1}, \ldots, X_{n}\right)=\mathbf{P}\left(X_{1}, \ldots, X_{n-1}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
-&=\mathbf{P}\left(X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n-1} \mid X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
-&=\cdots \\
-&=\prod_{i=1}^{n} \mathbf{P}\left(X_{i} \mid X_{1}, \ldots, X_{i-1}\right)
+&\mathbf{P}\left(X_{1}, \ldots, X_{n}\right) \\
+=&\mathbf{P}\left(X_{1}, \ldots, X_{n-1}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
+=&\mathbf{P}\left(X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n-1} \mid X_{1}, \ldots, X_{n-2}\right) \mathbf{P}\left(X_{n} \mid X_{1}, \ldots, X_{n-1}\right) \\
+=&\cdots \\
+=&\prod_{i=1}^{n} \mathbf{P}\left(X_{i} \mid X_{1}, \ldots, X_{i-1}\right)
 \end{aligned}
 $$
+
 We'll see this formulation many times.
 
 ## Inference using full joint distributions
