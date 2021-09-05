@@ -109,7 +109,7 @@ $\Delta \tau_{i j}=\left\{\begin{array}{ll}
 0 & \text { otherwise }
 \end{array}\right.$ where $L_k$ is the length of the path followed by the ant $k$.
 
-![Screenshot 2020-10-27 at 10.22.24](/Users/simone/UniBO/unibo-ai/Fundamentals of AI - Module 1/res/aco_alternative.png)
+![Screenshot 2020-10-27 at 10.22.24](res/aco_alternative.png)
 
 where **AntBasedSolutionConstruction** is the building of a solution made by ants, which move by applying a stochastic local decision policy that uses values of pheromone and heuristic, taking track of the partial solutions.
 

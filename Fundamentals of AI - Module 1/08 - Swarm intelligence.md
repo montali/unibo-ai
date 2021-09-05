@@ -103,7 +103,7 @@ In addition we have to add a value that is the sum, for all ants <img src="svgs/
 
 <img src="svgs/59499802859cbba0fb1e47de3cfa17a4.svg?invert_in_darkmode" align=middle width=282.86762129999994pt height=47.6716218pt/> where <img src="svgs/bfb6e556d3874a3157379133a8d7917a.svg?invert_in_darkmode" align=middle width=18.45327164999999pt height=22.465723500000017pt/> is the length of the path followed by the ant <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075367949999992pt height=22.831056599999986pt/>.
 
-![Screenshot 2020-10-27 at 10.22.24](/Users/simone/UniBO/unibo-ai/Fundamentals of AI - Module 1/res/aco_alternative.png)
+![Screenshot 2020-10-27 at 10.22.24](res/aco_alternative.png)
 
 where **AntBasedSolutionConstruction** is the building of a solution made by ants, which move by applying a stochastic local decision policy that uses values of pheromone and heuristic, taking track of the partial solutions.
 
