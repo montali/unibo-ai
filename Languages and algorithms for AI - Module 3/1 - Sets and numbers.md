@@ -35,7 +35,7 @@ These are also known as *characteristic functions*, and they are related to deci
 
 ### Asymptotic notation
 
-Asymptotic notation allows to compare the rate of growth of two functions, for example a function and a functions we take a limits on the amount of resources we want to devote to solving a particular problem.
+Asymptotic notation allows to compare the rate of growth of two functions, for example a function of interest and a function which defines the limit on the amount of resources we want to devote to solving a particular problem.
 We are now concerned with functions dedicated to natural numbers.
 
 Let's consider two function <img src="svgs/68bed5f90d91b215729aff1251041e31.svg?invert_in_darkmode" align=middle width=72.83079209999998pt height=22.831056599999986pt/> and <img src="svgs/2eb32638a942a395856ddef152eb9240.svg?invert_in_darkmode" align=middle width=71.44373774999998pt height=22.648391699999998pt/>, we want to compare them as per their rate of growth. We'd like to be able to say if <img src="svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/> grows faster than <img src="svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>, asymptotically speaking:
