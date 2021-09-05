@@ -78,7 +78,7 @@ A probabilistic **proposition** can be described as the disjunction of events wh
 
 The syntax of propositions varies basing on the type of random variable. Some examples:
 - **Propositional** or **Boolean** random variables: *Cavity=true*
-- **Discrete** random variables (finite or infinite): Weather <!-- $\in\{$sunny,rain,cloudy$\}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\paJ1gXA41l.svg">, *Weather=rain*
+- **Discrete** random variables (finite or infinite): Weather <!-- $\in\{\text{sunny},\text{rain},\text{cloudy}\}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\3GiMmKJxUE.svg">, *Weather=rain*
 - **Continuous** random variables (bounded or unbounded): *Temp=21,6*; *Temp<22,0*
 
 The **Joint Probability Distribution** for a set of random variables gives the probability of every atomic event on those variables (i.e., every sample point).
