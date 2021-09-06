@@ -1,5 +1,5 @@
 \documentclass[]{article}
-\usepackage[a4paper, portrait, margin=0.75in]{geometry}
+\usepackage[a4paper, portrait, margin=0.7in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -21,6 +21,15 @@
 \textbf{Computational process}: A sequence of actions capable of solving a computational task. In the Theory of Computation is taken to be an algorithm (a finite description of a series of elementary computation steps, where the way the next step is determined must be deterministic).
 
 A computational task can have 0..N solving processes. A task with no solving processes is an unsolved task. Distinct processes can solve the same task in different ways and some of them can be unacceptable (i.e. requiring too much time or space).
+
+\subsection{Asymptotic notation}
+
+$f:\mathbb{N}\to\mathbb{N}$, $g:\mathbb{N}\to\mathbb{N}$
+\begin{itemize}
+	\item $f$ is $\mathbf{O(g)}$ if it grows asymptotically less or as  much as $g$ ($\exists c \in \mathbb{R}^+ : f(n) \le c * g(n)$ for sufficiently large $n$)
+	\item $f$ is $\mathbf{\Omega(g)}$ if it grows asymptotically more or as much as $g$ ($\exists c \in \mathbb{R}^+ : f(n) \ge c * g(n)$ for sufficiently large $n$)
+	\item $f$ is $\mathbf{\theta(g)}$ if it grows asymptotically in the same way ($f$ is both $O(g)$ and $\Omega(g)$)
+\end{itemize}
 
 \section{Turing Machine}
 
@@ -53,16 +62,78 @@ A \textbf{language} $\mathcal{L}_{f} \subseteq\{0,1\}^{*}$ is decidable in time 
 
 A function $T:\mathbb{N} \to \mathbb{N}$ is \textbf{time-constructible} if the function itself can be computed on a Turing machine (i.e. $\forall x \in \{0,1\}^*$ $x \to \lfloor T(|x|) \rfloor$ is computable).
 
-\section{Polynomial time computable problems}
+\section{Rice's theorem}
 
-TODO
+All non-trivial extensional properties of a program (a Turing Machine) are undecidable. To demonstrate that a property P is undecidable we have to:
+\begin{enumerate}
+	\item Show that $P$ is non-trivial. This is accomplished by (both the steps are needed):
+	\begin{enumerate}
+		\item demonstrating that $P \ne \emptyset$. To do this is sufficient to describe a TM $\mathcal{M}$ with the property $P$
+		\item finding a TM $\mathcal{M}$ which has not the property $P$
+	\end{enumerate}
+\item Show that $P$ is extensional: Assume $L(\mathcal{M}) = L(\mathcal{N})$ and $\mathcal{M} \in P$. Then demonstrate that $\mathcal{M} \in P$.
+\end{enumerate}
 
-\section{Exponential time computable problems}
+\section{Complexity classes}
 
-TODO
+$T:\mathbb{N}\to\mathbb{N}; c $ constant. 
 
-\section{Between feasible and unfeasible}
+$\mathcal{L} \in \textbf{DTIME}(T(n)) \iff \exists \mathcal{M}$ deterministic TM deciding the language and running in time $n \rightarrow c \cdot T(n)$.
 
-TODO
+$\mathcal{L} \in \textbf{NDTIME}(T(n)) \iff \exists \mathcal{M}$ non-deterministic TM deciding the language and running in time $n \rightarrow c \cdot T(n)$.
+
+\subsection{Polynomial time computable problems}
+
+$$
+\mathbf{P} = \bigcup\limits_{c\ge1} \mathbf{DTIME(n^c)}
+$$
+
+\subsection{Exponential time computable problems}
+
+$$
+\mathbf{EXP} = \bigcup\limits_{c\ge1} \mathbf{DTIME(2^{n^c})}
+$$
+
+\subsection{Between feasible and unfeasible}
+
+$$
+\mathbf{NP} = \bigcup\limits_{c\in\mathbb{N}} \mathbf{NDTIME}(n^c) = \bigcup\mathcal{L}: \mathcal{L}=\left\{x \in\{0,1\}^{*} \mid \exists y \in\{0,1\}^{p(|x|)} . \mathcal{M}(\llcorner x, y\lrcorner)=1\right\}
+$$
+$p$ must be a polynomial function. $y$ can be said \textbf{certificate} for $\mathcal{L}$. $\mathcal{M}$ can be said \textbf{verifier} for $\mathcal{L}$.
+
+A language $\mathcal{H} \subseteq \{0,1\}^*$ is said to be:
+
+\begin{itemize}
+	\item \textbf{NP-hard} if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in \textbf{NP}. Simplifying it means that it cannot be too easy (it could be un-computable, \textbf{NP-complete} or outside \textbf{NP}).
+	\item \textbf{NP-complete} if $\mathcal{H} \in \mathbf{N P}$ is \textbf{NP-hard}. Note that \textbf{NP-hard}ness does not imply \textbf{NP-complete}ness as a \textbf{NP-hard} language may be un-computable or outside \textbf{NP}.
+\end{itemize}
+
+Note that:
+
+$$
+\mathbf{P} \subseteq  \mathbf{NP} \subseteq \mathbf{EXP}
+\hspace{5em} 
+\textbf{NP-complete} \subseteq \mathbf{EXP}
+\hspace{5em} 
+\mathbf{P} \subsetneq \mathbf{EXP}
+$$
+
+\begin{itemize}
+	\item $\mathcal{L} \in \mathbf{P}$ is \textbf{NP-hard} $\Rightarrow \mathbf{P}=\mathbf{N P}$.
+	\item $\mathcal{L} \in \mathbf{P}$ is \textbf{NP-complete} $\iff \mathbf{P}=\mathbf{N P}$.
+\end{itemize}
+
+No such language has been found and $\mathbf{P}=\mathbf{N P}$ has not yet been proven (famous \textbf{P vs NP} problem).
+
+\subsubsection{SAT}
+
+A \textbf{kCNF} (k-Conjunctive Normal Form) is a propositional formula which is a conjunction of disjunctions ("clauses") which contain at most $k \in \mathbb{N}$ literals.
+
+Cook-Levin Theorem: The following languages are \textbf{NP-complete}:
+
+\begin{itemize}
+	\item $SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable CNF}\}$
+	\item $3SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable 3CNF}\}$
+\end{itemize}
 
 \end{document}
