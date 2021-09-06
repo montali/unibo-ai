@@ -25,9 +25,9 @@
 
 ### Exercise 1
 
-Prove the uncompatibility of the halting problem, namely the fact that the function <img src="https://render.githubusercontent.com/render/math?math=halt(\alpha, x)"> defined by cases:
+Prove the uncompatibility of the halting problem, namely the fact that the function <!-- $halt(\alpha, x)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\db7SPfp6JZ.svg"> defined by cases:
 
-- equal to 1 if <img src="https://render.githubusercontent.com/render/math?math=M_\alpha(x)"> terminates
+- equal to 1 if <!-- $M_\alpha(x)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\wBxdw9GK1S.svg"> terminates
 - equal to 0 otherwise
 
 is uncomputable.
@@ -232,7 +232,10 @@ Solutions provided are not _official_ solutions by professor, but are made by me
 
 Construct a deterministic TM of the kind you prefer, which decides the following language:
 
-![L={w\in{0,1}^*\mid&space;w&space;<img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=&space;does&space;not&space;contain&space;01&space;as&space;a&space;substring">}](https://latex.codecogs.com/svg.latex?L%3D%5C%7Bw%5Cin%5C%7B0%2C1%5C%7D%5E*%5Cmid%20w%20%24%20does%20not%20contain%2001%20as%20a%20substring%24%5C%7D)
+<!-- $$
+L = \{w \in \{0,1\}^* \mid w \text{ does not contain 01 as substring} \}
+$$ --> 
+<div align="center"><img style="background: white;" src="..\svg\5FHWShHepu.svg"></div>
 
 Study the complexity of TM you have defined.
 
@@ -290,7 +293,10 @@ Since using n bits allows us to encode _2^n - 1_ numbers, the encoding of _Li_ r
 
 Now we need to encode the whole list _L_. To do that we introduce a separator character # between elements of the list and then we encode 1 as 11, 0 as 00 and # as 01. So the total encoding will have length:
 
-![l = \sum{i=1}^{n}{(2\log{L_i}+2)} + 2(n-1)](https://latex.codecogs.com/svg.latex?l%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%282%5Clog%7BL_i%7D+2%29%7D%20+%202%28n-1%29)
+<!-- $$
+l = \sum_{i=1}^{n}{(2\log{L_i}+2)} + 2(n-1)
+$$ --> 
+<div align="center"><img style="background: white;" src="..\svg\QWvTzk4ZeW.svg"></div>
 
 **Step 2**: The only relevant instruction is `Reverse[i] = L[n-1-i]` which is executed _n_ times, which is polynomial. Other instructions (updating i and similar) have also a polynomial bound and can be trivially translated in a polynomial number of TM steps.
 
@@ -321,6 +327,46 @@ def threeclique(V, E):
 
 Checking if an edge belongs to the set of edges of the graph can be done by simpling comparing it with alle the m edges of the graph, which can be done in polynomial time.
 This operation is inside a triple nested `for`, so it will be done a very big number of times, but still polynomial. SO the problem belongs to the **P** class.
+
+# Question Examples from Virtuale 20/21
+
+Let _f, g_ be the functions defined as <!-- $f(n)=2^nn^2$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\NLuqcYAS0O.svg"> and <!-- $g(n) = n2^n$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\v3AXGvEWAa.svg">.
+Select one or more.
+- [x] <!-- $f\in\Omega(g)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\a9sOkmtFqO.svg">
+- [ ] <!-- $f\in O(g)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\hbvTDuXMi0.svg">
+- [ ] <!-- $f\in\Theta(g)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\IRYqOuN3Xy.svg">
+
+- - - 
+In Turing Machines:  
+Select one or more.
+ - [ ] The presence of many tapes can make the class **P** different
+ - [x] What can be computed in exponential time is different from what can be computed in polynomial time
+ - [x] The presence of many tapes can make the class **DTIME(_n_)** different
+ - [ ] The class **EXP** can be equal to **P**
+
+- - -
+The problem **3SAT** is:  
+Select one or more.
+ - [x] Such that **INDSET** can be reduced to it
+ - [x] **NP**-hard
+ - [x] In the class **EXP**
+ - [ ] Computable in polynomial time
+
+- - -
+Suppose a language **_L_** is both in **NP** and in **EXP**. Then  
+Select one or more.
+ - [ ] **EXP** and **NP** are necessarly equal.
+ - [x] **_L_** can even be **NP**-complete.
+ - [x] **NP** and **EXP** are maybe different.
+ - [ ] **_L_** cannot be in **P**.
+
+- - -
+The notion of PAC-learnable concept class:  
+Select one or more.
+ - [x] Needs to hold for every distribution D on the instance class.
+ - [x] Does not make any reference to the time complexity of the learning algorithm.
+ - [ ] Requires the output concept to have probability of error ε, in all cases.
+ - [ ] Cannot be reached when the underlying concept class is the one conjunctions of literals.
 
 <a name="exam_2020_06_26"/>
 
@@ -414,18 +460,17 @@ Solutions made by us of the exercises of the PDF follow.
 
 We are basically psudo-coding a linear search. The first thing we'll have to do is encoding the input as binary strings. This is pretty straightforward: we can introduce a separator `#` that separates the elements of the list, and finally, the query.
 
-The list would therefore be encoded as follows:
+The list would therefore be encoded as <!-- $l_1\#l_2\# ...\#l_n\#q$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uVGVSEGHPJ.svg">.
 
-<img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=l_1\#l_2\# ...\#l_n\#q">
-
-Now, we know that the saving of a given natural number requires <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=roundToNextInt(l_i)"> bits, and our encoding will be the following: `0=00,1=11,#=01`. This means that every _normal_ bit will require twice the space, and we will have <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=n"> separators occupying 2 bits each.
+Now, we know that the saving of a given natural number requires <!-- $roundToNextInt(l_i)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\24IEZaD9ei.svg"> bits, and our encoding will be the following: `0=00,1=11,#=01`.
+This means that every _normal_ bit will require twice the space, and we will have `n` separators occupying 2 bits each.
 
 We can now introduce the pseudocode solving the problem:
 
 ```
 def linsearch(List[Int] l, int query) {
 	i = 0
-	while i<|l| {
+	while i < |l| {
 		if (l[i] == query) {
 			return i
 		}
@@ -434,16 +479,14 @@ def linsearch(List[Int] l, int query) {
 }
 ```
 
-Now, the analysis of the code. We know that the first instruction is <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=O(1)">. The `while` loop, then, is executed **at most** <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=|l|"> times, and contains three (the while check, the if, the return) constant instructions. The final instruction is still constant.
+Now, the analysis of the code. We know that the first instruction is <!-- $O(1)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\dOcxKKW59W.svg">. The `while` loop, then, is executed **at most** `|l|` times, and contains three (the while check, the if, the return) constant instructions. The final instruction is still constant.
 
-This means that, finally:
-<img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=
-O(1)+O(n)O(3)+O(1) = O(n)">
+This means that, finally: <!-- $O(1)+O(n)O(3)+O(1) = O(n)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\obcxjhiSnx.svg">.
 The intermediate results are clearly bounded: the list will never exceed its original size (nor get modified) and i is an int.
 
-Since <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=n"> is clearly polynomial, we have proven the presence in <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=FP">.
+Since `n` is clearly polynomial, we have proven the presence in **FP**.
 
-A TM could simulate this code by simply having the same input we cited before, as <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=l_1\#...\#l_n\#q">, scrolling to the end of the TM, copying the query to another tape, then searching for the element while saving the index in a third tape (incremented at every separator).
+A TM could simulate this code by simply having the same input we cited before, as <!-- $l_1\#l_2\# ...\#l_n\#q$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uVGVSEGHPJ.svg">, scrolling to the end of the TM, copying the query to another tape, then searching for the element while saving the index in a third tape (incremented at every separator).
 
 <a name="book_feasible"/>
 
@@ -452,8 +495,11 @@ A TM could simulate this code by simply having the same input we cited before, a
 ### Exercise 4.1
 
 We know that a language is in NP when:
-<img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=">
-\mathcal{L} = \{x\in \{0,1\}^\* | \exist y \in \{0,1\}^{p(|x|)}.(x,y)=1\}
-<img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=">
-Therefore, we can introduce a TM <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{M}_a"> that verifies the language <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{L}_1"> and a TM <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{M}_b"> that verifies <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=\mathcal{L}_2">. Now, if we introduce a third TM that, given a triple <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_1,y_2)"> emulates the first one on <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_1)"> and the second one on <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=(x,y_2)">, ultimately returning <img style="transform: translateY(0.1em)background: white" src="https://render.githubusercontent.com/render/math?math=1"> if and only if both the emulations do so.
+
+<!-- $$
+\mathcal{L} = \{x\in \{0,1\}^* | \exists y \in \{0,1\}^{p(|x|)}.(x,y)=1\}
+$$ --> 
+<div align="center"><img style="background: white;" src="..\svg\Eh6jQLd400.svg"></div>
+
+Therefore, we can introduce a TM <!-- $\mathcal{M}_a$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\nLCMFWlCar.svg"> that verifies the language <!-- $\mathcal{L}_1$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\Y50zVPvvxT.svg"> and a TM <!-- $\mathcal{M}_b$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\dOgsLKlt0N.svg"> that verifies <!-- $\mathcal{L}_2$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\rfEta2sd66.svg">. Now, if we introduce a third TM that, given a triple <!-- $(x,y_1,y_2)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\jI9JRSyL0C.svg"> emulates the first one on <!-- $(x,y_1)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\6vgzdhjzvT.svg"> and the second one on <!-- $(x,y_2)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\847yediVka.svg">, ultimately returning `1` if and only if both the emulations do so.
 
