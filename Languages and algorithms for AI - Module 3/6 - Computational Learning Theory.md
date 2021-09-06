@@ -77,7 +77,7 @@ The interface of any learning algorithm _A_ can be described as follows:
 ![image](https://user-images.githubusercontent.com/31796254/122079337-9aa72f80-cdfd-11eb-9fc2-c9a9fa511073.png)
 
 where:
- - _𝛿_ and _ε_ are respectively the coinfidence and the accuracy, as described [above](#intro).
+ - _𝛿_ and _ε_ are respectively the confidence and the accuracy, as described [above](#intro).
  - _EX_(_c_, **D**) is the _oracle_: a procedure that _A_ can call whenever it wants to and which returns in output an element _x_ of **D**, labelled according whether it is in _c_ or not (where _c_ is the target concept).
 
 _A_ returns a concept _h_ approximating _c_. We can compute the error of _h_ as:
@@ -107,8 +107,8 @@ In our definition of efficient PAC learning, _A_, having no access to the target
 We assume concepts in _C_ can be represented as binary strings, and each concept _e_ ∈ _C_ requires _size_(_e_) bits. We talk of a **representation class**.
 
 #### Examples:
- - _X\_n_ could be {0,1}^_n_, which is the set of boolean vectors of fixed lenght _n_, and _Cn_ is the set of all the substes of _X\_n_ **represented by CNFs**.
- - _X\_n_ could be **R**^_n_, which is the set of vectors of real numbers of lenght _n_, and _Cn_ is the set of all the substes of _X\_n_ **represented by some form of neural network** with _n_ inputs and 1 output.
+ - _X\_n_ could be {0,1}^_n_, which is the set of boolean vectors of fixed length _n_, and _Cn_ is the set of all the subsets of _X\_n_ **represented by CNFs**.
+ - _X\_n_ could be **R**^_n_, which is the set of vectors of real numbers of length _n_, and _Cn_ is the set of all the subsets of _X\_n_ **represented by some form of neural network** with _n_ inputs and 1 output.
 
 In many cases (e.g. SGD) we have a **single** algorithm _A_ that works for every value of _n_, in such a case we allow (in the definition of PAC learning) _A_ to take polynomial time in _n_, _size_, _1/𝛿_ and _1/ε_.
 
@@ -116,7 +116,7 @@ In many cases (e.g. SGD) we have a **single** algorithm _A_ that works for every
 
 ### Boolean Functions as Representation Class
 
-Let's take as instance class _X_ the set obtained by te unions of all the set of boolean vectors of fixed lenght _n_, for each _n_ ∈ **N** (so a union between _X\_n_, for each _n_ ∈ **N**).
+Let's take as instance class _X_ the set obtained by te unions of all the set of boolean vectors of fixed length _n_, for each _n_ ∈ **N** (so a union between _X\_n_, for each _n_ ∈ **N**).
 
 A first example of a representation class for _X\_n_ is the class **CL**\__n_ of all **conjunctions of literals** on the variables _x1, x2, ..., xn_.  
 So, as an example, the conjunction _x1_ ∧ ¬_x2_ ∧ _x4_ defines a subset of {0,1}^4.  
@@ -153,7 +153,7 @@ and updating it according to (_s_, _b_) when _b_ = 1. (When _b_ = 0 data are dis
 ## Intractability of learning DNFs
 We have just seen that conjunctions of literals are efficiently PAC learnable, however they are not a complete represenation of boolean functions.
 
-Let's take a representation class which is **slighty more general** than conjunction of literals:
+Let's take a representation class which is **slightly more general** than conjunction of literals:
 **3-term DNF** formulas over _n_ bits, which are formulas in the form _T1 ∨ T2 ∨ T3_, where each _Ti_ is a conjunction of literals over _x1, ..., xn_.
 
 We can imagine it as the _dual_ of 3CNFs.
@@ -172,7 +172,7 @@ Not at all, we have just **scratched the surface** of computational learning the
  - The Foundamental Theorem of Learning
  - The No-Free Lunch Theorem
  - Occam's Razor
- - Positive and negative results aboutneural networks
+ - Positive and negative results about neural networks
  - ...
 
 <a name="books"/>

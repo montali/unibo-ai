@@ -1,12 +1,12 @@
 #### Table of Content
- - [Exercises proposed during lessons of the Accademic Year 2020/21](#lessons2021)
+ - [Exercises proposed during lessons of the Academic Year 2020/21](#lessons2021)
    + [Computational Model](#computational_model)
    + [Touring Machines](#tm)
    + [Undecidability](#undecidability)
    + [Polynomial Time Computable Problems](#fp)
  - [Problem Examples from Virtuale 20/21](#virtuale2021)
  - [Problems from Exam 06/26/2020](#exam_2020_06_26)
- - [Exercise Book](#book)  - Some rendering problem are present at the moment
+ - [Exercise Book](#book)
    + [Computational Model](#book_computational_model)
    + [Polynomial Time Computable Problems](#book_poly)
    + [Between the Feasible and Unfeasible](#book_feasible)
@@ -14,7 +14,7 @@
 
 <a name="lessons2021"/>
 
-# Exercises proposed during lessons of the Accademic Year 2020/21
+# Exercises proposed during lessons of the Academic Year 2020/21
 
 - [2020-04-16 recording](https://web.microsoftstream.com/video/8349be7b-e725-4659-b8f6-1b573d413090?list=user&userId=81f9b4d0-f39e-4c4a-b627-27312bc73156)
 - [2020-04-09 recording](https://web.microsoftstream.com/video/4d794858-9eea-4e83-bdde-26cab82f21a1?list=user&userId=81f9b4d0-f39e-4c4a-b627-27312bc73156)
@@ -33,7 +33,7 @@ Prove the uncompatibility of the halting problem, namely the fact that the funct
 is uncomputable.
 
 **Solutions:**
-We show that from an hypotetical machine computing _halt_, calling it _Mhalt_, we can get another TM, call _Muc_, which computes the _uc_, and we know it cannot exist (_uc_ is by definition a function not computable by any TM).
+We show that from an hypothetical machine computing _halt_, calling it _Mhalt_, we can get another TM, call _Muc_, which computes the _uc_, and we know it cannot exist (_uc_ is by definition a function not computable by any TM).
 
 Let us construct _Muc_ out of _Mhalt_:
 
@@ -54,7 +54,7 @@ At first we have to encode natural numbers as binary strings. We have two possib
 - traditional encoding: (e.g. 12 = 1100)
 - reverse encoding: (e.g. 12 = 0011)
 
-If we choose to use reverse encoding the problem is quite simple. With a single tape TM we will need to pass through the whole input string from left to right only once, meaning in linear time. The transiction function will look as follows:
+If we choose to use reverse encoding the problem is quite simple. With a single tape TM we will need to pass through the whole input string from left to right only once, meaning in linear time. The transition function will look as follows:
 
 (qinit, ▷) → (q0, ▷, R)  
 (q0, 0) → (q1, 1, L)  
@@ -98,7 +98,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 (qb, 0/1) → (qb, 0\1, L)  
 (qb, ▷) → (qa, ▷, R)
 
-This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting charachter ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
+This is not exactly the same proposed by professor, but I've tested it with [JFLAP](http://www.jflap.org/) and it works. Here it is my implementation. Keep in mind that in JFLAP Touring Machines start with the head pointing at the first character of the string. Also the string is not preceded by the starting character ▷, but it is fully surrounded with □. So I have replaced ▷ with x and I've made some changes to manage the different starting position of the head.
 
 ![image](https://user-images.githubusercontent.com/31796254/121325059-949ee380-c911-11eb-99f5-e55f8708864f.png)
 
@@ -158,7 +158,7 @@ Determine which ones of the following problems are decidable:
 **Proof**: By Rice's Theorem:
 
 1.  P is **non-trivial**:
-    1. P ≠ Ø: if _M_ is the TM acceppting every string, then PALINDROME ⊆ _L(M)_, and so _M_ belongs to P.
+    1. P ≠ Ø: if _M_ is the TM accepting every string, then PALINDROME ⊆ _L(M)_, and so _M_ belongs to P.
     2. ∃ _M_ | _M_ ∉ P: if _L(M)_ = {01} (which can be easily decided with a TM _M_), then _L(M)_ not contains PALINDROME, so _M_ not belongs to P.
 2.  P is **extensional**: Assume _L(M)_ = _L(N)_ and _M_ ∈ P. We have to show that also _N_ ∈ P. Since _M_ ∈ P iff PALINDROME ⊆ _L(M)_ , we know that PALINDROME ⊆ _L(M)_ = _L(N)_, so PALINDROME ⊆ _L(N)_, then _N_ ∈ P. QED.
 
@@ -167,7 +167,7 @@ Determine which ones of the following problems are decidable:
 **Claim**: P is decidable.
 
 **Proof**: Trying to apply Rice's Theorem we can easily see that P is non-trivial, but **is not extensional**.
-To demonstrate that it is decidable we have to design a TM that decides P. Decided a binary encoding for a TM, our TM take in input a string _w_ and it checks that _w_ is a valid encoding. If _w_ is invalid then it is rejected. Otherwise _w_ is acceppted iff it encodes a TM with exactly 5 states.
+To demonstrate that it is decidable we have to design a TM that decides P. Decided a binary encoding for a TM, our TM take in input a string _w_ and it checks that _w_ is a valid encoding. If _w_ is invalid then it is rejected. Otherwise _w_ is accepted iff it encodes a TM with exactly 5 states.
 
 ### 4.
 
@@ -193,13 +193,13 @@ To show that P is decidable we have to design a TM that decides P and such a TM 
 
 ### Exercise 1
 
-Prove that the function _minmax_ which given a list of natural numbers {_a1_, _a2_, ..., _an_} returns both the minimun and the maximum between _a1_, _a2_, ..., _an_ in in **FP**
+Prove that the function _minmax_ which given a list of natural numbers {_a1_, _a2_, ..., _an_} returns both the minimum and the maximum between _a1_, _a2_, ..., _an_ in in **FP**
 
 **Solutions:**
 We can describe the solution of this problem with a pseudocode:
 
 ```
-input: (a1, a2, ..., an) appropiately encoded
+input: (a1, a2, ..., an) appropriately encoded
 output: (min, max)
 
 min = a1			# 1 instruction
@@ -214,13 +214,13 @@ return (min, max)		# 1 instruction
 
 - The total number of executed instructions is _2 + 4\*O(n) + 1 = O(n)_.
 - The size of the intermediate results can be bound as follows:
-  - min and max, being elements of the input list, are of course smaller or equal to the lenght of the input
+  - min and max, being elements of the input list, are of course smaller or equal to the length of the input
   - i, going to 2 to n, is of course smaller or equal to the input.
-- Each intruction executed by the algorithm takes polynomial time. Indeed, we have:
-  - assignements
-  - comparison between natural numbers of polynomial lenght.
+- Each instruction executed by the algorithm takes polynomial time. Indeed, we have:
+  - assignments
+  - comparison between natural numbers of polynomial length.
 
-Altogether, this means that the described alogrithm works in polynomial time, and this mean that the function _minmax_ belongs to **FP**.
+Altogether, this means that the described algorithm works in polynomial time, and this mean that the function _minmax_ belongs to **FP**.
 
 <a name="virtuale2021"/>
 
@@ -300,7 +300,9 @@ $$ -->
 
 **Step 2**: The only relevant instruction is `Reverse[i] = L[n-1-i]` which is executed _n_ times, which is polynomial. Other instructions (updating i and similar) have also a polynomial bound and can be trivially translated in a polynomial number of TM steps.
 
-**Step 3**: Let's suppose to have a TM with two tapes. On the first we have the input (_L_), on the second one we write the output. Let's suppose that the head of the first tape it's in the first cell (the one before the input) and the head of the second tape it is in the first blank cell after the output written until this moment. To execute `Reverse[i] = L[n-1-i]` we need to moove the head of the input tape until the end of the string (□ read) which takes at most _l_ steps, then we have to go back until we read 01 (the binary encoding for the separator #) which takes around _l/n_ steps. Now we can copy what we read in the first tape on the second tape, replacing all the cells in the first tape with □, which takes again around _l/n_ steps. Then we have to move the first head on the first cell again: _l_ steps in the worst case.
+**Step 3**: Let's suppose to have a TM with two tapes. On the first we have the input (_L_), on the second one we write the output. Let's suppose that the head of the first tape it's in the first cell (the one before the input) and the head of the second tape it is in the first blank cell after the output written until this moment.
+To execute `Reverse[i] = L[n-1-i]` we need to move the head of the input tape until the end of the string (□ read) which takes at most _l_ steps, then we have to go back until we read 01 (the binary encoding for the separator #) which takes around _l/n_ steps.
+Now we can copy what we read in the first tape on the second tape, replacing all the cells in the first tape with □, which takes again around _l/n_ steps. Then we have to move the first head on the first cell again: _l_ steps in the worst case.
 This algorithm, which is far to be the most efficient, takes _2l + 2l/n_ steps, which is polynomial in l.
 
 **Step 4**: We never use more than _l_ cells in each tape.
@@ -355,7 +357,7 @@ Select one or more.
 - - -
 Suppose a language **_L_** is both in **NP** and in **EXP**. Then  
 Select one or more.
- - [ ] **EXP** and **NP** are necessarly equal.
+ - [ ] **EXP** and **NP** are necessarily equal.
  - [x] **_L_** can even be **NP**-complete.
  - [x] **NP** and **EXP** are maybe different.
  - [ ] **_L_** cannot be in **P**.
@@ -396,7 +398,7 @@ The alphabet Γ can be defined as {▷, 0, 1, □}, while the set of states Q is
 
 If the TM reaches the ending state qhalt, then the string is accepted, otherwise, when the TM reaches a state where δ is not defined, the string is rejected.
 
-States explanantion:
+States explanation:
 
 - **qinit**: it is just the initial state. The TM immediately passes to q1.
 - **q1**: the TM read the string character by character. If it read 0, it passes to q2.
