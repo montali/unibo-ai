@@ -16,16 +16,25 @@
 
 \section{Basic probability}
 
-\subsubsection{Inference by enumeration}
+\subsection{Inference by enumeration}
 $$
 P(\text { Effect } \mid \text { Cause })=\frac{P(\text { Effect } \wedge \text { Cause })}{P(\text { Cause })}=\alpha P(\text { Effect }, \text { Cause })
 $$
 
 $\alpha$ = Normalization constant
 
-\subsubsection{Bayes theorem}
+\subsection{Bayes theorem}
 $$
 P(\text { Cause } | \text { Effect })=\frac{P(\text { Effect } | \text { Cause }) P( \text{ Cause })}{P(\text { Effect })}=\alpha P(\text { Effect } | \text { Cause }) P( \text{ Cause })
+$$
+
+\subsection{Conditional independence}
+
+$$
+P \models (A \perp B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A \mid B)=P(A) \hspace{1em} \Leftrightarrow \hspace{1em} P(B \mid A)=P(B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A,B)=P(A)P(B)
+\newline
+$$$$
+P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)
 $$
 
 \section{Bayesian Networks}
@@ -41,7 +50,19 @@ $$
 	\item $Z$ \textbf{common effect} of $X$ and $Y$: $X \rightarrow Z \leftarrow Y$
 \end{itemize}
 
-\subsubsection{Active trail}
+\subsection{Reasoning Patterns}
+
+\begin{itemize}
+\item \textbf{Causal} (or predictive) reasoning: $P(\text{Descendant} | \text{Ancestor})$
+\item \textbf{Evidential} (or explanatory) reasoning: $P(\text{Ancestor} | \text{Descendant})$
+\item \textbf{Intercausal} reasoning (or explaining away): $P(Y|X)$ where $X$ is connected to $Y$ via an active trail which passes through a common cause and/or a common effect
+\end{itemize}
+
+%\subsection{Global semantics}
+
+
+
+\subsection{Active trail}
 
 Let $Z$ be a subset of observed variables.
 The trail $X_{i-1} \leftrightharpoons X_i \leftrightharpoons X_{i+1}$ is active given $Z$ if
@@ -61,14 +82,6 @@ To determine if $P \models (X \perp Y | Z)$ ($X$ and $Y$ are independent given $
 \end{enumerate}
 
 *A node is blocked if either the middle of an unmarked v-structure, or in $Z$, but not both
-
-\subsection{Reasoning Patterns}
-
-\begin{itemize}
-	\item \textbf{Causal} (or predictive) reasoning: $P(\text{Descendant} | \text{Ancestor})$
-	\item \textbf{Evidential} (or explanatory) reasoning: $P(\text{Ancestor} | \text{Descendant})$
-	\item \textbf{Intercausal} reasoning (or explaining away): $P(Y|X)$ where $X$ is connected to $Y$ via an active trail which passes through a common cause and/or a common effect
-\end{itemize}
 
 
 
