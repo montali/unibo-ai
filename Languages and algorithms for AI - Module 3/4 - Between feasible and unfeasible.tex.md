@@ -142,7 +142,7 @@ For classes **P** or above it and $\mathcal{L} \le_p \mathcal{H}$, then $\mathca
 
 A language $\mathcal{H} \subseteq \{0,1\}^*$ is said to be:
 
-- **NP-hard** if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy (it could be un-computable, **NP**-complete or outside **NP**).
+- **NP-hard** if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy. It could also be un-computable, **NP**-complete or outside **NP**.
 - **NP-complete** if $\mathcal{H} \in \mathbf{N P}$ is **NP**-hard. Note that **NP**-hardness does not imply **NP**-completeness as a **NP**-hard language may be un-computable or outside **NP**.
 
 Note that:

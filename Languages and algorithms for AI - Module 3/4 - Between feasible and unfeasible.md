@@ -132,7 +132,7 @@ For classes **P** or above it and <img src="svgs/2d69fa47366657f0914364490b5e4d9
 
 A language <img src="svgs/3a965f05dff06a55fe4ba6bdaf0d1aae.svg?invert_in_darkmode" align=middle width=82.87670324999998pt height=24.65753399999998pt/> is said to be:
 
-- **NP-hard** if <img src="svgs/824e228fc68a0deecccc60222ebd7153.svg?invert_in_darkmode" align=middle width=130.47929234999998pt height=22.831056599999986pt/>. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy (it could be un-computable, **NP**-complete or outside **NP**).
+- **NP-hard** if <img src="svgs/824e228fc68a0deecccc60222ebd7153.svg?invert_in_darkmode" align=middle width=130.47929234999998pt height=22.831056599999986pt/>. This means that it is at least as hard as any language in **NP**. Simplifying it means that it cannot be too easy. It could also be un-computable, **NP**-complete or outside **NP**.
 - **NP-complete** if <img src="svgs/18e61ca7af57709a425157bb703d8c88.svg?invert_in_darkmode" align=middle width=61.84905539999999pt height=22.55708729999998pt/> is **NP**-hard. Note that **NP**-hardness does not imply **NP**-completeness as a **NP**-hard language may be un-computable or outside **NP**.
 
 Note that:

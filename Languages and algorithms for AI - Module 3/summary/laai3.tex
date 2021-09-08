@@ -99,12 +99,12 @@ $$
 $$
 \mathbf{NP} = \bigcup\limits_{c\in\mathbb{N}} \mathbf{NDTIME}(n^c) = \bigcup\mathcal{L}: \mathcal{L}=\left\{x \in\{0,1\}^{*} \mid \exists y \in\{0,1\}^{p(|x|)} . \mathcal{M}(\llcorner x, y\lrcorner)=1\right\}
 $$
-$p$ must be a polynomial function. $y$ can be said \textbf{certificate} for $\mathcal{L}$. $\mathcal{M}$ can be said \textbf{verifier} for $\mathcal{L}$.
+$p:\mathbb{N}\to\mathbb{N}$ must be a polynomial function. $y$ can be said \textbf{certificate} for $\mathcal{L}$. $\mathcal{M}$ can be said \textbf{verifier} for $\mathcal{L}$.
 
 A language $\mathcal{H} \subseteq \{0,1\}^*$ is said to be:
 
 \begin{itemize}
-	\item \textbf{NP-hard} if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in \textbf{NP}. Simplifying it means that it cannot be too easy (it could be un-computable, \textbf{NP-complete} or outside \textbf{NP}).
+	\item \textbf{NP-hard} if $\forall \mathcal{L} \in \mathbf{N P},   \mathcal{L} \le_p \mathcal{H}$. This means that it is at least as hard as any language in \textbf{NP}. Simplifying it means that it cannot be too easy. It could also be un-computable, \textbf{NP-complete} or outside \textbf{NP}.
 	\item \textbf{NP-complete} if $\mathcal{H} \in \mathbf{N P}$ is \textbf{NP-hard}. Note that \textbf{NP-hard}ness does not imply \textbf{NP-complete}ness as a \textbf{NP-hard} language may be un-computable or outside \textbf{NP}.
 \end{itemize}
 
@@ -135,5 +135,7 @@ Cook-Levin Theorem: The following languages are \textbf{NP-complete}:
 	\item $SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable CNF}\}$
 	\item $3SAT = \{\lfloor F \rfloor | F \text{ is a satisfiable 3CNF}\}$
 \end{itemize}
+
+A problem can be deduced to be \textbf{NP-complete} by demonstrating that it is NP and reducing it to an existing \textbf{NP-complete} problem. For example Maximum Independent Set (INDSET) and ILP can be reduced to SAT and are \textbf{NP-complete}.
 
 \end{document}
