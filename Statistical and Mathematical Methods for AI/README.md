@@ -1,7 +1,11 @@
 # Statistical and Mathematical methods for Artificial Intelligence
 
-- [Course web site for AY 2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599)
-- [Course material on Virtuale](https://virtuale.unibo.it/course/view.php?id=18589)
+- Course web site
+  - [2021/2022](https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2021/446599)
+  - [2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599)
+- Course material on Virtuale
+  - [2021/2022](https://virtuale.unibo.it/course/view.php?id=25811)
+  - [2020/2021](https://virtuale.unibo.it/course/view.php?id=18589)
 - [Lesson recordings](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
 - [Course material on Overleaf](https://www.overleaf.com/project/5f60c5c944a6da000183463e)
 
@@ -9,7 +13,6 @@
 - A [summary](Review-notes.md) containing pretty much everything you may need for the exam;
 - Some [LaTeX](sec5.tex)/[PDF](sec5.pdf) notes I wrote in the beginning, which were abandoned fast;
 - An [Anki](https://apps.ankiweb.net) [package](Statistics%20and%20Mathematical%20Methods%20for%20AI.apkg) to review before the exam.
-- Some [notes](exam-info.md) about the exam
 - A [useful PDF](other_resources/Useful%20PDF%20I%20wrote%20in%20my%20bachelors.pdf) (italian) @montali wrote during its bachelor's
 - A [LaTeX](other_resources/analisi2.tex)/[PDF](other_resources/analisi2.pdf) document (italian) @Danysan1 wrote during its bachelor's
 
