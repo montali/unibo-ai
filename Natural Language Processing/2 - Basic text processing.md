@@ -36,4 +36,18 @@ One of the main uses of regex is substitution: replace a pattern with another st
 Regex are built-in in most programming languages, as well as in word processors and shell utilites such as `sed` and `awk`. The former is a stream editor that comes with Linux.
 In Python you can use the library `re`.
 
-### Text normalization
+## Text normalization
+
+Every NLP task needs to do text normalization. At first we have to define whatis a word: in the sentence _I do uh main-mainly business data processing._ ther are two kinds of **disfluencies**: fragments and filled pauses. Are these words? Do we have to consider them?
+
+Another problem are words that are the same **lemma** but different **wordforms**, like _cat_ and _cats_.
+
+We have to define a vocabulary whose elements are called **types**, an istance of a type in running text is called **token**.
+
+If _**N**_ is the number of tokens, _**V**_ is the vocabulary, the hempirical Herdan's Law states that _|V| = kN^β_ where _β_ is approximately _3/4_
+
+### Simple tokenization in UNIX:
+Given a text file, output the word tokens and their frequences sorted by frequence
+```
+tr -sc 'A-Za-z' '\n' < sh.txt | tr A-Z a-z | sort | uniq -c | sort -n -r
+```
