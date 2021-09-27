@@ -1,5 +1,19 @@
 # 2. Basic text processing
 
+### Table of contents
+
+- [Regular expressions (regex)](#regular-expressions-regex)
+  * [How to describe patterns](#how-to-describe-patterns)
+  * [Substitution](#substitution)
+  * [Tools](#tools)
+- [Text normalization](#text-normalization)
+  * [Simple tokenization in UNIX:](#simple-tokenization-in-unix)
+  * [Issues in tokenization](#issues-in-tokenization)
+  * [Normalization](#normalization)
+  * [Lemmization and stemming](#lemmization-and-stemming)
+  * [Sentence segmentation](#sentence-segmentation)
+- [Datasets and Tools](#datasets-and-tools)
+
 ## Regular expressions (regex)
 We use regular expressions to describe text patterns, to extract information from text and to convert text into a convenient`standard form. The latter process is called **text normalization**, which can mainly be of 3 kinds:
  - **tokenization**;
@@ -51,3 +65,32 @@ Given a text file, output the word tokens and their frequences sorted by frequen
 ```
 tr -sc 'A-Za-z' '\n' < sh.txt | tr A-Z a-z | sort | uniq -c | sort -n -r
 ```
+
+### Issues in tokenization
+
+Some issues in tokenization can be caused by words like _Finland's_, _isn't_, _state-of-the-art_, _San Francisco_, _rock' n' roll_, _PhD._ and also numbers, dates, hastags and URLs.
+
+Specific languages have specific issues, too.
+
+### Normalization
+
+Some of this problems can be solved with **word normalization**, which consists in putting words/tokens in a standard format. For example we may want to match _U.S.A._ with _USA_. A kind of normalization iscase folding, which consists in mapping everything to lowercase.
+
+### Lemmization and stemming
+
+in other cases we wants to put together also morphologically different words that should behave similarly. For example we may want to map _am_, _are_ and _is_ to the base form _be_. This process which reduces inflections or variant forms to base form is called **lemmization**.
+While an accurate lemmization requires a complete morphological parsing that takes in account both stems and affixes, sometimes reduce words to theirs stems is enough. This simpler method is called **stemming** and is performerd by cutting affixes. A widely used algorithm is **Porter Stemmer** which consists in cascade rewrite rules, such as: _ational_ -> _ate_ and _sees_ -> _ss_.
+
+### Sentence segmentation
+
+Another important task is to segmentate sentences. While question marks and exclamation points are relatively ambiguous, periods are more ambigous. Indeed they can appear in words like _Mr._ without divide two sentences. One rule-based approach to this task is [Stanford's CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
+
+## Datasets and Tools
+
+[NLTK](https://www.nltk.org/book/) provides various corpora an tools including tokenizers, stemmers and lemmatizers in Python.
+
+```python
+import nltk
+nltk.download()
+```
+
