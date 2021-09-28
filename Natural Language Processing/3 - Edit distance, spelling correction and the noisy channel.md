@@ -34,3 +34,17 @@ The minimum edit distance is 5.
 ### Levenshtein distance
 
 It is defined as the minimum edit distance, but the cost of a substitution operation is 2, so in the previous example the Levenshtein distance is not 5, but 8, since there are 3 substitutions.
+
+## Spelling Correction and the Noisy Channel
+
+### Spelling Correction
+
+### The Noisy Channel
+
+The goal is to build a model of the channel and this can be done through a kind of **Bayesian inference**: find the original word _w_ such that _P(w|x)_ is highest, where _x_ is the noisy word. So the guessed word _w̃_ will be:
+
+_w̃ =_ argmax<sub>w</sub> _P(w|x)_ = argmax<sub>w</sub> _P(x|w) P(w)_
+
+A **noisy channel spelling method** works as follow:
+ 1. Find words at distance _1_ from input word. Majority of errors are single-letter change, including transpositions, so a suitable measure of the distance is **Damerau-Levenshtein** edit distance, which also includes the operation _transpose adjacent_.
+ 2. Score each candidate based on language model and channel model (aka **error model**). This can be done using an _|A| x |A|_ **confusion matrix** that for each couple of character tells us how ofter the former is substituted for the latter.
