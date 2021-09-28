@@ -35,6 +35,10 @@ The minimum edit distance is 5.
 
 It is defined as the minimum edit distance, but the cost of a substitution operation is 2, so in the previous example the Levenshtein distance is not 5, but 8, since there are 3 substitutions.
 
+### How do we find the distance?
+
+Findining the distance is a search problem that consists in finding the shortest path from one string to another
+
 ## Spelling Correction and the Noisy Channel
 
 ### Spelling Correction
