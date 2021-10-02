@@ -1,4 +1,4 @@
-# 1. Dynamics
+# 2. Dynamics
 Dynamics studies how systems **change** over time, for example planetary dynamics studies motion of planets, fluid dynamics studies motion of fluid, crowd dynamics studies the behaviour of groups of people and so on.
 
 In the _clockwork_ universe theorized by Laplace in 1840s, an intellect that known the position of every particle in the Universe and all the laws and forces that move them, it is able to predict the future. This theory started to change in the beginning of 900, with Poincaré stating that small differences in the initial conditions produce very great ones in the final phenomena. This fact is today called _butterfly effect_.
@@ -21,7 +21,63 @@ If we take the the limit of the ratio of consecutive differences as the number o
 
 The fact that a simple and deterministic equation, like the Logistic Map, can possess dynamical trajectories which look like some sort of random noise has disturbing practical implications: arbitrarly close initial conditions can lead to trajectores which, after a sufficiently long time, diverge widely.
 
+## Chaos and limits to prediction
+
 Chaos is characterized not so much by randomness but by extreme sensitivity to initial conditions.
 
 Let _f(x) = 4(x - x<sup>2</sup>)_, then _x<sub>1</sub> = f(x<sub>0</sub>) = f<sup>1</sup>_, _x<sub>2</sub> = f(f(x<sub>0</sub>)) = f<sup>2</sup>_ and so on. As already seen _f<sup>1</sup>_ has 1 hump. However the growth of humps is not linear, but is exponential, so _f<sup>n</sup>_ has _2<sup>n-1</sup>_ humps.
+
+![image](https://user-images.githubusercontent.com/31796254/135715890-399308c0-8138-4275-8d3a-c90339418fcc.png)
+
+If we associate to the value of the logistic map a choiche **Yes/No**, choosing "yes" when the value is greater than 0.5 and choosing "no" otherwise, then the logistic map divides the space in regions, as shown in the figure above where green regions correspond to "yes" and red region to "no". The number of regions is twice the number of humps plus one, therefore _f<sup>n</sup>_ has _2<sup>n</sup> + 1_ regions.
+
+Since predicting _f<sup>m</sup>_ needs to distinguish which of the _2<sup>m</sup>+1_ regiond the initial value falls into, the initial value should be ecoded with at least _m+1_ bits of accuracy, because if we used fewer bits, the prediction would not be better than a random guess. So each time step into the future, "consumes" one bit of information.
+
+## Characteristicss of chaos
+
+All chaotic systems have the following properties:
+ - _Deterministic_: given its history, the future of a chaotic system is not random but completely determined;
+ - _sensitive_: chaotic systems are extremely sensitive to initial conditions (_butterfly effect_);
+ - _ergodic_: the state space trajectory of a chaotic system will always return to the local region of previous point on the trajectory, without revisiting any other already visited state.
+
+These properties are necessary but not sufficient. For example if we have a system that is continuous in time, for the ergodic property if it has fewer than 3 state variables it cannot be chaotic. We can demonstrate it for contradiction: suppose that a continuous time system with only 2 state variables is chaotic, then the state space can be seen as a plane. Ergodicity requires thate each point in this plane can be reached, with no point ever being revisited, which is equivalent to starting from a point, covering the entire plane with ink without ever crossing a line or lifting the pen and then _returning to the initial point_ - impossible.
+
+## Chaos and randomness
+Prior to chaos theory, we believed that determinism and randomness were mututally exclusive and that random behaviour was possible only through physical processes related to quantum-level events, but chaos showed that is possible to create an effectively random behaviour through a deterministic process
+
+### Tent map
+Now we define the Tent Map _T(x)_ as follows:
+![image](https://user-images.githubusercontent.com/31796254/135717864-2a8af6ce-a651-4e7b-9073-31451c973dff.png)
+Which is not a continuous definition, but a piecewise one, indeed the function is not derivable in _x = 1/2_.
+
+![image](https://user-images.githubusercontent.com/31796254/135717977-4eff710d-b5cc-4373-81ac-cdf63b3be5b0.png)
+
+The Tent Map is important because it has the same property of the Logistic Map _L(x)_, so whatever we prove about one map applies directly to the other.
+
+To compute _T(x)_ we need to know if _x_ is less than _1/2_. Let's rewrite _x_ in its binary form (recall that _0≤x≤1_): _x=0.b<sub>1</sub>b<sub>2</sub>b<sub>3</sub>..._. If _x_ is less than _1/2_, must be _b<sub>1</sub> = 0_, i.e. _x=0.0b<sub>2</sub>b<sub>3</sub>..._. Otherwise must be _b<sub>1</sub> = 1_, i.e. _x=0.1b<sub>2</sub>b<sub>3</sub>..._.
+
+In other words, it suffices to examine _b<sub>1</sub>_ to decide which of the two linear pieces of _T(x)_ to compute: _2x_ or _2(1-x)_. The former is easy: it just need to shift _x_ one bit to the left: _x=0.b<sub>2</sub>b<sub>3</sub>..._. The latter is a bit more complicate:
+ 1. _(1-x) = 0.1111... - 0.1b<sub>2</sub>b<sub>3</sub>b<sub>4</sub>... = 0.0b̄<sub>2</sub>b̄<sub>3</sub>b̄<sub>4</sub>..._ (_b̄<sub>i</sub> = 1-b<sub>i</sub>_)
+ 2. Double by shifting one bit to the left: _2(1-x) = 0.b̄<sub>2</sub>b̄<sub>3</sub>b̄<sub>4</sub>_
+
+If we put both together we obtain
+
+![image](https://user-images.githubusercontent.com/31796254/135718940-1be96419-75a1-433e-871b-ab1b80c79aad.png)
+
+So each iteration "consumes" one bit of the input.
+
+What can we say about the long-term trajectory of _T(x)_? We need to consider 3 different cases depending on the choice of _x<sub>0</sub>_.
+
+ 1. _x<sub>0</sub>_ is a rational number with a finite binary representation such as _1/2 + 1/32 + 1/1024 = 0.1000100001_;
+ 2. _x<sub>0</sub>_ is a rational number with an infinite but repeating binary representation such as _0.10111011101110111..._;
+ 3. _x<sub>0</sub>_ is an irrational number with an infinite binary representation that never repeats such as _π/10_.
+
+In the long term the value of _T(x)_ will be:
+ 1. "fixed point";
+ 2. "periodic";
+ 3. "chaotic";
+
+The Logistic Map at chaos can be turned into a _random bit generator_.
+
+
 
