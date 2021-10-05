@@ -1,0 +1,110 @@
+\documentclass[]{article}
+\usepackage[a4paper, portrait, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\setlength\parindent{0pt}
+
+%opening
+\title{Formulary \\ \large Statistical and Mathematical Methods for Artificial Intelligence}
+\author{Daniele Santini}
+
+\begin{document}
+	
+	%\maketitle
+	
+	\section{Error measurement}
+	
+	Absolute error $E_x = \tilde{x} - x$
+	
+	Relative error $R_x = \dfrac{\tilde{x} - x}{x}$
+	
+	\section{Linear Algebra}
+	
+	\subsection{Matrices}
+	
+	$A \in \mathbb{R}^{nxn}; \vec{x}$ right eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}; \vec{x}$ left eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}$. $\lambda$ are eigenvalues.
+	
+	$A$ triangular or symmetric $\Rightarrow$ eigenvalues are on the main diagonal.
+	
+	Spectrum $\sigma(A) = \{\vec{x}: \vec{x}$ eigenvector of $A\}$.
+	Spectral norm $\rho(A) = max(\lambda)$
+	
+	$C \in \mathbb{R}^{nxn}$ singular $\Leftrightarrow \det(C)=0$
+	
+	Similarity transformation: $A, C \in \mathbb{R}^{nxn}, \ C$ non-singular $\Rightarrow A$ and $C^{-1} A C$ are similar (same spectrum and eigenvalues).
+	
+	
+	
+	TODO
+	
+	
+	
+	$A \in \mathbb{R}^{mxn} \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive semi-definite.
+	
+	$A \in \mathbb{R}^{mxn}$ with maximum rank $(rk(A)=min(m,n)) \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive definite.
+	
+	Spectral theorem: $A \in \mathbb{R}^{nxn}$ symmetric $\Rightarrow$ eigenvalues are real, eigenvectors create an orthogonal basis.
+	
+	\subsection{Projections}
+	
+	TODO
+	
+	\section{Matrix decompositions / factorizations}
+	
+	\subsection{LU decomposition}
+	
+	$A \in \mathbb{R}^{nxn} $ non-singular ($det(A)\ne0$) with all principal minors non-singular $\Rightarrow A = L U$ with $L \in \mathbb{R}^{nxn}$ lower triangular and $U \in \mathbb{R}^{nxn}$ upper triangular.
+	
+	\subsection{Cholesky factorization}
+	
+	$A \in \mathbb{R}^{nxn} $ positive definite $\Rightarrow A = L L^T$ with $L \in \mathbb{R}^{nxn}$ lower triangular.
+	
+	\subsection{Singular Value Decomposition (SVD)}
+	
+	$A \in \mathbb{R}^{mxn}, r = rk(A)\in[0,min(m,n)] \Rightarrow A = U \Sigma V^T$ with 
+	\begin{itemize}
+		\item $U\in\mathbb{R}^{mxm}$ orthogonal.
+		\item $V\in\mathbb{R}^{nxn}$ orthogonal.
+		\item $\Sigma \in\mathbb{R}^{mxn}$ with $\Sigma_{ii}=\sigma_i$ ("singular value") and $i \ne f \Rightarrow \Sigma_ij=0$.
+	\end{itemize}
+	$\sigma_1 \ge \sigma_2 \ge \ldots \ge \sigma_r > \sigma_{r+1} = \sigma_{r+2} = \ldots = \sigma_n = 0$.
+
+	$\lambda_i(A)$ is the i-th eigenvalue of $A$ by value. $\sigma_i = \sqrt{\lambda_i(A^T A)}$.
+	
+	\ $\sigma_1 = \sqrt{\rho(A^T A)} = \lVert A \lVert_2$.
+	\ $\lvert A^{-1} \lvert_2 = \dfrac{1}{\sigma_r}$.
+	\ $K_2(A) = \dfrac{\sigma_1}{\sigma_r}$.
+	
+	\subsubsection{Rank-k-approximation}
+	$A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i u_i v_i^T = \sum_{i=1}^r \sigma_i A_i$ with $u_i \in \mathbb{R}^m$ column of $U$ and $v_i \in \mathbb{R}^n$ column of $V$.
+	$\hat{A}_k = \sum_{i=1}^k \sigma_i u_i v_i^T = \sum_{i=1}^k \sigma_i A_i$ with $k < r$ is the rank-k-approximation of $A$.
+	
+	\iffalse
+	\section{Basic probability}
+	
+	\subsection{Inference by enumeration}
+	$$
+	P(\text { Effect } \mid \text { Cause })=\frac{P(\text { Effect } \wedge \text { Cause })}{P(\text { Cause })}=\alpha P(\text { Effect }, \text { Cause })
+	$$
+	
+	$\alpha$ = Normalization constant
+	
+	\subsection{Bayes theorem}
+	$$
+	P(\text { Cause } | \text { Effect })=\frac{P(\text { Effect } | \text { Cause }) P( \text{ Cause })}{P(\text { Effect })}=\alpha P(\text { Effect } | \text { Cause }) P( \text{ Cause })
+	$$
+	
+	\subsection{Conditional independence}
+	
+	$$
+	P \models (A \perp B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A \mid B)=P(A) \hspace{1em} \Leftrightarrow \hspace{1em} P(B \mid A)=P(B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A,B)=P(A)P(B)
+	\newline
+	$$$$
+	P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)
+	$$
+	\fi
+	
+	
+\end{document}

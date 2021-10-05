@@ -1,12 +1,16 @@
 # Statistical and Mathematical methods for Artificial Intelligence
+Teacher: Elena Loli Piccolomini
 
 - Course web site
-  - [2021/2022](https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2021/446599)
+  - [2021/2022](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2021/446599)
   - [2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599)
 - Course material on Virtuale
   - [2021/2022](https://virtuale.unibo.it/course/view.php?id=25811)
   - [2020/2021](https://virtuale.unibo.it/course/view.php?id=18589)
-- [Lesson recordings](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
+- Course timetable
+  - [2021/2022](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2021/446599/orariolezioni)
+  - [2020/2021](https://www.unibo.it/en/teaching/course-unit-catalogue/course-unit/2020/446599/orariolezioni)
+- [Piccolomini's channel on MS Stream](https://web.microsoftstream.com/user/bd703bf9-150b-46e6-ab1a-76f6bfb354b9)
 - [Course material on Overleaf](https://www.overleaf.com/project/5f60c5c944a6da000183463e)
 
 ## What you'll find here
