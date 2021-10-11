@@ -77,3 +77,22 @@ To instantiate the framework, need to define
 
 Nature displays astonishing examples of synchrony among independent agents, like heart pacemaker cells or audience clapping at a concert.
 This self-synchronization can be explained through _coupled oscillators_: each agent is an independent _oscillator_, like a pendulum. Oscillators are _coupled_ through the environments and they influence each other causing small local adjustments that result in global synchrony to emerge in a decentralized manner.
+
+### Fireflies
+
+Certain species of  fireflies, are known to synchronize their flashes despite each firefly has a small number of "neighbours" and communication is not istantaneous.
+
+It can be modeled with the gossip framework, where the style of interaction is push, the local state S is  the period &Delta; of the local oscillator &Phi;. The method `Update()` resets the local oscillator based on the phase of the arriving flash as follows:
+ - if the flash arrives _too early_ (&Phi; > 1/2), then _speed up_ (decrease period &Delta;);
+ - if the flash arrives _too late_, then _slow down_ (increase period &Delta;)
+
+![](assets/markdown-img-paste-20211010163454974.png)
+
+Experimentaly, we can observe that the model is able to achieve heartbeat synchronization with a network of 210 nodes, a view size of 10, initial periods selected randomly and uniformly in the interval [0.85 - 1.15] and a message latency uniformly and randomly distributed in the interval [1 - 200] ms.
+
+## Formation creation
+
+We have agents able to move in physical space in any direction, each agent has a unique ID and can determine the relative position of other agents. Agents are interconnected through a sparse network that can be used to provide random samples from the entire population. We eant to devise a protocol such
+that mobile agents self organize intro pre-specified global formations in a totally decentralized manner.
+
+Also these problem can be modelled with the gossip framework, but this time the interaction style has going to be pull. The local state S is the current physical position and the motion vector. The method `Update()` compute the motion vector based on positions of most and least preferred neighbor
