@@ -8,6 +8,7 @@
  - [7. Network Science: Introduction](7.md)
  - [8. Network Science: Graph Theory](8.md)
  - [9. Network Science: Real Networks and Universal Properties](9.md)
+ - [10. Network Science: Erdős-Rényi Model for Network Formation](10.md)
 
 ## Other resources
  - [Course website](https://www.cs.unibo.it/~babaoglu/courses/csns/)
