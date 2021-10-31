@@ -29,16 +29,16 @@
 	
 	\section{Matrices}
 	
-	$A \in \mathbb{R}^{nxn}; \vec{x}$ right eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}; \vec{x}$ left eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}$. $\lambda$ are eigenvalues.
+	$A \in \mathbb{R}^{nxn}; A \vec{x} = \lambda \vec{x} \Leftrightarrow \vec{x}$ eigenvector and $\lambda$ eigenvalue of $A$.
 	
 	$A$ triangular or symmetric $\Rightarrow$ eigenvalues are on the main diagonal.
 	
 	Spectrum $\sigma(A) = \{\vec{x}: \vec{x}$ eigenvector of $A\}$.
-	Spectral norm $\rho(A) = max(\lambda)$
+	Spectral norm $\rho(A) = \max(\lambda)$
 	
 	$C \in \mathbb{R}^{nxn}$ singular $\Leftrightarrow \det(C)=0$
 	
-	Similarity transformation: $A, C \in \mathbb{R}^{nxn}, \ C$ non-singular $\Rightarrow A$ and $C^{-1} A C$ are similar (same spectrum and eigenvalues).
+	Similarity transformation: $A, C \in \mathbb{R}^{nxn}; \ C$ non-singular; $A$ and $C^{-1} A C$ are similar (same spectrum and eigenvalues).
 	
 	
 	
@@ -48,7 +48,7 @@
 	
 	$A \in \mathbb{R}^{mxn} \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive semi-definite.
 	
-	$A \in \mathbb{R}^{mxn}$ with maximum rank $(rk(A)=min(m,n)) \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive definite.
+	$A \in \mathbb{R}^{mxn}$ with maximum rank $(rk(A)=\min(m,n)) \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive definite.
 	
 	Spectral theorem: $A \in \mathbb{R}^{nxn}$ symmetric $\Rightarrow$ eigenvalues are real, eigenvectors create an orthogonal basis.
 	
@@ -123,11 +123,11 @@
 	
 	$f : \mathbb{R}^n \to \mathbb{R}^m$
 	
-	Partial derivative $\pfi{i}=\cfi{i}=\dfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\vec{x})}{h}}$
+	Partial derivative $\pfi{i}=\cfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\vec{x})}{h}}$
 	
 	Gradient $\nabla f(\vec{x}) = \left(\pfi{1},...,\pfi{n}\right)$
 
-	Second order partial derivative $\spfi{i}{j}=\scfi{i}{j}=\sdfi{i}{j}=\frac{\partial}{\partial x_{j}}\pfi{i}$
+	Second order partial derivative $\spfi{i}{j}=\scfi{i}{j}=\frac{\partial}{\partial x_{j}}\pfi{i}$
 	
 	Hessian $\nabla^2 f(\vec{x}) = H_{f}(\vec{x})=\left(\spfi{i}{j}\right)_{i,j=1,...,n} = \begin{pmatrix}
 		\scfi{1}{1} & \cdots & \scfi{n}{1} \\
@@ -135,6 +135,21 @@
 		\scfi{1}{n} & \cdots & \scfi{n}{n}
 	\end{pmatrix}$
 
+	\subsection{Useful identities for computing gradients}
+	
+	$\vec{x}, \vec{a}, \vec{b} \in \mathbb{R}^{n}$;
+	$X \in \mathbb{R}^{nxn}$;
+	
+	$\frac{\partial \vec{f}(X)^T}{\partial X} = \left(\frac{\partial \vec{f}(X)}{\partial X}\right)^T$;
+	
+	$\frac{\partial \vec{f}(X)^{-1}}{\partial X}  = - \vec{f}(X)^{-1} \frac{\partial \vec{f}(X)}{\partial X} \vec{f}(X)^{-1}$
+	
+	$\frac{\partial \vec{x}^T \vec{a}}{\partial \vec{x}} = \frac{\partial \vec{a}^T \vec{x}}{\partial \vec{x}} = \vec{a}^T$;
+	$\frac{\partial}{\partial X} \vec{a}^T X \vec{b} \vec{a} = \vec{a}^T \vec{b}$;
+	
+	$\frac{\partial \vec(a)^T X \vec{a}}{\partial \vec{a}} = \vec{a}^T (X + X^T)$;
+	
+	$\frac{\partial \lVert a-Xb\rVert_2^2}{\partial X} = \frac{\partial \lVert Xb-a\rVert_2^2}{\partial X} = 2(Xb-a)^T X = 2 X^T (Xb-a) = 2(X^T X b - X^T a)$;
 
 	\section{Linear systems}
 	
@@ -142,7 +157,7 @@
 	
 	\subsection{Least squares problem}
 	
-	$\vec{x}^*$ solution of $A \vec{x} = B \ \Rightarrow \ \vec{x}^* = \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - B \rVert^2$ (strictly convex, only one minimum which is global)
+	$\vec{x}^*$ solution of $A \vec{x} = B \ \Rightarrow \ \vec{x}^* \approxeq \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - B \rVert^2$ (strictly convex, only one minimum which is global)
 	
 	\section{Optimization}
 	
@@ -237,16 +252,46 @@
 	
 	Bayes theorem: $P(\text { Cause } | \text { Effect })=\dfrac{P(\text { Effect } | \text { Cause }) P( \text{ Cause })}{P(\text { Effect })}$
 	
-	\iffalse
-	\subsection{Conditional independence}
+	\subsection{Statistical and conditional independence}
 	
-	$$
-	P \models (A \perp B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A \mid B)=P(A) \hspace{1em} \Leftrightarrow \hspace{1em} P(B \mid A)=P(B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A,B)=P(A)P(B)
-	\newline
-	$$$$
-	P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)
-	$$
-	\fi
+	$Cov(x,y)=0 \ \Leftrightarrow \ P \models (A \perp B) \ \Leftrightarrow \ P(A \mid B)=P(A) \ \Leftrightarrow \ P(B \mid A)=P(B) \ \Leftrightarrow \ P(A,B)=P(A)P(B)$
 	
+	$P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)$
+	
+	\section{Learning}
+	
+	$N$ observations $\vec{x}_n\in\mathbb{R}^D$ and labels $y_n\in\mathbb{R}$; $X=[\vec{x}_1,\dots,\vec{x}_n]^T$; $\vec{y}=[y_1,\dots,y_n]^T$; parameters $\vec{\theta}\in\mathbb{R}^{D}$
+	
+	\subsection{Empirical Risk Minimization}
+	
+	Linear model $f(\cdot,\vec{\theta}):\mathbb{R}^D\to\mathbb{R}:f(\vec{x})=\vec{\theta}^T \vec{x} + \theta_0 = \theta_0 + \sum\limits_{d=1}^D \theta_d x_{n,d}$
+	
+	We search $\vec{\theta}^* : \ f(\vec{x}_n, \vec{\theta}^*) = \hat{y}_n \approx y_n \ \forall n=1,2,\dots,N$
+	
+	Loss function $l(y, \hat{y})$; Empirical risk $R_{emp}(f,X,\vec{y},\vec{\theta})=\dfrac{1}{N}\sum\limits_{n=1}^N l(y_n,f(\vec{x}_n,\vec{\theta}))$
+	
+	$\vec{\theta}^* = \min\limits_{\vec{\theta} \in \mathbb{R}^D} R_{emp}(f,X,\vec{y},\vec{\theta}) = \min\limits_{\vec{\theta} \in \mathbb{R}^D} \dfrac{1}{N} \sum\limits_{n=1}^N (y_n - \vec{x}_n^T\vec{\theta})^2 = \min\limits_{\vec{\theta} \in \mathbb{R}^D} \dfrac{1}{N} \lVert \vec{y} - X \vec{\theta} \rVert^2$
+	
+	\subsection{Maximum Likelihood Estimation (ML)}
+	
+	Family of probability densities $p(\vec{x}\mid\vec{\theta})$;
+	Loss $ \mathcal{L}_x(\vec{\theta}) = - \log p(\vec{x}\mid\vec{\theta})$;
+	$\ \theta^* = \min_{\vec{\theta}} \mathcal{L}_x (\vec{\theta})$
+	
+	%$p(y_n\mid\vec{x},\vec{\theta}) \sim \mathcal{N}(y_n\mid\vec{x}_n^T \theta, \sigma_2)$.
+	$p(\vec{y}\mid X,\vec{\theta})=\prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta}) \Rightarrow \mathcal{L}_x(\vec{\theta}) = - \log \left(\prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta})\right) = -\sum\limits_{n=1}^N \log p(y_n\mid\vec{x}_n,\vec{\theta})$
+	
+	$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow \vec{\theta}^* = \min\limits_{\vec{\theta}} \dfrac{1}{2\sigma^2} \lVert\vec{y}-X\vec{\theta}\rVert_2^2$
+	
+	\subsection{Maximum A Posteriori Estimation (MAP)}
+	
+	$p(\vec{\theta}\mid\vec{x}) = \dfrac{p(\vec{x}\mid\vec{\theta}) p(\vec{\theta})}{p(\vec{x})}$;	
+	$\ \vec{\theta}^* = \min\limits_{\vec{\theta}} -\log(p(\vec{\theta}\mid\vec{x})) =  \min\limits_{\vec{\theta}} - (\log (p(\vec{x}\mid\theta)) + \log(p(\theta)))$
+	
+	$p(\vec{y}|X,\vec{\theta}) = \prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta}) \Rightarrow TODO$
+	
+	%$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow p(\vec{\theta}\mid\vec{x}_n) =  min_{\vec{\theta}} \dfrac{1}{2\sigma^2}\sum\limits_{n=1}^N (y_n - \vec{\theta}^T\vec{x}_n)^2 + \sum\limits_{n=1}^N \theta_n^2$
+	$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow \vec{\theta}^* = \min\limits_{\vec{\theta}} \dfrac{1}{2\sigma^2} \lVert\vec{y}-X\vec{\theta}\rVert_2^2 
+	 + \lVert\vec{\theta}\rVert_2^2$
 	
 \end{document}
