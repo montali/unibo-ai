@@ -4,6 +4,7 @@
  - [3. Improving gradient descent](3%20-%20Improving%20kGradient%20Descent.md)
  - [4. Image representation](4.md)
  - [5. Convolutional Neural Networks](5.md)
+ - [6. CNN Architectures](6.md)
 
 ## Useful links and materials
  - [Course's page on Virtuale](https://virtuale.unibo.it/course/view.php?id=30714)
