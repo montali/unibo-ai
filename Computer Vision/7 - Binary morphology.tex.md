@@ -18,7 +18,7 @@ The **dilation** is defined as follows:
 $$
 A \oplus B=\left\{c \in E^{2}: c=a+b, \quad a \in A \quad \mathrm{e} \quad b \in B\right\}
 $$
-![Dilation](/Users/simone/UniBO/unibo-ai/Computer Vision/res/dilation.png)
+![Dilation](res/dilation.png)
 
 ## Erosion
 

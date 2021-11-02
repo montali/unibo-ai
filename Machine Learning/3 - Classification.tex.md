@@ -64,7 +64,7 @@ Now, let's consider the entropy of Y considering only the rows in which <img src
 
 This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>. So, the conditional specific entropy is:
 
-![Entropy](/Users/simone/UniBO/unibo-ai/Machine Learning/res/entropy.png)
+![Entropy](res/entropy.png)
 
 <img src="svgs/bda076524274763969532cb83bbd0a72.svg?invert_in_darkmode" align=middle width=103.378935pt height=24.65759999999998pt/>, therefore, <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> provided some insight on <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/>.
 
@@ -114,7 +114,7 @@ There are many ways to prune data, one of these is the **statistical pruning**: 
 
 The **minimum description length principle** states that when the complication is bigger than the reduction of errors we are basically wasting our time.
 
-![Pruning effects on classification](/Users/simone/UniBO/unibo-ai/Machine Learning/res/pruning.png)
+![Pruning effects on classification](res/pruning.png)
 
 The supervised data are then split in 3 parts:
 
@@ -372,7 +372,7 @@ The soft margin ensures a greater robustness to individual observation, and a be
 
 So, we have seen how to deal with non-linear separability, but there's another possibility: we can have datasets which are non linearly-separable because of something more than a few exceptions, like:
 
-![Screenshot 2020-10-23 at 17.32.30](/Users/simone/UniBO/unibo-ai/Machine Learning/res/nonlineards.png)
+![Screenshot 2020-10-23 at 17.32.30](res/nonlineards.png)
 
  
 
@@ -432,7 +432,7 @@ Therefore, we must decide **when to stop**: generally, we stop on timeouts, 100%
 
 Letting $x$ and $y$ be the input vector and the desired output, $w$ the weight vector of a node, the error is $E(w)=\frac{1}{2}(y-Transfer(w,x))^2$.
 
-![Error functions](/Users/simone/UniBO/unibo-ai/Machine Learning/res/error_fns.png)
+![Error functions](res/error_fns.png)
 
 
 
@@ -448,7 +448,7 @@ Obviously, the derivatives of the input weights of the nodes of a layer can be c
 
 We can then revise the algorithm:
 
-![Revised training algorithm](/Users/simone/UniBO/unibo-ai/Machine Learning/res/revised_nn.png)
+![Revised training algorithm](res/revised_nn.png)
 
 We cite two learning modes: **stochastic learning**, where each forward propagation is immediately followed by a weight update, which introduces some noise (transferred after each update) but reduces the chance of getting stuck in local minimums, and **batch learning**, where many propagation occur before updating the weights, accumulating errors over the samples within a batch, generally yielding faster and stable descent towards local minimums, since the update is performed in the direction of the average error.
 

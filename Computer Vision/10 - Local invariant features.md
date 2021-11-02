@@ -48,13 +48,13 @@ So, we can always just forget about doing this, we shall directly study the eige
 
 If both eigenvalues are large, we are at a corner, if just one is we are on an edge:
 
-![Eigenvalues vs corners](/Users/simone/UniBO/unibo-ai/Computer Vision/res/eigenvalues-vs-corners.png)
+![Eigenvalues vs corners](res/eigenvalues-vs-corners.png)
 
 Harris finally proposed this function to be used:
 <p align="center"><img src="svgs/350be73e766485380bbb612568b05ab1.svg?invert_in_darkmode" align=middle width=341.07490724999997pt height=19.789994399999998pt/></p>
 where <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075367949999992pt height=22.831056599999986pt/> is a parameter, the trace is the sum of the elements along the main diagonal and the determinant is their product. So, the determinant and the trace are a function of the eigenvalues, so we can establish the cornerness and skipping the eigenvalues, just using the determinant and trace. 
 
-![Harris cornerness](/Users/simone/UniBO/unibo-ai/Computer Vision/res/harris-cornerness.png)
+![Harris cornerness](res/harris-cornerness.png)
 
 Therefore, we get **invariance to rotation**, since the eigenvalues are invariant (and thus is Harris cornerness function) and intensity changes invariance which is limited: yes to an additive bias (thanks to derivatives), no to multiplication by a gain factor.
 
