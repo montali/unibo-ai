@@ -8,10 +8,9 @@
 
 \newcommand{\cfi}[1]{f_{x_{#1}}(\vec{x})}
 \newcommand{\pfi}[1]{\frac{\partial f}{\partial x_{#1}}(\vec{x})}
-\newcommand{\dfi}[1]{D_{x_{#1}}f(\vec{x})}
+
 \newcommand{\scfi}[2]{f_{x_{#1}x_{#2}}(\vec{x})}
 \newcommand{\spfi}[2]{\frac{\partial^2 f}{\partial x_{#1} \partial x_{#2}}(\vec{x})}
-\newcommand{\sdfi}[2]{D_{x_{#1}x_{#2}}f(\vec{x})}
 
 %opening
 \title{Formulary \\ \large Statistical and Mathematical Methods for Artificial Intelligence}
@@ -21,20 +20,27 @@
 	
 	%\maketitle
 	
-	\section{Error measurement}
+	\section{Numerical computation and finite numbers}
 	
 	Absolute error $E_x = \tilde{x} - x$
 	
 	Relative error $R_x = \dfrac{\tilde{x} - x}{x}$
 	
-	\section{Matrices}
+	$x \in \mathbb{R}, \ fl(x) \in \mathcal{F}(\beta,t,L,U) \Leftrightarrow fl(x) = \pm (d_1 \beta^-1 + d_2 \beta^-2 + \dots + d_t \beta^-t) \beta^p = \pm m \beta^p$ with $0 \le d_i \le \beta-1$, $\ L \le p \le U$ ($\beta$ "base", $t$ "precision", $m$ "mantissa", $p$ "exponent").
+	
+	$UFL = \beta^{L-1}$;
+	$\ OFL = \beta^U (1-\beta^{-t})$
+	
+	Machine precision with rounding by chopping: $\epsilon_{mach} = \beta^{1-t}$; rounding to nearest: $\epsilon_{mach} = \frac{1}{2}\beta^{1-t}$.
+	
+	\section{Eigenvectors and eigenvalues}
 	
 	$A \in \mathbb{R}^{nxn}; A \vec{x} = \lambda \vec{x} \Leftrightarrow \vec{x}$ eigenvector and $\lambda$ eigenvalue of $A$.
 	
 	$A$ triangular or symmetric $\Rightarrow$ eigenvalues are on the main diagonal.
 	
 	Spectrum $\sigma(A) = \{\vec{x}: \vec{x}$ eigenvector of $A\}$.
-	Spectral norm $\rho(A) = \max(\lambda)$
+	Spectral norm $\rho(A) = \max \lvert \lambda \rvert$
 	
 	$C \in \mathbb{R}^{nxn}$ singular $\Leftrightarrow \det(C)=0$
 	
@@ -57,16 +63,14 @@
 	Scalar product: $\vec{x},\vec{y} \in V=\mathbb{R}^n, \ \langle \vec{x},\vec{y} \rangle = \sum\limits_{i=1}^{n} x_i y_i$
 	
 	$\lVert \vec{x} \rVert \ge 0 \ \forall \vec{x} \in V$;
-	$\lVert \vec{x} \rVert=0 \iff \vec{x}=\vec{0}$
-	
-	$\lVert \alpha \vec{x} \rVert = \lvert \alpha \rvert \lVert \vec{x} \rVert \ \forall \alpha \in \mathbb{R}, \vec{x} \in V$
-	
+	$\lVert \vec{x} \rVert=0 \iff \vec{x}=\vec{0}$;	
+	$\lVert \alpha \vec{x} \rVert = \lvert \alpha \rvert \lVert \vec{x} \rVert \ \forall \alpha \in \mathbb{R}, \vec{x} \in V$;	
 	$\lVert \vec{x}+\vec{y} \rVert \le \lVert \vec{x} \rVert + \lVert \vec{y} \rVert \ \forall \vec{x},\vec{y} \in V$.
 	
 	p-norm: $p\in [1,\infty[, \ \lVert \vec{x} \rVert_p = \sqrt[p]{\sum_{i=1}^n \lvert x_i \rvert^p}$
 	\begin{itemize}
-		\item 1-norm (a.k.a. Manhattan norm): $\lVert \vec{x} \rVert_1 = \sum_{i=1}^n \lvert x_i \rvert$
-		\item 2-norm (a.k.a. Euclidean norm): $\lVert \vec{x} \rVert_2 = \sqrt{\sum_{i=1}^n \lvert x_i \rvert^2}$
+		\item 1-norm (a.k.a. Manhattan norm): $\lVert \vec{x} \rVert_1 = \sum\limits_{i=1}^n \lvert x_i \rvert$
+		\item 2-norm (a.k.a. Euclidean norm): $\lVert \vec{x} \rVert_2 = \sqrt{\sum\limits_{i=1}^n \lvert x_i \rvert^2} = \sqrt{\langle \vec{x},\vec{x} \rangle}$
 		\item Infinity-norm: $\lVert \vec{x} \rVert_\infty = \max{\lvert x_i \rvert}$
 	\end{itemize}
 
@@ -76,18 +80,18 @@
 	
 	Similar properties of vector norm, plus $\lVert A B \rVert \le \lVert A \rVert \lVert B \rVert \ \forall A,B\in \mathbb{R}^{nxn}$
 	 
-	Frobinius norm: $\lVert A \rVert_p = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}$
+	Frobinius norm: $\lVert A \rVert_f = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}$
 	
 	p-induced matrix norm: 
 	\begin{itemize}
-		\item 1-norm: $\lVert A \rVert_1 = \max_{j=1..n}\sum_{i=1}^m \lvert a_{ij} \rvert$
+		\item 1-norm: $\lVert A \rVert_1 = \max\limits_{j=1..n}\sum\limits_{i=1}^m \lvert a_{ij} \rvert$
 		\item 2-norm: $\lVert A \rVert_2 = \sqrt{\rho(A^T A)}$
-		\item Infinity-norm: $\lVert A \rVert_\infty = \max_{i=1..m}\sum_{v=1}^n \lvert a_{ij} \rvert$
+		\item Infinity-norm: $\lVert A \rVert_\infty = \lVert A^T \rVert_1 = \max\limits_{i=1..m}\sum\limits_{j=1}^n \lvert a_{ij} \rvert$
 	\end{itemize}
 	
-	\section{Projections}
+	%\section{Projections} %TODO
 	
-	TODO
+	%TODO
 	
 	\section{Matrix decompositions / factorizations}
 	
@@ -121,8 +125,9 @@
 	
 	\section{Vector calculus}
 	
-	$f : \mathbb{R}^n \to \mathbb{R}^m$
+	Chain rule: $g(f(x))' = (g \circ f)'(x) = g'(f(x)) f'(x)$
 	
+	$f : \mathbb{R}^n \to \mathbb{R}$; 
 	Partial derivative $\pfi{i}=\cfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\vec{x})}{h}}$
 	
 	Gradient $\nabla f(\vec{x}) = \left(\pfi{1},...,\pfi{n}\right)$
@@ -145,6 +150,7 @@
 	$\frac{\partial \vec{f}(X)^{-1}}{\partial X}  = - \vec{f}(X)^{-1} \frac{\partial \vec{f}(X)}{\partial X} \vec{f}(X)^{-1}$
 	
 	$\frac{\partial \vec{x}^T \vec{a}}{\partial \vec{x}} = \frac{\partial \vec{a}^T \vec{x}}{\partial \vec{x}} = \vec{a}^T$;
+	
 	$\frac{\partial}{\partial X} \vec{a}^T X \vec{b} \vec{a} = \vec{a}^T \vec{b}$;
 	
 	$\frac{\partial \vec(a)^T X \vec{a}}{\partial \vec{a}} = \vec{a}^T (X + X^T)$;
@@ -153,11 +159,14 @@
 
 	\section{Linear systems}
 	
-	%TODO
+	$A\vec{x} = \vec{b}$ with $A \in \mathbb{R}^{mxn}, \vec{x} \in \mathbb{R}^n, \vec{b} \in \mathbb{R}^m$.
+	$m=n \Leftrightarrow$ Square linear system.
+	
+	$A^{-1}$ exists $\iff \vec{x} = A^{-1} \vec{b}$
 	
 	\subsection{Least squares problem}
 	
-	$\vec{x}^*$ solution of $A \vec{x} = B \ \Rightarrow \ \vec{x}^* \approxeq \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - B \rVert^2$ (strictly convex, only one minimum which is global)
+	$\vec{x}^*$ solution of $A \vec{x} = \vec{b} \ \Rightarrow \ \vec{x}^* \approxeq \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - \vec{b} \rVert^2$ (strictly convex, only one minimum which is global).
 	
 	\section{Optimization}
 	
