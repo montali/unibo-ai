@@ -19,14 +19,14 @@ There are two _flavors_ for classification:
 
 Decision trees have a quite long story, and have been improved in several ways.
 
-A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element $e$. If, for example, $x_2>5$, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
+A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element <!-- $e$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\lkjYKpZRfU.svg">. If, for example, <!-- $x_2>5$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8XxzCJ7vAZ.svg">, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
 
-Given a set $\Epsilon$ of elements, we'll grow a decision tree as follows:
+Given a set <!-- $\Epsilon$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\H2YMkYALWo.svg"> of elements, we'll grow a decision tree as follows:
 
-- If all the elements belong to a class $c$ or if $E$ is small, generate a leaf node with label $c$
-- Otherwise, we choose a test based on a single attribute which may have $N$ (at least two) outcomes, and will become the root of $N$ branches
+- If all the elements belong to a class <!-- $c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\oZXhMl9m2f.svg"> or if <!-- $E$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\d9AAroc8Q6.svg"> is small, generate a leaf node with label <!-- $c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uWBP8sq0bT.svg">
+- Otherwise, we choose a test based on a single attribute which may have <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\N0qBDmxx3K.svg"> (at least two) outcomes, and will become the root of <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\YY4NjuZU4N.svg"> branches
 
-There are many problems to solve: which attribute should we test, which kind of test, what does _$E$ is small_ mean?
+There are many problems to solve: which attribute should we test, which kind of test, what does _<!-- $E$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uCBPdyKTny.svg"> is small_ mean?
 
 So, given a census dataset, we may ask ourselves: _can we learn the wealth attribute just by looking at the other ones?_
 
@@ -34,21 +34,21 @@ So, given a census dataset, we may ask ourselves: _can we learn the wealth attri
 
 Let's first perform an **exploratory analysis**, i.e. looking at the data, maybe generating histograms...
 
-We could generate a $k$-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
+We could generate a k-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
 
 So, how can we evaluate if a pattern is interesting? To do so, there are several methods. One of them is based on _information theory_, born thanks to the concept of entropy.
 
 To introduce this concept of entropy, an example is needed. Given a variable with 4 possible values and a given probability distribution, an observation of the data stream could return BAACBADCDA. If I want to transmit to a remote agent those readings, I can encode them for instance with two bits, (00,01,10,11). Therefore, the transmission will be 01000010010011101100... But what happens if I the probability distribution is uneven?
 
-$P(A)=0.5, P(B)=0.25, P(C)=0.125, P(D)=0.125$
+<!-- $P(A)=0.5, P(B)=0.25, P(C)=0.125, P(D)=0.125$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\A8pKvWrc1V.svg">
 
 Of course, the already said coding works, but we could do better: there's a coding requiring a smaller average of bits per symbol:
 
-$A=0, B=10, C=110, D=111$
+<!-- $A=0, B=10, C=110, D=111$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\KcCve9wlRJ.svg">
 
 Even with 3 symbols with equal probability, this technique could save bits!
 
-In the general case, given a source $X$ with $V$ possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by $H(X)=-\sum_j p_j log_2(p_j)$. $H(X)$ is the entropy of the information source $X$.
+In the general case, given a source <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\vGfeOP0wvU.svg"> with <!-- $V$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5aS2RWM4jv.svg"> possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <!-- $H(X)=-\sum_j p_j log_2(p_j)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\FDgWzgvqjp.svg">. <!-- $H(X)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\TKPDTIzSJ4.svg"> is the entropy of the information source <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5Pto2xUaFs.svg">.
 
 ### Meaning of entropy of an information source
 
@@ -56,25 +56,25 @@ High entropy means that the probabilities are mostly similar. Low entropy means 
 
 In a binary source, the entropy goes to 0 when one of the probabilities goes to 1 and the other to 0.
 
-So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the $X$ column is the graduation of a friend, and the $Y$ column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
+So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\lqwoB64hLB.svg"> column is the graduation of a friend, and the <!-- $Y$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\1tJvmTBXW2.svg"> column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
 
 ![Joker table](./res/joker.png)
 
-Now, let's consider the entropy of Y considering only the rows in which $X=v$. When we filter by Math, the entropy stays $1$, but when we filter by History, the entropy goes to $0$.
+Now, let's consider the entropy of Y considering only the rows in which <!-- $X=v$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uTgfqOZFXm.svg">. When we filter by Math, the entropy stays 1, but when we filter by History, the entropy goes to 0.
 
-This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know $X$. So, the conditional specific entropy is:
+This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\V2mZ0D3G2n.svg">. So, the conditional specific entropy is:
 
 ![Entropy](res/entropy.png)
 
-$H(Y|X)=0.5$, therefore, $X$ provided some insight on $Y$.
+<!-- $H(Y|X)=0.5$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\FJyodZpsST.svg">, therefore, <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\YIRiyDY3DF.svg"> provided some insight on <!-- $Y$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5g1bZagyLe.svg">.
 
 Now, how can we decide if a person likes _Joker_ or not?
 
 ### Information Gain
 
-Now we can formally define the **Information Gain**, which states the amount of insight that $X$ provides in the forecasting of $Y$.
+Now we can formally define the **Information Gain**, which states the amount of insight that <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\GuJ4SU7ZfE.svg"> provides in the forecasting of $Y$.
 
-$I G(Y \mid X)=H(Y)-H(Y \mid X)$
+<!-- $I G(Y \mid X)=H(Y)-H(Y \mid X)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\g54zLqf0Mk.svg">
 
 So, **how can we use** the information gain? It could help us predict the probability of long life given some historical data on person characteristics and life style. _Higher IG means that a 2D contingency table would be more interesting._
 
@@ -94,11 +94,11 @@ Is there any general lesson we can learn from this fact? With a smaller tree we 
 
 In real life, there's noise in data. The ability to predict classes is indeed not perfect, and we'll sometimes make wrong predictions. **Overfitting** happens when the learning is affected by noise.
 
-Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If $h$ is the hypotesis, we can define the error of the hypothesis on the training set $error_{train}(h)$, and the error of the hypothesis on the entire dataset $error_{\epsilon} (h)$. $h$ overfits the training set if there is an alternative hypothesis $h'$ such that
+Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If <!-- $h$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\nNFDPkGSPX.svg"> is the hypotesis, we can define the error of the hypothesis on the training set <!-- $error_{train}(h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ajz69ttEUQ.svg">, and the error of the hypothesis on the entire dataset <!-- $error_{\epsilon} (h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\efJqeEEhMP.svg">. $h$ overfits the training set if there is an alternative hypothesis <!-- $h'$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\gG1lhfHfnm.svg"> such that
 
-$error_{train}(h)<error_{train} (h')$ 
+<!-- $error_{train}(h)<error_{train} (h')$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\F75VQwjfwy.svg">
 
-$error_{\epsilon} (h) > error_{\epsilon}(h')$
+<!-- $error_{\epsilon} (h) > error_{\epsilon}(h')$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\UEtIj5x3id.svg">
 
 Overfitting is caused by two phenomenons, the **presence of noise** and the **lack of representative instances**.
 
@@ -130,7 +130,7 @@ A decision tree is not **extremely powerful**: it's a compromise, it works and i
 
 ### Characteristics of a decision tree
 
-It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree.
+It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: <!-- $\mathcal{O}(h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\mfVj3Ehsib.svg">, where $h$ is the height of the tree.
 
 ### Choosing the attribute to split the dataset
 
@@ -148,15 +148,15 @@ Empirically, the more training data we have the best we train the dataset.
 
 We can define a **confidence interval**, a concept that derives from the Bernoulli process, i.e. forecasting each element of the test set is like one experiment of a Bernoulli process, a binary success/failure. 
 
-Therefore, the empirical frequency of error is $f=S/N$.
+Therefore, the empirical frequency of error is <!-- $f=S/N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8W5exKNEIO.svg">.
 
-With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area $1-\alpha$ for a normal distribution. The formula doesn't have to be remembered.
+With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area <!-- $1-\alpha$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\PQbdnkRiXx.svg"> for a normal distribution. The formula doesn't have to be remembered.
 
-So, $\alpha$ is the probability of a wrong estimate. Increasing $N$, with constant empirical frequency, the uncertainty for $p$ narrows. 
+So, <!-- $\alpha$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\zXYOTOLcOU.svg"> is the probability of a wrong estimate. Increasing <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\G8XCDaUNIE.svg">, with constant empirical frequency, the uncertainty for <!-- $p$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\DZH3zaHot8.svg"> narrows. 
 
 ## Accuracy of a classifier
 
-Accuracy and error frequency are complements ($A=1-e$). Error frequency is the sum of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
+Accuracy and error frequency are complements (<!-- $A=1-e$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ELU1BlSLRO.svg">). Error frequency is the sum of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
 
 So, why should we use other statistics? Maybe, estimating the cost of errors might need more statistics.
 
@@ -170,20 +170,20 @@ The train/validation loop is usually faster than cross validation.
 
 We already know what the accuracy is. For the moment, let's consider **binary predictions**. There are other possible indicators, like velocity, robustness, scalability, interpreatability. A classification error could have different consequences, which could be dangerous!
 
-Another important measure is the  **f-measure**, i.e. the armonic mean of precision and recall, aka F1 score or balanced F1 score: $F=2\frac{precision\cdot recall}{precision+recall}$.
+Another important measure is the  **f-measure**, i.e. the harmonic mean of precision and recall, aka F1 score or balanced F1 score: <!-- $F=2\frac{precision\cdot recall}{precision+recall}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ryNsIqwmy6.svg">.
 
 ### Beyond the accuracy
 
-When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with $2\%$ of positivity.
+When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with 2% of positivity.
 
 So, when we evaluate a prediction, instead of just using accuracy, we should use a metric that considers the distribution. 
 
-So, considering a confusion matrix with 3 classes, we have accuracy $\frac{\sum TP_i}{N}$, precision $\frac{TP_i}{P_i}$ and recall $\frac{TP_i}{T_i}$. There will obviously be a number of false predictions. So, let's say that the classifier $\overline{C}$ generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
-If we had a random classifier $R_{\overline{C}}$ which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of $\overline{C}$ over $R_{\overline{C}}$ is 58. We now can define $k(\overline{C})=58/118=0.492$ as the **improvement** of the classifier wrt the improvement of the perfect classifier.
+So, considering a confusion matrix with 3 classes, we have accuracy <!-- $\frac{\sum TP_i}{N}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\Tv9I7k6rYh.svg">, precision <!-- $\frac{TP_i}{P_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\0hJRLoeUQ2.svg"> and recall <!-- $\frac{TP_i}{T_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\bTtpQ6SNCg.svg">. There will obviously be a number of false predictions. So, let's say that the classifier <!-- $\overline{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uGZ9CkhoQK.svg"> generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
+If we had a random classifier <!-- $R_{\overline{C}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\12zyQ3Y7Mm.svg"> which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of <!-- $\overline{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\2Y3pkIZbtm.svg"> over <!-- $R_{\overline{C}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\PFX7KzJQ80.svg"> is 58. We now can define <!-- $k(\overline{C})=58/118=0.492$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\j3iCYXcnO7.svg"> as the **improvement** of the classifier wrt the improvement of the perfect classifier.
 
 This statistic evaluates the concordance between two classifications. 
 
-$k$ is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. $-1$ means a total disagreement, $0$ a random agreement, $1$ total agreement.
+<!-- $k$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\87UIYoCPgL.svg"> is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. -1 means a total disagreement, 0 a random agreement, 1 total agreement.
 
 ### Cost of errors
 

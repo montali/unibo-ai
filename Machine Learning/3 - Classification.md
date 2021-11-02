@@ -19,14 +19,14 @@ There are two _flavors_ for classification:
 
 Decision trees have a quite long story, and have been improved in several ways.
 
-A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> of an element <img src="svgs/8cd34385ed61aca950a6b06d09fb50ac.svg?invert_in_darkmode" align=middle width=7.6542015000000045pt height=14.155350000000013pt/>. If, for example, <img src="svgs/2bb55a46c94791a86fc71bcd3de61794.svg?invert_in_darkmode" align=middle width=46.906365pt height=21.18732pt/>, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
+A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element <!-- $e$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\lkjYKpZRfU.svg">. If, for example, <!-- $x_2>5$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8XxzCJ7vAZ.svg">, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
 
-Given a set <img src="svgs/698628683f7bc21c83461be0d468657d.svg?invert_in_darkmode" align=middle width=8.219211pt height=14.155350000000013pt/> of elements, we'll grow a decision tree as follows:
+Given a set <!-- $\Epsilon$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\H2YMkYALWo.svg"> of elements, we'll grow a decision tree as follows:
 
-- If all the elements belong to a class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> or if <img src="svgs/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode" align=middle width=13.082190000000004pt height=22.46574pt/> is small, generate a leaf node with label <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>
-- Otherwise, we choose a test based on a single attribute which may have <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/> (at least two) outcomes, and will become the root of <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/> branches
+- If all the elements belong to a class <!-- $c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\oZXhMl9m2f.svg"> or if <!-- $E$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\d9AAroc8Q6.svg"> is small, generate a leaf node with label <!-- $c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uWBP8sq0bT.svg">
+- Otherwise, we choose a test based on a single attribute which may have <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\N0qBDmxx3K.svg"> (at least two) outcomes, and will become the root of <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\YY4NjuZU4N.svg"> branches
 
-There are many problems to solve: which attribute should we test, which kind of test, what does _<img src="svgs/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode" align=middle width=13.082190000000004pt height=22.46574pt/> is small_ mean?
+There are many problems to solve: which attribute should we test, which kind of test, what does _<!-- $E$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uCBPdyKTny.svg"> is small_ mean?
 
 So, given a census dataset, we may ask ourselves: _can we learn the wealth attribute just by looking at the other ones?_
 
@@ -34,21 +34,21 @@ So, given a census dataset, we may ask ourselves: _can we learn the wealth attri
 
 Let's first perform an **exploratory analysis**, i.e. looking at the data, maybe generating histograms...
 
-We could generate a <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075495000000004pt height=22.831379999999992pt/>-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
+We could generate a k-dimensional contingency table, through SQL or whatever. Contingency tables could give us an insight on correlations between attributes, but we could need lots of them! _A shit fucking ton of 'em!_
 
 So, how can we evaluate if a pattern is interesting? To do so, there are several methods. One of them is based on _information theory_, born thanks to the concept of entropy.
 
 To introduce this concept of entropy, an example is needed. Given a variable with 4 possible values and a given probability distribution, an observation of the data stream could return BAACBADCDA. If I want to transmit to a remote agent those readings, I can encode them for instance with two bits, (00,01,10,11). Therefore, the transmission will be 01000010010011101100... But what happens if I the probability distribution is uneven?
 
-<img src="svgs/4acd9b39d099584593e157c83e5d6b40.svg?invert_in_darkmode" align=middle width=389.80540499999995pt height=24.65759999999998pt/>
+<!-- $P(A)=0.5, P(B)=0.25, P(C)=0.125, P(D)=0.125$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\A8pKvWrc1V.svg">
 
 Of course, the already said coding works, but we could do better: there's a coding requiring a smaller average of bits per symbol:
 
-<img src="svgs/001164ba7c28d1eb9d1153b4c6c5d9c8.svg?invert_in_darkmode" align=middle width=236.17390499999996pt height=22.46574pt/>
+<!-- $A=0, B=10, C=110, D=111$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\KcCve9wlRJ.svg">
 
 Even with 3 symbols with equal probability, this technique could save bits!
 
-In the general case, given a source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> with <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <img src="svgs/42195e7b10f34bf2d2a19a20dc2dbeac.svg?invert_in_darkmode" align=middle width=178.745655pt height=24.65792999999999pt/>. <img src="svgs/d569400f8445654a0819b16a7ad56f9c.svg?invert_in_darkmode" align=middle width=42.69408pt height=24.65759999999998pt/> is the entropy of the information source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>.
+In the general case, given a source <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\vGfeOP0wvU.svg"> with <!-- $V$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5aS2RWM4jv.svg"> possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <!-- $H(X)=-\sum_j p_j log_2(p_j)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\FDgWzgvqjp.svg">. <!-- $H(X)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\TKPDTIzSJ4.svg"> is the entropy of the information source <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5Pto2xUaFs.svg">.
 
 ### Meaning of entropy of an information source
 
@@ -56,25 +56,25 @@ High entropy means that the probabilities are mostly similar. Low entropy means 
 
 In a binary source, the entropy goes to 0 when one of the probabilities goes to 1 and the other to 0.
 
-So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> column is the graduation of a friend, and the <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/> column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
+So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\lqwoB64hLB.svg"> column is the graduation of a friend, and the <!-- $Y$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\1tJvmTBXW2.svg"> column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
 
 ![Joker table](./res/joker.png)
 
-Now, let's consider the entropy of Y considering only the rows in which <img src="svgs/05323f2f22dc9fd14cdb9903ef8f086d.svg?invert_in_darkmode" align=middle width=45.38424pt height=22.46574pt/>. When we filter by Math, the entropy stays <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>, but when we filter by History, the entropy goes to <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>.
+Now, let's consider the entropy of Y considering only the rows in which <!-- $X=v$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uTgfqOZFXm.svg">. When we filter by Math, the entropy stays 1, but when we filter by History, the entropy goes to 0.
 
-This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>. So, the conditional specific entropy is:
+This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\V2mZ0D3G2n.svg">. So, the conditional specific entropy is:
 
 ![Entropy](res/entropy.png)
 
-<img src="svgs/bda076524274763969532cb83bbd0a72.svg?invert_in_darkmode" align=middle width=103.378935pt height=24.65759999999998pt/>, therefore, <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> provided some insight on <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/>.
+<!-- $H(Y|X)=0.5$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\FJyodZpsST.svg">, therefore, <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\YIRiyDY3DF.svg"> provided some insight on <!-- $Y$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\5g1bZagyLe.svg">.
 
 Now, how can we decide if a person likes _Joker_ or not?
 
 ### Information Gain
 
-Now we can formally define the **Information Gain**, which states the amount of insight that <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> provides in the forecasting of <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/>.
+Now we can formally define the **Information Gain**, which states the amount of insight that <!-- $X$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\GuJ4SU7ZfE.svg"> provides in the forecasting of $Y$.
 
-<img src="svgs/c9811bfe0783d8077121773eec656cdd.svg?invert_in_darkmode" align=middle width=228.608655pt height=24.65759999999998pt/>
+<!-- $I G(Y \mid X)=H(Y)-H(Y \mid X)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\g54zLqf0Mk.svg">
 
 So, **how can we use** the information gain? It could help us predict the probability of long life given some historical data on person characteristics and life style. _Higher IG means that a 2D contingency table would be more interesting._
 
@@ -94,11 +94,11 @@ Is there any general lesson we can learn from this fact? With a smaller tree we 
 
 In real life, there's noise in data. The ability to predict classes is indeed not perfect, and we'll sometimes make wrong predictions. **Overfitting** happens when the learning is affected by noise.
 
-Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> is the hypotesis, we can define the error of the hypothesis on the training set <img src="svgs/f5bb716113be65657443dbb93a77eb04.svg?invert_in_darkmode" align=middle width=93.19332pt height=24.65759999999998pt/>, and the error of the hypothesis on the entire dataset <img src="svgs/41bcab0d727085b60da5be9cac91ef85.svg?invert_in_darkmode" align=middle width=67.34178pt height=24.65759999999998pt/>. <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> overfits the training set if there is an alternative hypothesis <img src="svgs/375bd127b228e9401b2a8acaebe6eb67.svg?invert_in_darkmode" align=middle width=13.261215000000004pt height=24.716340000000006pt/> such that
+Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If <!-- $h$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\nNFDPkGSPX.svg"> is the hypotesis, we can define the error of the hypothesis on the training set <!-- $error_{train}(h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ajz69ttEUQ.svg">, and the error of the hypothesis on the entire dataset <!-- $error_{\epsilon} (h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\efJqeEEhMP.svg">. $h$ overfits the training set if there is an alternative hypothesis <!-- $h'$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\gG1lhfHfnm.svg"> such that
 
-<img src="svgs/70ee0a4a7ab5ba36813e99f0fa260b0c.svg?invert_in_darkmode" align=middle width=212.91550499999997pt height=24.716340000000006pt/>
+<!-- $error_{train}(h)<error_{train} (h')$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\F75VQwjfwy.svg">
 
-<img src="svgs/4e99aab2122798e45732671cd954720a.svg?invert_in_darkmode" align=middle width=161.212755pt height=24.716340000000006pt/>
+<!-- $error_{\epsilon} (h) > error_{\epsilon}(h')$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\UEtIj5x3id.svg">
 
 Overfitting is caused by two phenomenons, the **presence of noise** and the **lack of representative instances**.
 
@@ -130,7 +130,7 @@ A decision tree is not **extremely powerful**: it's a compromise, it works and i
 
 ### Characteristics of a decision tree
 
-It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: <img src="svgs/34109b622bca0e0d13a8a0d0cca985dd.svg?invert_in_darkmode" align=middle width=35.800050000000006pt height=24.65759999999998pt/>, where <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> is the height of the tree.
+It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: <!-- $\mathcal{O}(h)$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\mfVj3Ehsib.svg">, where $h$ is the height of the tree.
 
 ### Choosing the attribute to split the dataset
 
@@ -148,15 +148,15 @@ Empirically, the more training data we have the best we train the dataset.
 
 We can define a **confidence interval**, a concept that derives from the Bernoulli process, i.e. forecasting each element of the test set is like one experiment of a Bernoulli process, a binary success/failure. 
 
-Therefore, the empirical frequency of error is <img src="svgs/deb9016a8ab58949c99e5b5553bbd61b.svg?invert_in_darkmode" align=middle width=64.15513664999999pt height=24.65753399999998pt/>.
+Therefore, the empirical frequency of error is <!-- $f=S/N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\8W5exKNEIO.svg">.
 
-With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area <img src="svgs/900d920909b4893be83c15f105c8ae1c.svg?invert_in_darkmode" align=middle width=38.88690464999999pt height=21.18721440000001pt/> for a normal distribution. The formula doesn't have to be remembered.
+With some algebra we can compute the **Wilson Score Interval**, which is the abscissa delimiting the area <!-- $1-\alpha$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\PQbdnkRiXx.svg"> for a normal distribution. The formula doesn't have to be remembered.
 
-So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> is the probability of a wrong estimate. Increasing <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/>, with constant empirical frequency, the uncertainty for <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> narrows. 
+So, <!-- $\alpha$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\zXYOTOLcOU.svg"> is the probability of a wrong estimate. Increasing <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\G8XCDaUNIE.svg">, with constant empirical frequency, the uncertainty for <!-- $p$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\DZH3zaHot8.svg"> narrows. 
 
 ## Accuracy of a classifier
 
-Accuracy and error frequency are complements (<img src="svgs/f5901e14df8c2452eaee8fb04a4397d4.svg?invert_in_darkmode" align=middle width=70.21096829999999pt height=22.465723500000017pt/>). Error frequency is thes um of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
+Accuracy and error frequency are complements (<!-- $A=1-e$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ELU1BlSLRO.svg">). Error frequency is the sum of errors of any class, divided by the number of tested records. A good statistic could be the maximum error frequencies instead. 
 
 So, why should we use other statistics? Maybe, estimating the cost of errors might need more statistics.
 
@@ -170,20 +170,20 @@ The train/validation loop is usually faster than cross validation.
 
 We already know what the accuracy is. For the moment, let's consider **binary predictions**. There are other possible indicators, like velocity, robustness, scalability, interpreatability. A classification error could have different consequences, which could be dangerous!
 
-Another important measure is the  **f-measure**, i.e. the armonic mean of precision and recall, aka F1 score or balanced F1 score: <img src="svgs/a13bc6fd22ea240e322a0279e464a445.svg?invert_in_darkmode" align=middle width=144.66795419999997pt height=30.648287999999997pt/>.
+Another important measure is the  **f-measure**, i.e. the harmonic mean of precision and recall, aka F1 score or balanced F1 score: <!-- $F=2\frac{precision\cdot recall}{precision+recall}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\ryNsIqwmy6.svg">.
 
 ### Beyond the accuracy
 
-When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with <img src="svgs/45a0b00b513fa74f40b37aafadb94773.svg?invert_in_darkmode" align=middle width=21.91788224999999pt height=24.65753399999998pt/> of positivity.
+When we evaluate the quality of a classifier, we should also take into account the *a-priori* information, i.e. the distribution of our supervised data. If the classes are perfectly balanced, we'll be correctly guessing the accuracy, but by chance. If, instead, our dataset is heavily unbalanced, like in the case of a disease with 2% of positivity.
 
 So, when we evaluate a prediction, instead of just using accuracy, we should use a metric that considers the distribution. 
 
-So, considering a confusion matrix with 3 classes, we have accuracy <img src="svgs/10e4f71da84fa363761b231c6947575b.svg?invert_in_darkmode" align=middle width=39.16826595pt height=33.20569890000001pt/>, precision <img src="svgs/fbe9e0ae50f65372e974136f27c55182.svg?invert_in_darkmode" align=middle width=23.110393349999995pt height=29.205422400000014pt/> and recall <img src="svgs/6ce695eef38de31dfa13aa16c8ae1633.svg?invert_in_darkmode" align=middle width=23.110393349999995pt height=29.205422400000014pt/>. There will obviously be a number of false predictions. So, let's say that the classifier <img src="svgs/ff8ed7ff7206dcbee8e3ce3546c04a31.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=27.725679300000007pt/> generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
-If we had a random classifier <img src="svgs/c0965f62635cd7feb1d989d50a2a51c3.svg?invert_in_darkmode" align=middle width=23.53788524999999pt height=22.465723500000017pt/> which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of <img src="svgs/ff8ed7ff7206dcbee8e3ce3546c04a31.svg?invert_in_darkmode" align=middle width=12.92464304999999pt height=27.725679300000007pt/> over <img src="svgs/c0965f62635cd7feb1d989d50a2a51c3.svg?invert_in_darkmode" align=middle width=23.53788524999999pt height=22.465723500000017pt/> is 58. We now can define <img src="svgs/1c871f58bd45412a72aaed4d21f6fd77.svg?invert_in_darkmode" align=middle width=165.37901324999999pt height=27.725679300000007pt/> as the **improvement** of the classifier.
+So, considering a confusion matrix with 3 classes, we have accuracy <!-- $\frac{\sum TP_i}{N}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\Tv9I7k6rYh.svg">, precision <!-- $\frac{TP_i}{P_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\0hJRLoeUQ2.svg"> and recall <!-- $\frac{TP_i}{T_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\bTtpQ6SNCg.svg">. There will obviously be a number of false predictions. So, let's say that the classifier <!-- $\overline{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\uGZ9CkhoQK.svg"> generates this confusion matrix. Then, we have 200 predictions, in 100:6:40 proportion, of which 140 are correct. 
+If we had a random classifier <!-- $R_{\overline{C}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\12zyQ3Y7Mm.svg"> which generates the same proportion, but randomly, 82 predictions are exact **by chance**. The improvement of <!-- $\overline{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\2Y3pkIZbtm.svg"> over <!-- $R_{\overline{C}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\PFX7KzJQ80.svg"> is 58. We now can define <!-- $k(\overline{C})=58/118=0.492$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\j3iCYXcnO7.svg"> as the **improvement** of the classifier wrt the improvement of the perfect classifier.
 
 This statistic evaluates the concordance between two classifications. 
 
-<img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.075495000000004pt height=22.831379999999992pt/> is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> means a total disagreement, <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> a random agreement, <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> total agreement.
+<!-- $k$ --> <img style="transform: translateY(0.1em); background: white;" src="..\svg\87UIYoCPgL.svg"> is therefore the ratio between the concordance exceeding the random component and the maximum surplus possible. -1 means a total disagreement, 0 a random agreement, 1 total agreement.
 
 ### Cost of errors
 
@@ -275,7 +275,7 @@ We now consider the contribution of all the attributes of the dataset, assuming 
 
 We'll use the empirical frequency as probability.
 
-Considering a toy example, with temperature, outlook, humidity, wind, we have a terget **are we going to play or not?**
+Considering a toy example, with temperature, outlook, humidity, wind, we have a target **are we going to play or not?**
 
 So, the task is, given the features, are we going to play? We'll deal with this as a statistical problem, considering the features as **equally important** (they're independent evidence). We then obtain the likelihood of yes and no, then normalize to 1, getting <img src="svgs/8237fe839881ccf9479b09e460cc33ae.svg?invert_in_darkmode" align=middle width=122.34413894999997pt height=24.65753399999998pt/> and <img src="svgs/457415f8ba4f91e8148370c4eb28a624.svg?invert_in_darkmode" align=middle width=116.17024319999999pt height=24.65753399999998pt/>.
 
@@ -289,7 +289,7 @@ We can compute the probabilities for the classes, then choose the one having the
 
 The problem is that we can overcast to a 0 probability of No, which kills our formula by setting everything to 0.
 
-Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> (typically <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>) let's say we have an absolute frequenci of <img src="svgs/9f7365802167fff585175c1750674d42.svg?invert_in_darkmode" align=middle width=12.61896569999999pt height=14.15524440000002pt/> in attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> over class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>, then <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> the number of distinct values, and the absolute frequency <img src="svgs/474a7c18247a3878e09311ac1a57cc03.svg?invert_in_darkmode" align=middle width=22.61179304999999pt height=22.831056599999986pt/> of class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> in the dataset. The smoothed frequency is: <img src="svgs/4bfac7769e0cb59235d6880b937c9b0b.svg?invert_in_darkmode" align=middle width=146.7369585pt height=34.95557999999999pt/>
+Therefore, we can apply a smoothing technique, the **Laplace smoothing**, which uses a parameter <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> (typically <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>) let's say we have an absolute frequency of <img src="svgs/9f7365802167fff585175c1750674d42.svg?invert_in_darkmode" align=middle width=12.61896569999999pt height=14.15524440000002pt/> in attribute <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/> over class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>, then <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> the number of distinct values, and the absolute frequency <img src="svgs/474a7c18247a3878e09311ac1a57cc03.svg?invert_in_darkmode" align=middle width=22.61179304999999pt height=22.831056599999986pt/> of class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> in the dataset. The smoothed frequency is: <img src="svgs/4bfac7769e0cb59235d6880b937c9b0b.svg?invert_in_darkmode" align=middle width=146.7369585pt height=34.95557999999999pt/>
 
 When <img src="svgs/1924b0e737a1c5c085f6e7f1b0fa4840.svg?invert_in_darkmode" align=middle width=40.713337499999994pt height=21.18721440000001pt/>, the formula is unsmoothed, but higher values of <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> give more importance to the prior probabilities for the values of <img src="svgs/2103f85b8b1477f430fc407cad462224.svg?invert_in_darkmode" align=middle width=8.556075000000003pt height=22.831379999999992pt/>. This means that this frequency will be smaller if we have a higher number of values. The <img src="svgs/a9a3a4a202d80326bda413b5562d5cd1.svg?invert_in_darkmode" align=middle width=13.242075000000003pt height=22.46574pt/> component is basically the prior probability. So, <img src="svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.57650494999999pt height=14.15524440000002pt/> allows us to mix the prior probability with the current value. Smoothing is necessary when some frequencies are zero, and it reduces overfitting.
 
@@ -301,7 +301,7 @@ With the Naive Bayes Classifier, **they do not affect the model!** We simply don
 
 So, here we have seen how we can count for categorical attributes. What happens if we have numerical attributes? We do an additional assumption: the values have a **Gaussian distribution**.
 
-Instead of fraction of counts, we can now compute the mean and the variance of teh values of each numeric attribute per class.
+Instead of fraction of counts, we can now compute the mean and the variance of the values of each numeric attribute per class.
 
 For a given attribute and class, the distribution is supposed to be <img src="svgs/1567b5a4fdabae414e5ac827018eecaa.svg?invert_in_darkmode" align=middle width=148.95874289999998pt height=43.66282139999998pt/>
 
@@ -327,7 +327,7 @@ The following is a pseudocode algorithm:
 
 ![Perceptron algorithm](./res/perceptron_algo.png)
 
-Each change ofweights moves the hyperplane towards the misclassified instance: <img src="svgs/7e898f5524ebea623864829490b5455f.svg?invert_in_darkmode" align=middle width=385.083468pt height=24.65753399999998pt/>, and the result is increased by a positive amount which is the squared value of the components: <img src="svgs/ff95105af1a49e7a5b6d519ff5b89ee6.svg?invert_in_darkmode" align=middle width=93.14522249999999pt height=26.76175259999998pt/>, therefore the result will be less negative or even positive.
+Each change of weights moves the hyperplane towards the misclassified instance: <img src="svgs/7e898f5524ebea623864829490b5455f.svg?invert_in_darkmode" align=middle width=385.083468pt height=24.65753399999998pt/>, and the result is increased by a positive amount which is the squared value of the components: <img src="svgs/ff95105af1a49e7a5b6d519ff5b89ee6.svg?invert_in_darkmode" align=middle width=93.14522249999999pt height=26.76175259999998pt/>, therefore the result will be less negative or even positive.
 
 The corrections are incremental and can interfere with previous updates, the algorithm converges if the dataset is linearly separable: this method is not so powerful 😔.
 
@@ -355,7 +355,7 @@ Finding the support vectors and the maximum margin hyperplane belongs to the wel
 
 <img src="svgs/53733bd5bde01f18cd01dfa19a9ed781.svg?invert_in_darkmode" align=middle width=359.44368239999994pt height=65.81767500000002pt/>
 
-where the class of exampole <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> is either <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> or <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> and <img src="svgs/fb97d38bcc19230b0acd442e17db879c.svg?invert_in_darkmode" align=middle width=17.73973739999999pt height=22.465723500000017pt/> is the margin.
+where the class of example <img src="svgs/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode" align=middle width=5.663225699999989pt height=21.68300969999999pt/> is either <img src="svgs/e11a8cfcf953c683196d7a48677b2277.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/> or <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/> and <img src="svgs/fb97d38bcc19230b0acd442e17db879c.svg?invert_in_darkmode" align=middle width=17.73973739999999pt height=22.465723500000017pt/> is the margin.
 
 So, this is the first contribution: among the infinite hyperplanes, we want to find the one with the maximum margin. If a separating hyperplane does not exist, we want to find one which almost separates the classes, and disregard examples generating a very narrow margin. 
 
@@ -377,6 +377,12 @@ The time complexity is mainly influenced by the efficiency of the optimization l
 
 So, learning is generally slower than simpler methods, tuning is necessary (and not so easy), but the results can be very accurate. It is explicitly based on a strong mathematical model, it is not affected by local minima (optimizers can be very effective) and it does not suffer from the curse of dimensionality, since it doesn't use any notion of distance. 
 
+## K Nearest Neighbour classifier
+
+This classifier **keeps all the training data**, i.e. the model is the entire training set.
+
+The idea is that new predictions can be computed simply computing the similarities between the new data and the dataset. Then, it picks the K closest entries among the training set data. The main parameters are the number of neighbours to track, and the metric used to compute the distance (like the Mahalanobis distance).
+
 # Neural networks
 
 These were inspired by the brain of animals, trying to reproduce neutrons, generating intelligence.
@@ -391,7 +397,7 @@ We have processors and weights, and we must learn the weights, through examples.
 
 This **multi-layer perceptron** has signals which are transmitted, and they're modeled as **real numbers**. The processing element is inspired to the biological system, when an input is higher than a threshold, something happens. We could linearly increase those, but there are better solutions, like using a **sigmoid** or an **arctan** or a **ReLU**.
 
-These are called **squashing functions**, which map reals into <img src="svgs/f27d1a8ebacee1389ff26e63ae976661.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=24.65753399999998pt/>. 
+The sigmoid is also called **squashing function**, mapping reals into <img src="svgs/f27d1a8ebacee1389ff26e63ae976661.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=24.65753399999998pt/>. 
 
 Why are we using non-linearities? In linearities, noise is completely transmitted <img src="svgs/a9759fd3091d9449634c24dce3f24102.svg?invert_in_darkmode" align=middle width=196.98634395pt height=24.65753399999998pt/>, in particular if <img src="svgs/95d239357c7dfa2e8d1fd21ff6ed5c7b.svg?invert_in_darkmode" align=middle width=15.94753544999999pt height=14.15524440000002pt/> is generated by noise. In a non-linear system, in general, <img src="svgs/1acf81be9ab9909c48076ade663632b8.svg?invert_in_darkmode" align=middle width=196.98634395pt height=24.65753399999998pt/>, and the impact of the noise is reduced.
 
@@ -438,3 +444,51 @@ We can then revise the algorithm:
 We cite two learning modes: **stochastic learning**, where each forward propagation is immediately followed by a weight update, which introduces some noise (transferred after each update) but reduces the chance of getting stuck in local minimums, and **batch learning**, where many propagation occur before updating the weights, accumulating errors over the samples within a batch, generally yielding faster and stable descent towards local minimums, since the update is performed in the direction of the average error.
 
 We should regularize to reduce overfitting, basically correcting the loss function in order to smooth the fitting to the data, and the amount of regularization must be tuned.
+
+# Preprocessing
+
+## Similarity and dissimilarity
+
+**Similarity** is a numerical measure of how alike two data objects are, while **dissimilarity** is the measure of how different they are.
+
+**Proximity** is a synonim of both.
+
+![Similarity and dissimilarity](./res/similarity.png)
+
+The **euclidean distance** <img src="svgs/df462f35a4c10eaa472f883b791b0cd6.svg?invert_in_darkmode" align=middle width=186.00097395pt height=42.265142700000006pt/> tells us how near <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> and <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> are. <img src="svgs/4327ea69d9c5edcc8ddaf24f1d5b47e4.svg?invert_in_darkmode" align=middle width=17.73978854999999pt height=22.465723500000017pt/> distance is just a special case of the **Minkowski distance** <img src="svgs/7f23fe37507e96518435ba0c4ce4c679.svg?invert_in_darkmode" align=middle width=193.22476799999998pt height=49.10932949999999pt/>, which when <img src="svgs/f8cf106374ecdf7acfa0a8d1cce0612e.svg?invert_in_darkmode" align=middle width=38.009795999999994pt height=21.18721440000001pt/> is the euclidean norm, <img src="svgs/1d441f45efa7801396f8e8f3524942ae.svg?invert_in_darkmode" align=middle width=38.009795999999994pt height=21.18721440000001pt/> Manhatthan distance, <img src="svgs/0f036007f34817ada9bad69a53ab6658.svg?invert_in_darkmode" align=middle width=46.228988849999986pt height=14.15524440000002pt/> the Chebyshev distance, which only considers the maximum difference among coordinates.
+
+Another, more sofisticated, distance which considers the data distribution is the **Mahalanobis distance**.
+
+It increases if, keeping the same euclidean distance, the segment connecting the points is stretched along a direction of greater variation of data.
+
+We need the **covariance matrix** of the dataset to calculate it, which is the summation of differences between the mean and the elements. 
+
+Then, 
+
+<img src="svgs/1a774c94ad093878fa27b7e7caaa7fad.svg?invert_in_darkmode" align=middle width=263.78767304999997pt height=52.81499189999999pt/>
+
+A distance has some common properties: **positive definiteness**, **symmetry**, and **triangle inequality**.
+
+Similarity has some properties too: <img src="svgs/823e90172079d40d4a75bd0defd86d13.svg?invert_in_darkmode" align=middle width=97.55051954999999pt height=24.65753399999998pt/> only if <img src="svgs/0e344c5123fb43fc335de6ff20e5c7de.svg?invert_in_darkmode" align=middle width=38.11630349999999pt height=14.15524440000002pt/> and <img src="svgs/d167691cf9e1c41fe0aa01bab0b83da2.svg?invert_in_darkmode" align=middle width=156.74499059999997pt height=24.65753399999998pt/>.
+
+If we have binary spaces instead of vector spaces, it's more common to define similarity in another way:
+
+![Binary similarity](./res/binary-similarity.png)
+
+We can now define two coefficients, the **SMC** and the **Jaccard Coefficient**, the latter being the one ignoring zero values.
+
+The **cosine similarity** is usually more interested for positive values, and it is a dot product divided by the product of the norms: <img src="svgs/1731a9377dc0aca17b8ce1217381d700.svg?invert_in_darkmode" align=middle width=122.34444254999998pt height=25.374350099999997pt/>.
+
+The **extended Jaccard distance** is an evolution of the latter used for continuous or count attributes: <img src="svgs/5a308a444fcc9a8dcf32bf86ff6c86c7.svg?invert_in_darkmode" align=middle width=162.52254315pt height=25.374350099999997pt/>
+
+It is crucial to choose the **right proximity measure**.
+
+Finally, we consider the **correlation of quantitative data**: after the standardization of data, for two given attributes <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> and <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/> is the dot product between <img src="svgs/4ae3393b40dfbbbc0932cf55cbc55bc3.svg?invert_in_darkmode" align=middle width=12.060528149999989pt height=24.7161288pt/> and <img src="svgs/7ab060f50dcd94fe27db68355e6d1529.svg?invert_in_darkmode" align=middle width=11.71804919999999pt height=24.7161288pt/>. A zero correlation states an absence of linear relationship between the variables. 
+
+The **symmetric uncertainty** <img src="svgs/338ecd1a7fdc741e75d3b29d2d6e7b2e.svg?invert_in_darkmode" align=middle width=197.87401425pt height=33.20539859999999pt/> is a ratio (between 0 and 1) calculated using the entropies on <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> and <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/>. It tells us how many values of <img src="svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.270567249999992pt height=14.15524440000002pt/> are strictly related to the values of <img src="svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.928106449999989pt height=14.15524440000002pt/>.
+
+
+
+
+
+
