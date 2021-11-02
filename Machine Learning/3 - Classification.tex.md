@@ -19,14 +19,14 @@ There are two _flavors_ for classification:
 
 Decision trees have a quite long story, and have been improved in several ways.
 
-A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element <img src="svgs/8cd34385ed61aca950a6b06d09fb50ac.svg?invert_in_darkmode" align=middle width=7.6542015000000045pt height=14.155350000000013pt/>. If, for example, <img src="svgs/2bb55a46c94791a86fc71bcd3de61794.svg?invert_in_darkmode" align=middle width=46.906365pt height=21.18732pt/>, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
+A tree has inner nodes. We start from the root, with a test. For instance, we could test an attribute $d$ of an element $e$. If, for example, $x_2>5$, we'll execute the right node, if not we'll execute the left one. Than, the same thing happens with the inner node. When we come to an end, it will be a prediction, i.e. a **leaf node**. The thing is: we've gotta learn what decisions to put in the decision tree, and this is what the training aims to achieve.
 
-Given a set <img src="svgs/698628683f7bc21c83461be0d468657d.svg?invert_in_darkmode" align=middle width=8.219211pt height=14.155350000000013pt/> of elements, we'll grow a decision tree as follows:
+Given a set $\Epsilon$ of elements, we'll grow a decision tree as follows:
 
-- If all the elements belong to a class <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/> or if <img src="svgs/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode" align=middle width=13.082190000000004pt height=22.46574pt/> is small, generate a leaf node with label <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.113876000000004pt height=14.155350000000013pt/>
-- Otherwise, we choose a test based on a single attribute which may have <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/> (at least two) outcomes, and will become the root of <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.999985000000004pt height=22.46574pt/> branches
+- If all the elements belong to a class $c$ or if $E$ is small, generate a leaf node with label $c$
+- Otherwise, we choose a test based on a single attribute which may have $N$ (at least two) outcomes, and will become the root of $N$ branches
 
-There are many problems to solve: which attribute should we test, which kind of test, what does _<img src="svgs/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode" align=middle width=13.082190000000004pt height=22.46574pt/> is small_ mean?
+There are many problems to solve: which attribute should we test, which kind of test, what does _$E$ is small_ mean?
 
 So, given a census dataset, we may ask ourselves: _can we learn the wealth attribute just by looking at the other ones?_
 
@@ -40,15 +40,15 @@ So, how can we evaluate if a pattern is interesting? To do so, there are several
 
 To introduce this concept of entropy, an example is needed. Given a variable with 4 possible values and a given probability distribution, an observation of the data stream could return BAACBADCDA. If I want to transmit to a remote agent those readings, I can encode them for instance with two bits, (00,01,10,11). Therefore, the transmission will be 01000010010011101100... But what happens if I the probability distribution is uneven?
 
-<img src="svgs/4acd9b39d099584593e157c83e5d6b40.svg?invert_in_darkmode" align=middle width=389.80540499999995pt height=24.65759999999998pt/>
+$P(A)=0.5, P(B)=0.25, P(C)=0.125, P(D)=0.125$
 
 Of course, the already said coding works, but we could do better: there's a coding requiring a smaller average of bits per symbol:
 
-<img src="svgs/001164ba7c28d1eb9d1153b4c6c5d9c8.svg?invert_in_darkmode" align=middle width=236.17390499999996pt height=22.46574pt/>
+$A=0, B=10, C=110, D=111$
 
 Even with 3 symbols with equal probability, this technique could save bits!
 
-In the general case, given a source $X$ with $V$ possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by <img src="svgs/42195e7b10f34bf2d2a19a20dc2dbeac.svg?invert_in_darkmode" align=middle width=178.745655pt height=24.65792999999999pt/>. <img src="svgs/d569400f8445654a0819b16a7ad56f9c.svg?invert_in_darkmode" align=middle width=42.69408pt height=24.65759999999998pt/> is the entropy of the information source <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>.
+In the general case, given a source $X$ with $V$ possible values, with their probability distribution, the best coding allows the transmission with an average number of bits given by $H(X)=-\sum_j p_j log_2(p_j)$. $H(X)$ is the entropy of the information source $X$.
 
 ### Meaning of entropy of an information source
 
@@ -56,25 +56,25 @@ High entropy means that the probabilities are mostly similar. Low entropy means 
 
 In a binary source, the entropy goes to 0 when one of the probabilities goes to 1 and the other to 0.
 
-So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> column is the graduation of a friend, and the <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/> column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
+So, what is the purpose of these considerations on entropy? Let's consider a toy example, where in the $X$ column is the graduation of a friend, and the $Y$ column contains whether the person likes _Joker_ or not. We can derive the probabilities from value frequencies.
 
 ![Joker table](./res/joker.png)
 
-Now, let's consider the entropy of Y considering only the rows in which <img src="svgs/05323f2f22dc9fd14cdb9903ef8f086d.svg?invert_in_darkmode" align=middle width=45.38424pt height=22.46574pt/>. When we filter by Math, the entropy stays <img src="svgs/034d0a6be0424bffe9a6e7ac9236c0f5.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>, but when we filter by History, the entropy goes to <img src="svgs/29632a9bf827ce0200454dd32fc3be82.svg?invert_in_darkmode" align=middle width=8.219277000000005pt height=21.18732pt/>.
+Now, let's consider the entropy of Y considering only the rows in which $X=v$. When we filter by Math, the entropy stays $1$, but when we filter by History, the entropy goes to $0$.
 
-This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/>. So, the conditional specific entropy is:
+This could also be interpreted as the minimum number of bits needed to transmit the value if the receiver know $X$. So, the conditional specific entropy is:
 
 ![Entropy](res/entropy.png)
 
-<img src="svgs/bda076524274763969532cb83bbd0a72.svg?invert_in_darkmode" align=middle width=103.378935pt height=24.65759999999998pt/>, therefore, <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> provided some insight on <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/>.
+$H(Y|X)=0.5$, therefore, $X$ provided some insight on $Y$.
 
 Now, how can we decide if a person likes _Joker_ or not?
 
 ### Information Gain
 
-Now we can formally define the **Information Gain**, which states the amount of insight that <img src="svgs/cbfb1b2a33b28eab8a3e59464768e810.svg?invert_in_darkmode" align=middle width=14.908740000000003pt height=22.46574pt/> provides in the forecasting of <img src="svgs/91aac9730317276af725abd8cef04ca9.svg?invert_in_darkmode" align=middle width=13.196370000000005pt height=22.46574pt/>.
+Now we can formally define the **Information Gain**, which states the amount of insight that $X$ provides in the forecasting of $Y$.
 
-<img src="svgs/c9811bfe0783d8077121773eec656cdd.svg?invert_in_darkmode" align=middle width=228.608655pt height=24.65759999999998pt/>
+$I G(Y \mid X)=H(Y)-H(Y \mid X)$
 
 So, **how can we use** the information gain? It could help us predict the probability of long life given some historical data on person characteristics and life style. _Higher IG means that a 2D contingency table would be more interesting._
 
@@ -94,11 +94,11 @@ Is there any general lesson we can learn from this fact? With a smaller tree we 
 
 In real life, there's noise in data. The ability to predict classes is indeed not perfect, and we'll sometimes make wrong predictions. **Overfitting** happens when the learning is affected by noise.
 
-Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> is the hypotesis, we can define the error of the hypothesis on the training set <img src="svgs/f5bb716113be65657443dbb93a77eb04.svg?invert_in_darkmode" align=middle width=93.19332pt height=24.65759999999998pt/>, and the error of the hypothesis on the entire dataset <img src="svgs/41bcab0d727085b60da5be9cac91ef85.svg?invert_in_darkmode" align=middle width=67.34178pt height=24.65759999999998pt/>. <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> overfits the training set if there is an alternative hypothesis <img src="svgs/375bd127b228e9401b2a8acaebe6eb67.svg?invert_in_darkmode" align=middle width=13.261215000000004pt height=24.716340000000006pt/> such that
+Stating this in a formal way, while a decision tree is a hypothesis of the relationship between the predictor attributes and the class. If $h$ is the hypotesis, we can define the error of the hypothesis on the training set $error_{train}(h)$, and the error of the hypothesis on the entire dataset $error_{\epsilon} (h)$. $h$ overfits the training set if there is an alternative hypothesis $h'$ such that
 
-<img src="svgs/70ee0a4a7ab5ba36813e99f0fa260b0c.svg?invert_in_darkmode" align=middle width=212.91550499999997pt height=24.716340000000006pt/>
+$error_{train}(h)<error_{train} (h')$ 
 
-<img src="svgs/4e99aab2122798e45732671cd954720a.svg?invert_in_darkmode" align=middle width=161.212755pt height=24.716340000000006pt/>
+$error_{\epsilon} (h) > error_{\epsilon}(h')$
 
 Overfitting is caused by two phenomenons, the **presence of noise** and the **lack of representative instances**.
 
@@ -130,7 +130,7 @@ A decision tree is not **extremely powerful**: it's a compromise, it works and i
 
 ### Characteristics of a decision tree
 
-It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: <img src="svgs/34109b622bca0e0d13a8a0d0cca985dd.svg?invert_in_darkmode" align=middle width=35.800050000000006pt height=24.65759999999998pt/>, where <img src="svgs/2ad9d098b937e46f9f58968551adac57.svg?invert_in_darkmode" align=middle width=9.471165000000003pt height=22.831379999999992pt/> is the height of the tree.
+It is a **non-parametric approach** to build classification models. Finding the best one is **NP complete**, while the heuristic algorithms allow to find sub-optimal solutions in reasonable time. The run time use of a DT to classify new instances is extremely efficient: $\mathcal{O}(h)$, where $h$ is the height of the tree.
 
 ### Choosing the attribute to split the dataset
 
