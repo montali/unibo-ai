@@ -66,7 +66,7 @@ So, we can always just forget about doing this, we shall directly study the eige
 
 If both eigenvalues are large, we are at a corner, if just one is we are on an edge:
 
-![Eigenvalues vs corners](/Users/simone/UniBO/unibo-ai/Computer Vision/res/eigenvalues-vs-corners.png)
+![Eigenvalues vs corners](res/eigenvalues-vs-corners.png)
 
 Harris finally proposed this function to be used:
 $$
@@ -74,7 +74,7 @@ C=\operatorname{det}(M)-k \cdot \operatorname{tr}(M)^{2}=\lambda_{1} \lambda_{2}
 $$
 where $k$ is a parameter, the trace is the sum of the elements along the main diagonal and the determinant is their product. So, the determinant and the trace are a function of the eigenvalues, so we can establish the cornerness and skipping the eigenvalues, just using the determinant and trace. 
 
-![Harris cornerness](/Users/simone/UniBO/unibo-ai/Computer Vision/res/harris-cornerness.png)
+![Harris cornerness](res/harris-cornerness.png)
 
 Therefore, we get **invariance to rotation**, since the eigenvalues are invariant (and thus is Harris cornerness function) and intensity changes invariance which is limited: yes to an additive bias (thanks to derivatives), no to multiplication by a gain factor.
 

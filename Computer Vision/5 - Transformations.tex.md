@@ -56,7 +56,7 @@ This is the most known operator. It uniformly spreads pixel intensities aceoss t
 
 To find the mapping, considering a continuous variable x and a strictlt monotonically increasing function T:
 
-![HE](/Users/simone/UniBO/unibo-ai/Computer Vision/res/HE.png)
+![HE](res/HE.png)
 
 
 
@@ -255,7 +255,7 @@ Let's start with an example. Let's say we had a filter built like this:
 
 A bilateral filter would smooth the *step*. 
 
-The function of the filter is the product of two Gaussian functions:![Screenshot 2020-11-06 at 14.38.19](/Users/simone/UniBO/unibo-ai/Computer Vision/res/bilinear-fomrula.png)
+The function of the filter is the product of two Gaussian functions:![Screenshot 2020-11-06 at 14.38.19](res/bilinear-fomrula.png)
 
 where $d_r$ is the distance between intensities, which is large only for those pixels $q$ such that $I_q$ is near to $I_p$.
 

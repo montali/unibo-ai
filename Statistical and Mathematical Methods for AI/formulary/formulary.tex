@@ -8,10 +8,9 @@
 
 \newcommand{\cfi}[1]{f_{x_{#1}}(\vec{x})}
 \newcommand{\pfi}[1]{\frac{\partial f}{\partial x_{#1}}(\vec{x})}
-\newcommand{\dfi}[1]{D_{x_{#1}}f(\vec{x})}
+
 \newcommand{\scfi}[2]{f_{x_{#1}x_{#2}}(\vec{x})}
 \newcommand{\spfi}[2]{\frac{\partial^2 f}{\partial x_{#1} \partial x_{#2}}(\vec{x})}
-\newcommand{\sdfi}[2]{D_{x_{#1}x_{#2}}f(\vec{x})}
 
 %opening
 \title{Formulary \\ \large Statistical and Mathematical Methods for Artificial Intelligence}
@@ -21,24 +20,31 @@
 	
 	%\maketitle
 	
-	\section{Error measurement}
+	\section{Numerical computation and finite numbers}
 	
 	Absolute error $E_x = \tilde{x} - x$
 	
 	Relative error $R_x = \dfrac{\tilde{x} - x}{x}$
 	
-	\section{Matrices}
+	$x \in \mathbb{R}, \ fl(x) \in \mathcal{F}(\beta,t,L,U) \Leftrightarrow fl(x) = \pm (d_1 \beta^-1 + d_2 \beta^-2 + \dots + d_t \beta^-t) \beta^p = \pm m \beta^p$ with $0 \le d_i \le \beta-1$, $\ L \le p \le U$ ($\beta$ "base", $t$ "precision", $m$ "mantissa", $p$ "exponent").
 	
-	$A \in \mathbb{R}^{nxn}; \vec{x}$ right eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}; \vec{x}$ left eigenvector $\Leftrightarrow A \vec{x} = \lambda \vec{x}$. $\lambda$ are eigenvalues.
+	$UFL = \beta^{L-1}$;
+	$\ OFL = \beta^U (1-\beta^{-t})$
+	
+	Machine precision with rounding by chopping: $\epsilon_{mach} = \beta^{1-t}$; rounding to nearest: $\epsilon_{mach} = \frac{1}{2}\beta^{1-t}$.
+	
+	\section{Eigenvectors and eigenvalues}
+	
+	$A \in \mathbb{R}^{nxn}; A \vec{x} = \lambda \vec{x} \Leftrightarrow \vec{x}$ eigenvector and $\lambda$ eigenvalue of $A$.
 	
 	$A$ triangular or symmetric $\Rightarrow$ eigenvalues are on the main diagonal.
 	
 	Spectrum $\sigma(A) = \{\vec{x}: \vec{x}$ eigenvector of $A\}$.
-	Spectral norm $\rho(A) = max(\lambda)$
+	Spectral norm $\rho(A) = \max \lvert \lambda \rvert$
 	
 	$C \in \mathbb{R}^{nxn}$ singular $\Leftrightarrow \det(C)=0$
 	
-	Similarity transformation: $A, C \in \mathbb{R}^{nxn}, \ C$ non-singular $\Rightarrow A$ and $C^{-1} A C$ are similar (same spectrum and eigenvalues).
+	Similarity transformation: $A, C \in \mathbb{R}^{nxn}; \ C$ non-singular; $A$ and $C^{-1} A C$ are similar (same spectrum and eigenvalues).
 	
 	
 	
@@ -48,7 +54,7 @@
 	
 	$A \in \mathbb{R}^{mxn} \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive semi-definite.
 	
-	$A \in \mathbb{R}^{mxn}$ with maximum rank $(rk(A)=min(m,n)) \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive definite.
+	$A \in \mathbb{R}^{mxn}$ with maximum rank $(rk(A)=\min(m,n)) \Rightarrow A^T A \in \mathbb{R}^{nxn}$ is positive definite.
 	
 	Spectral theorem: $A \in \mathbb{R}^{nxn}$ symmetric $\Rightarrow$ eigenvalues are real, eigenvectors create an orthogonal basis.
 	
@@ -57,16 +63,14 @@
 	Scalar product: $\vec{x},\vec{y} \in V=\mathbb{R}^n, \ \langle \vec{x},\vec{y} \rangle = \sum\limits_{i=1}^{n} x_i y_i$
 	
 	$\lVert \vec{x} \rVert \ge 0 \ \forall \vec{x} \in V$;
-	$\lVert \vec{x} \rVert=0 \iff \vec{x}=\vec{0}$
-	
-	$\lVert \alpha \vec{x} \rVert = \lvert \alpha \rvert \lVert \vec{x} \rVert \ \forall \alpha \in \mathbb{R}, \vec{x} \in V$
-	
+	$\lVert \vec{x} \rVert=0 \iff \vec{x}=\vec{0}$;	
+	$\lVert \alpha \vec{x} \rVert = \lvert \alpha \rvert \lVert \vec{x} \rVert \ \forall \alpha \in \mathbb{R}, \vec{x} \in V$;	
 	$\lVert \vec{x}+\vec{y} \rVert \le \lVert \vec{x} \rVert + \lVert \vec{y} \rVert \ \forall \vec{x},\vec{y} \in V$.
 	
 	p-norm: $p\in [1,\infty[, \ \lVert \vec{x} \rVert_p = \sqrt[p]{\sum_{i=1}^n \lvert x_i \rvert^p}$
 	\begin{itemize}
-		\item 1-norm (a.k.a. Manhattan norm): $\lVert \vec{x} \rVert_1 = \sum_{i=1}^n \lvert x_i \rvert$
-		\item 2-norm (a.k.a. Euclidean norm): $\lVert \vec{x} \rVert_2 = \sqrt{\sum_{i=1}^n \lvert x_i \rvert^2}$
+		\item 1-norm (a.k.a. Manhattan norm): $\lVert \vec{x} \rVert_1 = \sum\limits_{i=1}^n \lvert x_i \rvert$
+		\item 2-norm (a.k.a. Euclidean norm): $\lVert \vec{x} \rVert_2 = \sqrt{\sum\limits_{i=1}^n \lvert x_i \rvert^2} = \sqrt{\langle \vec{x},\vec{x} \rangle}$
 		\item Infinity-norm: $\lVert \vec{x} \rVert_\infty = \max{\lvert x_i \rvert}$
 	\end{itemize}
 
@@ -76,18 +80,20 @@
 	
 	Similar properties of vector norm, plus $\lVert A B \rVert \le \lVert A \rVert \lVert B \rVert \ \forall A,B\in \mathbb{R}^{nxn}$
 	 
-	Frobinius norm: $\lVert A \rVert_p = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}$
+	Frobinius norm: $\lVert A \rVert_f = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}$
 	
 	p-induced matrix norm: 
 	\begin{itemize}
-		\item 1-norm: $\lVert A \rVert_1 = \max_{j=1..n}\sum_{i=1}^m \lvert a_{ij} \rvert$
+		\item 1-norm: $\lVert A \rVert_1 = \max\limits_{j=1..n}\sum\limits_{i=1}^m \lvert a_{ij} \rvert$
 		\item 2-norm: $\lVert A \rVert_2 = \sqrt{\rho(A^T A)}$
-		\item Infinity-norm: $\lVert A \rVert_\infty = \max_{i=1..m}\sum_{v=1}^n \lvert a_{ij} \rvert$
+		\item Infinity-norm: $\lVert A \rVert_\infty = \lVert A^T \rVert_1 = \max\limits_{i=1..m}\sum\limits_{j=1}^n \lvert a_{ij} \rvert$
 	\end{itemize}
+
+	Condition number $K_p(A) = \lVert A \rVert_p \lVert A^{-1} \rVert_p$.  $\ A$ singular $\Leftrightarrow K_p(A) = \infty$. $\ K_2(A) = \dfrac{\lambda_{max}}{\lambda_{min}}$
 	
-	\section{Projections}
+	%\section{Projections} %TODO
 	
-	TODO
+	%TODO
 	
 	\section{Matrix decompositions / factorizations}
 	
@@ -121,13 +127,14 @@
 	
 	\section{Vector calculus}
 	
-	$f : \mathbb{R}^n \to \mathbb{R}^m$
+	Chain rule: $g(f(x))' = (g \circ f)'(x) = g'(f(x)) f'(x)$
 	
-	Partial derivative $\pfi{i}=\cfi{i}=\dfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\vec{x})}{h}}$
+	$f : \mathbb{R}^n \to \mathbb{R}$; 
+	Partial derivative $\pfi{i}=\cfi{i}=\lim_{h\to 0}{\frac{f(x_{1},...,x_{i}+h,...,x_{n})-f(\vec{x})}{h}}$
 	
 	Gradient $\nabla f(\vec{x}) = \left(\pfi{1},...,\pfi{n}\right)$
 
-	Second order partial derivative $\spfi{i}{j}=\scfi{i}{j}=\sdfi{i}{j}=\frac{\partial}{\partial x_{j}}\pfi{i}$
+	Second order partial derivative $\spfi{i}{j}=\scfi{i}{j}=\frac{\partial}{\partial x_{j}}\pfi{i}$
 	
 	Hessian $\nabla^2 f(\vec{x}) = H_{f}(\vec{x})=\left(\spfi{i}{j}\right)_{i,j=1,...,n} = \begin{pmatrix}
 		\scfi{1}{1} & \cdots & \scfi{n}{1} \\
@@ -135,14 +142,33 @@
 		\scfi{1}{n} & \cdots & \scfi{n}{n}
 	\end{pmatrix}$
 
+	\subsection{Useful identities for computing gradients}
+	
+	$\vec{x}, \vec{a}, \vec{b} \in \mathbb{R}^{n}$;
+	$X \in \mathbb{R}^{nxn}$;
+	
+	$\frac{\partial \vec{f}(X)^T}{\partial X} = \left(\frac{\partial \vec{f}(X)}{\partial X}\right)^T$;
+	
+	$\frac{\partial \vec{f}(X)^{-1}}{\partial X}  = - \vec{f}(X)^{-1} \frac{\partial \vec{f}(X)}{\partial X} \vec{f}(X)^{-1}$
+	
+	$\frac{\partial \vec{x}^T \vec{a}}{\partial \vec{x}} = \frac{\partial \vec{a}^T \vec{x}}{\partial \vec{x}} = \vec{a}^T$;
+	
+	$\frac{\partial}{\partial X} \vec{a}^T X \vec{b} \vec{a} = \vec{a}^T \vec{b}$;
+	
+	$\frac{\partial \vec(a)^T X \vec{a}}{\partial \vec{a}} = \vec{a}^T (X + X^T)$;
+	
+	$\frac{\partial \lVert a-Xb\rVert_2^2}{\partial X} = \frac{\partial \lVert Xb-a\rVert_2^2}{\partial X} = 2(Xb-a)^T X = 2 X^T (Xb-a) = 2(X^T X b - X^T a)$;
 
 	\section{Linear systems}
 	
-	%TODO
+	$A\vec{x} = \vec{b}$ with $A \in \mathbb{R}^{mxn}, \vec{x} \in \mathbb{R}^n, \vec{b} \in \mathbb{R}^m$.
+	$m=n \Leftrightarrow$ Square linear system.
+	
+	$A^{-1}$ exists $\iff \vec{x} = A^{-1} \vec{b}$
 	
 	\subsection{Least squares problem}
 	
-	$\vec{x}^*$ solution of $A \vec{x} = B \ \Rightarrow \ \vec{x}^* = \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - B \rVert^2$ (strictly convex, only one minimum which is global)
+	$\vec{x}^*$ solution of $A \vec{x} = \vec{b} \ \Rightarrow \ \vec{x}^* \approxeq \arg\min\limits_{\vec{x}\in \mathbb{R}}\lVert A \vec{x} - \vec{b} \rVert^2$ (strictly convex, only one minimum which is global).
 	
 	\section{Optimization}
 	
@@ -237,16 +263,46 @@
 	
 	Bayes theorem: $P(\text { Cause } | \text { Effect })=\dfrac{P(\text { Effect } | \text { Cause }) P( \text{ Cause })}{P(\text { Effect })}$
 	
-	\iffalse
-	\subsection{Conditional independence}
+	\subsection{Statistical and conditional independence}
 	
-	$$
-	P \models (A \perp B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A \mid B)=P(A) \hspace{1em} \Leftrightarrow \hspace{1em} P(B \mid A)=P(B) \hspace{1em} \Leftrightarrow \hspace{1em} P(A,B)=P(A)P(B)
-	\newline
-	$$$$
-	P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)
-	$$
-	\fi
+	$Cov(x,y)=0 \ \Leftrightarrow \ P \models (A \perp B) \ \Leftrightarrow \ P(A \mid B)=P(A) \ \Leftrightarrow \ P(B \mid A)=P(B) \ \Leftrightarrow \ P(A,B)=P(A)P(B)$
 	
+	$P \models (A \perp B \mid C) \Leftrightarrow P(A|B,C) = P(A,C) \Leftrightarrow P(B|A,C) = P(B,C) \Leftrightarrow P(A,B|C) = P(A|C)P(B|C)$
+	
+	\section{Learning}
+	
+	$N$ observations $\vec{x}_n\in\mathbb{R}^D$ and labels $y_n\in\mathbb{R}$; $X=[\vec{x}_1,\dots,\vec{x}_n]^T$; $\vec{y}=[y_1,\dots,y_n]^T$; parameters $\vec{\theta}\in\mathbb{R}^{D}$
+	
+	\subsection{Empirical Risk Minimization}
+	
+	Linear model $f(\cdot,\vec{\theta}):\mathbb{R}^D\to\mathbb{R}:f(\vec{x})=\vec{\theta}^T \vec{x} + \theta_0 = \theta_0 + \sum\limits_{d=1}^D \theta_d x_{n,d}$
+	
+	We search $\vec{\theta}^* : \ f(\vec{x}_n, \vec{\theta}^*) = \hat{y}_n \approx y_n \ \forall n=1,2,\dots,N$
+	
+	Loss function $l(y, \hat{y})$; Empirical risk $R_{emp}(f,X,\vec{y},\vec{\theta})=\dfrac{1}{N}\sum\limits_{n=1}^N l(y_n,f(\vec{x}_n,\vec{\theta}))$
+	
+	$\vec{\theta}^* = \min\limits_{\vec{\theta} \in \mathbb{R}^D} R_{emp}(f,X,\vec{y},\vec{\theta}) = \min\limits_{\vec{\theta} \in \mathbb{R}^D} \dfrac{1}{N} \sum\limits_{n=1}^N (y_n - \vec{x}_n^T\vec{\theta})^2 = \min\limits_{\vec{\theta} \in \mathbb{R}^D} \dfrac{1}{N} \lVert \vec{y} - X \vec{\theta} \rVert^2$
+	
+	\subsection{Maximum Likelihood Estimation (ML)}
+	
+	Family of probability densities $p(\vec{x}\mid\vec{\theta})$;
+	Loss $ \mathcal{L}_x(\vec{\theta}) = - \log p(\vec{x}\mid\vec{\theta})$;
+	$\ \theta^* = \min_{\vec{\theta}} \mathcal{L}_x (\vec{\theta})$
+	
+	%$p(y_n\mid\vec{x},\vec{\theta}) \sim \mathcal{N}(y_n\mid\vec{x}_n^T \theta, \sigma_2)$.
+	$p(\vec{y}\mid X,\vec{\theta})=\prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta}) \Rightarrow \mathcal{L}_x(\vec{\theta}) = - \log \left(\prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta})\right) = -\sum\limits_{n=1}^N \log p(y_n\mid\vec{x}_n,\vec{\theta})$
+	
+	$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow \vec{\theta}^* = \min\limits_{\vec{\theta}} \dfrac{1}{2\sigma^2} \lVert\vec{y}-X\vec{\theta}\rVert_2^2$
+	
+	\subsection{Maximum A Posteriori Estimation (MAP)}
+	
+	$p(\vec{\theta}\mid\vec{x}) = \dfrac{p(\vec{x}\mid\vec{\theta}) p(\vec{\theta})}{p(\vec{x})}$;	
+	$\ \vec{\theta}^* = \min\limits_{\vec{\theta}} -\log(p(\vec{\theta}\mid\vec{x})) =  \min\limits_{\vec{\theta}} - (\log (p(\vec{x}\mid\theta)) + \log(p(\theta)))$
+	
+	$p(\vec{y}|X,\vec{\theta}) = \prod\limits_{n=1}^N p(y_n\mid\vec{x}_n,\vec{\theta}) \Rightarrow TODO$
+	
+	%$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow p(\vec{\theta}\mid\vec{x}_n) =  min_{\vec{\theta}} \dfrac{1}{2\sigma^2}\sum\limits_{n=1}^N (y_n - \vec{\theta}^T\vec{x}_n)^2 + \sum\limits_{n=1}^N \theta_n^2$
+	$p(y_n\mid\vec{x}_n,\vec{\theta}) \sim \mathcal{N}(y_n - \vec{\theta}^T\vec{x}, \sigma^2) \Rightarrow \vec{\theta}^* = \min\limits_{\vec{\theta}} \dfrac{1}{2\sigma^2} \lVert\vec{y}-X\vec{\theta}\rVert_2^2 
+	 + \lVert\vec{\theta}\rVert_2^2$
 	
 \end{document}

@@ -26,8 +26,9 @@ Teacher: Elena Loli Piccolomini
 - [Numpy manual](https://numpy.org/doc/stable/)
 - [`numpy` reference](https://numpy.org/doc/stable/reference/index.html)
 - [`numpy.random` reference](https://numpy.org/doc/stable/reference/random/)
-- [MatPlotLib docs](https://matplotlib.org/contents.html)
-- [`matplotlib` reference](https://matplotlib.org/api/index.html)
+- [`numpy.linalg` reference](https://numpy.org/doc/stable/reference/routines.linalg.html)
+- [MatPlotLib docs](https://matplotlib.org/stable/contents.html)
+- [`matplotlib` reference](https://matplotlib.org/stable/api/)
 - [Scipy docs](https://docs.scipy.org/doc/scipy/reference/)
 - [`scipy.linalg` reference](https://docs.scipy.org/doc/scipy/reference/linalg.html)
 

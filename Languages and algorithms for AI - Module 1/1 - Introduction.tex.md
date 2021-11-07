@@ -173,7 +173,7 @@ Turing considers AI systems those which **act humanly**.
 
    Here, the following example provides inference on cancer: by analyzing lymph nodes, it provides insights on how possible it is that the patient has cancer. Here, a neural network is trained in order to recognize the patological situations. The machine has access to a very large set of labeled images. The first iteration has random parameters, therefore random predictions. Then, we take the provided answers, we compare them with the true ones and measure the error. Using some mathematical magic, and then tune the weights in order to reduce the error. Now, we can't derive rules from the model. There certainly are patterns in the data, but we can't know what these are. The machine identifies these patterns, extracts them and _create knowledge_: the machine is able to do something we can't do. The previous type had **rules** and you can check the reasoning made by the system, here you can't. The computation is the result of the computation of strongly connected small units. Once the network has been trained for a specific task, if you want to do something which is slightly different, you have to re-train the thing.
 
-   ![Subsymbolic computation](/Users/simone/UniBO/unibo-ai/Languages and Algorithms for AI/res/subsymbolic.png)
+   ![Subsymbolic computation](res/subsymbolic.png)
 
 These are both very important, the future of AI will probably consist on the integration of these two things
 

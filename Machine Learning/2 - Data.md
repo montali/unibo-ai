@@ -32,7 +32,7 @@ When dealing with **categorical data**, we divide it into:
 - **Nominal**, a set of labels, where the information allows us to distinguish a label from another one but not order them (for example, male/female)
 - **Ordinal**, where the values provide enough informations for a total ordering (for example, when labelling low/medium/high)
 
-![Data types](/Users/simone/UniBO/unibo-ai/Machine Learning/res/data-types.png)
+![Data types](res/data-types.png)
 
 **What are the possible transformations?** For **nominal** data, we can do every possible one-to-one correspondence, e.g. the Social Security Number can be arbitrarily reassigned. For **ordinals**, we must preserve the order, e.g. low/medium/high --> 1,2,3. For **intervals**, we can use linear functions. For **ratios** we can use *any* mathematical function.
 

@@ -463,7 +463,7 @@ Thus, we get $P=zA^{-1}p$ with $A^{-1}=\left[\begin{array}{rrr}
 
 Now, if we get a camera and move it to scan a static scene, knowing the rigid motion (rototranslation) between the two views, we get
 
-![Screenshot 2020-10-23 at 13.24.07](/Users/simone/UniBO/unibo-ai/Computer Vision/res/3d_crf.png)
+![Screenshot 2020-10-23 at 13.24.07](res/3d_crf.png)
 
 The transformation between the coordinates of the 3D point between the two systems is just a rototranslation!
 
