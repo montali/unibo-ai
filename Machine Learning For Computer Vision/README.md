@@ -5,6 +5,7 @@
  - [4. Image representation](4.md)
  - [5. Convolutional Neural Networks](5.md)
  - [6. CNN Architectures](6.md)
+ - [7. Regularization](7.md)
 
 ## Useful links and materials
  - [Course's page on Virtuale](https://virtuale.unibo.it/course/view.php?id=30714)
