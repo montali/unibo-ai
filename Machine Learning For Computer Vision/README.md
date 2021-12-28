@@ -7,7 +7,8 @@
  - [6. CNN Architectures](6.md)
  - [7. Regularization](7.md)
  - [8. Practical training and testing](8.md)
+ - [9. Object detection](9.md)
 
-## Useful links and papers
+## Useful links
  - [Course's page on Virtuale](https://virtuale.unibo.it/course/view.php?id=30714)
  - [Andrej Karpathy's _A Recipe for Training Neural Networks_](https://karpathy.github.io/2019/04/25/recipe/)
