@@ -18,10 +18,10 @@ _θ* =_ argmin<sub>θ∈Θ</sub> _L_(_θ,D<sup>train</sup>_).
 _L_ is called **loss function**. Defining it as the number of errors (**0-1 loss**) is not a good choice, because the number of errors is insensible to small (and sometimes also big) changes of the parameters, so the 0-1 loss does not tell us if we are "moving" in the "right" direction.
 
 ## Softmax function
-There are theoretical and practical reasons to **prefer a loss that tranforms the scores computed by the classifier into probabilities** and then perform maximum likelihood estimation of _θ_. The simplest way to transform random scores into a probability mass function over the space of classes is the **softmax** function. It apllies the exponentila function to scores, and then normalize the scores vector.
+There are theoretical and practical reasons to **prefer a loss that transforms the scores computed by the classifier into probabilities** and then perform maximum likelihood estimation of _θ_. The simplest way to transform random scores into a probability mass function over the space of classes is the **softmax** function. It applies the exponential function to scores, and then normalize the scores vector.
 
 ## Cross-entropy loss
-After we have applyied softmax to our scores, we can think our linear classifier as a family of probability mass functions over the classes given an image, indexed by the vector of parameters _θ_. THen, if we calculate the maximum likelihood estimation of _θ_ we obtain the cross-entropy loss.
+After we have applied softmax to our scores, we can think our linear classifier as a family of probability mass functions over the classes given an image, indexed by the vector of parameters _θ_. Then, if we calculate the maximum likelihood estimation of _θ_ we obtain the cross-entropy loss.
 
 ### Losses in PyTorch
 
