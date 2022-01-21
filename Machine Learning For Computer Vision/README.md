@@ -15,5 +15,8 @@
 
 ## Useful links
  - [Course's page on Virtuale](https://virtuale.unibo.it/course/view.php?id=30714)
+ - [Papers With Code - Computer Vision SOTAs](https://paperswithcode.com/area/computer-vision)
  - [Andrej Karpathy's _A Recipe for Training Neural Networks_](https://karpathy.github.io/2019/04/25/recipe/)
  - [A guide to convolution arithmetic for deep learning](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+ - [CLIP: Connecting Text and Images](https://openai.com/blog/clip/)
+ - [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://www.matthewtancik.com/nerf)
