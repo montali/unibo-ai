@@ -47,7 +47,7 @@ We want to avoid that our models assigns 0 probability to unseen words or contex
  - **Add-k smoothing**: It's a simple extension of the Laplace smoothing that reduce the amount of probability mass given to unseen events
    - need to optimize the hyperparameter _k_ (which is _0 < k < 1_)
    - useful for text classification
-   - does not work so well for language modelling
- - **Backoff**: If a N-gram is unseen, we can use the probability of the N-1-gram, in the worst case we look at the probability of the unigram _P(w<sub>i</sub>)_.
+   - does not work so well for language modeling
+ - **Backoff**: If an N-gram is unseen, we can use the probability of the N-1-gram, in the worst case we look at the probability of the unigram _P(w<sub>i</sub>)_.
  - **Interpolation**: It's mathod similar to backoff, that mix probability estimates from all n-gram estimators
  - **Kneser-Ney**: One of the most commonly used and best performing methods. It relies on **absolute discounting**

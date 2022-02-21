@@ -52,7 +52,7 @@ In Python you can use the library `re`.
 
 ## Text normalization
 
-Every NLP task needs to do text normalization. At first we have to define whatis a word: in the sentence _I do uh main-mainly business data processing._ ther are two kinds of **disfluencies**: fragments and filled pauses. Are these words? Do we have to consider them?
+Every NLP task needs to do text normalization. At first we have to define what a word is: in the sentence _I do uh main-mainly business data processing._ there are two kinds of **disfluencies**: fragments and filled pauses. Are these words? Do we have to consider them?
 
 Another problem are words that are the same **lemma** but different **wordforms**, like _cat_ and _cats_.
 
