@@ -21,12 +21,12 @@ Nov 9 is the deadline for type A group communication, otherwise automatically co
 #### Type A projects
 
 Ideally 2/3 members, accepted also 1 or 4.
-Presentation: about 7 minutes per person
+Presentation: about 7 minutes per person + some minutes for questions (in total about 15min if alone, 10min/person for groups)
 
-Necessary material:
+Necessary material (must be uploaded 48h before the exam):
 - Mandatory presentation
 - Mandatory repository
-- Usually a written report
+- Usually a written report (typically 5-10 pages without code)
 
 1. Nebula security domains: implement security-domain micro-segmentation for zero-trust security in the Nebula VPN software-defined-network tool; Nebula holds the certificates for local hosts, each containing already a list of security groups for the host, security domains should be implemented
 2. Deception component generator: create a honeypot (packaged as OCI image) simulating a DB / LDAP server / ...

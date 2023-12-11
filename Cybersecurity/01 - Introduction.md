@@ -91,6 +91,7 @@ All actors need:
 - infrastructure for deployment
 
 The full lifecycle of an attack is described by [Lockheed Martin's cyber kill chain](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html). This model is actually old by now actually, te steps are not linear anymore, they fork in a network.
+A more modern attack lifecycle is [MITRE's Att&ck matrix](https://attack.mitre.org/) which passes from 7 to 14 steps and for each of them lists multiple alternatives.
 
 ### Threat vector
 
@@ -159,4 +160,5 @@ Side channel attacks use secondary untracked or unmonitored connections to the o
 
 - NIST
 - Agenzia per la Cybersecurity Nazionale (ACN, Italy)
-- MITRE
+- MITRE (bought by Google)
+- ...
