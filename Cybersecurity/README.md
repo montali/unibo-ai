@@ -11,10 +11,10 @@ Two alternatives:
 - Type B: Written exam
 
 ### 2023/2024 AY
-Dec 18-20 type A (deadline for the project: dec 14)
-Jan 10 type A / B
-Feb 15 type A / B
-Next sessions type B
+- Dec 18-20 type A (deadline for the project: dec 14)
+- Jan 10 type A / B
+- Feb 15 type A / B
+- Next sessions type B
 
 Nov 9 is the deadline for type A group communication, otherwise automatically considered type B
 
@@ -28,6 +28,7 @@ Necessary material (must be uploaded 48h before the exam):
 - Mandatory repository
 - Usually a written report (typically 5-10 pages without code)
 
+Available project choice:
 1. Nebula security domains: implement security-domain micro-segmentation for zero-trust security in the Nebula VPN software-defined-network tool; Nebula holds the certificates for local hosts, each containing already a list of security groups for the host, security domains should be implemented
 2. Deception component generator: create a honeypot (packaged as OCI image) simulating a DB / LDAP server / ...
 3. Fake architecture orchestrator: create an architectural diagram (for example with [draw.io](https://draw.io)), the associated Terraform plan and the Docker images for its services (this last part can be done in collaboration with groups for the previous project)

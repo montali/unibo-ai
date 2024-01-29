@@ -1,10 +1,10 @@
 # Handling vulnerabilities
 
-Threats can do damage only if the target is vulnerable. **We can't eliminate threats** and we can't remove all vulnerabilities, we can only prioritize and handle vulnerabilities and mitigate damages.
+Threats can do damage only if the target is vulnerable. **We can't eliminate threats** and we can't remove all vulnerabilities, **we can only prioritize and handle vulnerabilities** and mitigate damages.
 
 Vulnerabilities does not affect only technology but the whole **attack surface**:
 
-- Internal people
+- **Internal people**
     - Managers
     - SysAdmins
     - Employees
@@ -12,7 +12,7 @@ Vulnerabilities does not affect only technology but the whole **attack surface**
     - Privilege abuse
     - Social media
     - Business Email Compromise
-- Technology
+- **Technology**
     - Employees' devices and apps installed on them
     - Data centers
         - Web servers and other front-facing technical infrastructure
@@ -23,7 +23,7 @@ Vulnerabilities does not affect only technology but the whole **attack surface**
     - User facing devices (POS, ATM, ...)
     - Lax or faulty physical and virtual access control
     - Missing or insecure backups
-- Supply chain
+- **Supply chain**
     - Cloud services
     - Operating systems and apps on devices
     - Libraries in software
@@ -35,12 +35,12 @@ Vulnerabilities does not affect only technology but the whole **attack surface**
 
 ## Causes of software vulnerabilities
 
-90% are due to software errors. Other causes include bad installation, bad configuration or usage of illegal or untrusted software.
+90% are due to **software errors**. Other causes include **bad installation**, **bad configuration** or usage of illegal or untrusted software.
 Vulnerabilities are introduced into software by error due to
 - time concerns when trying to deliver software to market with competition
 - lack of knowledge about secure programming and A&A (authentication & authorization) by developers
 
-Modern services have other security-related requirements beyond **Confidentiality**, **Integrity** and **Availability**:
+Modern services have other security-related requirements beyond Confidentiality, Integrity and Availability:
 - **Safety** for the user/worker
 - **Reliability**
 - **Scalability**
@@ -68,9 +68,9 @@ OWASP has a list of useful guides and tools: https://owasp.org/projects/
 Security logging and monitoring is fundamental for attack detection.
 
 MITRE has a lists of:
-- weaknesses (CWE, https://cwe.mitre.org)
-- vulnerabilities (CVE, https://cve.mitre.org)
-- attack patterns (CAPEC, https://capec.mitre.org)
+- weaknesses (**CWE**, https://cwe.mitre.org)
+- vulnerabilities (**CVE**, https://cve.mitre.org)
+- attack patterns (**CAPEC**, https://capec.mitre.org)
 
 ## Cryptography
 
@@ -87,11 +87,10 @@ One Time Pad algorithms ara a special category, secure only if the length of the
 ## Supply chain attacks
 
 Every organization has many suppliers (legal, consultants, cloud providers, software or hardware vendors, ...) that supply services and products that are deemed not part of the core business.
-The **"supply chain" (or "supply network")** includes all external factors introduced by suppliers (organizations, people, activities, information, ...). **"Tier 1" providers** are suppliers with a direct connection; **"tier 2" providers** are suppliers of tier 1 providers; and so on... . Each service provided by each tier has some vulnerabilities.
+The "**supply chain**" (or "supply network") includes all external factors introduced by suppliers (organizations, people, activities, information, ...). **"Tier 1" providers** are suppliers with a direct connection; **"tier 2" providers** are suppliers of tier 1 providers; and so on... . Each service provided by each tier has some vulnerabilities.
 
 It's often hard to monitor vulnerabilities in tiers beyond 1. For this reason supply chain is now considered the weakest link in cybersecurity (surpassing software and people).
 The introduction of IoT and automation in industry, medicine, ... and the convergence of IT with OT (Operations Technology) thanks to Industry 4.0 means this threat is now common in most industries.
-The preferred targets in supply chain attacks are secrets, e-commerce, home banking, intelligence targets and industrial secrets.
-Software supply chain is a particularly important vulnerability.
-Recently the USA administration required all federal suppliers to provide a **Software Bill Of Materials (SBOM)** and other requirements. European Union introduced the **Network and Information Security (NIS v2)** directive to establish national strategies and require special security requirements (like CSIRTs) on infrastructures (critical in v1, all in v2) and their suppliers.
+Software supply chain is a particularly relevant source of vulnerabilities.
+Recently the USA administration required all federal suppliers to provide a **Software Bill Of Materials (SBOM)** and other requirements. European Union introduced the **Network and Information Security (NIS v2)** directive to establish national strategies and require special security requirements (like CSIRTs; only critical infrastructures in v1, all infrastructure in v2) and their suppliers.
 

@@ -2,13 +2,13 @@
 
 1 + 3 phase approach:
 
-1.	Identification of the perimeter and resources to protect, resources available, constraints, ...
+1.	**Identification of the perimeter** and resources to protect, resources available, constraints, ...
 
 Step 2-3-4 (cycle): 
 
-2.	Prevention: should take 80% of the time, but we can't prevent everything
-3.	Detection: 
-4.	Response: If our service runs 24/7 on person isn't enough, someone should be always ready to triage the detected anomaly, mitigate the damage
+2.	**Prevention**: should take 80% of the time, but we can't prevent everything
+3.	**Detection** 
+4.	**Response**: If our service runs 24/7 on person isn't enough, someone should be always ready to triage the detected anomaly, mitigate the damage
 
 ## Vulnerabilities
 Technological vulnerabilities are easier to be fixed than human vulnerabilities.
@@ -29,6 +29,9 @@ CIA: Desired
 - Availability: Authorized entities should be able to access the data
 
 DAD: Undesired
+- Disclosure
+- Alteration
+- Destruction 
 
 ## Potential damage types
 
@@ -54,16 +57,16 @@ Focusing on human made threats we can also distinguish:
 Type of human perpetrator
 
 - Motivated by money (vast majority)
-  - nation state actors
+  - **nation state actors**
     - most dangerous
     - espionage, sabotage, social control
     - handled by homeland security, intelligence (e.g. CIA, NSA), army
     - mainly interested in critical infrastructures: energy, finance, healthcare, water (plus their suppliers!)
-  - advanced persistent threats (APT)
+  - **advanced persistent threats (APT)**
     - sophisticated targeted attacks on extended periods of time by professional attackers with significant resources
     - sometimes used as proxy by states or tolerated by states as long as they operate only non-friendly states
     - highly difficult to attribute and find links with states
-  - criminals
+  - **criminals**
     - not the most dangerous but the most likely for most people and organizations
     - target types
       - looking for "low hanging fruits" (many attacks with low payoff, for example small-medium enterprises)
@@ -71,15 +74,15 @@ Type of human perpetrator
     - vertically specialized competencies, trading results in criminal marketplaces and with data brokers selling the data for profit
     - beyond actors, includes facilitators (money laundering, ...) and criminal marketplace managers
     - some offer their competencies as a service, including assistance to customers
-  - specialized companies
+  - **specialized companies**
     - malware/exploit vendors, data brokers
     - usually they claim to work only for law enforcement, but even assuming this is true it's not necessarily always ethical
-  - competitors
-  - ex employees
+  - **competitors**
+  - **ex employees**
 - Motivated by ideology
-  - people fighting for an ideology (e.g. Anonymous)
-  - script kiddies
-  - pathological criminals (e.g. trying to spy on ex partners)
+  - **people** fighting for an ideology (e.g. Anonymous)
+  - **script kiddies**
+  - **pathological criminals** (e.g. trying to spy on ex partners)
 
 All actors need:
 - info about vulnerabilities
@@ -90,7 +93,7 @@ All actors need:
 - exploits
 - infrastructure for deployment
 
-The full lifecycle of an attack is described by [Lockheed Martin's cyber kill chain](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html). This model is actually old by now actually, te steps are not linear anymore, they fork in a network.
+The full lifecycle of an attack is described by [Lockheed Martin's **cyber kill chain**](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html). This model is actually old by now actually, the steps are not linear anymore, they fork in a network.
 A more modern attack lifecycle is [MITRE's Att&ck matrix](https://attack.mitre.org/) which passes from 7 to 14 steps and for each of them lists multiple alternatives.
 
 ### Threat vector
@@ -107,8 +110,8 @@ Threat vectors by target, in descending order of popularity as target:
 Psychology factors: trust, ideology, greed, ...
 
 Main types:
-  - Phishing
-  - Spear phishing (impersonating a colleague, boss or other trusted person)
+  - **Phishing**
+  - **Spear phishing** (impersonating a colleague, boss or other trusted person)
 
 #### Technology
 
@@ -123,29 +126,29 @@ Main types:
 
 Main types:
 
-- Trojan
-- Remote Access Trojan (for remote control)
-- Injection: unvalidated input allows to inject malicious behaviors into an application or web server
+- **Trojan**
+- **Remote Access Trojan** (for remote control)
+- **Injection**: unvalidated input allows to inject malicious behaviors into an application or web server
   - SQL injection
   - Cross site scripting (XSS)
   - OS command injection
   - Remote code execution
   - XML external entity injection (XXE)
-- Privilege escalation
+- **Privilege escalation**
   - Vertical (aka privilege elevation) / horizontal
-- Brute force
+- **Brute force**
 - Covert channel
   - A compromised machine in the internal network establishes a connection to a Command & Control external server 
   - The connection can also be an internal or external storage asynchronously read and written by the C&C server and the controlled machine 
-- Drive by download
+- **Drive by download**
   - Use browser (or other client software) vulnerabilities to automatically install software without the user consent
-- Reflection and amplification for DoS and DDoS
+- **Reflection and amplification for DoS and DDoS**
   - SYN flooding, smurfing, ...
   - Botnets controlled directly through vulnerabilities or rented from other criminals
 - Insider attacks
   - Deliberated / non deliberated (incompetence or lack of knowledge) / underestimation
   - Motivations: M&S = Money & Sex, MICES = Money, Ideology, Compromise, and Ego
-- Ransomware
+- **Ransomware**
 
 
 Challenges:
