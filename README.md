@@ -23,9 +23,11 @@ Notes monorepo for the UniBO Artificial Intelligence MSc. Don't count on me sinc
 - Combinatorial Decision Making and Optimization
   - [Module 1](Combinatorial%20Decision%20Making%20and%20Optimization%20-%20Module%201)
   - [Module 2](Combinatorial%20Decision%20Making%20and%20Optimization%20-%20Module%202)
-- [Natural Language Processing](https://github.com/montali/unibo-ai/blob/master/Natural%20Language%20Processing/README.md)
-- [Machine Learning for Computer Vision](https://github.com/montali/unibo-ai/blob/master/Machine%20Learning%20For%20Computer%20Vision/README.md)
-- [Complex Systems and Network Science](https://github.com/montali/unibo-ai/tree/master/Complex%20Systems%20and%20Network%20Science)
+- [Natural Language Processing](Natural%20Language%20Processing/README.md)
+- [Machine Learning for Computer Vision](Machine%20Learning%20For%20Computer%20Vision/README.md)
+- [Complex Systems and Network Science](Complex%20Systems%20and%20Network%20Science)
+- [Cybersecurity](Cybersecurity/README.md)
+- [Ethics in AI](Ethics%20in%20AI/README.md)
 
 ## Useful links
 

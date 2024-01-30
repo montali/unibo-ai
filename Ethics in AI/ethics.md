@@ -25,7 +25,7 @@ Morality may coincide, be enforced by or be against law, religion, tradition and
 
 # <u>Consequentialism</u>
 Thinks morality as an optimization problem to get the global highest utility. An action is morally required if and only if
-* it delivers that best outcome, relative to its alternative
+* it delivers the best outcome, relative to its alternatives
 * its good outcomes outweigh its negative outcomes to the largest extent
 * it produces the highest utility
 
@@ -39,8 +39,9 @@ Mill’s principle of utility: Actions are right in proportion as they tend to p
 
 Utilitarianism favors (modest) redistribution of wealth, since the same amount of money gives more utility to the poor than to the rich. The impact of redistribution on wealth generation however has to be considered. Wealth maximization (adopted by some economic approach) aims at maximizing the wealth in society regardless of distribution, going in contrast with utilitarianism.
 ### <u>Act utilitarianism</u>
-Do the action that maximizes utility. 
-* Should I give to the poor all that I above the minimum that allows me to survive?
+Do the action that maximizes utility.
+* Can individuals, or even AI systems, accurately calculate and optimize the outcomes of their actions? The availability of information for such calculations may be limited.
+* Should I give to the poor all that I have above the minimum that allows me to survive?
 * Should I give the same importance to everybody, regardless of their connection to me?
 * Is it OK to harm some people for the greater benefit of others? (Reprisals? Torture? Sadism?)
 ### <u>Rule utilitarianism</u>
@@ -71,9 +72,10 @@ Each of five patients are in need of a different organ, each of whom will die wi
 Certain actions are good or bad regardless of their consequences: what makes a choice right is its conformity with a moral norm which order or permits it, rather than its good of bad effect.
 
 Is it considered unethical to have preferences for oneself or one’s friends? The Golden Rule is often invoked as a guideline for ethical behavior (however its complex to apply it universally):
-    • Treat others as you would like others to treat you
-    • Do not treat others in ways that you would not like to be treated
-    • What you wish upon others, you wish upon yourself
+* Treat others as you would like others to treat you
+* Do not treat others in ways that you would not like to be treated
+* What you wish upon others, you wish upon yourself
+
 ## Kantian ethics
 **<u>Hypothetical imperatives</u>**: Moral guidelines that require us to do what fits our personal goals or desires.
 
@@ -103,18 +105,28 @@ A robot based on Kantian ethics would be consistent and impartial but may cat on
 Ross' **<u>Prima facie duties</u>**: rules we should follow because there is a moral reason in favor of doing the act, but one that can be outweighed by other (moral) reasons:
 * **Fidelity**: We should strive to keep promises and be honest and truthful.
 * **Reparation**: We should make amends when we have wronged someone else.
-* **Gratitude**: We should be grateful to others when they perform actions that
-benefit us and we should try to return the favour.
-* **Non injury (or non maleficence)**: We should refrain from harming others either
-physically or psychologically.
-* **Beneficence**: We should be kind to others and to try to improve their health,
-wisdom, security, happiness, and well being.
-* **Self improvement**: We should strive to improve our own health, wisdom, security,
-happiness, and well being.
-* **Justice**: We should try to be fair and try to distribute benefits and burdens
-equably and evenly.
+* **Gratitude**: We should be grateful to others when they perform actions that benefit us and we should try to return the favour.
+* **Non injury (or non maleficence)**: We should refrain from harming others either physically or psychologically.
+* **Beneficence**: We should be kind to others and to try to improve their health, wisdom, security, happiness, and well being.
+* **Self improvement**: We should strive to improve our own health, wisdom, security, happiness, and well being.
+* **Justice**: We should try to be fair and try to distribute benefits and burdens equably and evenly.
 
-<!-- TODO -->
+# Contractarianism
+
+### Social contract theories
+**In political theory** a societal arrangement is just if it has been (or would have been) accepted by free and rational people.
+**In moral theory (Shafer-Landau)** actions are morally right just because they are permitted by rules that free, equal, and rational people would agree to live by, on the condition that others obey these rules as well.
+
+**Rawls' theory of justice**: to ensue that social contracts are fair people should choose them under a "veil of ignorance" as if they didn't know their gender, social position interests talents, wealth, race, etc. Two principles should be applied:
+1. (with priority) Each person has an equal indefeasible claim to a fully adequate scheme of equal basic liberties, compatible with the same liberties for all. This includes freedom of conscience, freedom of association, freedom of speech, liberty of the person, and the right to vote, ...
+2. Social and economic inequalities are permissible only if they meet two conditions. First, they must be attached to offices and positions that are open to all under fair equality of opportunity. Second, they must work to the greatest benefit of the least-advantaged members of society, known as the difference principle.
+
+**Habermas' Discourse Ethics**: A rule of action or choice is justified, and thus valid, only if all those affected by the rule or choice could accept it in a reasonable discourse.
+A norm is valid when the foreseeable consequences and side effects of its general observance for the interests and value orientations of each individual could be jointly accepted by all concerned without coercion.
+
+# Virtue ethics
+
+Ethics should not focus on norms nor on consequences. An act is morally right just because it is one that a virtuous person. The right act is that that would result from the mix of the relevant virtues: honesty; loyalty; courage; impartiality, wisdom, fidelity, generosity, compassion, etc.
 
 -----
 <!-- Slides 4 -->
