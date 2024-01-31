@@ -1,6 +1,6 @@
 # Ethics in Artificial Intelligence
 
-<!-- Slides 1 -->
+<!-- Slides 0_L2SartorEthicsIntro.pdf -->
 
 ### Positive vs Critical morality
 **<u>Positive (conventional) morality</u>**: the moral rules and principles that are accepted in a society. "Positive" in this context does not necessarily mean that it's good but that it's actually in use and applied in the real world
@@ -21,17 +21,17 @@
 Morality may coincide, be enforced by or be against law, religion, tradition and/or self-interest.
 
 -----
-<!-- Slides 2 -->
+<!-- Slides 1_L2SartorEthicsConsequentilism.pdf -->
 
 # <u>Consequentialism</u>
-Thinks morality as an optimization problem to get the global highest utility. An action is morally required if and only if
+Thinks morality as an optimization problem to **get the global highest utility**. An action is morally required if and only if
 * it delivers the best outcome, relative to its alternatives
 * its good outcomes outweigh its negative outcomes to the largest extent
 * it produces the highest utility
 
 Various kinds (what is included in utility calculation and how?):
 ## <u>Utilitarianism</u>
-Mill’s principle of utility: Actions are right in proportion as they tend to promote happiness, wrong as they tend to produce the reverse of happiness. By happiness is intended pleasure, and the absence of pain; by unhappiness, pain, and the privation of pleasure.
+**Mill’s principle of utility**: Actions are **right in proportion as they tend to promote happiness**, wrong as they tend to produce the reverse of happiness. By happiness is intended pleasure, and the absence of pain; by unhappiness, pain, and the privation of pleasure.
 * Conceptually simple
 * Egalitarian (everybody’s utility counts in the same way)
 * Fits with some basic intuitions (making people happy is good, making them suffer is bad)
@@ -39,13 +39,13 @@ Mill’s principle of utility: Actions are right in proportion as they tend to p
 
 Utilitarianism favors (modest) redistribution of wealth, since the same amount of money gives more utility to the poor than to the rich. The impact of redistribution on wealth generation however has to be considered. Wealth maximization (adopted by some economic approach) aims at maximizing the wealth in society regardless of distribution, going in contrast with utilitarianism.
 ### <u>Act utilitarianism</u>
-Do the action that maximizes utility.
+Do the **action that maximizes utility**.
 * Can individuals, or even AI systems, accurately calculate and optimize the outcomes of their actions? The availability of information for such calculations may be limited.
 * Should I give to the poor all that I have above the minimum that allows me to survive?
 * Should I give the same importance to everybody, regardless of their connection to me?
 * Is it OK to harm some people for the greater benefit of others? (Reprisals? Torture? Sadism?)
 ### <u>Rule utilitarianism</u>
-Follow a social rule the general compliance with which would provide the highest utility.
+Follow a **social rule the general compliance with which would provide the highest utility**.
 * What about those exceptional cases in which the rule does not deliver?
 * What if you know that most people are not following the rule? Should we be honest if most people around as are dishonest?
 # Social dilemmas
@@ -66,28 +66,29 @@ Each of five patients are in need of a different organ, each of whom will die wi
 * In rule utilitarianism this would be partially solved as acting like this would make people stay away from hospitals and make life harder for everybody.
 
 -----
-<!-- Slides 3 -->
+<!-- Slides 2_SartorEthicsIntroDeontology.pdf -->
 
 # <u>Deontology</u>
-Certain actions are good or bad regardless of their consequences: what makes a choice right is its conformity with a moral norm which order or permits it, rather than its good of bad effect.
+Certain actions are good or bad regardless of their consequences: what makes a choice right is its **conformity with a moral norm** which order or permits it, rather than its good of bad effect.
 
-Is it considered unethical to have preferences for oneself or one’s friends? The Golden Rule is often invoked as a guideline for ethical behavior (however its complex to apply it universally):
-* Treat others as you would like others to treat you
-* Do not treat others in ways that you would not like to be treated
-* What you wish upon others, you wish upon yourself
+Issue: Is it considered unethical to have preferences for oneself or one’s friends? The **<u>Golden Rule</u>** is often invoked as a guideline for ethical behavior (however its complex to apply it universally):
+* **Treat others as you would like others to treat you**
+* **Do not treat others in ways that you would not like to be treated**
+* **What you wish upon others, you wish upon yourself**
 
 ## Kantian ethics
-**<u>Hypothetical imperatives</u>**: Moral guidelines that require us to do what fits our personal goals or desires.
+**<u>Hypothetical imperatives</u>**: Moral guidelines that require us to do **what fits our personal goals** or desires.
 
-**<u>Categorical imperative</u>**: moral guideline that moral principle that applies universally to all rational beings, regardless of personal wants and desires.
+**<u>Categorical imperative</u>**: moral guideline that moral principle that **applies universally to all rational beings**, regardless of personal wants and desires.
 
-Kant’s first formulation of the categorical imperative is the **<u>principle of universalizability</u>**: “Act only according to that maxim by which you can at the same time will that it should become a universal law”. A maxim is a subjective principle of action, an intention to perform an action for a certain reason.
-Landau’s test of universalizability:
+**Kant**’s first formulation of the categorical imperative is the **<u>principle of universalizability</u>**: "**Act only according to that maxim by which you can at the same time will that it should become a universal law**".
+A maxim is a subjective principle of action, an intention to perform an action for a certain reason.
+**Landau’s test of universalizability**:
 1. Formulate your maxim clearly state what you intend to do, and why you intend to do it.
 2. Imagine a world in which everyone supports and acts on your maxim.
 3. Then ask: Can the goal of my action be achieved in such a world?
 
-An alternative formulation of the categorical imperative is the **<u>principle of humanity</u>**: “so act that you treat humanity in your own person and in the person of everyone else always at the same time as an end and never merely as means”. This means that we and our tools should never treat people only as means, without considering their values and purposes. Rational beings capable of morality have a dignity and should not be treated as mere means to an end.
+An alternative formulation of the categorical imperative is the **<u>principle of humanity</u>**: "so act that you treat humanity in your own person and in the person of everyone else always at the same time as an end and never merely as means". Rational beings capable of morality have a **dignity** and should **never be treated as mere means to an end**, without considering their values and purposes.
 
 For Kant if we follow rationality, we have to be moral:
 1. If you are rational, then you are consistent.
@@ -117,11 +118,11 @@ Ross' **<u>Prima facie duties</u>**: rules we should follow because there is a m
 **In political theory** a societal arrangement is just if it has been (or would have been) accepted by free and rational people.
 **In moral theory (Shafer-Landau)** actions are morally right just because they are permitted by rules that free, equal, and rational people would agree to live by, on the condition that others obey these rules as well.
 
-**Rawls' theory of justice**: to ensue that social contracts are fair people should choose them under a "veil of ignorance" as if they didn't know their gender, social position interests talents, wealth, race, etc. Two principles should be applied:
+**Rawls' theory of justice**: to ensue that social contracts are fair people should choose them under a "**veil of ignorance**" as if they didn't know their gender, social position interests talents, wealth, race, etc. Two principles should be applied:
 1. (with priority) Each person has an equal indefeasible claim to a fully adequate scheme of equal basic liberties, compatible with the same liberties for all. This includes freedom of conscience, freedom of association, freedom of speech, liberty of the person, and the right to vote, ...
 2. Social and economic inequalities are permissible only if they meet two conditions. First, they must be attached to offices and positions that are open to all under fair equality of opportunity. Second, they must work to the greatest benefit of the least-advantaged members of society, known as the difference principle.
 
-**Habermas' Discourse Ethics**: A rule of action or choice is justified, and thus valid, only if all those affected by the rule or choice could accept it in a reasonable discourse.
+**Habermas' Discourse Ethics**: A **rule of action or choice is justified**, and thus valid, **only if all those affected by the rule or choice could accept it in a reasonable discourse**.
 A norm is valid when the foreseeable consequences and side effects of its general observance for the interests and value orientations of each individual could be jointly accepted by all concerned without coercion.
 
 # Virtue ethics
@@ -129,6 +130,77 @@ A norm is valid when the foreseeable consequences and side effects of its genera
 Ethics should not focus on norms nor on consequences. An act is morally right just because it is one that a virtuous person. The right act is that that would result from the mix of the relevant virtues: honesty; loyalty; courage; impartiality, wisdom, fidelity, generosity, compassion, etc.
 
 -----
-<!-- Slides 4 -->
+<!-- Slides 3_GS2012SlidesGameTheoryLaw2.pdf -->
+
+# Game theory
+
+<!-- TODO -->
+
+-----
+<!-- Slides 7_AI_GDPR02AIPersonalData_FL_2022.pdf -->
+
+# AI and Big Data risks
+
+<!-- TODO -->
+
+-----
+<!-- Slides 8_AI_GDPR03InGDPR_FL_short2022.pdf -->
+
+# GDPR
+
+The **<u>General Data Protection Regulation (GDPR)</u>** is focussed on the challenges emerging for the Internet and it does not contain the term "Artificial Intelligence", but it's relevant for AI.
+
+**<u>Article 4 - Definitions</u>**
+
+* **personal data**: any information relating to an identified or identifiable natural person ("**data subject**"), who can be identified **directly or indirectly**
+  * Pseudonymisation: data items that identify a person are substituted with a pseudonym, but the link between the pseudonym and the identifying data items can be retraced by using separate info. **Pseudonymised data still are personal data**.
+  * If technological developments make it possible to turn anonymised data into personal data (re-identification), such data are to be treated as personal data,
+  * it is not necessary that the data subject is identified with absolute certainty; a degree of probability may be sufficient
+  * AI systems may infer new information about data subjects. According to the ECJ, only the data on which the analysis was based as well as the final conclusion of the analysis were to be regarded as personal.
+* **processing**: any operation or set of operations which is performed on personal data or on sets of personal data, **whether or not by automated means**
+* **controller**: the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data
+* **processor**: a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller
+* **profiling**: automated processing of personal data to evaluate certain personal aspects relating to a natural person
+  * Since inferred data concerning individuals also are personal data under the GDPR data protection rights should in principle also apply
+* **consent** of the data subject: **freely given, specific, informed and unambiguous** indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her
+
+**<u>Article 3 - Territorial scope</u>**
+
+GDPR applies to the **processing of personal data**:
+* in the context of tha activities of an establishment of a **controller or a processor in the Union**, regardless of whether the processing takes place in the Union or not
+* of **data subjects who are in the Union** by a controller or processor not established in the Union
+
+**<u>Article 5 - Principles</u>**
+
+* Lawfulness, fairness and transparency
+* Purpose limitation
+* Data minimization
+* Data accuracy
+* Storage limitation
+* Integrity and confidentiality
+* Accountability principle
+
+**<u>Article 6 - Lawfulness of processing</u>**
+
+Processing shall be lawful only if and to the extent that at least one of the following applies:
+a. the data subject has given **consent** to the processing of his or her personal data for one or more **specific purposes**;
+b. processing is **necessary for the performance of a contract** to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract;
+c. processing is **necessary for compliance with a legal obligation** to which the controller is subject;
+d. processing is **necessary in order to protect the vital interests** of the data subject or of another natural person;
+e. processing is **necessary for the performance of a task carried out in the public interest** or in the exercise of official authority vested in the controller;
+f. processing is **necessary for the purposes of the legitimate interests pursued by the controller or by a third party**, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child.
+
+**<u>Article 7 - Conditions for consent</u>**
+* Where processing is based on consent, **the controller shall be able to demonstrate that the data subject has consented** to processing of his or her personal data.
+* If the data subject's consent is given in the context of a written declaration which also concerns other matters, the **request for consent shall be presented in a manner which is clearly distinguishable from the other matters**, in an intelligible and easily accessible form, using clear and plain language. Any part of such a declaration which constitutes an infringement of this Regulation shall not be binding.
+* **The data subject shall have the right to withdraw his or her consent at any time**. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.
+* When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.
+
+<!-- TODO -->
+
+-----
+<!-- Slides 9_Claudette_AI and Ethics_2022.pdf -->
+
+# 
 
 <!-- TODO -->
