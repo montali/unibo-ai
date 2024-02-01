@@ -150,7 +150,7 @@ Ethics should not focus on norms nor on consequences. An act is morally right ju
 
 The **<u>General Data Protection Regulation (GDPR)</u>** is focussed on the challenges emerging for the Internet and it does not contain the term "Artificial Intelligence", but it's relevant for AI.
 
-**<u>Article 4 - Definitions</u>**
+### <u>Article 4 - Definitions</u>
 
 * **personal data**: any information relating to an identified or identifiable natural person ("**data subject**"), who can be identified **directly or indirectly**
   * Pseudonymisation: data items that identify a person are substituted with a pseudonym, but the link between the pseudonym and the identifying data items can be retraced by using separate info. **Pseudonymised data still are personal data**.
@@ -164,13 +164,13 @@ The **<u>General Data Protection Regulation (GDPR)</u>** is focussed on the chal
   * Since inferred data concerning individuals also are personal data under the GDPR data protection rights should in principle also apply
 * **consent** of the data subject: **freely given, specific, informed and unambiguous** indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her
 
-**<u>Article 3 - Territorial scope</u>**
+### <u>Article 3 - Territorial scope</u>
 
 GDPR applies to the **processing of personal data**:
 * in the context of tha activities of an establishment of a **controller or a processor in the Union**, regardless of whether the processing takes place in the Union or not
 * of **data subjects who are in the Union** by a controller or processor not established in the Union
 
-**<u>Article 5 - Principles</u>**
+### <u>Article 5 - Principles</u>
 
 * Lawfulness, fairness and transparency
 * Purpose limitation
@@ -180,7 +180,7 @@ GDPR applies to the **processing of personal data**:
 * Integrity and confidentiality
 * Accountability principle
 
-**<u>Article 6 - Lawfulness of processing</u>**
+### <u>Article 6 - Lawfulness of processing</u>
 
 Processing shall be lawful only if and to the extent that at least one of the following applies:
 a. the data subject has given **consent** to the processing of his or her personal data for one or more **specific purposes**;
@@ -190,11 +190,21 @@ d. processing is **necessary in order to protect the vital interests** of the da
 e. processing is **necessary for the performance of a task carried out in the public interest** or in the exercise of official authority vested in the controller;
 f. processing is **necessary for the purposes of the legitimate interests pursued by the controller or by a third party**, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child.
 
-**<u>Article 7 - Conditions for consent</u>**
+### <u>Article 7 - Conditions for consent</u>
 * Where processing is based on consent, **the controller shall be able to demonstrate that the data subject has consented** to processing of his or her personal data.
 * If the data subject's consent is given in the context of a written declaration which also concerns other matters, the **request for consent shall be presented in a manner which is clearly distinguishable from the other matters**, in an intelligible and easily accessible form, using clear and plain language. Any part of such a declaration which constitutes an infringement of this Regulation shall not be binding.
 * **The data subject shall have the right to withdraw his or her consent at any time**. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.
 * When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.
+
+### <u>Article 17 - Right to erasure / right to be forgotten</u>
+The controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:
+* the personal data are **no longer necessary** in relation to the purposes for which they were collected or otherwise processed
+* the **data subject withdraws consent** on which the processing is based
+* the **data subject objects to the processing** and there are no overriding legitimate grounds for the processing
+* the personal data have been **unlawfully processed**
+
+### <u>Article 22 - Automated individual decision-making</u>
+The data subject shall have the right **not to be subject to a decision based solely on automated processing, including profiling**, which produces legal effects concerning him or her or similarly significantly affects him or her.
 
 <!-- TODO -->
 
