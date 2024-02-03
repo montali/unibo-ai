@@ -141,28 +141,75 @@ Ethics should not focus on norms nor on consequences. An act is morally right ju
 
 # AI and Big Data risks
 
-<!-- TODO -->
+AI can be misused to pursue economic interests in ways that are harmful to individuals and society:
+* **Eliminate or devalue the jobs** of those who can be replaced by machines
+* **Concentrating wealth** and favour economic models in which "the winner takes all"
+* New opportunities for **illegal activities** (cyber attacks, fraud, ...)
+* Pervasive **surveillance** (massive collection of personal data about individuals)
+* **Manipulation** (pervasive influence on the behavior of individuals using **fake news** or other means)
+  
+Governments can misuse AI to anticipate and control citizens' behavior and **restrict individual liberties**.
+
+## AI and <u>profiling</u>
+
+A profile is a set of correlated data that represents a (individual or collective) subject. AI increases the potential for profiling, namely, for **inferring information about individuals or groups**, and adopting assessments and decisions on that basis.
+The information so inferred may also be conditional, that is, it may consist in the propensity to react in a certain way to given inputs, potentially leading to influence and manipulation. This may negatively affect the individuals concerned.
+
+### The <u>Cambridge Analytica case</u>
+
+About 320'000 people registered as voters in the USA were invited to take a detailed online personality/political test (about 120 questions); they also had to provide access to their Facebook profile and would be rewarded with a small amount of money (from two to five dollars). They were told that their data would only be used for the academic research.
+
+Cambridge Analytica used the data about test-takers (FB likes, posts, ... + test answers) as a training set for building a model to profile their friends on FB, correlating the information in people's FB pages to predictions about psychology and political preferences.
+
+Then predictions were made with the model on people who did not take the test using the data available on their FB profiles. Based on these predictions potential voters who were likely to change their voting behavior were identified and targeted with ads without making them aware of the purpose of such messages.
+
+## <u>Surveillance Capitalism</u>
+
+Some authors have taken a positive view of the development of systems based on
+the massive collection of information, as integration of AI and Big Data enables increased efficiency. Recording data from economic transactions to construct user profiles allows to personalize interactions with users.
+
+**Polanyi’s three fictional commodities: land, labor, and money**. The dynamics of capitalism produces destructive tensions (exploitation, destruction
+of environment, financial crises) unless countervailing forces (law, politics and social organizations), intervene to counteract, moderate and mitigate excesses.
+
+**Fourth fictional commodity: human experience**. Surveillance capitalism turns human experience into recorded and analyzed behavior and marketable opportunities to anticipate and influence. Individuals can be subject to manipulation, deprived of control over their future and made unable to develop their individuality. Adeguate legal, political and social measures have not yet being developed (EU's GDPR and California CCPA are only a first step).
+
+Similar risks are posed by surveillance states (see for example the Chinese Social credit systems).
+
+## Differential treatment and AI bias
+
+In use cases like usage of health data (or health predictions based on profiling) for insurance evaluation, individuals who already are disadvantaged because of their medical conditions would suffer further disadvantage, being excluded from insurance or being subject to less favorable conditions.
+
+AI enables automated decision-making in domains that require complex choices, based on multiple factors and on non-predefined criteria.
+
+**<u>Disparate decision</u>**: Using prohibited/biased features (race, ethnicity, gender, ...) in AI models
+
+**<u>Disparate impact</u>**: Not using prohibited/biased features but getting a biased outcome or disproportionally effecting certain groups because (knowingly or not)
+* using features that are correlated with prohibited/biased features
+* using biased training data
+* using unbalanced training data
+* under-representation in the dataset of a group 
+
+In many cases, the best solution is enabling the affected individuals to request a human review of an automated decision as well as by favouring transparency.
 
 -----
 <!-- Slides 8_AI_GDPR03InGDPR_FL_short2022.pdf -->
 
 # GDPR
 
-The **<u>General Data Protection Regulation (GDPR)</u>** is focussed on the challenges emerging for the Internet and it does not contain the term "Artificial Intelligence", but it's relevant for AI.
+The European Union **<u>General Data Protection Regulation (GDPR)</u>** is focused on data protection challenges emerging for the Internet and it does not contain the term "Artificial Intelligence", but it's relevant for AI.
 
 ### <u>Article 4 - Definitions</u>
 
-* **personal data**: any information relating to an identified or identifiable natural person ("**data subject**"), who can be identified **directly or indirectly**
+* **<u>personal data</u>**: any information relating to an identified or identifiable natural person ("**<u>data subject</u>**"), who can be identified **directly or indirectly**
   * Pseudonymisation: data items that identify a person are substituted with a pseudonym, but the link between the pseudonym and the identifying data items can be retraced by using separate info. **Pseudonymised data still are personal data**.
   * If technological developments make it possible to turn anonymised data into personal data (re-identification), such data are to be treated as personal data,
   * it is not necessary that the data subject is identified with absolute certainty; a degree of probability may be sufficient
   * AI systems may infer new information about data subjects. According to the ECJ, only the data on which the analysis was based as well as the final conclusion of the analysis were to be regarded as personal.
-* **processing**: any operation or set of operations which is performed on personal data or on sets of personal data, **whether or not by automated means**
-* **controller**: the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data
-* **processor**: a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller
-* **profiling**: automated processing of personal data to evaluate certain personal aspects relating to a natural person
-  * Since inferred data concerning individuals also are personal data under the GDPR data protection rights should in principle also apply
-* **consent** of the data subject: **freely given, specific, informed and unambiguous** indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her
+* **<u>processing</u>**: any operation or set of operations which is performed on personal data or on sets of personal data, **whether or not by automated means**
+* **<u>controller</u>**: the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data
+* **<u>processor</u>**: a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller
+* **<u>profiling</u>**: automated processing of personal data to evaluate certain personal aspects relating to a natural person. Since inferred data concerning individuals also are personal data under the GDPR data protection rights should in principle also apply.
+* **<u>consent</u>** of the data subject: **freely given, specific, informed and unambiguous** indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her
 
 ### <u>Article 3 - Territorial scope</u>
 
@@ -182,19 +229,41 @@ GDPR applies to the **processing of personal data**:
 
 ### <u>Article 6 - Lawfulness of processing</u>
 
-Processing shall be lawful only if and to the extent that at least one of the following applies:
-a. the data subject has given **consent** to the processing of his or her personal data for one or more **specific purposes**;
-b. processing is **necessary for the performance of a contract** to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract;
-c. processing is **necessary for compliance with a legal obligation** to which the controller is subject;
-d. processing is **necessary in order to protect the vital interests** of the data subject or of another natural person;
-e. processing is **necessary for the performance of a task carried out in the public interest** or in the exercise of official authority vested in the controller;
-f. processing is **necessary for the purposes of the legitimate interests pursued by the controller or by a third party**, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child.
+Processing shall be lawful only if and to the extent that at least one of the following **legal bases** applies:
+* the data subject has given **consent** to the processing of his or her personal data for one or more **specific purposes**;
+* processing is **necessary for the performance of a contract** to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract;
+* processing is **necessary for compliance with a legal obligation** to which the controller is subject;
+* processing is **necessary in order to protect the vital interests** of the data subject or of another natural person;
+* processing is **necessary for the performance of a task carried out in the public interest** or in the exercise of official authority vested in the controller;
+* processing is **necessary for the purposes of the legitimate interests pursued by the controller or by a third party**, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child.
 
 ### <u>Article 7 - Conditions for consent</u>
 * Where processing is based on consent, **the controller shall be able to demonstrate that the data subject has consented** to processing of his or her personal data.
 * If the data subject's consent is given in the context of a written declaration which also concerns other matters, the **request for consent shall be presented in a manner which is clearly distinguishable from the other matters**, in an intelligible and easily accessible form, using clear and plain language. Any part of such a declaration which constitutes an infringement of this Regulation shall not be binding.
 * **The data subject shall have the right to withdraw his or her consent at any time**. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.
 * When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.
+
+### <u>Article 13 and 14 - Information on automated decision making</u>
+The controller has the **obligation to provide**:
+* information on the **existence of automated decision-making**, including profiling
+* meaningful information about the **logic involved**, as well as the significance and the envisaged consequences of such processing for the data subject
+
+The most basic information about the decision system would be:
+* The **input data**
+* Whether different data items are favoring or disfavoring the outcome
+* The **target values** that the system is meant to compute
+* The **envisaged consequence** of the automated assessment/decision
+
+With AI models this might require **explainable AI** for
+* **model explanation**: global explanation of the model
+* **model inspection**: representation of specific properties of the model
+* **outcome explanation**: account of the outcome of the model given some specific inputs
+
+Explanation techniques include:
+* **Contrastive explanation**: what input values made the difference in a decision
+* **Selective explanation**: most relevant factors
+* **Causal explanation**: focus on causes rather than mere statistical correlations
+* **Social explanation**: tailoring of information for the recipient comprehension capacities
 
 ### <u>Article 17 - Right to erasure / right to be forgotten</u>
 The controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:
@@ -204,13 +273,59 @@ The controller shall have the obligation to erase personal data without undue de
 * the personal data have been **unlawfully processed**
 
 ### <u>Article 22 - Automated individual decision-making</u>
-The data subject shall have the right **not to be subject to a decision based solely on automated processing, including profiling**, which produces legal effects concerning him or her or similarly significantly affects him or her.
+The data subject shall have the right **not to be subject** (not only to object!) **to a decision based solely on automated processing, including profiling, which produces legal effects** concerning him or her or similarly significantly affects him or her.
+Necessary conditions for the application of this article:
+* A decision that has legal or anyway significant effect must be taken
+* It must be **solely** based on automated processing
+* It must include profiling
+* The automated decision is not necessary for the performance of a contract between subject and controller (example: a human decision does not require an unreasonable long time)
+* The subject has not given explicit consent
 
-<!-- TODO -->
+The data subject does not need to invoke specific grounds when objecting to processing for direct marketing purposes, this is particularly significant for the self-protection of data subjects.
+
+### <u>Article 32 - Security of processing</u>
+
+The processor shall implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk, including as appropriate:
+* the pseudonymization and encryption of personal data
+* the ability to ensure the ongoing confidentiality, integrity, availability
+and resilience of processing systems and services
+* the ability to restore the availability and access to personal data in a
+timely manner in the event of a physical or technical incident
+* a process for regularly testing, assessing and evaluating the
+effectiveness of technical and organizational measures for ensuring the
+security of the processing
 
 -----
 <!-- Slides 9_Claudette_AI and Ethics_2022.pdf -->
 
-# 
+# <u>Claudette</u>
 
-<!-- TODO -->
+http://claudette.eui.eu/ , AI-based **citizen empowering technology** to automatically extract, categorizing and **summarizing information from Terms of Services and Privacy Policies**. Assists users in processing and understanding their contents, automatically **detecting potentially unfair clauses**.
+
+Potentially unfair clauses:
+* the consumer is bound by the Terms of Service simply by visiting the website or by downloading the app
+* the consumer consents to the privacy policy simply by using the service
+* the provider will never be liable for any action taken by other people or damages incurred by the computer because of malware
+* arbitration is mandatory before the case can go to court and should take place in a state other then the state of consumer’s residence
+
+Clearly unfair clauses:
+* any judicial proceeding takes a residence away (i.e. in a different country chosen by the provider)
+* the provider will never be liable for physical injuries (health/life), gross negligence or intentional damage
+* arbitration is not fully optional before the case can go to court
+
+**Detection + Sentence classification (8 possibile unfair clause types)** model trained on a corpus of over 100 manually annotated ToS. On average more than 80% of potentially unfair clauses is found.
+
+### GDPR expansion
+
+Multilingual expansion with extra checks on Privacy Policies for GDPR compliance:
+* **Comprehensiveness of information**: should contain all the information required by [articles 13 and 14 of the GDPR](#article-13-and-14---information-on-automated-decision-making), for example:
+  * purposes of the processing for which the personal data are intended
+  * Categories of personal data concerned
+* **Clarity of expression**: should be framed in an understandable and precise language. Example of violations:
+  * Conditional Terms: The performance of a stated action or activity
+is dependent on a variable trigger
+  * Generalization: terms that vaguely abstract information practices using contexts that are unclear (ex. typically, generally, ...)
+  * Modality: modal verbs, adverbs and non specific adjectives, which create uncertainty with respect to actual action (ex. may, might, ...)
+  * Non specific Numeric quantifiers: creates ambiguity as to the actual measure (ex. certain, some, ...)
+* **Substantive compliance**: should only allow for processing of personal data compliant with the GDPR. Example of violation:
+  * Notice of policy change is not given or given but without requiring a new consent
