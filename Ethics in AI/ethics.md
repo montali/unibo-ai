@@ -127,7 +127,7 @@ A norm is valid when the foreseeable consequences and side effects of its genera
 
 # Virtue ethics
 
-Ethics should not focus on norms nor on consequences. An act is morally right just because it is one that a virtuous person. The right act is that that would result from the mix of the relevant virtues: honesty; loyalty; courage; impartiality, wisdom, fidelity, generosity, compassion, etc.
+Ethics should not focus on norms nor on consequences. An act is morally right just because it is one that a virtuous person. The right act is that that would result from the mix of the relevant virtues: honesty, loyalty, courage, impartiality, wisdom, fidelity, generosity, compassion, etc.
 
 -----
 <!-- Slides 3_GS2012SlidesGameTheoryLaw2.pdf -->
@@ -140,7 +140,7 @@ $X = x_1, x_2, \dots, x_n; $
 
 Reflexivity, completeness & transitivity -->
 
-<!-- TODO -->
+TODO
 
 -----
 <!-- Slides 5_L1SartorEthicsAITrustworthyAI.pdf -->
@@ -195,6 +195,28 @@ Particular attention must be paid to situations involving children or vulnerable
     * Minimization and reporting of negative impact
     * Trade offs should be addressed in a rational and methodological manner
     * Accessible mechanisms should be foreseen that ensure adequate redress (compensation/remediation)
+
+-----
+<!-- Slides 6_GS2021HumanRightsAI.pdf -->
+
+# Human rights
+
+Primary ethical demands. Examples:
+* **Freedom and dignity**: All human beings are born free and equal in dignity and rights
+* Right to **life, liberty and security**
+* Right to **equality and nondiscrimination**
+* Right to **privacy**
+* Right to **property**
+* Freedom of **assembly and association**
+* Right to an effective remedy by tribunals for his fundamental rights
+* Right to a **fair and public hearing** by an independent and impartial tribunal in the determination of his rights and obligations and of any criminal charge against him.
+* **Presumption of innocence until proven guilty** according to law in a public trial at which he has had all the guarantees necessary for his defense
+* Freedom of opinion, expression and information
+* Right to **take part in government** (directly or through freely chosen representatives)
+* Right to **social security**
+* Right to **work**
+* Right to **education**
+* Right to **culture**
 
 -----
 <!-- Slides 7_AI_GDPR02AIPersonalData_FL_2022.pdf -->
@@ -256,9 +278,34 @@ In many cases, the best solution is enabling the affected individuals to request
 
 # Fairness in algorithmic decision
 
-<!--* Equal and just distribution of benefits and costs
+* Equal and just distribution of benefits and costs
 * Individuals and groups free from unfair bias, discrimination and stigmatization
-* AI decision making: informational fairness + content fairness of inferences-->
+* AI decision making: informational fairness + content fairness of inferences
+
+### <ins>COMPAS</ins> and the Lomis case
+
+Risk assessment software to determine the risk of recidivism and appropriate correctional treatment, based on statistical algorithms. Input: 137-question multiple-choice test, prior criminal history, education, drug abuse, employment status, ... . Output: classification to low/medium/high risk.
+
+In 2013 E. Loomis was charged with driving a stolen vehicle and fleeing from police. The investigation that included the COMPAS risk assessment, he was classified at high risk for recidivism and sentenced to 6 years imprisonment.
+The decision was appealed by Loomis for violation of due process rights, COMPAS discriminating on race and violation to the right to individualized decision.
+In 2016 the Supreme Court of Wisconsin rejected all defendant’s arguments:
+* Statistical algorithms do not violate the right to individualized decisions if used to enhance a judge's evaluation of other evidence in the formulation of an individualized sentencing
+* The prohibition to base decisions solely on risk scores and the obligation to motivate are safeguards of the defendant’ rights
+* Considering gender is necessary to achieve statistical accuracy
+* Judges should be informed on the debate concerning COMPAS race discrimination
+
+In 2016 ProPublica evaluated the accuracy and fairness of COMPASS on 11'757 defendants:
+* Moderate-Low Predictive accuracy (61.2%)
+* Black defendants were predicted at a higher risk than they actually
+were (probability of high-risk misclassification: 45% blacks vs. 23% whites)
+* White defendants were often predicted to be less risky than they were (probability of low-risk misclassification: 48% whites vs. 28% blacks).
+
+Taking 2000 defendants divided in two 1000-people groups with similar characteristics, using COMPAS and applying the SAPMOC model for evaluating fairness yields these results:
+* **Statistical parity**: Each group should have an equal proportion of positives and negatives predictions (COMPAS fails)
+* **Equality of opportunity**: The members of each group, which share the same features, should be treated equally in equal proportion (COMPAS fails)
+* **Calibration**: The proportion of correct predictions should be equal within each group and with regard to each class (COMPAS succeeds)
+* **False rate / Conditional use error**: The proportion between FP (FN) and the total amount of positive (negatives) predictions should be equal for the 2 groups (COMPAS succeeds)
+* **Treatment equality**: The ratio between errors in positive and negative predictions should be equal in all groups (COMPAS fails)
 
 -----
 <!-- Slides 8_AI_GDPR03InGDPR_FL_short2022.pdf -->
