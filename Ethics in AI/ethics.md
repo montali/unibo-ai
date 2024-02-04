@@ -134,7 +134,67 @@ Ethics should not focus on norms nor on consequences. An act is morally right ju
 
 # Game theory
 
+<!--## Rationality as maximization of preference-satisfaction
+
+$X = x_1, x_2, \dots, x_n; $
+
+Reflexivity, completeness & transitivity -->
+
 <!-- TODO -->
+
+-----
+<!-- Slides 5_L1SartorEthicsAITrustworthyAI.pdf -->
+
+# <ins>Ethics guidelines for trustworthy AI</ins>
+
+Framework for trustworthy AI [published by an European Commission expert group](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai) (critical ethics, not legally binding).
+
+## <ins>Chapter 1 - Ethical principles</ins>
+
+1. **Respect for human autonomy**: Humans interacting with AI systems must be able to keep full and effective self determination over themselves, and be able to partake
+in the democratic process.
+2. **Prevention of harm**: AI systems should neither cause nor exacerbate harm or otherwise adversely affect human beings. This entails the protection of human dignity as well as mental and physical integrity.
+3. **Fairness**
+    * equal and just distribution of both benefits and costs
+    * individuals and groups are free from unfair bias, discrimination and stigmatization
+    * Promoting equal opportunity in terms of access to education, goods, services and technology
+    * Never leading to people being deceived or unjustifiably impaired in their freedom of choice
+4. **Explicability**
+    * processes should be transparent
+    * AI system capabilities and limitations should be clearly communicated to stakeholders throughout its lifecycle, facilitating traceability and auditability
+    * Decisions should be explainable to those directly and indirectly affected; if not possible, other explicability measures may be required
+
+Particular attention must be paid to situations involving children or vulnerable groups or characterized by asymmetries of power or information.
+
+## <ins>Chapter 2 - Key requirements</ins>
+
+1. **Human agency and oversight**
+    * The system should respect and support fundamental human rights
+    * Users should be able to make informed autonomous decisions
+    * Human oversight through human in the loop (HITL), human on the loop (HOTL), or human in command (HIC) and/or public controls
+    * AI systems should reliably behave as intended while minimizing unintentional and unexpected harm and preventing unacceptable harm.
+2. **Technical robustness and safety**
+    * Security, fall back plans and general safety
+    * Accuracy (ability to make correct judgments)
+    * Reliability and reproducibility
+3. **Privacy and data governance**
+    * Respect for privacy throughout the lifecycle
+    * Quality and integrity of data (no harmful biases, inaccuracies, errors and mistakes or malicious data)
+4. **Transparency**
+    * Traceability: datasets and processes should be documented
+    * Explainability: technical processes and related human decisions should be explainable
+    * Communication: Humans have the right to be informed that they are interacting with an AI system.
+5. **Diversity, non-discrimination and fairness**
+    * Prevent unintended (in)direct prejudice and discrimination against certain groups of people
+    * Accessibility and universal design: designed in a way that allows all people to use it, regardless of their age, gender, abilities or characteristics
+6. **Societal and environmental well-being**
+    * Sustainability and environmental friendliness
+    * Effects of on individuals, groups and society (especially on democracy) must be monitored and considered
+7. **Accountability**
+    * Auditability: enable Enablement of the assessment of algorithms, data and design processes
+    * Minimization and reporting of negative impact
+    * Trade offs should be addressed in a rational and methodological manner
+    * Accessible mechanisms should be foreseen that ensure adequate redress (compensation/remediation)
 
 -----
 <!-- Slides 7_AI_GDPR02AIPersonalData_FL_2022.pdf -->
@@ -190,6 +250,15 @@ AI enables automated decision-making in domains that require complex choices, ba
 * under-representation in the dataset of a group 
 
 In many cases, the best solution is enabling the affected individuals to request a human review of an automated decision as well as by favouring transparency.
+
+-----
+<!-- Slides 10_Fairness.pdf -->
+
+# Fairness in algorithmic decision
+
+<!--* Equal and just distribution of benefits and costs
+* Individuals and groups free from unfair bias, discrimination and stigmatization
+* AI decision making: informational fairness + content fairness of inferences-->
 
 -----
 <!-- Slides 8_AI_GDPR03InGDPR_FL_short2022.pdf -->
