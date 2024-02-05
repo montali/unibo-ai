@@ -135,22 +135,72 @@ Ethics should not focus on norms nor on consequences. An act is morally right ju
 -----
 
 <!-- Slides 3_GS2012SlidesGameTheoryLaw2.pdf -->
-# Game theory
+# <ins>Game theory</ins>
 
-Rationality as maximization of preference-satisfaction: given a set of alternatives $X = x_1, x_2, \dots, x_n$ the agent has a preference $x \succsim y$ ("x is weakly preferred to y").
+**Rationality as maximization of preference-satisfaction**: given a set of alternatives $X = x_1, x_2, \dots, x_n$ the agent has a preference $x \succsim y$ ("x is weakly preferred to y").
 
-$x_i \succ x_j \iff x_i \succsim x_j, x_j \nsucceq x_i$
+$x_i \succ x_j \iff x_i \succsim x_j \land x_j \nsucceq x_i$
 
-$x_i \approx x_j \iff x_i \succsim x_j, x_j \succeq x_i$
+$x_i \approx x_j \iff x_i \succsim x_j \land \space x_j \succeq x_i$
 
-Reflexivity, completeness & transitivity 
+Multiple  definitions of **rationality** exist, it's often described as:
+* choosing the most preferred option (the option that has a highest utility)
+* the choice reveals consistent preferences:
+  * **Reflexivity**: $\forall x_i \space x_i \succsim x_i$ (every alternative is valuable as much as itself)
+  * **Completeness**: $\forall x_i \space \forall x_j \space x_i \succsim x_j \lor x_j \succsim x_i$ (all alternatives are comparable: either xi is at least as valuable as xj or xj is at least as valuable as xi)
+  * **Transitivity**: $\forall x_i \space \forall x_j \space x_i \succsim x_j \land x_j \succsim x_k \rArr x_i \succsim x_k$
 
+An **<ins>utility function</ins>** $u: X \rarr \mathbb{R}$ associates to each alternativa a number such that $\forall x_i \space \forall x_j \space x_i \succsim x_j \iff u(x_i) \ge u(x_j)$ and $x_i \succ x_j \iff u(x_i) \gt u(x_j)$. Ordinal utilities reflect only the order of preference, cardinal utilities reflect also the importance of the preference.
+
+**Expected utility** of an action: utility of each alternative result of the action, multiplied for the probability of that consequence.
+
+Given a set of players $N = p_1, p_2, \dots, p_n$ and for each player a set of available actions $A_{p_i}$ the set of action profiles A contains the combinations of actions of the players. Each player has a payoff function that associates each action profile to a number. With two player these can be represented on a table, for example:
+
+$N = \{Row,Col\}$
+
+$A_{Row} = A_{Col} = \{flic,floc\}$
+
+$A = \{(flic_{Row},flic_{Col}), \space (flic_{Row},floc_{Col}), \space (floc_{Row},flic_{Col}), \space (floc_{Row},floc_{Col})\}$
+
+$u_{Row}(flic_{Row},flic_{Col})=1 , \space u_{Row}(flic_{Row},floc_{Col})=0, \space u_{Row}(floc_{Row},flic_{Col})=0 , \space u_{Row}(floc_{Row},floc_{Col})=1$
+
+R \ C | flic | floc
+------|------|------
+flic  | 1, 1 | 0, 0
+floc  | 0, 0 | 1, 1
 
 ### Prisoner dilemma
 
-R\C             | Confess | $\lnot$ Confess
+Scenario that involves two individuals who have been arrested and are being held in separate cells.
+* if both betray each other and cooperate with the prosecution, they each receive a moderate punishment
+* if both remain silent and cooperate with each other, they both receive a lighter sentence
+* if one betrays while the other remains silent, the betrayer goes free while the silent one receives a harsh punishment
+
+R \ C           | Confess | $\lnot$ Confess
 ----------------|---------|--------------
 Confess         | -3, -3  | 0, -4
 $\lnot$ Confess | -4, 0   | -1, -1
 
-TODO
+
+It illustrates the conflict between cooperation and self-interest between countries, businesses, traffic, ... .
+
+### Nash equilibrium
+
+A strategy profile $(a_1, a_2, \dots, a_n)$ where each $a_i$ is the strategy of player $p_i$, represents a Nash equilibrium, if no player could improve its payoff by changing its strategy alone (when the other players continue to play the actions in the profile). This implies that each player’s action in the profile is the best response to the other actions in the profile.
+
+### Extensive form game
+
+A game is specified by indicating
+* the players
+* when each player can act
+* what choices are available to each player when that player can act
+* what each player knows about the other players moves
+* the payoffs for each combination (sequence) of actions
+
+```mermaid
+flowchart TD;
+    A -->|Lender does not loan| B[(0,0)]
+    A -->|Lender loans| C
+    C -->|Debtor defaults| D[(-100,110)];
+    C -->|Debtor pays| E[(5,5)];
+```
