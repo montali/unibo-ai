@@ -24,14 +24,16 @@ Morality may coincide, be enforced by or be against law, religion, tradition and
 <!-- Slides 1_L2SartorEthicsConsequentilism.pdf -->
 # <ins>Consequentialism</ins>
 
-Thinks morality as an optimization problem to **get the global highest utility**. An action is morally required if and only if
+Theory that says whether something is good or bad depends on its outcomes, more specifically an action is morally required iff:
 * it delivers the best outcome, relative to its alternatives
 * its good outcomes outweigh its negative outcomes to the largest extent
 * it produces the highest utility
 
-Various kinds (what is included in utility calculation and how?):
+Various kinds that define what are the good and bad things to be maximize, what is included in utility calculation and how:
+
 ## <ins>Utilitarianism</ins>
-**Mill’s principle of utility**: Actions are **right in proportion as they tend to promote happiness**, wrong as they tend to produce the reverse of happiness. By happiness is intended pleasure, and the absence of pain; by unhappiness, pain, and the privation of pleasure.
+
+Thinks morality as an optimization problem to **get the global highest utility**. **Mill’s principle of utility**: Actions are **right in proportion as they tend to promote happiness**, wrong as they tend to produce the reverse of happiness. By happiness is intended pleasure, and the absence of pain; by unhappiness, pain, and the privation of pleasure.
 * Conceptually simple
 * Egalitarian (everybody’s utility counts in the same way)
 * Fits with some basic intuitions (making people happy is good, making them suffer is bad)
@@ -149,9 +151,10 @@ Multiple  definitions of **rationality** exist, it's often described as:
 * the choice reveals consistent preferences:
   * **Reflexivity**: $\forall x_i \space x_i \succsim x_i$ (every alternative is valuable as much as itself)
   * **Completeness**: $\forall x_i \space \forall x_j \space x_i \succsim x_j \lor x_j \succsim x_i$ (all alternatives are comparable: either xi is at least as valuable as xj or xj is at least as valuable as xi)
-  * **Transitivity**: $\forall x_i \space \forall x_j \space x_i \succsim x_j \land x_j \succsim x_k \rArr x_i \succsim x_k$
+  * **Transitivity**: $\forall x_i \space \forall x_j \space x_i \succsim x_j \land x_j \succsim x_k \Rightarrow x_i \succsim x_k$
 
-An **<ins>utility function</ins>** $u: X \rarr \mathbb{R}$ associates to each alternativa a number such that $\forall x_i \space \forall x_j \space x_i \succsim x_j \iff u(x_i) \ge u(x_j)$ and $x_i \succ x_j \iff u(x_i) \gt u(x_j)$. Ordinal utilities reflect only the order of preference, cardinal utilities reflect also the importance of the preference.
+An **<ins>utility function</ins>** $u: X \rightarrow \mathbb{R}$ associates to each alternative a number such that $\forall x_i \space \forall x_j \space x_i \succsim x_j \iff u(x_i) \ge u(x_j)$ and $x_i \succ x_j \iff u(x_i) \gt u(x_j)$.
+Ordinal utilities reflect only the order of preference, cardinal utilities reflect also the importance of the preference.
 
 **Expected utility** of an action: utility of each alternative result of the action, multiplied for the probability of that consequence.
 
