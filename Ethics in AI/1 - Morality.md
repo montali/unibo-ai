@@ -53,12 +53,13 @@ Follow a **social rule the general compliance with which would provide the highe
 * Standard: should you switch “the switch” to divert a train from a rail branch where it would kill many people to a branch where it would kill only one?
 * Variant with no switch but ability to sacrifice someone (“the fat man”) pushing him on the rail to stop the train before hitting the others
 
-## The social dilemma of autonomous vehicles
+## The social dilemma of <ins>autonomous vehicles</ins>
 * Should a car divert and kill someone on a sidewalk to save many on the road?
     * What if people is illegally crossing with a red light? In utilitarianism this would be irrelevant as we only consider global utility 
 * Should a car divert and kill its passenger to save someone on the road?
 * Should a car divert and kill its passenger to save many on the road?
-* In utilitarianism yes, but a human driver would probably not do that
+  * In utilitarianism yes, but a human driver would probably not do that
+  * Idea of an "**ethical knob**" to adjust the behavior of these vehicles in morally challenging situations based on their own ethical preferences. This is a controversial as it could lead to a lack of uniformity and predictability in how vehicles behave in similar situations. Many experts argue that decisions regarding ethical trade-offs in autonomous vehicles should be based on societal consensus rather than individual preference.
 
 ## The surgeon case by Judith Jarvis Thomson
 Each of five patients are in need of a different organ, each of whom will die without that organ, but none is available. A traveler passes by the hospital and its disappearance would not be noted by anyone. Should the surgeon kill him to gather organs and save other patients?
@@ -188,7 +189,7 @@ It illustrates the conflict between cooperation and self-interest between countr
 
 A strategy profile $(a_1, a_2, \dots, a_n)$ where each $a_i$ is the strategy of player $p_i$, represents a Nash equilibrium, if no player could improve its payoff by changing its strategy alone (when the other players continue to play the actions in the profile). This implies that each player’s action in the profile is the best response to the other actions in the profile.
 
-### Extensive form game
+### Extensive form games
 
 A game is specified by indicating
 * the players
@@ -197,10 +198,10 @@ A game is specified by indicating
 * what each player knows about the other players moves
 * the payoffs for each combination (sequence) of actions
 
-```mermaid
+<!--```mermaid
 flowchart TD;
-    A -->|Lender does not loan| B[(0,0)]
-    A -->|Lender loans| C
-    C -->|Debtor defaults| D[(-100,110)];
-    C -->|Debtor pays| E[(5,5)];
-```
+    A ->|Lender does not loan| B[(0,0)]
+    A ->|Lender loans| C
+    C ->|Debtor defaults| D[(-100,110)];
+    C ->|Debtor pays| E[(5,5)];
+```-->

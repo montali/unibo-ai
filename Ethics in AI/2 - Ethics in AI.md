@@ -93,7 +93,7 @@ The information so inferred may also be conditional, that is, it may consist in 
 
 ### The <ins>Cambridge Analytica case</ins>
 
-About 320'000 people registered as voters in the USA were invited to take a detailed online personality/political test (about 120 questions); they also had to provide access to their Facebook profile and would be rewarded with a small amount of money (from two to five dollars). They were told that their data would only be used for the academic research.
+In 2018 (before GDPR came into effect) about 320'000 people registered as voters in the USA were invited to take a detailed online personality/political test (about 120 questions); they also had to provide access to their Facebook profile and would be rewarded with a small amount of money (from two to five dollars). They were told that their data would only be used for the academic research.
 
 Cambridge Analytica used the data about test-takers (FB likes, posts, ... + test answers) as a training set for building a model to profile their friends on FB, correlating the information in people's FB pages to predictions about psychology and political preferences.
 
@@ -160,3 +160,72 @@ Taking 2000 defendants divided in two 1000-people groups with similar characteri
 * **Calibration**: The proportion of correct predictions should be equal within each group and with regard to each class (COMPAS succeeds)
 * **False rate / Conditional use error**: The proportion between FP (FN) and the total amount of positive (negatives) predictions should be equal for the 2 groups (COMPAS succeeds)
 * **Treatment equality**: The ratio between errors in positive and negative predictions should be equal in all groups (COMPAS fails)
+
+-----
+
+<!-- ethics_filtering.pdf -->
+# Filtering and moderation
+
+Moderation is the active governance of platforms with user-generated content to
+* **prevent unlawful and harmful behavior** and mitigate its effect
+* **facilitate cooperation**
+* **prevent abuse**
+
+Possible classifications:
+* Where
+  * **centralized**: applied by a central authority
+  * **decentralized**: multiple distributed moderators, operating with a degree of independence
+* Why
+  * **uniform policy** on the whole platform
+  * **multiple policies** on subsets of the platform
+* When
+  * **ex-ante**: applied before the content made publicly available
+  * **ex-post**: applied after the content is already available
+    * reactive: examined after the issue has been reported by users or third parties
+    * proactive: examined upon initiative of the moderation system
+* How
+  * **transparent**: provides information on actions taken
+    * contestable
+    * non-contestable
+  * **secret**: does not provide any information about the operation
+* Who
+  * **manual**
+  * **automated**
+  * **hybrid**: combination of humans and automated tools
+
+[<ins>Santa Clara principles</ins>](https://santaclaraprinciples.org/) proposes guidelines for companies:
+* numbers of posts removed and accounts suspended or removed should be public
+* users affected should be notified with the reason of the action
+* users affected should be able to appeal
+
+Important social issues to address in filtering and moderation:
+* freedom of expression and over-blocking
+* liability: Platforms might be obligated to follow some local laws, however the process of defining what content should be filtered and the associated legal ramifications can be challenging
+* filter bubbles
+* echo chambers
+* censorship
+* fake news
+* bias and discrimination
+* cultural, regional and contextual sensitivity differences
+
+-----
+
+<!-- ? -->
+# Targeted Behavioral Advertising
+
+Technique in which data about the user (search queries, browsing history, etc.) is collected and analyzed to tailor advertisements to individuals based on their online behavior.
+
+Legal issues:
+* **Data Protection and Privacy**: collection and processing of personal data raises concerns about privacy and data protection and requires compliance with data protection laws (GDPR for EU)
+* **Consent and Opt-Out** Mechanism: GDPR requires obtaining valid consent from users (freely given, specific, informed and unambiguous)
+* **Children’s Privacy**: targeted advertising involving children requires special attention (ex. from GDPR)
+
+Ethical issues:
+* **User privacy and Autonomy**: User autonomy and transparency and control over data usage should be respected by informing the user about what data is collected and how it's used
+* **Manipulation and Persuasion**: potential manipulation and exploitation of individuals' behaviors and vulnerabilities for commercial gains
+* **Discrimination and Unfairness**: possible discrimination or reinforcement of existing biases since it could exclude groups from opportunities based on sensitive characteristics (race, gender,etc.)
+
+[**Digital Services Act** (DSA) and the **Digital Market Act** (DMA)](https://digital-strategy.ec.europa.eu/en/policies/digital-services-act-package) regulate among other things TBA:
+* **Transparency**: DSA requires online platforms to provide clear and understandable information to users about advertising practices, including personalized advertising.
+* **User Control and Consent**: DSA requires platforms to provide users with effective opt-out mechanisms for personalized advertising and the ability to make informed choices about their data
+* **Accountability and Compliance**: Both DSA and DMA require platforms to conduct impact assessments, address risks of discriminatory practices and ensure compliance with data protection rules
