@@ -138,7 +138,9 @@ In many cases, the best solution is enabling the affected individuals to request
 
 ### <ins>COMPAS</ins> and the Lomis case
 
-Risk assessment software to determine the risk of recidivism and appropriate correctional treatment, based on statistical algorithms. Input: 137-question multiple-choice test, prior criminal history, education, drug abuse, employment status, ... . Output: classification to low/medium/high risk.
+Correctional Offender Management Profiling for Alternative Sanctions (COMPAS) is a decision support software to determine the risk of recidivism and appropriate correctional treatment, based on statistical algorithms.
+Input: 137-question multiple-choice test, prior criminal history, education, drug abuse, employment status, ... .
+Output: classification to low/medium/high risk.
 
 In 2013 E. Loomis was charged with driving a stolen vehicle and fleeing from police. The investigation that included the COMPAS risk assessment, he was classified at high risk for recidivism and sentenced to 6 years imprisonment.
 The decision was appealed by Loomis for violation of due process rights, COMPAS discriminating on race and violation to the right to individualized decision.
@@ -210,7 +212,7 @@ Important social issues to address in filtering and moderation:
 
 -----
 
-<!-- ? -->
+<!-- The regulation of online targeted advertising.pdf -->
 # Targeted Behavioral Advertising
 
 Technique in which data about the user (search queries, browsing history, etc.) is collected and analyzed to tailor advertisements to individuals based on their online behavior.
