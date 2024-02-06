@@ -105,18 +105,18 @@ security of the processing
 <!-- Slides 9_Claudette_AI and Ethics_2022.pdf -->
 # <ins>Claudette</ins>
 
-http://claudette.eui.eu/ , AI-based **citizen empowering technology** to automatically extract, categorizing and **summarizing information from Terms of Services and Privacy Policies**. Assists users in processing and understanding their contents, automatically **detecting potentially unfair clauses**.
+[Claudette](http://claudette.eui.eu/) is an AI-based **citizen empowering technology** to automatically extract, categorize and **summarize information from Terms of Services and Privacy Policies**. It assists users in processing and understanding their contents, automatically **detecting potentially unfair clauses**.
 
-Potentially unfair clauses:
+Examples of potentially unfair clauses:
 * the consumer is bound by the Terms of Service simply by visiting the website or by downloading the app
 * the consumer consents to the privacy policy simply by using the service
 * the provider will never be liable for any action taken by other people or damages incurred by the computer because of malware
-* arbitration is mandatory before the case can go to court and should take place in a state other then the state of consumer’s residence
+* arbitration is not fully optional before the case can go to court
 
-Clearly unfair clauses:
+Examples of clearly unfair clauses:
 * any judicial proceeding takes a residence away (i.e. in a different country chosen by the provider)
 * the provider will never be liable for physical injuries (health/life), gross negligence or intentional damage
-* arbitration is not fully optional before the case can go to court
+* arbitration is mandatory before the case can go to court and should take place in a state other then the state of consumer’s residence
 
 **Detection + Sentence classification (8 possibile unfair clause types)** model trained on a corpus of over 100 manually annotated ToS. On average more than 80% of potentially unfair clauses is found.
 
